@@ -90,6 +90,7 @@
             width: calc(100% - 240px);
             left: 240px;
             transition: all 0.5s ease;
+            padding-bottom: 20px;
             }
             .sidebar.active ~ .home-section{
             width: calc(100% - 60px);
@@ -155,6 +156,8 @@
             .home-section .home-content{
             position: relative;
             padding-top: 104px;
+            display: flex;
+            flex-direction: column;
             }
             .home-content .overview-boxes{
             display: flex;
@@ -168,12 +171,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: calc(100% / 4 - 15px);
+            width: 50%;
             background: #fff;
-            padding: 15px 14px;
+            padding: 10px 14px;
             border-radius: 12px;
+            margin: auto;
             box-shadow: 0 5px 10px rgba(0,0,0,0.1);
             }
+
             .overview-boxes .box-topic{
             font-size: 20px;
             font-weight: 500;
@@ -258,63 +263,58 @@
             }
             }
 
-            input[type=text], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            .container {
+                display: flex;
             }
 
-            input[type=textarea], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            }
+            .card{
+              margin: 1rem;
+              width: 350px;
+              height: 500px;
+              padding: .5rem 1rem;
+              background-color: white;
+              border-radius: 8px;
+              box-shadow: 0 12px 32px 4px rgba(black, .2);
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              transition: .2s;
+              box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+              }
 
-            input[type=date], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            }
+              .card img{
+                  width: 200px;
+                  height: 200px;
+                  border-radius: 25%;
+                  margin: 5px;
+              }
 
-            input[type=submit] {
-            width: 100%;
-            background-color: #847d7d;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            }
+              .card .details{
+                  margin: 10px;
+              }
 
-            input[type=submit]:hover {
-            background-color: #9c8c8c;
-            }
+              .card .details h2{
+                  font-weight: 600;
+              }
 
-            .isi {
-            background-color: #f2f2f2;
-            padding: 20px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 85%;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            }
+              .card .details p{
+                  text-transform: uppercase;
+                  font-weight: 300;
+              }
+
+              .edit {
+                width: 100%;
+                background-color: #847d7d;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+              }
+
 
      </style>
    </head>
@@ -396,7 +396,39 @@
     </nav>
 
     <div class="home-content">
-  
+      <div class="overview-boxes">
+        <div class="box">
+            <div class="box-topic"><a href="#" style="color: #080710;">Input Biodata Pendeta Baru</a></div>
+            <i class='bx bx-right-arrow-alt' href="#"></i>
+        </div>
+      </div>
+      
+      <div class="container">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1612428978260-2b9c7df20150?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="Image">
+          <div class="details">
+              <h2>Pdt. Ini nama pokoknya</h2>
+              <p>Ketua</p>
+          </div>
+          <p id="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <br>
+          <button class="edit">Edit Biodata</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1612428978260-2b9c7df20150?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="Image">
+          <div class="details">
+              <h2>Pdt. Ini nama pokoknya</h2>
+              <p>Ketua</p>
+          </div>
+          <p id="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <br>
+          <button class="edit">Edit Biodata</button>
+        </div>
+      </div>
+      
     </div>
   </section>
 
