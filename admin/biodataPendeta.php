@@ -1,3 +1,13 @@
+<?php
+require_once "connByAlan.php";
+  
+  $timesql = "SELECT * FROM jabatan ";
+  $timestmt = $pdo->prepare($timesql);
+  $timestmt->execute();
+
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -13,6 +23,9 @@
      <link rel="stylesheet" href="biodataPendeta.css"> 
      <style>
      </style>
+      <?
+      include 'conn.php'
+      ?>
    </head>
 
 <body>
@@ -102,16 +115,21 @@
       <div class="home-content">
         <div class="isi" id="divInput" style="display:none">
           
-            <form action="#">
+            <form action="inputPendeta.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
               <!-- <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; margin-left: 960px;" ></i> -->
               <hr>
               <p class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; margin-left: 1060px;"></p> 
               <h2>Inputkan Data Pendeta Baru</h2>
               <hr>
-                <label for="Jabatan">Jabatan</label>
-                <select id="Jabatan" name="Jabatan">
-                  <option value="0">--Pilih Jabatan--</option>
-                  <option value="1">Penasihat</option>
+                <label for="jabatan">Jabatan</label>
+                <select id="jabatan" name="jabatan">
+                  <option value="pilihan">--Pilih Jabatan--</option>
+                  <?php
+                  while ($data = $timestmt->fetch()){
+                      echo "<option value='" . $data['idJabatan'] . "'>" . $data['namaJabatan'] . "</option>";
+                      }
+                  ?>
+                  <!-- <option value="1">Penasihat</option>
                   <option value="2">Ketua</option>
                   <option value="3">Gembala Sidang</option>
                   <option value="4">Sekretaris Gereja</option>
@@ -122,14 +140,14 @@
                   <option value="9">Kepala Bidang Youth</option>
                   <option value="10">Kepala Bidang Teen</option>
                   <option value="11">Kepala Bidang kids</option>
-                  <option value="12">Staff</option>
+                  <option value="12">Staff</option> -->
                 </select>
 
-                <label for="Nama">Nama </label>
-                <input type="text" id="Nama" name="Nama" placeholder="Masukan Nama Pengurus">
+                <label for="nama">Nama Lengkap Pengurus</label>
+                <input type="text" id="nama" name="nama" placeholder="Masukan Nama Pengurus...">
             
-                <label for="Biodata">Biodata</label>
-                <input type="textarea" id="Biodata" name="Biodata" placeholder="Biodata Pengurus...">
+                <label for="biodata">Biodata</label>
+                <input type="textarea" id="biodata" name="biodata" placeholder="Biodata Pengurus...">
 
                 <br>
                 <br>
@@ -143,7 +161,7 @@
                 
                 <br>
                 <br>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" name="submit">
               </form>
         </div>
 </div>
@@ -186,6 +204,27 @@
         function closeInput() {
             document.getElementById("divInput").style.display = 'none';
             }
+
+            function validateForm() {
+    let a = document.forms["myForm"]["jabatan"].value;
+    let b = document.forms["myForm"]["nama"].value;
+    let c = document.forms["myForm"]["biodata"].value;
+    let d = document.forms["myForm"]["foto"].value;
+ 
+    if (a == "") {
+      alert("Jabatan Harus Diisi");
+      return false;
+    }else if(b == "") {
+      alert("Nama Harus Diisi");
+      return false;
+    }else if(c == "") {
+      alert("Biodata Harus Diisi");
+      return false;
+    }else if(d == "") {
+      alert("Foto harus diupload");
+      return false;
+    }
+}
 
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");

@@ -1,14 +1,7 @@
 <?php
-    $serverName = "localhost";
-    $username = "admin";
-    $password = "admin";
-    $dbName = "dbgereja";
 
-    // create connection
-    $conn = new mysqli($serverName, $username, $password, $dbName);
+$sambung = mysqli_connect("localhost", "root", "", "test");
 
-    // check connection
-    if($conn->connect_error) {
-        die("Connection failed : " . $conn->connect_error);
-    }
-?>
+if (!$sambung) { // jika tidak terkoneksi maka menampilkan pesan error
+    die("Gagal terhubung ke database : " . mysqli_connect_errno());
+}
