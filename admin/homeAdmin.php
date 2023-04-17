@@ -1,3 +1,17 @@
+<?php
+  require_once 'koneksi.php';
+
+  session_start();
+
+  if(!isset($_SESSION['username'])){
+    header("location: loginAdmin.php");
+    exit;
+  }
+
+  $username = $_SESSION['username'];
+  // echo "selamat datang";
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -319,7 +333,7 @@
         </li>
         <br>
         <li class="log_out">
-          <a href="#">
+          <a href="logoutAdmin.php">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
           </a>
