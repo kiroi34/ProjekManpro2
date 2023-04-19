@@ -16,8 +16,6 @@
         header("location: homeAdmin.php");
     } else {
         echo "Username atau password salah";
-        echo $username;
-        echo $hashed_password;
     }
 
     $sambung->close();

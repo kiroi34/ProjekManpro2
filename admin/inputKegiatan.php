@@ -107,26 +107,26 @@
     <div class="home-content">
         <p style="padding-left: 10px;"><a href="kelolaKegiatan.php" style="color: #080710;">Kembali</a></p>
         <div class="isi">
-            <form action="#">
+            <form action="php/inputKegiatantoDatabase.php" method="POST" enctype="multipart/form-data">
                 <h1>Input Kegiatan</h1>
                 <br>
                 <label for="judul">Nama Kegiatan</label>
-                <input type="text" id="nama" name="nama" placeholder="Nama Kegiatan..">
+                <input type="text" id="nama" name="nama" placeholder="Nama Kegiatan.." required>
 
                 <label for="tanggal">Tanggal Kegiatan</label>
-                <input type="date" id="tanggal" name="tanggal">
+                <input type="date" id="tanggal" name="tanggal" required>
             
                 <label for="deskripsi">Deskripsi Kegiatan</label>
-                <input type="textarea" id="deskripsi" name="deskripsi" placeholder="Deskripsi Kegiatan..">
+                <input type="textarea" id="deskripsi" name="deskripsi" placeholder="Deskripsi Kegiatan.." required>
 
                 <br>
                 <br>
-                <label for="tanggal">Upload Poster Kegiatan</label>
+                <label for="poster">Upload Poster Kegiatan</label>
                 <br>
                 <input type="file" id="poster" name="poster">
                 <br>
                 <br>
-                <input type="submit" value="Submit">
+                <input class="submitButton" type="submit" value="Submit">
               </form>
         </div>
     </div>
