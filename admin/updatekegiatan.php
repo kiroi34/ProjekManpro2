@@ -1,6 +1,19 @@
 <?php
   require_once 'koneksi.php';
+
   session_start();
+
+  if(!isset($_SESSION['username'])){
+    header("location: loginAdmin.php");
+    exit;
+  }
+
+  $username = $_SESSION['username'];
+  $id = $_GET['id'];
+  $sql = 'SELECT * FROM inputkegiatan WHERE id = '.$id;
+  $stmt = $sambung->query($sql);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -13,18 +26,22 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="css/kelolaKegiatan.css"> 
+     <link rel="stylesheet" href="css/inputKegiatan.css"> 
     <script>
-      function movepage(id) {
-        location.href = 'updatekegiatan.php?id='+id;
-      }
+        function isi() {
+            <?php foreach ($stmt as $res) { ?>
+                document.getElementById('nama').value = '<?php echo $res['nama']?>'; 
+                document.getElementById('tanggal').value = '<?php echo $res['tanggal']?>'; 
+                document.getElementById('deskripsi').value = '<?php echo $res['deskripsi']?>';
+            <?php } ?>
+        }
     </script>
      <style>
-           
+
      </style>
    </head>
 
-<body>
+<body onload="isi()">
   <div class="sidebar">
     <div class="logo-details">
       <i class='bx bx-user'></i>
@@ -101,38 +118,29 @@
     </nav>
 
     <div class="home-content">
-        <div class="overview-boxes">
-            <div class="box">
-                <div class="box-topic"><a href="inputKegiatan.php" style="color: #080710;">Input Kegiatan</a></div>
-                <i class='bx bx-right-arrow-alt' href="inputKegiatan.php"></i>
-            </div>
-        </div>
-        
-        <h3 style="padding-left: 10px;">Kegiatan yang sedang berjalan</h3>
-        <br>
-        <section class="articles">
-        <?php
-          $sql = 'SELECT * FROM inputkegiatan WHERE tanggal >= CURRENT_DATE()';
-          $stmt = $sambung->query($sql);
-          foreach($stmt as $data) {
-            echo '<article>
-            <div class="article-wrapper">
-              <figure>
-                <img src="foto/'.$data['poster'].'" alt="" />
-              </figure>
-              <div class="article-body">
-                <h2>'.$data['nama'].'</h2>
-                <p>
-                  '.$data['deskripsi'].'
-                </p>
-                <button class="button" onclick="movepage('.$data['id'].')"><span>Edit</span></button>
-              </div>
-            </div>
-          </article>';
-          }
-        ?>
-        </section>
+        <p style="padding-left: 10px;"><a href="kelolaKegiatan.php" style="color: #080710;">Kembali</a></p>
+        <div class="isi">
+            <form action="php/updatedatabasekegiatan.php?id=<?php echo $_GET['id']?>" method="POST" enctype="multipart/form-data">
+                <h1>Edit Kegiatan</h1>
+                <br>
+                <label for="judul">Nama Kegiatan</label>
+                <input type="text" id="nama" name="nama" required>
 
+                <label for="tanggal">Tanggal Kegiatan</label>
+                <input type="date" id="tanggal" name="tanggal" required>
+            
+                <label for="deskripsi">Deskripsi Kegiatan</label>
+                <input type="textarea" id="deskripsi" name="deskripsi" placeholder="Deskripsi Kegiatan.." required>
+                <br>
+                <br>
+                <label for="poster">Upload Poster Kegiatan</label>
+                <br>
+                <input type="file" id="poster" name="poster">
+                <br>
+                <br>
+                <input class="submitButton" type="submit" value="Submit">
+              </form>
+        </div>
     </div>
   </section>
 
