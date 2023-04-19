@@ -82,6 +82,15 @@ CREATE TABLE `inputkegiatan` (
   `poster` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `inputkegiatan`
+--
+
+INSERT INTO `inputkegiatan` (`id`, `nama`, `tanggal`, `deskripsi`, `poster`) VALUES
+(1, 'Ibadah Mingguan', '2023-06-17', 'Ibadah yang diadakan setiap minggu. Minggu ini akan mengangkat tema \"Praise the Lord\" dengan dipimpin oleh Pdt. ABC.', 'ibadahmingguan.jpg'),
+(2, 'Perjamuan Kudus', '2023-07-02', 'Acara perjamuan kudus yang bisa diterima oleh semua jemaat. Diadakan pada setiap awal bulan termasuk awal bulan Juli.', 'perjamuankudus.jpg'),
+(3, 'Penyerahan Anak', '2023-06-24', 'Upacara penyerahan anak yang akan diadakan di minggu ketiga bulan Juni. Jemaat yang ingin menyerahkan anaknya bisa mendaftar di form yang tersedia.', 'penyerahananak.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -206,7 +215,7 @@ ALTER TABLE `galeri`
 -- AUTO_INCREMENT for table `inputkegiatan`
 --
 ALTER TABLE `inputkegiatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `inputpenggalangandana`
