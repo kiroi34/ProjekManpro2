@@ -119,8 +119,8 @@ require_once "connByAlan.php";
             <form action="inputPendeta.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
               <!-- <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; margin-left: 960px;" ></i> -->
               <hr>
-              <p class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; margin-left: 1060px;"></p> 
-              <h2>Inputkan Data Pendeta Baru</h2>
+              <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; float: right;"></i> 
+              <h2 style="padding-left:2px">Inputkan Data Pendeta Baru</h2>
               <hr>
                 <label for="jabatan">Jabatan</label>
                 <select id="jabatan" name="jabatan">
