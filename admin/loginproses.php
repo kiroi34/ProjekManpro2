@@ -5,7 +5,7 @@
 
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $hashed_password = hash("sha1", $password);
+    $hashed_password = hash("md5", $password);
 
     $query = "SELECT * FROM admin WHERE username = '$username' AND password = '$hashed_password'";
     
@@ -16,6 +16,8 @@
         header("location: homeAdmin.php");
     } else {
         echo "Username atau password salah";
+        echo $username;
+        echo $hashed_password;
     }
 
     $sambung->close();

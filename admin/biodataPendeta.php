@@ -21,6 +21,7 @@ require_once "connByAlan.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="fa_icons/css/all.css"> 
      <link rel="stylesheet" href="css/biodataPendeta.css"> 
+     <link rel="stylesheet" href="css/bootstrap.css"> 
      <style>
      </style>
       <?
@@ -169,6 +170,8 @@ require_once "connByAlan.php";
     
       
       <div class="container">
+      <div class="row">
+      <div class="col-md-6">
         <div class="card">
           <img src="https://images.unsplash.com/photo-1612428978260-2b9c7df20150?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="Image">
           <div class="details">
@@ -178,19 +181,22 @@ require_once "connByAlan.php";
           <p id="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <br>
           <button class="edit">Edit Biodata</button>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1612428978260-2b9c7df20150?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="Image">
+          <div class="details">
+              <h2>Pdt. Ini nama pokoknya</h2>
+              <p>Ketua</p>
+          </div>
+          <p id="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <br>
+          <button class="edit">Edit Biodata</button>
+        </div>
+        </div>
         </div>
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1612428978260-2b9c7df20150?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="Image">
-          <div class="details">
-              <h2>Pdt. Ini nama pokoknya</h2>
-              <p>Ketua</p>
-          </div>
-          <p id="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <br>
-          <button class="edit">Edit Biodata</button>
-        </div>
-      
       </div>
       
     </div>
