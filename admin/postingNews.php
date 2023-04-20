@@ -411,29 +411,30 @@
 
     <div class="home-content">
             <div class="isi">
-                <form action="postingproses.php" method="post">
-                    <label for="kategori">Kategori Berita</label>
-                    <select id="kategori" name="kategori">
+                <form action="postingproses.php" enctype="multipart/form-data" method="post">
+                    <label for="exampleFormControlInput1">Kategori Berita</label>
+                    <select id="kategori" class="form-control" name="kategori">
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
                     </select>
 
-                    <label for="judul">Judul Berita</label>
-                    <input type="text" id="judul" name="judul" placeholder="Judul Berita..">
+                    <label for="exampleFormControlInput1">Judul Berita</label>
+                    <input type="text" id="judul" class="form-control" name="judul" placeholder="Judul Berita..">
                 
-                    <label for="konten">Konten</label>
-                    <input type="textarea" id="konten" name="konten" placeholder="Konten Berita..">
+                    <label for="exampleFormControlInput1">Konten</label>
+                    <input type="textarea" id="konten" class="form-control" name="konten" placeholder="Konten Berita..">
 
-                    <label for="tanggal">Tanggal</label>
-                    <input type="date" id="tanggal" name="tanggal">
+                    <label for="exampleFormControlInput1">Tanggal</label>
+                    <input type="date" id="tanggal" class="form-control" name="tanggal">
 
                     <br>
                     <br>
                     
-                    <label for="tanggal">Upload Gambar</label>
-                    <br>
-                    <input type="file" id="gambar" name="gambar">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Upload Gambar</label>
+                        <input type="file" name="gambar" default = 0>
+                    </div>
 
                     <br>
                     <br>

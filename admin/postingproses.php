@@ -22,14 +22,14 @@
             $tanggal = $_POST['tanggal'];
 
             if ($_FILES != null) {
-                $gambarr = $_FILES['photo']['name'];
-                $tmp_file = $_FILES['photo']['tmp_name'];
-                $imgStorePath = "img/".$gambarr;
+                $gambar = $_FILES['gambar']['name'];
+                $tmp_file = $_FILES['gambar']['tmp_name'];
+                $imgStorePath = "img/".$gambar;
             }
         ?>
 
         <?php
-            if ($kategori == '' || $judul == '' || $konten == '' || $tanggal == 00-00-0000 || $_FILES == null) {
+            if ($kategori == '' || $judul == '' || $konten == '' || $tanggal == 0000-00-00 || $_FILES == null) {
                 echo '<h3>Post gagal</h3>';
                 if ($kategori == ''){
                     echo 'Kategori invalid <br>';

@@ -10,13 +10,21 @@
         $result = $sambung->query($query);
 
         if ($result->num_rows>0) {
-            $id=$row['id'];
-            echo "ID " . $row["id"];
-            echo "Kategori " . $row["kategori"];
-            echo "Judul " . $row["judul"];
-            echo "Konten " . $row["konten"];
-            echo "Tanggal " . $row["tanggal"];
-            echo "Gambar " . $row["gambar"];
+            while($row = $result->fetch_assoc()){
+                $id=$row['id'];
+                echo "ID: " . $row["id"];
+                echo "<br>";
+                echo "Kategori: " . $row["kategori"];
+                echo "<br>";
+                echo "Judul: " . $row["judul"];
+                echo "<br>";
+                echo "Konten: " . $row["konten"];
+                echo "<br>";
+                echo "Tanggal: " . $row["tanggal"];
+                echo "<br>";
+                echo "<img src='../admin/img/" . $row["gambar"] . "'>";
+                echo "<br>";
+            }
         }
     ?>
 </div>
