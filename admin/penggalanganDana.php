@@ -333,7 +333,7 @@
         <span class="dashboard">Penggalangan Dana</span>
       </div>
       <div class="profile-details">
-        <span class="admin_name">Nama Admin</span>
+        <span class="admin_name"><?php echo $_SESSION['username'];?></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>

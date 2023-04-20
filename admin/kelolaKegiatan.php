@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Posting News</title>
+    <title>Kelola Kegiatan</title>
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
@@ -90,6 +90,7 @@
             width: calc(100% - 240px);
             left: 240px;
             transition: all 0.5s ease;
+            padding-bottom: 20px;
             }
             .sidebar.active ~ .home-section{
             width: calc(100% - 60px);
@@ -124,7 +125,7 @@
             font-size: 35px;
             margin-right: 10px;
             }
-           
+
             .home-section nav .profile-details{
             display: flex;
             align-items: center;
@@ -168,12 +169,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: calc(100% / 4 - 15px);
+            width: 50%;
             background: #fff;
-            padding: 15px 14px;
+            padding: 10px 14px;
             border-radius: 12px;
+            margin: auto;
             box-shadow: 0 5px 10px rgba(0,0,0,0.1);
             }
+
             .overview-boxes .box-topic{
             font-size: 20px;
             font-weight: 500;
@@ -258,62 +261,139 @@
             }
             }
 
-            input[type=text], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            article {
+              --img-scale: 1.001;
+              --title-color: black;
+              --link-icon-translate: -20px;
+              --link-icon-opacity: 0;
+              position: relative;
+              border-radius: 16px;
+              box-shadow: none;
+              background: #fff;
+              transform-origin: center;
+              transition: all 0.4s ease-in-out;
+              overflow: hidden;
             }
 
-            input[type=textarea], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            article a::after {
+              position: absolute;
+              inset-block: 0;
+              inset-inline: 0;
+              cursor: pointer;
+              content: "";
             }
 
-            input[type=date], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            /* basic article elements styling */
+            article h2 {
+              margin: 0 0 18px 0;
+              font-family: "Bebas Neue", cursive;
+              font-size: 1.9rem;
+              letter-spacing: 0.06em;
+              color: var(--title-color);
+              transition: color 0.3s ease-out;
             }
 
-            input[type=submit] {
-            width: 100%;
-            background-color: #847d7d;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+            figure {
+              margin: 0;
+              padding: 0;
+              aspect-ratio: 16 / 9;
+              overflow: hidden;
             }
 
-            input[type=submit]:hover {
-            background-color: #9c8c8c;
+            article img {
+              max-width: 100%;
+              transform-origin: center;
+              transform: scale(var(--img-scale));
+              transition: transform 0.4s ease-in-out;
             }
 
-            .isi {
-            background-color: #f2f2f2;
-            padding: 20px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 85%;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            .article-body {
+              padding: 24px;
+            }
+
+            article a {
+              display: inline-flex;
+              align-items: center;
+              text-decoration: none;
+              color: #28666e;
+            }
+
+            article a:focus {
+              outline: 1px dotted #28666e;
+            }
+
+            article a .icon {
+              min-width: 24px;
+              width: 24px;
+              height: 24px;
+              margin-left: 5px;
+              transform: translateX(var(--link-icon-translate));
+              opacity: var(--link-icon-opacity);
+              transition: all 0.3s;
+            }
+
+            /* using the has() relational pseudo selector to update our custom properties */
+            article:has(:hover, :focus) {
+              --img-scale: 1.1;
+              --title-color: #28666e;
+              --link-icon-translate: 0;
+              --link-icon-opacity: 1;
+              box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            }
+
+            *,
+            *::before,
+            *::after {
+              box-sizing: border-box;
+            }
+
+            .articles {
+              display: grid;
+              max-width: 1200px;
+              margin-inline: auto;
+              padding-inline: 24px;
+              grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+              gap: 24px;
+            }
+
+            @media screen and (max-width: 960px) {
+              article {
+                container: card/inline-size;
+              }
+              .article-body p {
+                display: none;
+              }
+            }
+
+            @container card (min-width: 380px) {
+              .article-wrapper {
+                display: grid;
+                grid-template-columns: 100px 1fr;
+                gap: 16px;
+              }
+              .article-body {
+                padding-left: 0;
+              }
+              figure {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+              }
+              figure img {
+                height: 100%;
+                aspect-ratio: 1;
+                object-fit: cover;
+              }
+            }
+
+            .sr-only:not(:focus):not(:active) {
+              clip: rect(0 0 0 0); 
+              clip-path: inset(50%);
+              height: 1px;
+              overflow: hidden;
+              position: absolute;
+              white-space: nowrap; 
+              width: 1px;
             }
      </style>
    </head>
@@ -332,7 +412,7 @@
           </a>
         </li>
         <li>
-          <a href="postingNews.html" class="active">
+          <a href="postingNews.html">
             <i class='bx bx-news' ></i>
             <span class="links_name">Posting News</span>
           </a>
@@ -344,7 +424,7 @@
           </a>
         </li>
         <li>
-          <a href="kelolaKegiatan.html">
+          <a href="kelolaKegiatan.html" class="active">
             <i class='bx bx-pie-chart-alt-2' ></i>
             <span class="links_name">Kelola Kegiatan</span>
           </a>
@@ -382,51 +462,78 @@
         </li>
       </ul>
   </div>
-  
   <section class="home-section">
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Posting News</span>
+        <span class="dashboard">Kelola Kegiatan</span>
       </div>
-
       <div class="profile-details">
-        <span class="admin_name">Nama Admin</span>
+        <span class="admin_name"><?php echo $_SESSION['username'];?></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>
 
     <div class="home-content">
-            <div class="isi">
-                <form action="#">
-                    <label for="kategori">Kategori Berita</label>
-                    <select id="kategori" name="kategori">
-                      <option value="australia">Blablabla</option>
-                      <option value="canada">Xixixi</option>
-                      <option value="usa">Xoxoxo</option>
-                    </select>
-
-                    <label for="judul">Judul Berita</label>
-                    <input type="text" id="judul" name="judul" placeholder="Judul Berita..">
-                
-                    <label for="konten">Konten</label>
-                    <input type="textarea" id="konten" name="konten" placeholder="Konten Berita..">
-
-                    <label for="tanggal">Tanggal</label>
-                    <input type="date" id="tanggal" name="tanggal">
-
-                    <br>
-                    <br>
-                    
-                    <label for="tanggal">Upload Gambar</label>
-                    <br>
-                    <input type="file" id="gambar" name="gambar">
-
-                    <br>
-                    <br>
-                    <input type="submit" value="Submit">
-                  </form>
+        <div class="overview-boxes">
+            <div class="box">
+                <div class="box-topic"><a href="inputKegiatan.html" style="color: #080710;">Input Kegiatan</a></div>
+                <i class='bx bx-right-arrow-alt' href="inputKegiatan.html"></i>
             </div>
+        </div>
+        
+        <h3 style="padding-left: 10px;">Kegiatan yang sedang berjalan</h3>
+        <br>
+        <section class="articles">
+          <article>
+            <div class="article-wrapper">
+              <figure>
+                <img src="https://picsum.photos/id/1011/800/450" alt="" />
+              </figure>
+              <div class="article-body">
+                <h2>This is some title</h2>
+                <p>
+                  Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta. Vestibulum ultrices iaculis enim imperdiet egestas.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article>
+        
+            <div class="article-wrapper">
+              <figure>
+                <img src="https://picsum.photos/id/1005/800/450" alt="" />
+              </figure>
+              <div class="article-body">
+                <h2>This is some title</h2>
+                <p>
+                  Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta. Vestibulum ultrices iaculis enim imperdiet egestas.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article>
+        
+            <div class="article-wrapper">
+              <figure>
+                <img src="https://picsum.photos/id/103/800/450" alt="" />
+              </figure>
+              <div class="article-body">
+                <h2>This is some title</h2>
+                <p>
+                  Curabitur convallis ac quam vitae laoreet. Nulla mauris ante, euismod sed lacus sit amet, congue bibendum eros. Etiam mattis lobortis porta. Vestibulum ultrices iaculis enim imperdiet egestas.
+                </p>
+                <a href="#" class="read-more">
+                  Read more <span class="sr-only">about this is some title</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </section>
+
     </div>
   </section>
 

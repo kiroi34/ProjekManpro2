@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Kelola Kegiatan</title>
+    <title>Input Galeri</title>
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -124,7 +123,6 @@
             font-size: 35px;
             margin-right: 10px;
             }
-
             .home-section nav .profile-details{
             display: flex;
             align-items: center;
@@ -257,75 +255,6 @@
                 width: calc(100% - 60px);
             }
             }
-
-            input[type=text], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            }
-
-            input[type=textarea], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            }
-
-            input[type=date], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            }
-
-            input[type=number], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            }
-
-            input[type=submit] {
-            width: 100%;
-            background-color: #847d7d;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            }
-
-            input[type=submit]:hover {
-            background-color: #9c8c8c;
-            }
-
-            .isi {
-            background-color: #f2f2f2;
-            padding: 20px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 85%;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            }
-
      </style>
    </head>
 
@@ -349,7 +278,7 @@
           </a>
         </li>
         <li>
-          <a href="inputGaleri.html">
+          <a href="inputGaleri.html" class="active">
             <i class='bx bx-photo-album' ></i>
             <span class="links_name">Input Galeri</span>
           </a>
@@ -373,7 +302,7 @@
           </a>
         </li>
         <li>
-          <a href="penggalanganDana.html"  class="active">
+          <a href="penggalanganDana.html">
             <i class='bx bx-coin-stack' ></i>
             <span class="links_name">Penggalangan Dana</span>
           </a>
@@ -397,42 +326,15 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Penggalangan Dana</span>
+        <span class="dashboard">Input Galeri</span>
       </div>
       <div class="profile-details">
-        <span class="admin_name">Nama Admin</span>
+        <span class="admin_name"><?php echo $_SESSION['username'];?></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>
 
     <div class="home-content">
-        <p style="padding-left: 10px;"><a href="penggalanganDana.html" style="color: #080710;">Kembali</a></p>
-        <div class="isi">
-            <form action="#">
-                <h1>Input Penggalangan Dana Baru</h1>
-                <br>
-                <label for="judul">Judul</label>
-                <input type="text" id="nama" name="nama" placeholder="Judul Penggalangan..">
-            
-                <label for="deskripsi">Deskripsi</label>
-                <input type="textarea" id="deskripsi" name="deskripsi" placeholder="Deskripsi Penggalangan Dana..">
-
-                <label for="tanggal">Deadline Donasi</label>
-                <input type="date" id="tanggal" name="tanggal">
-
-                <label for="target">Target Donasi</label>
-                <input type="number" id="target" name="target" placeholder="Target Penggalangan Dana..">
-
-                <br>
-                <br>
-                <label for="tanggal">Upload Poster Kegiatan</label>
-                <br>
-                <input type="file" id="poster" name="poster">
-                <br>
-                <br>
-                <input type="submit" value="Submit">
-              </form>
-        </div>
     </div>
   </section>
 

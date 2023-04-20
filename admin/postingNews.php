@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Kelola Kegiatan</title>
+    <title>Posting News</title>
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
@@ -124,7 +124,7 @@
             font-size: 35px;
             margin-right: 10px;
             }
-
+           
             .home-section nav .profile-details{
             display: flex;
             align-items: center;
@@ -315,7 +315,6 @@
             border-radius: 12px;
             box-shadow: 0 5px 10px rgba(0,0,0,0.1);
             }
-
      </style>
    </head>
 
@@ -333,7 +332,7 @@
           </a>
         </li>
         <li>
-          <a href="postingNews.html">
+          <a href="postingNews.html" class="active">
             <i class='bx bx-news' ></i>
             <span class="links_name">Posting News</span>
           </a>
@@ -345,7 +344,7 @@
           </a>
         </li>
         <li>
-          <a href="kelolaKegiatan.html" class="active">
+          <a href="kelolaKegiatan.html">
             <i class='bx bx-pie-chart-alt-2' ></i>
             <span class="links_name">Kelola Kegiatan</span>
           </a>
@@ -383,43 +382,51 @@
         </li>
       </ul>
   </div>
+  
   <section class="home-section">
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Kelola Kegiatan</span>
+        <span class="dashboard">Posting News</span>
       </div>
+
       <div class="profile-details">
-        <span class="admin_name">Nama Admin</span>
+        <span class="admin_name"><?php echo $_SESSION['username'];?></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>
 
     <div class="home-content">
-        <p style="padding-left: 10px;"><a href="kelolaKegiatan.html" style="color: #080710;">Kembali</a></p>
-        <div class="isi">
-            <form action="#">
-                <h1>Input Kegiatan</h1>
-                <br>
-                <label for="judul">Nama Kegiatan</label>
-                <input type="text" id="nama" name="nama" placeholder="Nama Kegiatan..">
+            <div class="isi">
+                <form action="#">
+                    <label for="kategori">Kategori Berita</label>
+                    <select id="kategori" name="kategori">
+                      <option value="australia">Blablabla</option>
+                      <option value="canada">Xixixi</option>
+                      <option value="usa">Xoxoxo</option>
+                    </select>
 
-                <label for="tanggal">Tanggal Kegiatan</label>
-                <input type="date" id="tanggal" name="tanggal">
-            
-                <label for="deskripsi">Deskripsi Kegiatan</label>
-                <input type="textarea" id="deskripsi" name="deskripsi" placeholder="Deskripsi Kegiatan..">
+                    <label for="judul">Judul Berita</label>
+                    <input type="text" id="judul" name="judul" placeholder="Judul Berita..">
+                
+                    <label for="konten">Konten</label>
+                    <input type="textarea" id="konten" name="konten" placeholder="Konten Berita..">
 
-                <br>
-                <br>
-                <label for="tanggal">Upload Poster Kegiatan</label>
-                <br>
-                <input type="file" id="poster" name="poster">
-                <br>
-                <br>
-                <input type="submit" value="Submit">
-              </form>
-        </div>
+                    <label for="tanggal">Tanggal</label>
+                    <input type="date" id="tanggal" name="tanggal">
+
+                    <br>
+                    <br>
+                    
+                    <label for="tanggal">Upload Gambar</label>
+                    <br>
+                    <input type="file" id="gambar" name="gambar">
+
+                    <br>
+                    <br>
+                    <input type="submit" value="Submit">
+                  </form>
+            </div>
     </div>
   </section>
 

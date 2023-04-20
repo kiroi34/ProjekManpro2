@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Input Jadwal</title>
+    <title>Kelola Kegiatan</title>
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
@@ -288,6 +288,16 @@
             box-sizing: border-box;
             }
 
+            input[type=number], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
+
             input[type=submit] {
             width: 100%;
             background-color: #847d7d;
@@ -351,7 +361,7 @@
           </a>
         </li>
         <li>
-          <a href="inputJadwal.html" class="active">
+          <a href="inputJadwal.html">
             <i class='bx bx-calendar' ></i>
             <span class="links_name">Input Jadwal</span>
           </a>
@@ -363,7 +373,7 @@
           </a>
         </li>
         <li>
-          <a href="penggalanganDana.html">
+          <a href="penggalanganDana.html"  class="active">
             <i class='bx bx-coin-stack' ></i>
             <span class="links_name">Penggalangan Dana</span>
           </a>
@@ -387,16 +397,42 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Input Jadwal</span>
+        <span class="dashboard">Penggalangan Dana</span>
       </div>
       <div class="profile-details">
-        <span class="admin_name">Nama Admin</span>
+        <span class="admin_name"><?php echo $_SESSION['username'];?></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>
 
     <div class="home-content">
-  
+        <p style="padding-left: 10px;"><a href="penggalanganDana.html" style="color: #080710;">Kembali</a></p>
+        <div class="isi">
+            <form action="#">
+                <h1>Input Penggalangan Dana Baru</h1>
+                <br>
+                <label for="judul">Judul</label>
+                <input type="text" id="nama" name="nama" placeholder="Judul Penggalangan..">
+            
+                <label for="deskripsi">Deskripsi</label>
+                <input type="textarea" id="deskripsi" name="deskripsi" placeholder="Deskripsi Penggalangan Dana..">
+
+                <label for="tanggal">Deadline Donasi</label>
+                <input type="date" id="tanggal" name="tanggal">
+
+                <label for="target">Target Donasi</label>
+                <input type="number" id="target" name="target" placeholder="Target Penggalangan Dana..">
+
+                <br>
+                <br>
+                <label for="tanggal">Upload Poster Kegiatan</label>
+                <br>
+                <input type="file" id="poster" name="poster">
+                <br>
+                <br>
+                <input type="submit" value="Submit">
+              </form>
+        </div>
     </div>
   </section>
 
