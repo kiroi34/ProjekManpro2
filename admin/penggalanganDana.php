@@ -1,3 +1,16 @@
+<?php
+  require_once 'koneksi.php';
+
+  session_start();
+
+  if(!isset($_SESSION['username'])){
+    header("location: loginAdmin.php");
+    exit;
+  }
+
+  $username = $_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -276,50 +289,50 @@
           </a>
         </li>
         <li>
-          <a href="postingNews.html">
+          <a href="postingNews.php">
             <i class='bx bx-news' ></i>
             <span class="links_name">Posting News</span>
           </a>
         </li>
         <li>
-          <a href="inputGaleri.html">
+          <a href="inputGaleri.php">
             <i class='bx bx-photo-album' ></i>
             <span class="links_name">Input Galeri</span>
           </a>
         </li>
         <li>
-          <a href="kelolaKegiatan.html">
+          <a href="kelolaKegiatan.php">
             <i class='bx bx-pie-chart-alt-2' ></i>
             <span class="links_name">Kelola Kegiatan</span>
           </a>
         </li>
         <li>
-          <a href="inputJadwal.html">
+          <a href="inputJadwal.php">
             <i class='bx bx-calendar' ></i>
             <span class="links_name">Input Jadwal</span>
           </a>
         </li>
         <li>
-          <a href="biodataPendeta.html">
+          <a href="biodataPendeta.php">
             <i class='bx bx-face' ></i>
             <span class="links_name">Biodata Pendeta</span>
           </a>
         </li>
         <li>
-          <a href="penggalanganDana.html" class="active">
+          <a href="penggalanganDana.php" class="active">
             <i class='bx bx-coin-stack' ></i>
             <span class="links_name">Penggalangan Dana</span>
           </a>
         </li>
         <li>
-          <a href="setting.html">
+          <a href="setting.php">
             <i class='bx bx-cog' ></i>
             <span class="links_name">Setting</span>
           </a>
         </li>
         <br>
         <li class="log_out">
-          <a href="#">
+          <a href="logoutAdmin.php">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
           </a>
@@ -341,8 +354,8 @@
     <div class="home-content">
       <div class="overview-boxes">
         <div class="box">
-            <div class="box-topic"><a href="inputPenggalangan.html" style="color: #080710;">Input Penggalangan Dana Baru</a></div>
-            <i class='bx bx-right-arrow-alt' href="inputPenggalangan.html"></i>
+            <div class="box-topic"><a href="inputPenggalangan.php" style="color: #080710;">Input Penggalangan Dana Baru</a></div>
+            <i class='bx bx-right-arrow-alt' href="inputPenggalangan.php"></i>
         </div>
     </div>
     

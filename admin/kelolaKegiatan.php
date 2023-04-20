@@ -412,50 +412,50 @@
           </a>
         </li>
         <li>
-          <a href="postingNews.html">
+          <a href="postingNews.php">
             <i class='bx bx-news' ></i>
             <span class="links_name">Posting News</span>
           </a>
         </li>
         <li>
-          <a href="inputGaleri.html">
+          <a href="inputGaleri.php">
             <i class='bx bx-photo-album' ></i>
             <span class="links_name">Input Galeri</span>
           </a>
         </li>
         <li>
-          <a href="kelolaKegiatan.html" class="active">
+          <a href="kelolaKegiatan.php" class="active">
             <i class='bx bx-pie-chart-alt-2' ></i>
             <span class="links_name">Kelola Kegiatan</span>
           </a>
         </li>
         <li>
-          <a href="inputJadwal.html">
+          <a href="inputJadwal.php">
             <i class='bx bx-calendar' ></i>
             <span class="links_name">Input Jadwal</span>
           </a>
         </li>
         <li>
-          <a href="biodataPendeta.html">
+          <a href="biodataPendeta.php">
             <i class='bx bx-face' ></i>
             <span class="links_name">Biodata Pendeta</span>
           </a>
         </li>
         <li>
-          <a href="penggalanganDana.html">
+          <a href="penggalanganDana.php">
             <i class='bx bx-coin-stack' ></i>
             <span class="links_name">Penggalangan Dana</span>
           </a>
         </li>
         <li>
-          <a href="setting.html">
+          <a href="setting.php">
             <i class='bx bx-cog' ></i>
             <span class="links_name">Setting</span>
           </a>
         </li>
         <br>
         <li class="log_out">
-          <a href="#">
+          <a href="logoutAdmin.php">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
           </a>
@@ -477,8 +477,8 @@
     <div class="home-content">
         <div class="overview-boxes">
             <div class="box">
-                <div class="box-topic"><a href="inputKegiatan.html" style="color: #080710;">Input Kegiatan</a></div>
-                <i class='bx bx-right-arrow-alt' href="inputKegiatan.html"></i>
+                <div class="box-topic"><a href="inputKegiatan.php" style="color: #080710;">Input Kegiatan</a></div>
+                <i class='bx bx-right-arrow-alt' href="inputKegiatan.php"></i>
             </div>
         </div>
         
