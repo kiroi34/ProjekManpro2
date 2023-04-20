@@ -15,7 +15,7 @@
         $_SESSION['username'] = $username;
         header("location: homeAdmin.php");
     } else {
-        echo "username atau password salah + $hashed_password";
+        echo "Username atau password salah";
     }
 
     $sambung->close();
