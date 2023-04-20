@@ -433,7 +433,7 @@
                     
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Upload Gambar</label>
-                        <input type="file" name="gambar" default = 0>
+                        <input type="file" accept="image/png, image/jpg, image/jpeg, image/PNG, image/JPG, image/JPEG" name="gambar" default = 0>
                     </div>
 
                     <br>
@@ -444,25 +444,7 @@
     </div>
   </section>
 
-  <?php
-// cek apakah form telah disubmit
-if(isset($_POST['submit'])) {
 
-    // ambil nilai yang dimasukkan oleh pengguna pada form
-    $kategori = $_POST['kategori'];
-    $judul = $_POST['judul'];
-    $konten = $_POST['konten'];
-    $tanggal = $_POST['tanggal'];
-    $gambar = $_FILES['gambar']['name']; // nama file yang diunggah
-
-    // tampilkan nilai yang dimasukkan oleh pengguna pada halaman web
-    echo "Kategori: " . $kategori . "<br>";
-    echo "Judul: " . $judul_konten . "<br>";
-    echo "Konten: " . $konten . "<br>";
-    echo "Tanggal: " . $tanggal . "<br>";
-    echo "Unggah Gambar: " . $gambar . "<br>";
-}
-?>
 
   <script>
         let sidebar = document.querySelector(".sidebar");

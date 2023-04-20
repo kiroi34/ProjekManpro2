@@ -22,9 +22,15 @@
             $tanggal = $_POST['tanggal'];
 
             if ($_FILES != null) {
-                $gambar = $_FILES['gambar']['name'];
-                $tmp_file = $_FILES['gambar']['tmp_name'];
-                $imgStorePath = "img/".$gambar;
+                $gambar = $_FILES['gambar']['name']; //nampung nama
+                $extention = pathinfo($gambar, PATHINFO_EXTENSION);
+
+                if ($extention == 'png' || $extention == 'jpg' || $extention == 'jpeg' || $extention == 'PNG' || $extention == 'JPG' || $extention == 'JPEG'){
+                    $tmp_file = $_FILES['gambar']['tmp_name']; //nampung directory laptop
+                    $imgStorePath = "img/".$gambar;
+                } else {
+                    echo "extention tidak sesuai";
+                }
             }
         ?>
 
@@ -50,12 +56,18 @@
                 echo '<a href="postingNews.php"><h3>Back</h3></a>';
 
             } else {
-                move_uploaded_file($tmp_file, $imgStorePath);
-                $query = "INSERT INTO berita (kategori, judul, konten, tanggal, gambar)
-                    VALUES ('". $kategori."', '". $judul."', '". $konten ."', '". $tanggal ."', '" . $gambar . "')";
-                $sambung->query($query);
+                
+                if ($extention == 'png' || $extention == 'jpg' || $extention == 'jpeg' || $extention == 'PNG' || $extention == 'JPG' || $extention == 'JPEG'){
+                    move_uploaded_file($tmp_file, $imgStorePath);
+                    $query = "INSERT INTO berita (kategori, judul, konten, tanggal, gambar)
+                        VALUES ('". $kategori."', '". $judul."', '". $konten ."', '". $tanggal ."', '" . $gambar . "')";
+                    $sambung->query($query);
+                    echo '<p>HORE BERHASIL</p>';
+                } else {
+                    echo "extention tidak sesuai";
+                }
 
-                echo '<p>HORE BERHASIL</p>';
+                
             }
         ?>
     </body>
