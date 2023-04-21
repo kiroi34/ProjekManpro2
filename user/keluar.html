@@ -191,7 +191,51 @@ Saya rindu untuk bersekutu dengan Tuhan dan melayani-Nya
     </div>
 
 <br>
+<div style="font-size:12px; margin-top:-3px; margin-bottom:20px; color:grey; text-align:left; font-size: medium;">
+    <b>Informasi/berita terbaru gereja : </b>
+</div>
 
+<!-- NEWS Gereja -->
+<!-- Kategori Berita -->
+<div class="form-group field-congregationalserviceform-news_category">
+
+    <select id="congregationalserviceform-news_category" class="form-control" name="CongregationalServiceForm[news_category]">
+    <option value="">Kategori Berita Gereja</option>
+    <option value="worshipleader">Ibadah Umum</option>
+    <option value="singer">Kebaktian Umum</option>
+    <option value="drumer">Ibadah Pemuda Pemudi(YOUTH)</option>
+    <option value="bass">Acara Gereja</option>
+    <option value="operator">Komsel Gabungan</option>
+    <option value="usher">Ibadah Doa</option>
+    </select>
+
+    <div class="help-block"></div> 
+    </div>
+
+<div class="form-group field-judulberitaField">
+    <input type="tel" id="judulberitaField" class="form-control" name="CongregationalServiceForm[judulberita]" maxlength="50" placeholder="Judul Berita">
+    <div class="help-block"></div>
+    </div>
+    
+<div class="form-group field-kontenberitaField">
+    <input type="tel" id="kontenberitaField" class="form-control" name="CongregationalServiceForm[kontenberita]" maxlength="50" placeholder="Konten Berita">
+    <div class="help-block"></div>
+    </div>
+
+<form action="/action_page.php">
+    <label for="tanggal" style="color: white; font-family: Poppins; font-size: medium;">Tanggal Berita:</label>
+    <input type="date" id="news" name="news" style="font-size: medium;">
+    </form>
+    <br>
+    <br>
+<!-- Sudah Bisa Choose File Upload Gambar -->
+<form action="/action_page.php"> 
+    <label for="tanggal" style="color: white; font-family: Poppins; font-size: medium;">Upload Gambar : </label>
+    <input type="file" id="myFile" name="filename" style="font-size: medium;">
+   </form>
+<br>
+
+<br>
 <div style="font-size:12px; margin-top:-3px; margin-bottom:20px; color:grey; text-align:left; font-size: medium;">
     <b>Informasi Kebutuhan Persembahan : </b>
 </div>
