@@ -47,52 +47,11 @@
         }
       </style> 
       </style>
-        <nav class="navbar navbar-expand-lg navbar-white bg-white">
-          <div class="container" style="position:relative">
-              <a class="navbar-brand" href="/">        
-                  <img src="logogereja.png" class="logo_main" alt="Gereja" height="40">
-              </a>
-        
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ml-auto" style="padding-top:40px">
-                    <li class="nav-item">
-                      <a class="nav-link" href="Homeuser.html">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="News.html">Berita</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="Pendeta.html">Pendeta</a>
-                </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="Form.html">Formulir</a>
-                  </li>
-                  
-                  <li class="nav-item">
-                      <a class="nav-link" href="FAQ.html">FAQ</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="Persembahan.html">Penggalangan dana</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="ContactUs.html">Hubungi Kami</a>
-                </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="kalender.html">Kalender</a> 
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="Galeri.html">Galeri</a> 
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="keluar.html">Keluar</a>
-                </li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
+      <?php include_once "navbar.html" ?>
+
       <div id="bannerOuterWrapper">
         <picture>
-          <img src ="homegereja.jpg" alt="Banner" class="w-100">
+          <img src ="assets/homegereja.jpg" alt="Banner" class="w-100">
         </picture>
         </div>
        
@@ -124,7 +83,7 @@
             <div>
               <div class="row">
                 <div class="col-md-3 text-center">
-                  <img src="gembala.jpg" loading="lazy" class="w-100" style="max-width: 240px; margin-top: 20px;" alt="Gembala">
+                  <img src="assets/gembala.jpg" loading="lazy" class="w-100" style="max-width: 240px; margin-top: 20px;" alt="Gembala">
                   <div class="mb-4 d-md-block"></div>
                   
                 </div>

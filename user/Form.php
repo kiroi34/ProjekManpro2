@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< Updated upstream
    <head>
     <meta charset="UTF-8">
-=======
-   <headd>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-      <meta charset="UTF-8">
->>>>>>> Stashed changes
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <!-- <meta name="csrf-param" content="_csrf">
       <meta name="csrf-token" content="eFnI7r69sRmjJ4WVIYs1pCAeux2VJAtUpBDAhbT2rLNKbZuk8YTQfdFi7e8R2gTFelb3a_RGUxf7fqrgxLH9ig=="> -->
@@ -54,49 +49,8 @@
       </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-white bg-white">
-          <div class="container" style="position:relative">
-              <a class="navbar-brand" href="/">        
-                  <img src="logogereja.png" class="logo_main" alt="Gereja" height="40">
-              </a>
-        
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ml-auto" style="padding-top:40px">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Homeuser.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="News.html">Berita</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="Pendeta.html">Pendeta</a>
-                  </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Form.html">Formulir</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="FAQ.html">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Persembahan.html">Penggalangan dana</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ContactUs.html">Hubungi Kami</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="kalender.html">Kalender</a> 
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Galeri.html">Galeri</a> 
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="keluar.html">Keluar</a>
-                  </li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
+        <?php include_once "navbar.html" ?>
+
       <div id="mainContainer">
         <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
     <div style="padding-left:0; padding-right:0">

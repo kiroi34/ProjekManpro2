@@ -50,49 +50,8 @@
           border-color: #B30000;
         }
       </style>
-        <nav class="navbar navbar-expand-lg navbar-white bg-white">
-          <div class="container" style="position:relative;">
-              <a class="navbar-brand" href="/">        
-                  <img src="logogereja.png" class="logo_main" alt="Gereja" height="40">
-              </a>
-        
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ml-auto" style="padding-top:40px ;">
-                      <li class="nav-item">
-                          <a class="nav-link" href="Homeuser.html">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="News.html">Berita</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="Pendeta.html">Pendeta</a>
-                    </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="Form.html">Formulir</a>
-                      </li>
-                      
-                      <li class="nav-item">
-                          <a class="nav-link" href="FAQ.html">FAQ</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="Persembahan.html">Penggalangan dana</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="ContactUs.html">Hubungi Kami</a>
-                    </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="kalender.html">Kalender</a> 
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="Galeri.html">Galeri</a> 
-                    </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="keluar.html">Keluar</a>
-                    </li>
-                  </ul>
-              </div>
-            </div>
-        </nav>
+      <?php include_once "navbar.html" ?>
+
         <div id="mainContainer">
           <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
       <div style="padding-left:0; padding-right:0">

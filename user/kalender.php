@@ -1,22 +1,25 @@
+<?php
+    require_once "php/connect.php";
+
+    $sql = ("SELECT DATE_FORMAT(tanggal, '%Y-%c-%e') as 'tanggal' FROM inputkegiatan");
+    $stmt = $conn->query($sql);
+    $data = $stmt->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
-  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-  <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="csrf-param" content="_csrf">
-      <meta name="csrf-token" content="eFnI7r69sRmjJ4WVIYs1pCAeux2VJAtUpBDAhbT2rLNKbZuk8YTQfdFi7e8R2gTFelb3a_RGUxf7fqrgxLH9ig==">
-      <link href="https://gmschurch.azureedge.net/gmsbaratlandingpagedata/css/bootstrap.min.css" rel="stylesheet">
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet">
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css" rel="stylesheet">
-      <style>
-
-
-    body{
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link href="https://gmschurch.azureedge.net/gmsbaratlandingpagedata/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css" rel="stylesheet">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <style>
+        body{
           font-family: 'Poppins';font-size: 18px;
         }
 
@@ -50,55 +53,19 @@
         .form-group.error input {
           border-color: #B30000;
         }
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
       </style>
-        <nav class="navbar navbar-expand-lg navbar-white bg-white">
-          <div class="container" style="position:relative;">
-              <a class="navbar-brand" href="/">        
-                  <img src="logogereja.png" class="logo_main" alt="Gereja" height="40">
-              </a>
-        
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ml-auto" style="padding-top:40px ;">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Homeuser.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="News.html">Berita</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="Pendeta.html">Pendeta</a>
-                  </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Form.html">Formulir</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="FAQ.html">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Persembahan.html">Penggalangan dana</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ContactUs.html">Hubungi Kami</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="kalender.html">Kalender</a> 
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Galeri.html">Galeri</a> 
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="keluar.html">Keluar</a>
-                  </li>
-                  </ul>
-              </div>
-            </div>
-        </nav>
+      </head>
+      <body>
+        <?php include_once "navbar.html" ?>
         <div id="mainContainer">
           <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
       <div style="padding-left:0; padding-right:0">
           <div style="width:100%;" class="mr-auto ml-auto">
-              <div style="background-image:url('/images/form.jpg'); background-repeat:no-repeat; background-position:inherit; background-size:cover; background-color:#1C1C1C; padding:20px;">
+              <div style="background-color:#1C1C1C; padding:20px;">
                   <div class="cginfo-custom mr-auto ml-auto" style="font-size:30px; margin-bottom:3px; color:white; max-width:770px;">
                       Kalender Kegiatan               
                   </div>
@@ -111,7 +78,7 @@
           <!-- BUAT KALENDER OTOMATIS -->
           <div class="bg-lightgrey pt-4 pb-3">
           <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
-            <div class="card" style="text-align: center;margin-right:60px; margin-bottom: 0; background-color: white;">
+            <div class="card" style="text-align: center;margin-bottom: 0; background-color: white;">
                 <h3 class="card-header" id="monthAndYear"></h3>
                 <table class="table table-bordered table-responsive-sm" id="calendar">
                     <thead>
@@ -161,20 +128,7 @@
             </div>
         </div>
     </div>
-</body>
-
-<script src="scripts.js"></script>
-<!-- Optional JavaScript for bootstrap -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-        crossorigin="anonymous"></script>
+    </body>
 <script>
         let today = new Date();
         let currentMonth = today.getMonth();
@@ -231,6 +185,46 @@
                         if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
                             cell.classList.add("bg-info");
                         } // color today's date
+
+                        cell.onmouseover=function() {
+                            cell.style.backgroundColor='#F88379';
+                            
+                        };
+                        cell.onmouseleave=function() {
+                            cell.style.backgroundColor='white';
+                        };
+
+                        var tang = year+"-"+(month+1)+"-"+date;
+                        var cek = false;
+                        <?php foreach ($data as $row) {?>
+                            if (tang==='<?php echo $row['tanggal']?>') {
+                                cek = true;
+                            }
+                        <?php } ?>
+                        if (cek) {
+                            cell.style.color = 'red';
+                            cell.style.textDecoration = "underline";
+                            cell.style.fontWeight = "bold";
+                        }
+                        cell.onclick = function() {
+                            var tgl = year+"-"+(month+1)+"-"+this.innerText;
+                            document.getElementById('modtit').innerHTML = this.innerText+'-'+(month+1)+'-'+year;
+                            $.ajax({
+                                url: 'php/getkegiatan.php',
+                                type: 'post',
+                                data: {
+                                    tanggal: tgl
+                                },
+                                success: function(result) {
+                                    if (result=="") {
+                                        document.getElementById('isi').innerHTML = "Belum ada kegiatan";
+                                    } else {
+                                        document.getElementById('isi').innerHTML = result;
+                                    }
+                                }  
+                            });
+                            $('#myModal').modal('show');
+                        };
                         cell.appendChild(cellText);
                         row.appendChild(cell);
                         date++;
@@ -240,5 +234,24 @@
             }
         }
       </script>
-    </body>
+            <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title" id="modtit">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                <div id="isi"></div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            
+            </div>
+        </div>
 </html>
