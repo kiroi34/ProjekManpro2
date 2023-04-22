@@ -14,10 +14,27 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="css/kelolaKegiatan.css"> 
-     <link rel="stylesheet" href="fa_icons/css/all.css"> 
+     <link rel="stylesheet" href="fa_icons/css/all.css">
+     <script src="https://kit.fontawesome.com/44f557ccce.js"></script> 
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     <script>
       function movepage(id) {
         location.href = 'updatekegiatan.php?id='+id;
+      }
+      function deletepage(id) {
+        Swal.fire({
+          title: 'Apakah Anda yakin ingin menghapus kegiatan ini?',
+          showDenyButton: true,
+          showCancelButton: false,
+          confirmButtonText: 'Ya',
+          denyButtonText: `Tidak`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            location.href = 'php/deletekegiatan.php?id='+id;
+          }
+        })
       }
     </script>
      <style>
@@ -198,8 +215,9 @@
                 <h2>'.$data['nama'].'</h2>
                 <p>
                   '.$data['deskripsi'].'
-                </p>
-                <button class="button" onclick="movepage('.$data['id'].')"><span>Edit</span></button>
+                </p><br>
+                <center><button class="button" onclick="movepage('.$data['id'].')"><span>Edit</span></button>
+                <button class="button" style="background-color:red" onclick="deletepage('.$data['id'].')"><span>Delete</span></button></center>
               </div>
             </div>
           </article>';
