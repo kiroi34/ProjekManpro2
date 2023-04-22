@@ -18,11 +18,15 @@
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+    <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="css/inputGaleri.css"> 
+     <!-- <link rel="stylesheet" href="css/bootstrap.css">  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
      <style>
+      
            
      </style>
    </head>
@@ -104,15 +108,59 @@
     </nav>
 
     <div class="home-content">
-    </div>
+        <div class="isi" >
+            <form action="inputGaleriDataBase.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
+                <!-- testing -->
+                <br>
+                <input type="file" id="inputFoto" accept="image/png, image/jpeg" onchange="preview()" multiple>
+                <label for="inputFoto">
+                    <i class="fas fa-upload"></i> &nbsp; Choose A Photo
+                </label>
+                <p id="jumlahFoto">No Files Chosen</p>
+                <div id="gambar"></div>
 
+                <input type="submit" value="Submit" name="submit">
+              </form>
+        </div>
+</div>
+
+
+
+  </section>
+  
+
+
+  <script>
+     let fileInput = document.getElementById("inputFoto");
+        let imageContainer = document.getElementById("gambar");
+        let numOfFiles = document.getElementById("jumlahFoto");
+
+        function preview(){
+            imageContainer.innerHTML = "";
+            numOfFiles.textContent = `${fileInput.files.length} Files Selected`;
+
+            for(i of fileInput.files){
+                let reader = new FileReader();
+                let figure = document.createElement("figure");
+                let figCap = document.createElement("figcaption");
+                figCap.innerText = i.name;
+                figure.appendChild(figCap);
+                reader.onload=()=>{
+                    let img = document.createElement("img");
+                    img.setAttribute("src",reader.result);
+                    figure.insertBefore(img,figCap);
+                }
+                imageContainer.appendChild(figure);
+                reader.readAsDataURL(i);
+            }
+        }
 
 
 
     
-  </section>
-
-  <script>
+     function validateForm() {
+        let a = document.forms["myForm"]["inputFoto"].value;
+        }
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");
         sidebarBtn.onclick = function() {
@@ -122,6 +170,7 @@
         }else
         sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
         }
+
  </script>
 </body>
 </html>

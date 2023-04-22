@@ -162,6 +162,21 @@ padding: 15px 14px;
 border-radius: 12px;
 box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
+
+
+
+.overview-boxes .box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    background: #fff;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin: auto;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    
 .overview-boxes .box-topic{
 font-size: 20px;
 font-weight: 500;

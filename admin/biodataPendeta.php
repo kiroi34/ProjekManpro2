@@ -117,11 +117,8 @@ require_once "connByAlan.php";
         <div class="isi" id="divInput" style="display:none">
           
             <form action="inputPendeta.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
-              <!-- <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; margin-left: 960px;" ></i> -->
-              <hr>
               <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; float: right;"></i> 
               <h2 style="padding-left:2px">Inputkan Data Pendeta Baru</h2>
-              <hr>
                 <label for="jabatan">Jabatan</label>
                 <select id="jabatan" name="jabatan">
                   <option value="pilihan">--Pilih Jabatan--</option>
@@ -130,18 +127,6 @@ require_once "connByAlan.php";
                       echo "<option value='" . $data['idJabatan'] . "'>" . $data['namaJabatan'] . "</option>";
                       }
                   ?>
-                  <!-- <option value="1">Penasihat</option>
-                  <option value="2">Ketua</option>
-                  <option value="3">Gembala Sidang</option>
-                  <option value="4">Sekretaris Gereja</option>
-                  <option value="5">Bendahara Gereja</option>
-                  <option value="6">Kepala Bidang Persekutuan dan Kemitraan</option>
-                  <option value="7">Kepala Bidang Misi dan Pelayanan</option>
-                  <option value="8">Kepala Bidang Pembinaan dan Pengembangan SDM</option>
-                  <option value="9">Kepala Bidang Youth</option>
-                  <option value="10">Kepala Bidang Teen</option>
-                  <option value="11">Kepala Bidang kids</option>
-                  <option value="12">Staff</option> -->
                 </select>
 
                 <label for="nama">Nama Lengkap Pengurus</label>
@@ -167,40 +152,59 @@ require_once "connByAlan.php";
         </div>
 </div>
 
-    
-      
-      <div class="container">
+
+<!-- coba tarik dari database ke admin page -->
+<?php
+
+include 'koneksi.php'; // Using database connection file here
+
+$records = mysqli_query($sambung,"select jabatan, nama, biodata, foto from pendeta"); // fetch data from database harus pakai join buat jabatan
+
+while($data = mysqli_fetch_array($records))
+{
+?>
+<div class="container">
       <div class="row">
       <div class="col-md-6">
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1612428978260-2b9c7df20150?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="Image">
+          <!-- <img src="" alt="Image"> -->
+          <?php echo $data['foto']; ?>
           <div class="details">
-              <h2>Pdt. Ini nama pokoknya</h2>
-              <p>Ketua</p>
+              <h2><?php echo $data['nama']; ?></h2>
+              <p><?php echo $data['jabatan']; ?></p>
           </div>
-          <p id="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <br>
-          <button class="edit">Edit Biodata</button>
-        </div>
-        </div>
-        <div class="col-md-6">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1612428978260-2b9c7df20150?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="Image">
-          <div class="details">
-              <h2>Pdt. Ini nama pokoknya</h2>
-              <p>Ketua</p>
-          </div>
-          <p id="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p id="info"><?php echo $data['biodata']; ?></p>
           <br>
           <button class="edit">Edit Biodata</button>
         </div>
         </div>
         </div>
+    <!-- <form action="delete.php" method="post">
+      <input type = "hidden" name ="dapetinID" value="<?php echo $data['ID']?>">
+      <div class="col"> <input type="submit" value="delete" name="delete" class = "btn btn-danger"></div>
+    </form> -->
+  <!-- </div>  
+</div> -->
+
+<?php
+}
+?>
+
+
+<?php mysqli_close($sambung); // Close connection ?>
+
+<!-- aaa -->
+
+      
 
       </div>
-      
     </div>
+    
   </section>
+
+
+
+
 
   <script>
         function showInput() {

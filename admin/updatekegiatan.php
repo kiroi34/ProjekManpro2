@@ -9,37 +9,39 @@
   }
 
   $username = $_SESSION['username'];
+  $id = $_GET['id'];
+  $sql = 'SELECT * FROM inputkegiatan WHERE id = '.$id;
+  $stmt = $sambung->query($sql);
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Penggalangan Dana</title>
+    <title>Kelola Kegiatan</title>
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="fa_icons/css/all.css"> 
-     <link rel="stylesheet" href="css/inputPengalangan.css"> 
+     <link rel="stylesheet" href="css/inputKegiatan.css"> 
+    <script>
+        function isi() {
+            <?php foreach ($stmt as $res) { ?>
+                document.getElementById('nama').value = '<?php echo $res['nama']?>'; 
+                document.getElementById('tanggal').value = '<?php echo $res['tanggal']?>'; 
+                document.getElementById('deskripsi').value = '<?php echo $res['deskripsi']?>';
+            <?php } ?>
+        }
+    </script>
+     <style>
 
-        <style>
-          .overview-boxes .box{
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 50%;
-          background: #fff;
-          padding: 10px 14px;
-          border-radius: 12px;
-          margin: auto;
-          box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-          }
-    </style>
+     </style>
    </head>
 
-<body>
+<body onload="isi()">
   <div class="sidebar">
     <div class="logo-details">
       <i class='bx bx-user'></i>
@@ -65,7 +67,7 @@
           </a>
         </li>
         <li>
-          <a href="kelolaKegiatan.php">
+          <a href="kelolaKegiatan.php" class="active">
             <i class='bx bx-pie-chart-alt-2' ></i>
             <span class="links_name">Kelola Kegiatan</span>
           </a>
@@ -83,7 +85,7 @@
           </a>
         </li>
         <li>
-          <a href="penggalanganDana.php" class="active">
+          <a href="penggalanganDana.php">
             <i class='bx bx-coin-stack' ></i>
             <span class="links_name">Penggalangan Dana</span>
           </a>
@@ -107,7 +109,7 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Penggalangan Dana</span>
+        <span class="dashboard">Kelola Kegiatan</span>
       </div>
       <div class="profile-details">
         <span class="admin_name"><?php echo $_SESSION['username'];?></span>
@@ -116,54 +118,33 @@
     </nav>
 
     <div class="home-content">
-      <div class="overview-boxes">
-        <div class="box">
-            <div class="box-topic"><a href="#" onclick="showInput()" style="color: #080710;">Input Penggalangan Dana Baru</a></div>
-            <i class='bx bx-right-arrow-alt' href="#"></i>
-        </div>
-    </div>
-    <div class="home-content">
-        <div class="isi" id="divInput" style="display:none">
-          <form action="" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
-                <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; float: right;"></i> 
-                <h1>Input Penggalangan Dana Baru</h1>
+        <p style="padding-left: 10px;"><a href="kelolaKegiatan.php" style="color: #080710;">Kembali</a></p>
+        <div class="isi">
+            <form action="php/updatedatabasekegiatan.php?id=<?php echo $_GET['id']?>" method="POST" enctype="multipart/form-data">
+                <h1>Edit Kegiatan</h1>
                 <br>
-                <label for="judul">Judul</label>
-                <input type="text" id="nama" name="nama" placeholder="Judul Penggalangan..">
+                <label for="judul">Nama Kegiatan</label>
+                <input type="text" id="nama" name="nama" required>
+
+                <label for="tanggal">Tanggal Kegiatan</label>
+                <input type="date" id="tanggal" name="tanggal" required>
             
-                <label for="deskripsi">Deskripsi</label>
-                <input type="textarea" id="deskripsi" name="deskripsi" placeholder="Deskripsi Penggalangan Dana..">
-
-                <label for="tanggal">Deadline Donasi</label>
-                <input type="date" id="tanggal" name="tanggal">
-
-                <label for="target">Target Donasi</label>
-                <input type="number" id="target" name="target" placeholder="Target Penggalangan Dana..">
-
+                <label for="deskripsi">Deskripsi Kegiatan</label>
+                <input type="textarea" id="deskripsi" name="deskripsi" placeholder="Deskripsi Kegiatan.." required>
                 <br>
                 <br>
-                <label for="tanggal">Upload Poster Kegiatan</label>
+                <label for="poster">Upload Poster Kegiatan</label>
                 <br>
                 <input type="file" id="poster" name="poster">
                 <br>
                 <br>
-                <input type="submit" value="Submit">
+                <input class="submitButton" type="submit" value="Submit">
               </form>
         </div>
-    </div>
-    
-    <h3 style="padding-left: 10px;">Penggalangan yang sedang berjalan</h3>
     </div>
   </section>
 
   <script>
-        function showInput() {
-            document.getElementById("divInput").style.display = '';
-            }
-
-        function closeInput() {
-            document.getElementById("divInput").style.display = 'none';
-            }
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");
         sidebarBtn.onclick = function() {
