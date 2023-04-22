@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+/* harusnya udah gakepakek */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
 margin: 0;
 padding: 0;
@@ -78,6 +79,7 @@ min-height: 100vh;
 width: calc(100% - 240px);
 left: 240px;
 transition: all 0.5s ease;
+padding-bottom: 20px;
 }
 .sidebar.active ~ .home-section{
 width: calc(100% - 60px);
@@ -143,6 +145,8 @@ color: #333;
 .home-section .home-content{
 position: relative;
 padding-top: 104px;
+display: flex;
+flex-direction: column;
 }
 .home-content .overview-boxes{
 display: flex;
@@ -156,12 +160,14 @@ margin-bottom: 26px;
 display: flex;
 align-items: center;
 justify-content: center;
-width: calc(100% / 4 - 15px);
+width: 50%;
 background: #fff;
-padding: 15px 14px;
+padding: 10px 14px;
 border-radius: 12px;
+margin: auto;
 box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
+
 .overview-boxes .box-topic{
 font-size: 20px;
 font-weight: 500;
@@ -228,6 +234,7 @@ nav .profile-details i{
 .sidebar.active{
     width: 60px;
 }
+
 .home-section{
     width: 100%;
     left: 0;
@@ -246,37 +253,59 @@ nav .profile-details i{
 }
 }
 
-input[type=text], select {
-width: 100%;
-padding: 12px 20px;
-margin: 8px 0;
-display: inline-block;
-border: 1px solid #ccc;
-border-radius: 4px;
-box-sizing: border-box;
+.container {
+    display: flex;
 }
 
-input[type=textarea], select {
-width: 100%;
-padding: 12px 20px;
-margin: 8px 0;
-display: inline-block;
-border: 1px solid #ccc;
-border-radius: 4px;
-box-sizing: border-box;
-}
+.card{
+  margin: 1rem;
+  width: 350px;
+  height: 500px;
+  padding: .5rem 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px 4px rgba(black, .2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: .2s;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  }
 
-input[type=date], select {
-width: 100%;
-padding: 12px 20px;
-margin: 8px 0;
-display: inline-block;
-border: 1px solid #ccc;
-border-radius: 4px;
-box-sizing: border-box;
-}
+  .card img{
+      width: 200px;
+      height: 200px;
+      border-radius: 25%;
+      margin: 5px;
+  }
 
-input[type=submit] {
+  .card .details{
+      margin: 10px;
+  }
+
+  .card .details h2{
+      font-weight: 600;
+  }
+
+  .card .details p{
+      text-transform: uppercase;
+      font-weight: 300;
+  }
+
+  .edit {
+    width: 100%;
+    background-color: #847d7d;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type=submit] {
 width: 100%;
 background-color: #847d7d;
 color: white;
@@ -303,3 +332,22 @@ background: #fff;
 border-radius: 12px;
 box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
+input[type=text], select {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+
+input[type=textarea], select {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+} */

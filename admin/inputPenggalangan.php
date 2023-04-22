@@ -1,4 +1,6 @@
-<?php
+<!--  ini udah ga kepakek harusnya -->
+
+<!-- <?php
   require_once 'koneksi.php';
 
   session_start();
@@ -149,4 +151,4 @@
  </script>
 </body>
 </html>
-
+ -->

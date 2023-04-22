@@ -117,10 +117,8 @@ require_once "connByAlan.php";
         <div class="isi" id="divInput" style="display:none">
           
             <form action="inputPendeta.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
-              <hr>
               <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; float: right;"></i> 
               <h2 style="padding-left:2px">Inputkan Data Pendeta Baru</h2>
-              <hr>
                 <label for="jabatan">Jabatan</label>
                 <select id="jabatan" name="jabatan">
                   <option value="pilihan">--Pilih Jabatan--</option>
