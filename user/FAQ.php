@@ -5,9 +5,8 @@
   <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEWS PAGE</title>
+    <title>FAQ PAGE</title>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
@@ -109,109 +108,69 @@ flex-direction: column;
 }
 .active:after {
     content: "\2796";
-    /* Unicode character for "minus" sign (-) */
 }
       </style>
-      <body></body>
-        <nav class="navbar navbar-expand-lg navbar-white bg-white">
-          <div class="container" style="position:relative;">
-              <a class="navbar-brand" href="/">        
-                  <img src="logogereja.png" class="logo_main" alt="Gereja" height="40">
-              </a>
-        
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ml-auto" style="padding-top:40px ;">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Homeuser.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="News.html">Berita</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="Pendeta.html">Pendeta</a>
-                  </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Form.html">Formulir</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="FAQ.html">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Persembahan.html">Penggalangan dana</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ContactUs.html">Hubungi Kami</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="kalender.html">Kalender</a> 
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Galeri.html">Galeri</a> 
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="keluar.html">Keluar</a>
-                  </li>
-                  </ul>
-              </div>
-            </div>
+      <?php include_once "navbar.html" ?>
 
-        </nav>
         <div id="mainContainer">
           <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
       <div style="padding-left:0; padding-right:0">
           <div style="width:100%;" class="mr-auto ml-auto">
               <div style="background-image:url('/images/form.jpg'); background-repeat:no-repeat; background-position:inherit; background-size:cover; background-color:#1C1C1C; padding:20px;">
                   <div class="cginfo-custom mr-auto ml-auto" style="font-size:30px; margin-bottom:3px; color:white; max-width:770px;">
-                      Berita Terbaru           
+                      FAQ            
                   </div>
                   <div class="mr-auto ml-auto" style="font-size:14px; margin:auto; color:#a5a5a5; max-width:770px;">
-                      Informasi dan Berita Terbaru Gereja           
+                      Pertanyaan dan Jawaban seputar Gereja.            
                   </div>
               </div>
        <div>
             <section class="faq-container">
                 <div class="faq-one">
-                    <!-- DETAIL NEWS IBADAH UMUM -->
-                    <!-- News -->
-                    <h1 class="faq-page"style="font-size:larger;"><b>Ibadah Umum : </b>Detail Ibadah Umum Gereja</h1>
-                    <!-- News info -->
+                    <!-- faq question -->
+                    <h1 class="faq-page"style="font-size:larger;"><b>Ada dimana aja lokasi gereja ini?</b></h1>
+                    <!-- faq answer -->
                     <div class="faq-body">
-                        <p style="font-size: medium;">Dilaksanakan setiap : <br> Hari Minggu , Pukul 09.00-11.00 WIB</p>
-                        <img src="ibadahumum.jpg" alt="ibadah" height="400">
-                    </div> 
+                        <p style="font-size: medium;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
+                            aperiam.
+                            Perspiciatis, porro!</p>
+                    </div>
                 </div>
-
-                <!-- DETAIL NEWS KEBAKTIAN UMUM -->
                 <hr class="hr-line">
                 <div class="faq-two">
-                    <!-- News -->
-                    <h1 class="faq-page"style="font-size:larger;"><b>Kebaktian Umum :</b> Kebaktian Umum Minggu ini</h1>
-                    <!-- News Info -->
+                    <!-- faq question -->
+                    <h1 class="faq-page"style="font-size:larger;"><b>Kapan Kebaktian Umum dilaksanakan?</b></h1>
+                    <!-- faq answer -->
                     <div class="faq-body">
-                        <p style="font-size: medium;">Kebaktian umum akan dilakukan pada : <br> Hari Senin, Pukul 17.00 Wib-selesai</p>
-                        <img src="kebaktianumum.jpeg" alt="ibadah2" height="400">
+                        <p style="font-size: medium;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
+                            aperiam.
+                            Perspiciatis, porro!</p>
                     </div>
                 </div>
-
-                <!-- DETAIL NEWS Acara Gereja -->
                 <hr class="hr-line">
                 <div class="faq-three">
-                    <!-- News -->
-                    <h1 class="faq-page"style="font-size:larger;"><b>Acara Gereja :</b> Ulang Tahun Gereja ke-25</h1>
-                    <!-- News Info -->
+                    <!-- faq question -->
+                    <h1 class="faq-page" style="font-size:larger;"> <b>Jam berapa ibadah dilakukan?</b></h1>
+                    <!-- faq answer -->
                     <div class="faq-body">
-                        <p style="font-size: medium;">Besar harapan kami untuk Bapak/Ibu dapat bersama-sama menghadiri acara spesial gereja kita pada: <br> Hari Kamis, Pukul 18.00 Wib-selesai</p>
-                        <img src="ultahgereja.jpg" alt="ibadah3" height="400">
+                        <p style="font-size: medium;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
+                            aperiam.
+                            Perspiciatis, porro!</p>
                     </div>
                 </div>
-
-                <!-- DETAIL NEWS Ibadah Youth  -->
                 <hr class="hr-line">
-                <div class="faq-four">
-                    <!-- News -->
-                    <h1 class="faq-page"style="font-size:larger;"><b>Ibadah Youth : </b> Ditiadakan Minggu ini</h1>
-                    
+                <div class="faq-three">
+                    <!-- faq question -->
+                    <h1 class="faq-page" style="font-size:larger;"> <b>Kapan Youth camp diadakan kembali?</b></h1>
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p style="font-size: medium;">Consectetur adipisicing elit. Velit saepe sequi, illum facere
+                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
+                            aperiam.
+                            Perspiciatis, porro!</p>
             </section>
         </main>
     </body>
