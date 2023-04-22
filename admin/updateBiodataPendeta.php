@@ -12,7 +12,7 @@ require_once "connByAlan.php";
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Biodata Pendeta</title>
+    <title>Update Pendeta</title>
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
@@ -69,7 +69,7 @@ require_once "connByAlan.php";
         <li>
           <a href="biodataPendeta.php" class="active">
             <i class='bx bx-face' ></i>
-            <span class="links_name">Biodata Pendeta</span>
+            <span class="links_name">Update Pendeta</span>
           </a>
         </li>
         <li>
@@ -97,7 +97,7 @@ require_once "connByAlan.php";
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Biodata Pendeta</span>
+        <span class="dashboard">Update Pendeta</span>
       </div>
       <div class="profile-details">
         <span class="admin_name">Nama Admin</span>
@@ -105,105 +105,58 @@ require_once "connByAlan.php";
       </div>
     </nav>
 
-    <div class="home-content">
-      <div class="overview-boxes">
-        <div class="box">
-            <div class="box-topic"><a href="#" onclick="showInput()" style="color: #080710;">Input Biodata Pendeta Baru</a></div>
-            <i class='bx bx-right-arrow-alt' href="#"></i>
-        </div>
-      </div>
-      
-
-
-      <div class="home-content">
-        <div class="isi" id="divInput" style="display:none">
-          
-            <form action="inputPendeta.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
-              <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; float: right;"></i> 
-              <h2 style="padding-left:2px">Inputkan Data Pendeta Baru</h2>
-              <br>
-                <label for="jabatan">Jabatan</label>
-                <select id="jabatan" name="jabatan" required>
-                  <option value="pilihan">--Pilih Jabatan--</option>
-                  <?php
-                  while ($data = $timestmt->fetch()){
-                      echo "<option value='" . $data['idJabatan'] . "'>" . $data['namaJabatan'] . "</option>";
-                      }
-                  ?>
-                </select>
-
-                <label for="nama">Nama Lengkap Pengurus</label>
-                <input type="text" id="nama" name="nama" placeholder="Masukan Nama Pengurus..." required>
-            
-                <label for="biodata">Biodata</label>
-                <input type="textarea" id="biodata" name="biodata" placeholder="Biodata Pengurus..." required>
-
-                <br>
-                <br>
-                
-                <label for="foto">Upload Foto</label>
-                <br>
-                <input type="file" id="foto" name="foto">
 
 
 
-                
-                <br>
-                <br>
-                <input type="submit" value="Submit" name="submit">
-              </form>
-        </div>
-</div>
+    
 
 
 <!-- coba tarik dari database ke admin page -->
 <?php
 
 include 'koneksi.php'; // Using database connection file here
-
-$records = mysqli_query($sambung,"select id, jabatan.namaJabatan, nama, biodata, foto from pendeta inner join jabatan on jabatan.idJabatan=pendeta.jabatan"); // fetch data from database harus pakai join buat jabatan
-
+$id = $_POST['dapetinID'];
+$records = mysqli_query($sambung,"select id, jabatan.namaJabatan, nama, biodata, foto from pendeta inner join jabatan on jabatan.idJabatan=pendeta.jabatan where id='$id'"); // fetch data from database harus pakai join buat jabatan
 while($data = mysqli_fetch_array($records))
 {
 ?>
-<div class="container">
-      <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <!-- <img src="" alt="Image"> -->
-          <?php echo "<img src='../admin/foto/" . $data["foto"] . "'>"; ?>
+
+
+<div class="home-content">
+        <div class="isi">
           
-          <div class="details">
-              <h2><?php echo $data['nama']; ?></h2>
-              <p><?php echo $data['namaJabatan']; ?></p>
-          </div>
-          <p id="info"><?php echo $data['biodata']; ?></p>
-          <br>
-          <div class="btn-group" style="width:100%">
-          <form action="updateBiodataPendeta.php" method="post">
-            <input type = "hidden" name ="dapetinID" value="<?php echo $data['id']?>">
-            <button class="edit" value="update" name="update" style="width: 45%;" >Edit Biodata</button>
+            <form action="updatePendeta.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
+              <h2 style="padding-left:2px">Update Data Pendeta Baru</h2>
+              <br>
+                <label for="jabatan">Jabatan</label>
+                <select id="jabatan" name="jabatan" required>
+                  <option value="pilihan"><?php echo $data['namaJabatan']; ?></option>
+                  <?php
+                  while ($dataJabatan = $timestmt->fetch()){
+                      echo "<option value='" . $dataJabatan['idJabatan'] . "'>" . $dataJabatan['namaJabatan'] . "</option>";
+                      }
+                  ?>
+                </select>
 
-          </form>
-          
+                <label for="nama">Nama Lengkap Pengurus</label>
+                <input type="text" id="nama" name="nama" value="<?php echo $data['nama']; ?> "required>
+            
+                <label for="biodata">Biodata</label>
+                <input type="textarea" id="biodata" name="biodata" value="<?php echo $data['biodata']; ?> " required>
 
-
-
-          <form action="deletePendeta.php" method="post">
-            <input type = "hidden" name ="dapetinNama" value="<?php echo $data['nama']?>">
-            <button class="edit" value="delete" name="delete" style="width: 45%; background-color: #FF4136;">Delete</button>
-          </form>
-          </div>
-        
-   
-
+                <br>
+                <br>
+                
+                <label for="foto">Upload Foto</label>
+                <br>
+                <input type="file" id="foto" name="foto" value=" <?php echo "<img src='../admin/foto/" . $data["foto"] . "'>"; ?>">
+                <br>
+                <br>
+                <input type="submit" value="update" name="update" >
+              </form>
         </div>
-      </div>
-      </div>
 </div>
 
-
-        
 
 <?php
 }
@@ -214,29 +167,16 @@ while($data = mysqli_fetch_array($records))
       
   </section>
 
-
-
-
-
   <script>
-        function showInput() {
-            document.getElementById("divInput").style.display = '';
-            }
-
-        function closeInput() {
-            document.getElementById("divInput").style.display = 'none';
-            }
-
-            function validateForm() {
     let a = document.forms["myForm"]["jabatan"].value;
     let b = document.forms["myForm"]["nama"].value;
     let c = document.forms["myForm"]["biodata"].value;
     let d = document.forms["myForm"]["foto"].value;
  
-    if (a == "" || b =="pilihan" ) {
+    if (a == "") {
       alert("Jabatan Harus Diisi");
       return false;
-    }else if(b == "" ) {
+    }else if(b == "") {
       alert("Nama Harus Diisi");
       return false;
     }else if(c == "") {
@@ -246,7 +186,7 @@ while($data = mysqli_fetch_array($records))
       alert("Foto harus diupload");
       return false;
     }
-}
+
 
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");

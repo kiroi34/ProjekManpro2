@@ -303,7 +303,7 @@
                 border-radius: 4px;
                 cursor: pointer;
               }
-
+              
               input[type=submit] {
             width: 100%;
             background-color: #847d7d;
@@ -350,3 +350,4 @@
             border-radius: 4px;
             box-sizing: border-box;
             }
+           
