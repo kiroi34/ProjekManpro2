@@ -183,12 +183,8 @@ while($data = mysqli_fetch_array($records))
           <form action="updateBiodataPendeta.php" method="post">
             <input type = "hidden" name ="dapetinID" value="<?php echo $data['id']?>">
             <button class="edit" value="update" name="update" style="width: 45%;" >Edit Biodata</button>
-
           </form>
-          
-
-
-
+     
           <form action="deletePendeta.php" method="post">
             <input type = "hidden" name ="dapetinNama" value="<?php echo $data['nama']?>">
             <button class="edit" value="delete" name="delete" style="width: 45%; background-color: #FF4136;">Delete</button>

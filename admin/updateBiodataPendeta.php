@@ -128,6 +128,10 @@ while($data = mysqli_fetch_array($records))
             <form action="updatePendeta.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
               <h2 style="padding-left:2px">Update Data Pendeta Baru</h2>
               <br>
+
+                <label for="id">User ID </label>
+                <input type="text" id="id" name="id" value="<?php echo $data['id']; ?> " readonly>
+                
                 <label for="jabatan">Jabatan</label>
                 <select id="jabatan" name="jabatan" required>
                   <option value="pilihan"><?php echo $data['namaJabatan']; ?></option>
@@ -152,7 +156,7 @@ while($data = mysqli_fetch_array($records))
                 <input type="file" id="foto" name="foto" value=" <?php echo "<img src='../admin/foto/" . $data["foto"] . "'>"; ?>">
                 <br>
                 <br>
-                <input type="submit" value="update" name="update" >
+                <input type="submit" value="update" name="update">
               </form>
         </div>
 </div>
