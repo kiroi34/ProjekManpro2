@@ -1,3 +1,12 @@
+<?php
+require_once "../admin/connByAlan.php";
+  
+  $timesql = "SELECT * FROM jabatan ";
+  $timestmt = $pdo->prepare($timesql);
+  $timestmt->execute();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -13,6 +22,7 @@
      <link href="https://gmschurch.azureedge.net/gmsbaratlandingpagedata/css/bootstrap.min.css" rel="stylesheet">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="css/coba.css">
      <style>
 
     body{
@@ -51,9 +61,13 @@
         }
       </style>
       <?php include_once "navbar.html" ?>
-
-        <div id="mainContainer">
-          <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
+      <?
+      include 'conn.php'
+      ?>
+    </head>
+<body>
+      <!-- <div id="mainContainer">
+      <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">     -->
       <div style="padding-left:0; padding-right:0">
           <div style="width:100%;" class="mr-auto ml-auto">
               <div style="background-image:url('/images/form.jpg'); background-repeat:no-repeat; background-position:inherit; background-size:cover; background-color:#1C1C1C; padding:20px;">
@@ -64,5 +78,46 @@
                       Berikut adalah daftar Pendeta di gereja ini.           
                   </div>
               </div>
+          </div>
+      </div>
+
+
+  
+ 
+
+  <!-- coba tarik dari database ke admin page -->
+<?php
+
+include 'koneksi.php'; // Using database connection file here
+
+$records = mysqli_query($sambung,"select id, jabatan.namaJabatan, nama, biodata, foto from pendeta inner join jabatan on jabatan.idJabatan=pendeta.jabatan"); // fetch data from database harus pakai join buat jabatan
+
+while($data = mysqli_fetch_array($records))
+{
+?>
+<!-- pembatas -->
+<div class="wrap">
+  <div class="box">
+    <div class="box-top"> 
+      <img class="box-image" <?php echo "<img src='../admin/foto/" . $data["foto"] . "'>"; ?> >>
+      <div class="title-flex">
+        <h3 class="box-title"><?php echo $data['nama']; ?></h3>
+        <p class="user-follow-info"><?php echo $data['namaJabatan']; ?></p>
+      </div>
+      <p class="description"><?php echo $data['biodata']; ?></p>
+    </div>
+  </div>
+
+<?php
+}
+?>
+
+
+<?php mysqli_close($sambung); // Close connection ?>
+
+
+
+
+
     </body>
 </html>

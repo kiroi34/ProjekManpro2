@@ -38,7 +38,7 @@ if(isset($_POST['submit'])){
         if(!empty($insertValuesSQL)){ 
             $insertValuesSQL = trim($insertValuesSQL, ','); 
             // Insert image file name into database 
-            $insert = $sambung->query("INSERT INTO galeri VALUES $insertValuesSQL"); 
+            $insert = $sambung->query("INSERT INTO galeri (file_name, gambar) VALUES $insertValuesSQL"); 
             echo "<script>alert('Input Galeri Baru berhasil'); window.location.href = 'inputGaleri.php';</script>";
         }else{ 
             echo "<script>alert('Input Galeri Baru gagal'); window.location.href = 'inputGaleri.php';</script>";

@@ -22,6 +22,7 @@ require_once "connByAlan.php";
      <link rel="stylesheet" href="fa_icons/css/all.css"> 
      <link rel="stylesheet" href="css/biodataPendeta.css"> 
      <link rel="stylesheet" href="css/bootstrap.css"> 
+     
      <style>
      </style>
       <?
@@ -157,20 +158,18 @@ require_once "connByAlan.php";
 
 
 <!-- coba tarik dari database ke admin page -->
+<section class="articles">
 <?php
-
 include 'koneksi.php'; // Using database connection file here
 
 $records = mysqli_query($sambung,"select id, jabatan.namaJabatan, nama, biodata, foto from pendeta inner join jabatan on jabatan.idJabatan=pendeta.jabatan"); // fetch data from database harus pakai join buat jabatan
-
 while($data = mysqli_fetch_array($records))
 {
 ?>
-<div class="container">
-      <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <!-- <img src="" alt="Image"> -->
+    
+      <article>
+        <div class="article-wrapper">
+
           <?php echo "<img src='../admin/foto/" . $data["foto"] . "'>"; ?>
           
           <div class="details">
@@ -190,20 +189,14 @@ while($data = mysqli_fetch_array($records))
             <button class="edit" value="delete" name="delete" style="width: 45%; background-color: #FF4136;">Delete</button>
           </form>
           </div>
-        
-   
-
-        </div>
-      </div>
-      </div>
 </div>
-
-
-        
+  
+</article>
 
 <?php
 }
 ?>
+</section>
 
 
 <?php mysqli_close($sambung); // Close connection ?>
@@ -229,7 +222,7 @@ while($data = mysqli_fetch_array($records))
     let c = document.forms["myForm"]["biodata"].value;
     let d = document.forms["myForm"]["foto"].value;
  
-    if (a == "" || b =="pilihan" ) {
+    if (a == "" || a =="pilihan" ) {
       alert("Jabatan Harus Diisi");
       return false;
     }else if(b == "" ) {
