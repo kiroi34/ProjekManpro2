@@ -112,7 +112,7 @@
             <form action="inputGaleriDataBase.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
                 <!-- testing -->
                 <br>
-                <input type="file" id="inputFoto" accept="image/png, image/jpeg" onchange="preview()" multiple>
+                <input type="file" id="inputFoto" name="files[]" accept="image/png, image/jpeg" onchange="preview()" multiple>
                 <label for="inputFoto">
                     <i class="fas fa-upload"></i> &nbsp; Choose A Photo
                 </label>
