@@ -22,43 +22,43 @@
     </div>
       <ul class="nav-links">
         <li>
-          <a href="homeAdmin.html">
+          <a href="homeAdmin.php">
             <i class='bx bx-home-alt' ></i>
             <span class="links_name">Home</span>
           </a>
         </li>
         <li>
-          <a href="postingNews.html">
+          <a href="postingNews.php">
             <i class='bx bx-news' ></i>
             <span class="links_name">Posting News</span>
           </a>
         </li>
         <li>
-          <a href="inputGaleri.html">
+          <a href="inputGaleri.php">
             <i class='bx bx-photo-album' ></i>
             <span class="links_name">Input Galeri</span>
           </a>
         </li>
         <li>
-          <a href="kelolaKegiatan.html">
+          <a href="kelolaKegiatan.php">
             <i class='bx bx-pie-chart-alt-2' ></i>
             <span class="links_name">Kelola Kegiatan</span>
           </a>
         </li>
         <li>
-          <a href="inputJadwal.html">
+          <a href="inputJadwal.php">
             <i class='bx bx-calendar' ></i>
             <span class="links_name">Input Jadwal</span>
           </a>
         </li>
         <li>
-          <a href="biodataPendeta.html">
+          <a href="biodataPendeta.php">
             <i class='bx bx-face' ></i>
             <span class="links_name">Biodata Pendeta</span>
           </a>
         </li>
         <li>
-          <a href="penggalanganDana.html">
+          <a href="penggalanganDana.php">
             <i class='bx bx-coin-stack' ></i>
             <span class="links_name">Penggalangan Dana</span>
           </a>
