@@ -115,6 +115,33 @@
           </div>
         </div>
       </div>
+
+      <div class="overview-boxes">
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Informasi Permohonan Jemaat</div>
+                <a href="#"style="color: #080710;">Menerima Yesus</a>
+                <i class='bx bx-right-arrow-alt' href="#"></i>
+                <br>
+                <a href="#"style="color: #080710;">Baptisme</a>
+                <i class='bx bx-right-arrow-alt' href="#"></i>
+                <br>
+                <a href="#"style="color: #080710;">Komunitas Sel</a>
+                <i class='bx bx-right-arrow-alt' href="#"></i>
+                <br>
+                <a href="#"style="color: #080710;">Permohonan Doa</a>
+                <i class='bx bx-right-arrow-alt' href="#"></i>
+                <br>
+                <a href="#"style="color: #080710;">Kesaksian Pribadi</a>
+                <i class='bx bx-right-arrow-alt' href="#"></i>
+                <br>
+                <a href="#"style="color: #080710;">Pemberkatan Pernikahan</a>
+                <i class='bx bx-right-arrow-alt' href="#"></i>
+          </div>
+        </div>
+      </div>
+      
+
       </div>
     </div>
   </section>
