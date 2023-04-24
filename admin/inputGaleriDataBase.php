@@ -1,47 +1,60 @@
-
-<!-- Masih error -->
-<?php
-include 'koneksi.php';
-
-$foto = '';
-
-if (isset($_POST['submit'])) { 
-    $file = $_FILES['foto'];
-
-    $fileName = $_FILES['foto']['name'];
-    $fileTempName = $_FILES['foto']['tmp_name'];
-    $fileSize = $_FILES['foto']['size'];
-    $fileError = $_FILES['foto']['error'];
-    $fileType = $_FILES['foto']['type'];
-
-    $fileExt = explode('.', $fileName);
-    $fileExtension = strtolower(end($fileExt));
-
-    $allowTypes = array('jpg', 'jpeg', 'png');
-    
-    if (in_array($fileExtension, $allowTypes)) {
-        if($fileError === 0 ){
-            if($fileSize < 1000000){
-                $fileNameNew = uniqid('', true).".". $fileExtension;
-                $fileDestination = 'gambarGaleri/'. $fileNameNew;
-                move_uploaded_file($fileTempName, $fileDestination);
-                mysqli_query($sambung, "INSERT INTO galeri VALUES ('','$fileNameNew')");
-                echo "<script>alert('Input User Baru berhasil'); window.location.href = 'inputGaleri.php';</script>";
-            }else {
-                echo "<script>alert('Pendaftaran Gagal Karena File Gambar Terlalu Besar '); window.location.href = 'inputGaleri.php';</script>";
-            }
-        }else{
-            echo "Error saat mengupload file !!!";
-        }
-    }else {
-        echo "<script>alert('Format File Tidak Sesuai, Hanya Boleh JPG,JPEG,PNG '); window.location.href = 'inputGaleri.php';</script>";
-    }
-
-} else {
-    echo "<script>alert('Gagal Input!'); window.location.href = 'inputGaleri.php';</script>";
-}
-
-
-
-
+<?php 
+// Include the database configuration file 
+include_once 'koneksi.php'; 
+     
+if(isset($_POST['submit'])){ 
+    // File upload configuration 
+    $targetDir = "gambarGaleri/"; 
+    $allowTypes = array('jpg','png','jpeg'); 
+     
+    $statusMsg = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = ''; 
+    $fileNames = array_filter($_FILES['files']['name']); 
+    if(!empty($fileNames)){ 
+        foreach($_FILES['files']['name'] as $key=>$val){ 
+            // File upload path 
+            $fileName = basename($_FILES['files']['name'][$key]); 
+            $targetFilePath = $targetDir . $fileName; 
+             
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+            if(in_array($fileType, $allowTypes)){ 
+                // Upload file to server 
+                if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
+                    // Image db insert sql 
+                    $insertValuesSQL .= "('".$fileName."', NOW()),"; 
+                }else{ 
+                    $errorUpload .= $_FILES['files']['name'][$key].' | '; 
+                } 
+            }else{ 
+                $errorUploadType .= $_FILES['files']['name'][$key].' | '; 
+            } 
+        } 
+         
+        // Error message 
+        $errorUpload = !empty($errorUpload)?'Upload Error: '.trim($errorUpload, ' | '):''; 
+        $errorUploadType = !empty($errorUploadType)?'File Type Error: '.trim($errorUploadType, ' | '):''; 
+        $errorMsg = !empty($errorUpload)?'<br/>'.$errorUpload.'<br/>'.$errorUploadType:'<br/>'.$errorUploadType; 
+         
+        if(!empty($insertValuesSQL)){ 
+            $insertValuesSQL = trim($insertValuesSQL, ','); 
+            // Insert image file name into database 
+            $insert = $sambung->query("INSERT INTO galeri (file_name, gambar) VALUES $insertValuesSQL"); 
+            echo "<script>alert('Input Galeri Baru berhasil'); window.location.href = 'inputGaleri.php';</script>";
+        }else{ 
+            echo "<script>alert('Input Galeri Baru gagal'); window.location.href = 'inputGaleri.php';</script>";
+        } 
+    }else{ 
+        $statusMsg = 'Please select a file to upload.'; 
+    } 
+} 
+ 
 ?>
+
+
+
+
+
+
+
+
+

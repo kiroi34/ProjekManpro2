@@ -107,7 +107,7 @@
 
     <div class="home-content">
             <div class="isi">
-                <form action="postingproses.php" enctype="multipart/form-data" method="post">
+                <form id="formulir" action="postingproses.php" enctype="multipart/form-data" method="post">
                     <label for="exampleFormControlInput1">Kategori Berita</label>
                     <select id="kategori" class="form-control" name="kategori">
                       <option value="1">1</option>
@@ -129,7 +129,7 @@
                     
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Upload Gambar</label>
-                        <input type="file" accept="image/png, image/jpg, image/jpeg, image/PNG, image/JPG, image/JPEG" name="gambar" default = 0>
+                        <input type="file" id ="gambar" accept="image/png, image/jpg, image/jpeg, image/PNG, image/JPG, image/JPEG" name="gambar" default = 0>
                     </div>
 
                     <br>
@@ -140,19 +140,17 @@
     </div>
   </section>
 
-
-
   <script>
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");
         sidebarBtn.onclick = function() {
         sidebar.classList.toggle("active");
-        if(sidebar.classList.contains("active")){
-        sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-        }else
-        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+
+        if(sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+        } else
+          sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
         }
  </script>
 </body>
 </html>
-

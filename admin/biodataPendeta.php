@@ -22,6 +22,7 @@ require_once "connByAlan.php";
      <link rel="stylesheet" href="fa_icons/css/all.css"> 
      <link rel="stylesheet" href="css/biodataPendeta.css"> 
      <link rel="stylesheet" href="css/bootstrap.css"> 
+     
      <style>
      </style>
       <?
@@ -112,6 +113,8 @@ require_once "connByAlan.php";
             <i class='bx bx-right-arrow-alt' href="#"></i>
         </div>
       </div>
+      
+
 
       <div class="home-content">
         <div class="isi" id="divInput" style="display:none">
@@ -119,8 +122,9 @@ require_once "connByAlan.php";
             <form action="inputPendeta.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
               <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; float: right;"></i> 
               <h2 style="padding-left:2px">Inputkan Data Pendeta Baru</h2>
+              <br>
                 <label for="jabatan">Jabatan</label>
-                <select id="jabatan" name="jabatan">
+                <select id="jabatan" name="jabatan" required>
                   <option value="pilihan">--Pilih Jabatan--</option>
                   <?php
                   while ($data = $timestmt->fetch()){
@@ -130,10 +134,10 @@ require_once "connByAlan.php";
                 </select>
 
                 <label for="nama">Nama Lengkap Pengurus</label>
-                <input type="text" id="nama" name="nama" placeholder="Masukan Nama Pengurus...">
+                <input type="text" id="nama" name="nama" placeholder="Masukan Nama Pengurus..." required>
             
                 <label for="biodata">Biodata</label>
-                <input type="textarea" id="biodata" name="biodata" placeholder="Biodata Pengurus...">
+                <input type="textarea" id="biodata" name="biodata" placeholder="Biodata Pengurus..." required>
 
                 <br>
                 <br>
@@ -154,52 +158,49 @@ require_once "connByAlan.php";
 
 
 <!-- coba tarik dari database ke admin page -->
+<section class="articles">
 <?php
-
 include 'koneksi.php'; // Using database connection file here
 
-$records = mysqli_query($sambung,"select jabatan, nama, biodata, foto from pendeta"); // fetch data from database harus pakai join buat jabatan
-
+$records = mysqli_query($sambung,"select id, jabatan.namaJabatan, nama, biodata, foto from pendeta inner join jabatan on jabatan.idJabatan=pendeta.jabatan"); // fetch data from database harus pakai join buat jabatan
 while($data = mysqli_fetch_array($records))
 {
 ?>
-<div class="container">
-      <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <!-- <img src="" alt="Image"> -->
-          <?php echo $data['foto']; ?>
+    
+      <article>
+        <div class="article-wrapper">
+
+          <?php echo "<img src='../admin/foto/" . $data["foto"] . "'>"; ?>
+          
           <div class="details">
               <h2><?php echo $data['nama']; ?></h2>
-              <p><?php echo $data['jabatan']; ?></p>
+              <p><?php echo $data['namaJabatan']; ?></p>
           </div>
           <p id="info"><?php echo $data['biodata']; ?></p>
           <br>
-          <button class="edit">Edit Biodata</button>
-        </div>
-        </div>
-        </div>
-    <!-- <form action="delete.php" method="post">
-      <input type = "hidden" name ="dapetinID" value="<?php echo $data['ID']?>">
-      <div class="col"> <input type="submit" value="delete" name="delete" class = "btn btn-danger"></div>
-    </form> -->
-  <!-- </div>  
-</div> -->
+          <div class="btn-group" style="width:100%">
+          <form action="updateBiodataPendeta.php" method="post">
+            <input type = "hidden" name ="dapetinID" value="<?php echo $data['id']?>">
+            <button class="edit" value="update" name="update" style="width: 45%;" >Edit Biodata</button>
+          </form>
+     
+          <form action="deletePendeta.php" method="post">
+            <input type = "hidden" name ="dapetinNama" value="<?php echo $data['nama']?>">
+            <button class="edit" value="delete" name="delete" style="width: 45%; background-color: #FF4136;">Delete</button>
+          </form>
+          </div>
+</div>
+  
+</article>
 
 <?php
 }
 ?>
+</section>
 
 
 <?php mysqli_close($sambung); // Close connection ?>
-
-<!-- aaa -->
-
       
-
-      </div>
-    </div>
-    
   </section>
 
 
@@ -221,10 +222,10 @@ while($data = mysqli_fetch_array($records))
     let c = document.forms["myForm"]["biodata"].value;
     let d = document.forms["myForm"]["foto"].value;
  
-    if (a == "") {
+    if (a == "" || a =="pilihan" ) {
       alert("Jabatan Harus Diisi");
       return false;
-    }else if(b == "") {
+    }else if(b == "" ) {
       alert("Nama Harus Diisi");
       return false;
     }else if(c == "") {
