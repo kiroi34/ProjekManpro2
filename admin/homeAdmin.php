@@ -116,7 +116,56 @@
         </div>
       </div>
 
+      <h3 style="margin-left: 1%;">Informasi Permohonan Jemaat</h3>
+
       <div class="overview-boxes">
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Menerima Yesus</div>
+            <a href="#"style="color: #080710;">Informasi Detail</a>
+            <i class='bx bx-right-arrow-alt' href="#"></i>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Baptisme</div>
+            <a href="#"style="color: #080710;">Informasi Detail</a>
+            <i class='bx bx-right-arrow-alt' href="#"></i>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Komunitas Sel</div>
+            <a href="#"style="color: #080710;">Informasi Detail</a>
+            <i class='bx bx-right-arrow-alt' href="#"></i>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Permohonan Doa</div>
+            <a href="#"style="color: #080710;">Informasi Detail</a>
+            <i class='bx bx-right-arrow-alt' href="#"></i>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Kesaksian Pribadi</div>
+            <a href="#"style="color: #080710;">Informasi Detail</a>
+            <i class='bx bx-right-arrow-alt' href="#"></i>
+          </div>
+        </div>
+        
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Pemberkatan Pernikahan</div>
+            <a href="#"style="color: #080710;">Informasi Detail</a>
+            <i class='bx bx-right-arrow-alt' href="#"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- <div class="overview-boxes">
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Informasi Permohonan Jemaat</div>
@@ -139,8 +188,7 @@
                 <i class='bx bx-right-arrow-alt' href="#"></i>
           </div>
         </div>
-      </div>
-      
+      </div> -->
 
       </div>
     </div>
