@@ -79,9 +79,9 @@ require_once "connByAlan.php";
           </a>
         </li>
         <li>
-          <a href="setting.php">
-            <i class='bx bx-cog' ></i>
-            <span class="links_name">Setting</span>
+          <a href="inputFAQ.php">
+            <i class='bx bx-pencil' ></i>
+            <span class="links_name">Input FAQ</span>
           </a>
         </li>
         <br>

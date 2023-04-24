@@ -64,9 +64,9 @@
           </a>
         </li>
         <li>
-          <a href="setting.html">
-            <i class='bx bx-cog' ></i>
-            <span class="links_name">Setting</span>
+          <a href="inputFAQ.php" class="active">
+            <i class='bx bx-pencil' ></i>
+            <span class="links_name">Input FAQ</span>
           </a>
         </li>
         <br>
