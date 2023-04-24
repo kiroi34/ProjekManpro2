@@ -112,10 +112,6 @@
               <a class="nav-link active " style="background-color: blue;" id="bank-transfer-tab" data-toggle="tab" role="tab" href="#bank-transfer">
                 Bank Transfer &amp; QRIS      </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link bg-lightgrey" id="credit-card-tab" data-toggle="tab" role="tab" href="#credit-card">
-                Credit Card      </a>
-            </li>
           </ul>
           <div class="container">
           <div class="panel">
@@ -145,15 +141,25 @@
                                 </div>
                                  </div>
                                 <div class="col-12 mt-4" style="padding-right:5px">
-                                    
-                                <!-- Buat Input Nominal Pemberian buat masuk ke database -->
-                                <div class="row align-items-center mt-2 bank-account-wrapper">
-                                <div class="col-4" style="padding-left:5px;">
-                                <div class="form-group field-ageField required">
-                                <input type="tel" id="ageField" class="form-control" name="CongregationalServiceForm[age]" style="max-width:220px;width:170%; margin-left: 60px;" 
-                                placeholder="Nominal" aria-required="true">
-                              </div>
-                              </div>
+
+                                  <div class="form-group field-congregationalserviceform-news_category">
+
+      <!-- Buat kategori penggalangan dana -->
+      <select id="congregationalserviceform-give_category" class="form-control" name="CongregationalServiceForm[give_category]" style="max-width:220px;width:170%; margin-left: 55px;">
+      <option value="test">Kategori Penggalangan Dana</option>
+      <option value="Persembahan">Persembahan Ibadah</option>
+      <option value="Perpuluhan">Perpuluhan</option>                    
+      <div class="help-block"></div> 
+      </div>                 
+                                   
+      <!-- Buat Input Nominal Pemberian buat masuk ke database -->
+      <div class="row align-items-center mt-2 bank-account-wrapper">
+      <div class="col-4" style="padding-left:5px;">
+      <div class="form-group field-nominalField required">
+      <input type="tel" id="nominalField" class="form-control" name="CongregationalServiceForm[nominal]" style="max-width:220px;width:170%; margin-left: 55px;" 
+      placeholder="Nominal" aria-required="true">
+      </div>
+      </div>
          </div>
         </div>
         
