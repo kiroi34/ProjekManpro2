@@ -96,7 +96,7 @@
                                 
                             <div class="col-4" style="padding-left:5px;">
                                     <div class="mt-2 give-qrcode-image active">
-                                    <img loading="lazy" src="QRcode.png" alt="QR" style="max-width:170px;width:100%;">
+                                    <img loading="lazy" src="assets/QRcode.png" alt="QR" style="max-width:170px;width:100%;">
                                 </div>
                                  </div>
                                 <div class="col-12 mt-4" style="padding-right:5px">

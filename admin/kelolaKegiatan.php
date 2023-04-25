@@ -181,9 +181,10 @@
                 <label for="judul">Nama Kegiatan</label>
                 <input type="text" id="nama" name="nama" placeholder="Nama Kegiatan.." required>
 
-                <label for="tanggal">Tanggal Kegiatan</label>
+                <label for="tanggal">Tanggal Kegiatan</label><br> 
                 <input type="date" id="tanggal" name="tanggal" required>
-            
+            <br>
+            <br>
                 <label for="deskripsi">Deskripsi Kegiatan</label>
                 <input type="textarea" id="deskripsi" name="deskripsi" placeholder="Deskripsi Kegiatan.." required>
 
