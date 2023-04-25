@@ -104,7 +104,27 @@
     </nav>
 
     <div class="home-content">
-  
+            <div class="isi">
+                <form id="formulir" action="#" enctype="multipart/form-data" method="post">
+
+                    <label for="exampleFormControlInput1">Tema Ibadah</label>
+                    <input type="text" id="judul" class="form-control" name="judul" placeholder="Tema Ibadah..">
+
+                    <label for="exampleFormControlInput1">Tanggal Ibadah</label>
+                    <input type="date" id="tanggal" class="form-control" name="tanggal">
+
+                    <label for="exampleFormControlInput1">Pendeta</label>
+                    <select id="kategori" class="form-control" name="kategori">
+                      <option value="1">pdt blabla</option>
+                      <option value="2">pdt blabla2</option>
+                      <option value="3">pdt blabla3</option>
+                    </select>
+
+                    <label for="exampleFormControlInput1">Deskripsi Tema Ibadah</label>
+                    <input type="textarea" id="konten" class="form-control" name="konten" placeholder="Deskripsi Singkat Tema Ibadah..">
+                    <input type="submit" value="Submit"></input>
+                  </form>
+            </div>
     </div>
   </section>
 
