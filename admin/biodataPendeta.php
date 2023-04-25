@@ -155,6 +155,9 @@ require_once "connByAlan.php";
               </form>
         </div>
 </div>
+<br>
+<Br>
+<br>
 
 
 <!-- coba tarik dari database ke admin page -->
