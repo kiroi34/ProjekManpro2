@@ -124,36 +124,61 @@
     </div>
     <div class="home-content">
         <div class="isi" id="divInput" style="display:none">
-          <form action="" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
-                <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; float: right;"></i> 
+        <form id="formulir" action="penggalanganProses.php" enctype="multipart/form-data" method="post">
                 <h1>Input Penggalangan Dana Baru</h1>
                 <br>
-                <label for="judul">Judul</label>
-                <input type="text" id="nama" name="nama" placeholder="Judul Penggalangan..">
+                <label for="exampleFormControlInput1">Judul</label>
+                <input type="text" id="judul" class="form-control" name="judul" placeholder="Judul Penggalangan..">
             
-                <label for="deskripsi">Deskripsi</label>
-                <input type="textarea" id="deskripsi" name="deskripsi" placeholder="Deskripsi Penggalangan Dana..">
+                <label for="exampleFormControlInput1">Deskripsi</label>
+                <input type="textarea" id="deskripsi" class="form-control" name="deskripsi" placeholder="Deskripsi Penggalangan Dana..">
 
-                <label for="tanggal">Deadline Donasi</label>
-                <input type="date" id="tanggal" name="tanggal">
+                <label for="exampleFormControlInput1">Deadline Donasi</label>
+                <input type="date" id="deadline" class="form-control" name="deadline">
 
-                <label for="target">Target Donasi</label>
-                <input type="number" id="target" name="target" placeholder="Target Penggalangan Dana..">
+                <label for="exampleFormControlInput1">Target Donasi</label>
+                <input type="number" id="target" class="form-control" name="target" placeholder="Target Penggalangan Dana..">
 
                 <br>
                 <br>
-                <label for="tanggal">Upload Poster Kegiatan</label>
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Upload Poster Kegiatan</label>
+                    <input type="file" id ="poster" accept="image/png, image/jpg, image/jpeg, image/PNG, image/JPG, image/JPEG" name="poster" default = 0>
+                </div>
+
                 <br>
-                <input type="file" id="poster" name="poster">
                 <br>
-                <br>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit"></input>
               </form>
         </div>
     </div>
     
     <h3 style="padding-left: 10px;">Penggalangan yang sedang berjalan</h3>
-    </div>
+    <div class="row">
+    <?php
+        $query = "SELECT * FROM inputpenggalangandana";
+        $result = $sambung->query($query);
+
+        if ($result->num_rows>0) {
+            while($row = $result->fetch_assoc()){
+                $id=$row['id'];
+                echo "ID: " . $row["id"];
+                echo "<br>";
+                echo "Judul: " . $row["judul"];
+                echo "<br>";
+                echo "Deskripsi: " . $row["deskripsi"];
+                echo "<br>";
+                echo "Deadline: " . $row["deadline"];
+                echo "<br>";
+                echo "Target: " . $row["target"];
+                echo "<br>";
+                echo "<img src='../admin/poster/" . $row["poster"] . "'>";
+                echo "<br>";
+            }
+        }
+    ?>
+</div>
   </section>
 
   <script>
