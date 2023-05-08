@@ -28,12 +28,69 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="css/inputKegiatan.css"> 
     <script>
+        var biaya = '';
+        var kuota = '';
+        var gender = '';
+        var usiamin = '', usiamax = '';
         function isi() {
             <?php foreach ($stmt as $res) { ?>
                 document.getElementById('nama').value = '<?php echo $res['nama']?>'; 
                 document.getElementById('tanggal').value = '<?php echo $res['tanggal']?>'; 
                 document.getElementById('deskripsi').value = '<?php echo $res['deskripsi']?>';
+                if (<?php echo $res['pendaftaran']?>==1) {
+                  biaya = <?php echo $res['biayapendaftaran']?>;
+                  gender = <?php echo $res['gender']?>;
+                  document.getElementById("biayaSp").innerHTML = '<label for="quantity">Biaya: </label>' +
+                  '<input type="number" id="biaya" name="biaya" min="0" max="100000000" value="'+<?php echo $res['biayapendaftaran'];?>+'" required><br>' +
+                  '<label for="kuota">Kuota: </label>' +
+                  '<input type="number" id="kuota" name="kuota" min="0" max="100000" value="'+<?php echo $res['kuota'];?>+'"><br>' +
+                  '<input type="checkbox" name="gender" value="1" id="genderL" onclick="klikGender(1)"/><label for="gender"> Hanya untuk laki-laki</label><br>' +
+                  '<input type="checkbox" name="gender" value="2" id="genderP" onclick="klikGender(2)"/><label for="gender"> Hanya untuk perempuan</label><br>' +
+                  'Khusus usia <input type="number" id="usiamin" style="width:50px" name="usiamin" min="0" max="100" value="'+<?php echo $res['usiamin'];?>+'"> sampai <input type="number" id="usiamax" style="width:50px" name="usiamax" min="0" max="100" value="'+<?php echo $res['usiamax'];?>+'"></label><br>';
+                }
             <?php } ?>
+            if (gender == 1) {
+              document.getElementById('genderL').checked = true;
+            } else if (gender == 2) {
+              document.getElementById('genderP').checked = true;
+            }
+        }
+        function showBiaya() {
+          cek = document.getElementById("daftar");
+          if (cek.checked) {
+            document.getElementById("biayaSp").innerHTML = '<label for="quantity">Biaya: </label>' +
+            '<input type="number" id="biaya" name="biaya" min="0" max="100000000" value="'+biaya+'" required><br>' +
+            '<label for="kuota">Kuota: </label>' +
+            '<input type="number" id="kuota" name="kuota" min="0" max="100000" value="'+kuota+'"><br>' +
+            '<input type="checkbox" name="gender" value="1" id="genderL" onclick="klikGender(1)"/><label for="gender"> Hanya untuk laki-laki</label><br>' +
+            '<input type="checkbox" name="gender" value="2" id="genderP" onclick="klikGender(2)"/><label for="gender"> Hanya untuk perempuan</label><br>' +
+            'Khusus usia <input type="number" id="usiamin" style="width:50px" name="usiamin" min="0" max="100" value="'+usiamin+'"> sampai <input type="number" id="usiamax" style="width:50px" name="usiamax" min="0" max="100" value="'+usiamax+'"></label><br>';
+            if (gender == 1) {
+              document.getElementById("genderL").checked = true;
+            } else if (gender == 2) {
+              document.getElementById("genderP").checked = true;
+            }
+          } else {
+            biaya = document.getElementById('biaya').value;
+            kuota = document.getElementById('kuota').value;
+            if (document.getElementById('genderL').checked == true) {
+              gender = 1;
+            } else if (document.getElementById('genderP').checked == true) {
+              gender = 2;
+            } else {
+              gender = 0;
+            }
+            usiamin = document.getElementById('usiamin').value;
+            usiamax = document.getElementById('usiamax').value;
+            document.getElementById("biayaSp").innerHTML = '';
+          }
+        }
+        function klikGender(num) {
+          if (num == 1) {
+            document.getElementById('genderP').checked = false;
+          } else {
+            document.getElementById('genderL').checked = false;
+          }
         }
     </script>
      <style>
@@ -132,6 +189,9 @@
                 <label for="deskripsi">Deskripsi Kegiatan</label>
                 <input type="textarea" id="deskripsi" name="deskripsi" placeholder="Deskripsi Kegiatan.." required>
                 <br>
+                <input type="checkbox" id="daftar" name="daftar" value="Pendaftaran" onclick="showBiaya()" <?php foreach ($stmt as $res) { if ($res['pendaftaran']==1) { echo 'checked';}}?>>
+                <label for="daftar">Perlu pendaftaran</label><br>
+                <div id="biayaSp" style="margin-left:20px"></div>
                 <br>
                 <label for="poster">Upload Poster Kegiatan</label>
                 <br>

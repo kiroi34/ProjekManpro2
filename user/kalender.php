@@ -57,6 +57,22 @@
             width: 100%;
             height: 100%;
         }
+        .klikDaftar {
+            margin-top:20px;
+            background-color: rgb(240,128,128, 0.5);
+            border-radius: 4px;
+            border: 1px solid red;
+            color: white;
+        }
+        .klikDaftar:hover {
+            border: 1px solid red;
+            letter-spacing: 2px;
+            background-color: rgb(240,128,128);
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        .klikDaftar:active {
+            border: 1px solid red;
+        }
       </style>
       </head>
       <body>
@@ -232,6 +248,9 @@
                 }
                 tbl.appendChild(row); // appending each row into calendar body.
             }
+        }
+        function klikDaftar() {
+            
         }
       </script>
             <!-- Modal -->

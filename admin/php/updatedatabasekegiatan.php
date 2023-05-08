@@ -1,13 +1,48 @@
 <?php
     require_once '../koneksi.php';
-
+    
     session_start();
 
     $nama = $_POST['nama'];
     $tanggal = $_POST['tanggal'];
     $deskripsi = $_POST['deskripsi'];
     $id = $_GET['id'];
-
+    if (isset($_POST['daftar'])) {
+        $daftar = 1;
+        if (!empty($_POST['biaya'])) {
+            $biaya = $_POST['biaya'];
+        } else {
+            $biaya = 0;
+        }
+        if (!empty($_POST['kuota'])) {
+            $kuota = $_POST['kuota'];
+        } else {
+            $kuota = 0;
+        }
+        if (!empty($_POST['gender'])) {
+            $gender = $_POST['gender'];
+        } else {
+            $gender = 0;
+        }
+        if (!empty($_POST['usiamin'])) {
+            $usiamin = $_POST['usiamin'];
+        } else {
+            $usiamin = 0;
+        }
+        if (!empty($_POST['usiamax'])) {
+            $usiamax = $_POST['usiamax'];
+        } else {
+            $usiamax = 0;
+        }
+    } else {
+        $daftar = 0;
+        $biaya = 0;
+        $kuota = 0;
+        $gender = 0;
+        $usiamin = 0;
+        $usiamax = 0;
+    }
+    
     $fileBasename = basename($_FILES['poster']['name']);
     $fileName = $_FILES['poster']['name'];
     $fileSize = $_FILES['poster']['size'];
@@ -31,7 +66,13 @@
                 SET nama='".$nama."', 
                 tanggal='".$tanggal."', 
                 deskripsi='".$deskripsi."', 
-                poster='".$fileBasename."' 
+                poster='".$fileBasename."', 
+                pendaftaran=".$daftar.", 
+                biayapendaftaran=".$biaya.", 
+                kuota=".$kuota.", 
+                gender=".$gender.", 
+                usiamin=".$usiamin.", 
+                usiamax=".$usiamax."  
                 WHERE id=".$id;
                 $stmt = $sambung->query($sql);
                 $cek = False;
@@ -42,7 +83,13 @@
         $sql = "UPDATE inputkegiatan 
         SET nama='".$nama."', 
         tanggal='".$tanggal."', 
-        deskripsi='".$deskripsi."' 
+        deskripsi='".$deskripsi."', 
+        pendaftaran=".$daftar.", 
+        biayapendaftaran=".$biaya.", 
+        kuota=".$kuota.", 
+        gender=".$gender.", 
+        usiamin=".$usiamin.", 
+        usiamax=".$usiamax."  
         WHERE id=".$id;
         $stmt = $sambung->query($sql);
     }
