@@ -144,7 +144,64 @@
                 grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
                 gap: 24px;
               }
+              /* main{
+			width: 100%;
+			height: 400px;
+			margin: 200px auto;
+			overflow: hidden;
+			position: relative;
+		}
+		h1{
+			width: 98%;
+			margin: 10px auto;
+			background: #1976D2;
+			font-weight: bold;
+			color: white;
+		}
+    span{
+			position: absolute;
+		    top: 40%;
+		    font-size: 60px;
+		    font-weight: bold;
+		    color: rgb(249, 0, 0);
+		    cursor: pointer;
+		    left: .5%;
+		    z-index: 1;
+		}
+		span:nth-of-type(2){
+			left: 98%;
+			text-align: right;
+		}
+		section{
+			width: 98%;
+			height: 300px;
+			background: #f4f4f4;
+			margin: 10px auto;
+			display: flex;
+			justify-content: left;
+			overflow-x: auto;
+		}
+		section::-webkit-scrollbar{
+			visibility: hidden;
+		}
+		div.carousel{
+			min-width: 330px;
+			height: 200px;
+			position: relative;
+			left: 0px;
+			text-align: center;
+			padding-top: 60px;
+			font-size: 100px;
+			font-weight: bold;
+			color: white;
+			margin: 10px 20px;
+			transition: 0.5s all;
+			background: rgb(65, 65, 65);
+
+		} */
       </style>
+      </head>
+
       <?php include_once "navbar.html" ?>
 
         <div id="mainContainer">
@@ -163,20 +220,40 @@
               <br>
               <br>
 
+              <!-- testing -->
 
+              <!-- <main>
+                  <h1>Event AOG </h1>
+                  <span>&#139;</span>
+                  <span>&#155;</span>
+                  <section>
+                    <div class ="carousel"> 01 </div>
+                    <div class ="carousel"> 02 </div>
+                    <div class ="carousel"> 03 </div>
+                    <div class ="carousel"> 04 </div>
+                    <div class ="carousel"> 05 </div>
+                    <div class ="carousel"> 06 </div>
+                  </section>
+                </main> -->
+
+              <!-- batas testing -->
 
 <section class="articles">
 <?php
 include '../admin/koneksi.php'; // Using database connection file here
 
-$records = mysqli_query($sambung,"select * from galeri order by id desc "); // fetch data from database harus pakai join buat jabatan
+$records = mysqli_query($sambung,"select id, galeriKategori.namaKategori, file_name from galeri inner join galeriKategori on galeriKategori.idKategoriGaleri=galeri.kategori order by id desc ");
+
+
+
 while($data = mysqli_fetch_array($records))
 {
+  
 ?>
     
       <article>
+      <h2><?php echo $data["namaKategori"]; ?></h2>
         <div class="article-wrapper">
-
           <?php echo "<img src='../admin/gambarGaleri/" . $data["file_name"] . "'>"; ?>
 
 </div>
@@ -200,3 +277,48 @@ while($data = mysqli_fetch_array($records))
               
     </body>
 </html>
+
+
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+}
+</script>
+
+
+
+
+<!-- <script type="text/javascript">
+	var span = document.getElementsByTagName('span');
+	var div = document.getElementsByClassName('carousel')
+	var l = 0;
+	span[1].onclick = ()=>{
+		l++;
+		for(var i of div)
+		{
+			if (l==0) {i.style.left = "0px";}
+			if (l==1) {i.style.left = "-740px";}
+			if (l==2) {i.style.left = "-1480px";}
+			if (l==3) {i.style.left = "-2220px";}
+			if (l==4) {i.style.left = "-2960px";}
+			if (l>4) {l=4;}
+		}
+	}
+	span[0].onclick = ()=>{
+		l--; 
+		for(var i of div)
+		{	
+			if (l==0) {i.style.left = "0px";}
+			if (l==1) {i.style.left = "-740px";}
+			if (l==2) {i.style.left = "-1480px";}
+			if (l==3) {i.style.left = "-2220px";}
+			if (l < 0) {l=0;}
+		}
+	}
+	
+
+</script> -->

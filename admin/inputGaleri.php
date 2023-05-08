@@ -120,6 +120,28 @@
                 grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
                 gap: 24px;
               }
+
+              input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
+
+            input[type=textarea], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
+
+            
               
       
            
@@ -207,6 +229,9 @@
             <form action="inputGaleriDataBase.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
                 <!-- testing -->
                 <br>
+                <label for="kategori">Nama Kategory Foto</label>
+                <input type="text" id="kategori" name="kategori" placeholder="Masukan Nama Kategori Foto..." required>
+                <br>
                 <input type="file" id="inputFoto" name="files[]" accept="image/png, image/jpeg" onchange="preview()" multiple>
                 <label for="inputFoto">
                     <i class="fas fa-upload"></i> &nbsp; Choose A Photo
@@ -227,14 +252,15 @@
 <?php
 include 'koneksi.php'; // Using database connection file here
 
-$records = mysqli_query($sambung,"select * from galeri order by id desc "); // fetch data from database harus pakai join buat jabatan
+$records = mysqli_query($sambung,"select id, galeriKategori.namaKategori, file_name from galeri inner join galeriKategori on galeriKategori.idKategoriGaleri=galeri.kategori order by id desc ");
 while($data = mysqli_fetch_array($records))
+
 {
 ?>
     
       <article>
         <div class="article-wrapper">
-
+        <h2><?php echo $data["namaKategori"]; ?></h2>
           <?php echo "<img src='../admin/gambarGaleri/" . $data["file_name"] . "'>"; ?>
 
           <div class="btn-group" style="width:50%">
