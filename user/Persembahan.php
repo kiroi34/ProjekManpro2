@@ -145,7 +145,7 @@
                                 </div>
                               </div> -->
 
-                              <form method="post" action="metodeBayar.php">
+                              <form method="post" action="berhasilBayar.php">
                                 <div class="input-group mb-3">
                                   <span class="input-group-text">Rp. </span>
                                   <label for="nominal"></label>
@@ -154,7 +154,7 @@
                                     echo '<input type="hidden" name="id" value="'. $id .'">';
                                   ?>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-lg" style="font-size: 15px; padding: 10px 15px; margin-left: 55px; background-color:green">Bayar</button>
+                                <button type="submit" class="btn btn-primary btn-lg">Bayar</button>
                               </form>
 
                             </div>
