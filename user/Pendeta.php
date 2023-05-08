@@ -10,6 +10,7 @@ require_once "../admin/connByAlan.php";
 <!DOCTYPE html>
 <html lang="en">
    <head>
+   <title>Pendeta</title>
   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
     <!-- Bootstrap CSS -->

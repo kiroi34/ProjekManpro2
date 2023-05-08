@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-   <headd>
+   <head>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,6 +47,8 @@
         }
       </style> 
       </style>
+      </head>
+      <body>
       <?php include_once "navbar.html" ?>
 
       <div id="bannerOuterWrapper">
@@ -111,5 +113,4 @@
         </div>
       </div>
     </body>
-   </head>
 </html>

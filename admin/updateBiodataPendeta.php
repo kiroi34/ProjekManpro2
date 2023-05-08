@@ -156,7 +156,7 @@ while($data = mysqli_fetch_array($records))
                 <input type="file" id="foto" name="foto" value=" <?php echo "<img src='../admin/foto/" . $data["foto"] . "'>"; ?>">
                 <br>
                 <br>
-                <input type="submit" value="update" name="update">
+                <input type="submit" value="Update" name="update">
               </form>
         </div>
 </div>
@@ -177,7 +177,7 @@ while($data = mysqli_fetch_array($records))
     let c = document.forms["myForm"]["biodata"].value;
     let d = document.forms["myForm"]["foto"].value;
  
-    if (a == "") {
+    if (a == ""||a="pilian") {
       alert("Jabatan Harus Diisi");
       return false;
     }else if(b == "") {

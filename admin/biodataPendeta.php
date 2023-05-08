@@ -171,13 +171,13 @@ while($data = mysqli_fetch_array($records))
 ?>
     
       <article>
-        <div class="article-wrapper">
+        <div class="article-wrapper" style="margin-left:20px">
 
           <?php echo "<img src='../admin/foto/" . $data["foto"] . "'>"; ?>
           
           <div class="details">
               <h2><?php echo $data['nama']; ?></h2>
-              <p><?php echo $data['namaJabatan']; ?></p>
+              <h3><?php echo $data['namaJabatan']; ?></h3 >
           </div>
           <p id="info"><?php echo $data['biodata']; ?></p>
           <br>

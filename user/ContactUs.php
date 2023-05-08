@@ -2,6 +2,7 @@
 <html lang="en">
    <head>
   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <title>Hubungi Kami</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -50,6 +51,8 @@
           border-color: #B30000;
         }
       </style>
+      </head>
+      <body>
       <?php include_once "navbar.html" ?>
         <div id="mainContainer">
           <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
