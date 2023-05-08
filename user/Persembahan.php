@@ -3,6 +3,8 @@
   <head>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
+    <title>Pembayaran Donasi</title>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -59,6 +61,7 @@
       require_once "koneksi.php";
 
       $id = $_GET['id'];
+      $nominal = $_POST['inputNominal'];
     ?>
 
     <div id="mainContainer">
@@ -136,26 +139,25 @@
                               </div>                 
                                         
                               <!-- Buat Input Nominal Pemberian buat masuk ke database -->
-                              <!-- <div class="row align-items-center mt-2 bank-account-wrapper">
-                                <div class="col-4" style="padding-left:5px;">
-                                  <div class="form-group field-nominalField required">
-                                    <input type="tel" id="nominalField" class="form-control" name="CongregationalServiceForm[nominal]" style="max-width:220px;width:170%; margin-left: 55px;" 
-                                      placeholder="Nominal" aria-required="true">
-                                  </div>
-                                </div>
-                              </div> -->
-
                               <form method="post" action="berhasilBayar.php">
                                 <div class="input-group mb-3">
                                   <span class="input-group-text">Rp. </span>
                                   <label for="nominal"></label>
                                   <input type="text" id="nominal" name="inputNominal" class="form-control" placeholder="Nominal" style="max-width:220px; width:170%; margin-left: 55px;">
+                                  
                                   <?php
                                     echo '<input type="hidden" name="id" value="'. $id .'">';
                                   ?>
+                                
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-lg">Bayar</button>
+                                <?php
+                                    echo '<input type="hidden" name="id" value="' . $id . '">';
+                                    echo '<input type="hidden" name="nominal" value="' . $nominal . '">';
+                                ?>
+                                <a href="berhasilBayar.php"><button type="submit" class="btn btn-primary btn-lg" style="margin-left: 55px">Bayar</button></a>
                               </form>
+
+                              <br>
 
                             </div>
                           </div>

@@ -72,8 +72,6 @@
         <?php
             include_once "navbar.html";
             require_once "koneksi.php";
-
-            $id = $_GET['id'];
         ?>
 
         <div id="mainContainer">
@@ -90,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <br>
                     <div class="container">
                       <div class="row">
                         <?php
@@ -118,10 +116,10 @@
 
                                 echo '<div class="row">';
                                   echo '<div class="col">';
-                                    echo '<p class="text-left">Rp. ' . $row["terkumpul"] . '</p>';
+                                    echo '<p class="text-left">Rp. ' . number_format($row["terkumpul"]) . '</p>';
                                   echo '</div>';
                                   echo '<div class="col">';
-                                    echo '<p class="text-right">Rp. ' . $row["target"] . '</p>';
+                                    echo '<p class="text-right">Rp. ' . number_format($row["target"]) . '</p>';
                                   echo '</div>';
                                 echo '</div>';
 
