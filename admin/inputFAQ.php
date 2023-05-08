@@ -1,3 +1,16 @@
+<?php
+  require_once 'koneksi.php';
+
+  session_start();
+
+  if(!isset($_SESSION['username'])){
+    header("location: loginAdmin.php");
+    exit;
+  }
+
+  $username = $_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -87,22 +100,23 @@
       </div>
 
       <div class="profile-details">
-        <span class="admin_name">Nama Admin</span>
+        <span class="admin_name"><?php echo $_SESSION['username'];?></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>
 
     <div class="home-content">
-            <div class="isi">
-                <form action="#">
-                    <label for="pertanyaan">Pertanyaan</label>
-                    <input type="text" id="pertanyaan" name="pertanyaan" placeholder="Pertanyaan..">
-                
-                    <label for="jawaban">Jawaban dari Pertanyaan</label>
-                    <input type="textarea" id="jawaban" name="jawaban" placeholder="Jawaban..">
-                    <input type="submit" value="Submit">
-                  </form>
-            </div>
+      <div class="isi">
+          <form id="formulir" action="FAQproses.php" enctype="multipart/form-data" method="post">
+            <label for="exampleFormControlInput1">Pertanyaan</label>
+            <input type="text" id="pertanyaan" class="form-control" name="pertanyaan" placeholder="Pertanyaan..">
+        
+            <label for="exampleFormControlInput1">Jawaban dari Pertanyaan</label>
+            <input type="textarea" id="jawaban" class="form-control" name="jawaban" placeholder="Jawaban..">
+            
+            <input type="submit" value="Submit"></input>
+          </form>
+      </div>
     </div>
   </section>
 

@@ -111,7 +111,11 @@
     </head>
 
     <body>
-        <?php include_once "navbar.html" ?>
+
+        <?php
+            require_once 'koneksi.php';
+            include_once "navbar.html";
+        ?>
 
         <div id="mainContainer">
             <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
@@ -126,60 +130,24 @@
                             </div>
                         </div>
 
-                        <div>
-                            <section class="faq-container">
-                                <div class="faq-one">
-                                    <!-- faq question -->
-                                    <h1 class="faq-page"style="font-size:larger;"><b>Ada dimana aja lokasi gereja ini?</b></h1>
-                                    <!-- faq answer -->
-                                    <div class="faq-body">
-                                        <p style="font-size: medium;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                            aperiam.
-                                            Perspiciatis, porro!</p>
-                                    </div>
-                                </div>
+                        <?php
+                            $query = "SELECT * FROM faq";
+                            $result = $sambung->query($query);
 
-                                <hr class="hr-line">
-                                <div class="faq-two">
-                                    <!-- faq question -->
-                                    <h1 class="faq-page"style="font-size:larger;"><b>Kapan Kebaktian Umum dilaksanakan?</b></h1>
-                                    <!-- faq answer -->
-                                    <div class="faq-body">
-                                        <p style="font-size: medium;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                            aperiam.
-                                            Perspiciatis, porro!</p>
-                                    </div>
-                                </div>
-
-                                <hr class="hr-line">
-                                <div class="faq-three">
-                                    <!-- faq question -->
-                                    <h1 class="faq-page" style="font-size:larger;"> <b>Jam berapa ibadah dilakukan?</b></h1>
-                                    <!-- faq answer -->
-                                    <div class="faq-body">
-                                        <p style="font-size: medium;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                            aperiam.
-                                            Perspiciatis, porro!</p>
-                                    </div>
-                                </div>
-
-                                <hr class="hr-line">
-                                <div class="faq-three">
-                                    <!-- faq question -->
-                                    <h1 class="faq-page" style="font-size:larger;"> <b>Kapan Youth camp diadakan kembali?</b></h1>
-                                    <!-- faq answer -->
-                                    <div class="faq-body">
-                                        <p style="font-size: medium;">Consectetur adipisicing elit. Velit saepe sequi, illum facere
-                                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                                            aperiam.
-                                            Perspiciatis, porro!</p>
-                                    </div>
-                                </div>    
-                            </section>
-                        </div>
+                            if ($result->num_rows>0){
+                                while($row = $result->fetch_assoc()){
+                                    $id=$row['id'];
+                                    echo "<section class='faq-container'>";
+                                        echo "<div class='faq-one'>";
+                                            echo "<h1 class='faq-page' style='font-size:larger;'><b>" .$row['pertanyaan']. "</b></h1>";
+                                            echo "<div class='faq-body'>";
+                                                echo "<p style='font-size: medium;'>" .$row['jawaban']. "</p>";
+                                            echo "</div>";
+                                        echo "</div>";
+                                    echo "</section>";
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
