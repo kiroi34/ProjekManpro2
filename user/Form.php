@@ -75,9 +75,9 @@
               <div id="congregationalserviceform-checked_form" aria-invalid="false"><label id="checkmarklabel0" class="checkmark-custom">
 
  <input type="checkbox" class="check-checkmark " id="checkmark0" name="CongregationalServiceForm[checked_form][]" value="MenerimaYesus" tabindex="3">
-      <span id="checkmarkspan0" class="checkmark-title"> Menerima Yesus </span>
+      <span id="checkmarkspan0" class="checkmark-title"> Pelayanan </span>
  <div class="checkmark-detail">
-  Saya ingin menerima Tuhan Yesus sebagai Tuhan dan Juruselamat saya untuk selama-lamanya.
+  Saya terpanggil untuk lebih melayani Tuhan melalui pelayanan gereja.
  </div>
       <span class="checkmark"></span>
       </label>
@@ -126,11 +126,11 @@
 <br>
 
 <!-- Bikin Background Form -->
-<div id="acceptJesusInfo" class="container" style="margin-bottom: 20px;">
-    <div style="background-image:url('https://tse4.mm.bing.net/th?id=OIP.rQQS1hcaqrepYwodNKpWFwHaKa&pid=Api&P=0'); background-repeat:no-repeat; background-position:center; background-size:cover; background-color:#1C1C1C; border-radius:10px; padding:20px;">
+<div id="pelayanan" class="container" style="margin-bottom: 20px;">
+    <div style="background-image:url('https://tse2.mm.bing.net/th?id=OIP.BccjVtHxFhSRb3g37MEpdgHaFj&pid=Api&P=0'); background-repeat:no-repeat; background-position:center; background-size:cover; background-color:#1C1C1C; border-radius:10px; padding:20px;">
         
-<!-- FORM 1 : MENERIMA YESUS -->
-<div style="font-size:18px; margin-bottom:15px; color:white; text-align:center; background-color: black;"> <b>Menerima Yesus </b>
+<!-- FORM 1 : Pelayanan -->
+<div style="font-size:18px; margin-bottom:15px; color:white; text-align:center; background-color: black;"> <b>Pelayanan </b>
 </div>
 <div id="form" >
     <div class="container" style="margin-bottom:20px;">
@@ -141,62 +141,6 @@
             </div>
 
 <input type="hidden" id="congregationalserviceform-tag" name="CongregationalServiceForm[tag]">     
-<!-- Nama -->
-<div class="form-group field-congregationalserviceform-name required">
-<input type="text" id="congregationalserviceform-name" class="form-control" name="CongregationalServiceForm[name]" placeholder="Nama" aria-required="true">
-<div class="help-block"></div>
-</div>
-<div style="display:flex;">
-<div style="width:100%;">
-
-<!-- Jenis Kelamin/Gender -->
-<div class="form-group field-congregationalserviceform-gender required">
-<input type="hidden" name="CongregationalServiceForm[gender]" value=""><div id="congregationalserviceform-gender" labeloptions="{&quot;style&quot;:&quot;display:inline;&quot;}" role="radiogroup" aria-required="true">
-<label class="checkbox-label-custom"><input type="radio" id="gender0" name="CongregationalServiceForm[gender]" value="M" tabindex="3">
-<span class="checkbox-span" style="margin-left:12px; margin-top:-15px;">Laki-Laki</span></label>&nbsp;&nbsp;&nbsp;<label class="checkbox-label-custom">
-<input type="radio" id="gender1" name="CongregationalServiceForm[gender]" value="F" tabindex="3">
-<span class="checkbox-span" style="margin-left:12px; margin-top:-15px;">Perempuan</span></label></div>
-
-<div class="help-block"></div>
-</div>                                        
-</div>
-<div style="width:120px;">
-<div class="form-group field-ageField required">
-
-<!-- Umur -->
-<input type="tel" id="ageField" class="form-control" name="CongregationalServiceForm[age]" placeholder="Umur" aria-required="true">
-
-<div class="help-block"></div>
-</div>                                        
-</div>
-</div>
-
-<!-- Nomor Tlepon -->
-<div class="form-group field-phoneField">
-<input type="tel" id="phoneField" class="form-control" name="CongregationalServiceForm[phone_number]" maxlength="20" placeholder="Nomor Telepon">
-
-<div class="help-block"></div>
-</div>           
-<!-- Email -->
-<div class="form-group field-congregationalserviceform-email">
-<input type="text" id="congregationalserviceform-email" class="form-control" name="CongregationalServiceForm[email]" maxlength="150" placeholder="Email">
-<div class="help-block"></div>
-</div>      
-
-<!-- Kota -->
-<div class="form-group field-congregationalserviceform-city">
-    <input type="text" id="congregationalserviceform-city" class="form-control" name="CongregationalServiceForm[city]" maxlength="150" placeholder="Kota">
-    
-<div class="help-block"></div>
-</div>
-
-<!-- Alamat -->
-<div class="form-group field-congregationalserviceform-address">
-    <input type="text" id="congregationalserviceform-address" class="form-control" name="CongregationalServiceForm[address]" maxlength="250" placeholder="Alamat Domisili">
-    
-<div class="help-block">
-</div>
-</div> 
 
 <!-- Kategori Connect Group -->
 <div class="form-group field-congregationalserviceform-cg_category">
@@ -211,12 +155,37 @@
 
     <div class="help-block"></div> 
     </div>
+
+<!-- Pernah ikut Pelayanan -->
+<div class="form-group field-congregationalserviceform-pelayanan">
+    <input type="text" id="congregationalserviceform-pelayanan" class="form-control" name="CongregationalServiceForm[pelayanan]" maxlength="150" placeholder="Pernah ikut pelayanan di gereja ? (Ya/Tidak)">
+    
+<div class="help-block"></div>
+</div>
+
+<!-- Kategori Pelayanan -->
+<div class="form-group field-congregationalserviceform-cg_categorypelayanan">
+
+    <select id="congregationalserviceform-cg_categorypelayanan" class="form-control" name="CongregationalServiceForm[cg_categorypelayanan]">
+    <option value="">Kategori Pelayanan</option>
+    <option value="worshipleader">Worship Leader/WL </option>
+    <option value="singer">Singer/Pembawa Pujian</option>
+    <option value="drumer">Drumer/Pemain Drum</option>
+    <option value="bass">Bass</option>
+    <option value="operator">Operator</option>
+    <option value="usher">Usher/Penerima Tamu</option>
+    <option value="kollektan">Kollektan/Pembawa Persembahan</option>
+    <option value="timkonseling">Tim Konseling</option>
+    </select>
+
+    <div class="help-block"></div> 
+    </div>
  
 <!-- Status Pernikahan -->
 <div class="form-group field-congregationalserviceform-marital_status">
 
     <select id="congregationalserviceform-marital_status" class="form-control" name="CongregationalServiceForm[marital_status]">
-    <option value="">- Status Pernikahan -</option>
+    <option value="">Status Pernikahan</option>
     <option value="single">Belum Menikah</option>
     <option value="married">Menikah</option>
     <option value="others">Lainnya</option>
@@ -226,9 +195,9 @@
 </div>
 
 <!-- Kalimat Tambahan  -->
-<div id="acceptJesusInfoWrapper" style="display: block;">
-    <b>Selamat atas keputusan dan kerinduan anda. Setelah ini anda <br>
-    dapat memberikan diri anda untuk dibaptis dan tergabung dalam Komunitas Sel (CG).</b>
+<div id="pelayanan" style="display: block;">
+    <b>Selamat atas keputusan dan kerinduan anda. Setelah ini tim <br>
+    gereja akan memberikan informasi lebih lanjut kepada anda</b>
 </div>
 </div>  
    
@@ -237,7 +206,7 @@
 </div>
 
 <div style="margin-top:-15px; margin-bottom:20px; text-align:right; font-size:12px; color: black;">
-<span id="inputPrayer"><b>0</span>/500 max characters</b>
+<span id="inputPrayer"><b>0</span>/500 maks karakter</b>
 </div>                           
 </div>
 
@@ -258,7 +227,7 @@
 
 <!-- Bikin Background Form -->
 <div id="baptism" class="container" style="margin-bottom: 20px;">
-    <div style="background-image:url('https://www.superbookindonesia.com/assets/uploads/42/images/main/171117170417.jpg'); background-repeat:no-repeat; background-position:center; background-size:cover; background-color:#1C1C1C; border-radius:10px; padding:20px;">
+    <div style="background-image:url('http://1.bp.blogspot.com/-QDoNbbUDWsc/T3skQ0sbD8I/AAAAAAAAATw/O7cgoZv2oLc/s1600/church-from-the-movie-the-birds-bodega-bay-california-other.jpg'); background-repeat:no-repeat; background-position:center; background-size:cover; background-color:#1C1C1C; border-radius:10px; padding:20px;">
     
 
 <!-- FORM 2 : BAPTIS -->
@@ -273,63 +242,6 @@
             </div>
 
 <input type="hidden" id="congregationalserviceform-tag" name="CongregationalServiceForm[tag]">     
-<!-- Nama -->
-<div class="form-group field-congregationalserviceform-name required">
-<input type="text" id="congregationalserviceform-name" class="form-control" name="CongregationalServiceForm[name]" placeholder="Nama" aria-required="true">
-<div class="help-block"></div>
-</div>
-<div style="display:flex;">
-<div style="width:100%;">
-
-<!-- Jenis Kelamin/Gender -->
-<div class="form-group field-congregationalserviceform-gender required">
-<input type="hidden" name="CongregationalServiceForm[gender]" value=""><div id="congregationalserviceform-gender" labeloptions="{&quot;style&quot;:&quot;display:inline;&quot;}" role="radiogroup" aria-required="true">
-<label class="checkbox-label-custom"><input type="radio" id="gender0" name="CongregationalServiceForm[gender]" value="M" tabindex="3">
-<span class="checkbox-span" style="margin-left:12px; margin-top:-15px;">Laki-Laki</span></label>&nbsp;&nbsp;&nbsp;<label class="checkbox-label-custom">
-<input type="radio" id="gender1" name="CongregationalServiceForm[gender]" value="F" tabindex="3">
-<span class="checkbox-span" style="margin-left:12px; margin-top:-15px;">Perempuan</span></label></div>
-
-<div class="help-block"></div>
-</div>                                        
-</div>
-<div style="width:120px;">
-<div class="form-group field-ageField required">
-
-<!-- Umur -->
-<input type="tel" id="ageField" class="form-control" name="CongregationalServiceForm[age]" placeholder="Umur" aria-required="true">
-
-<div class="help-block"></div>
-</div>                                        
-</div>
-</div>
-
-<!-- Nomor Tlepon -->
-<div class="form-group field-phoneField">
-<input type="tel" id="phoneField" class="form-control" name="CongregationalServiceForm[phone_number]" maxlength="20" placeholder="Nomor Telepon">
-
-<div class="help-block"></div>
-</div>           
-<!-- Email -->
-<div class="form-group field-congregationalserviceform-email">
-<input type="text" id="congregationalserviceform-email" class="form-control" name="CongregationalServiceForm[email]" maxlength="150" placeholder="Email">
-<div class="help-block"></div>
-</div>      
-
-<!-- Kota -->
-<div class="form-group field-congregationalserviceform-city">
-    <input type="text" id="congregationalserviceform-city" class="form-control" name="CongregationalServiceForm[city]" maxlength="150" placeholder="Kota">
-    
-<div class="help-block"></div>
-</div>
-
-<!-- Alamat -->
-<div class="form-group field-congregationalserviceform-address">
-    <input type="text" id="congregationalserviceform-address" class="form-control" name="CongregationalServiceForm[address]" maxlength="250" placeholder="Alamat Domisili">
-    
-<div class="help-block">
-</div>
-</div> 
-
 <label class="checkbox-label-custom">
     <input id="checkmarkCG2" type="checkbox" class="check-join-cg check-checkmark" value="1" tabindex="3">
     <span class="checkbox-span" style="margin-left:12px; margin-top:-15px; background-color:transparent;"></span>
@@ -356,12 +268,12 @@
 
 <br> 
 <div style="margin-top:-15px; margin-bottom:20px; text-align:right; font-size:12px; color: black;">
-<span id="inputPrayer"><b>0</span>/500 max characters</b>
+<span id="inputPrayer"><b>0</span>/500 maks karakter</b>
 </div>                           
 </div>
 
 <!-- Konfirmasi User -->
-<div id="terms1Wrapper" style="display: block;">
+<div id="baptism" style="display: block;">
 <div style="font-size:12px; margin:0px 0px 0px 0px; color:black; text-align: justify;">
     <b>Dengan mengirimkan form ini, saya telah membaca dan memahami formulir di atas dengan saksama dan siap untuk melanjutkan ke langkah selanjutnya dibawah naungan Gereja.</b>
 </div>
@@ -377,7 +289,7 @@
 <br>
 
 <!-- Bikin Background Form -->
-<div id="baptism" class="container" style="margin-bottom: 20px;">
+<div id="komunitasel" class="container" style="margin-bottom: 20px;">
     <div style="background-image:url('http://1.bp.blogspot.com/_UI57Ge2RcHU/S8EcrUi4CDI/AAAAAAAAAB4/jF79TPUMmxI/w1200-h630-p-k-no-nu/Jesus+(7).jpg'); background-repeat:no-repeat; background-position:center; background-size:cover; background-color:#1C1C1C; border-radius:10px; padding:20px;">
     
 <!-- FORM 3 : Komunitas Sel / CG -->
@@ -392,62 +304,6 @@
             </div>
 
 <input type="hidden" id="congregationalserviceform-tag" name="CongregationalServiceForm[tag]">     
-<!-- Nama -->
-<div class="form-group field-congregationalserviceform-name required">
-<input type="text" id="congregationalserviceform-name" class="form-control" name="CongregationalServiceForm[name]" placeholder="Nama" aria-required="true">
-<div class="help-block"></div>
-</div>
-<div style="display:flex;">
-<div style="width:100%;">
-
-<!-- Jenis Kelamin/Gender -->
-<div class="form-group field-congregationalserviceform-gender required">
-<input type="hidden" name="CongregationalServiceForm[gender]" value=""><div id="congregationalserviceform-gender" labeloptions="{&quot;style&quot;:&quot;display:inline;&quot;}" role="radiogroup" aria-required="true">
-<label class="checkbox-label-custom"><input type="radio" id="gender0" name="CongregationalServiceForm[gender]" value="M" tabindex="3">
-<span class="checkbox-span" style="margin-left:12px; margin-top:-15px;">Laki-Laki</span></label>&nbsp;&nbsp;&nbsp;<label class="checkbox-label-custom">
-<input type="radio" id="gender1" name="CongregationalServiceForm[gender]" value="F" tabindex="3">
-<span class="checkbox-span" style="margin-left:12px; margin-top:-15px;">Perempuan</span></label></div>
-
-<div class="help-block"></div>
-</div>                                        
-</div>
-<div style="width:120px;">
-<div class="form-group field-ageField required">
-
-<!-- Umur -->
-<input type="tel" id="ageField" class="form-control" name="CongregationalServiceForm[age]" placeholder="Umur" aria-required="true">
-
-<div class="help-block"></div>
-</div>                                        
-</div>
-</div>
-
-<!-- Nomor Tlepon -->
-<div class="form-group field-phoneField">
-<input type="tel" id="phoneField" class="form-control" name="CongregationalServiceForm[phone_number]" maxlength="20" placeholder="Nomor Telepon">
-
-<div class="help-block"></div>
-</div>           
-<!-- Email -->
-<div class="form-group field-congregationalserviceform-email">
-<input type="text" id="congregationalserviceform-email" class="form-control" name="CongregationalServiceForm[email]" maxlength="150" placeholder="Email">
-<div class="help-block"></div>
-</div>      
-
-<!-- Kota -->
-<div class="form-group field-congregationalserviceform-city">
-    <input type="text" id="congregationalserviceform-city" class="form-control" name="CongregationalServiceForm[city]" maxlength="150" placeholder="Kota">
-    
-<div class="help-block"></div>
-</div>
-
-<!-- Alamat -->
-<div class="form-group field-congregationalserviceform-address">
-    <input type="text" id="congregationalserviceform-address" class="form-control" name="CongregationalServiceForm[address]" maxlength="250" placeholder="Alamat Domisili">
-    
-<div class="help-block">
-</div>
-</div> 
 
 <!-- Kategori Connect Group -->
 <div class="form-group field-congregationalserviceform-cg_category">
@@ -481,13 +337,13 @@
 
 <br> 
 <div style="margin-top:-15px; margin-bottom:20px; text-align:right; font-size:12px;color: black;">
-<span id="inputPrayer"><b>0</span>/500 max characters</b>
+<span id="inputPrayer"><b>0</span>/500 maks karakter</b>
 </div>                           
 </div>
 
 <!-- Konfirmasi User -->
-<div id="terms1Wrapper" style="display: block;">
-<div style="font-size:12px; margin:10px 10px 10px 0px; color:black; text-align: center;">
+<div id="komunitasel" style="display: block;">
+<div style="font-size:12px; margin:10px 10px 10px 0px; color:black; text-align: left;">
     <b>Dengan mengirimkan form ini, saya telah membaca dan memahami formulir di atas dengan saksama dan siap untuk melanjutkan ke langkah selanjutnya dibawah naungan Gereja.</b>
 </div>
             
@@ -503,7 +359,7 @@
 </div>
 <br>
 <!-- Bikin Background Form -->
-<div id="baptism" class="container" style="margin-bottom: 20px;">
+<div id="pokokdoa" class="container" style="margin-bottom: 20px;">
     <div style="background-image:url('https://lh5.googleusercontent.com/proxy/eU16FfOHvSB8twx9hftHhYDSs03krzSZTmOvQ9UxpciZhFiJnrQurIVGRbaqsjaSPBAnxAAYhuNitWtDMlPS-svgYAzAAYuJyPebOI3Y3A=w1200-h630-p-k-no-nu'); background-repeat:no-repeat; background-position:center; background-size:cover; background-color:#1C1C1C; border-radius:10px; padding:20px;">
     
 
@@ -519,62 +375,6 @@
             </div>
 
 <input type="hidden" id="congregationalserviceform-tag" name="CongregationalServiceForm[tag]">     
-<!-- Nama -->
-<div class="form-group field-congregationalserviceform-name required">
-<input type="text" id="congregationalserviceform-name" class="form-control" name="CongregationalServiceForm[name]" placeholder="Nama" aria-required="true">
-<div class="help-block"></div>
-</div>
-<div style="display:flex;">
-<div style="width:100%;">
-
-<!-- Jenis Kelamin/Gender -->
-<div class="form-group field-congregationalserviceform-gender required">
-<input type="hidden" name="CongregationalServiceForm[gender]" value=""><div id="congregationalserviceform-gender" labeloptions="{&quot;style&quot;:&quot;display:inline;&quot;}" role="radiogroup" aria-required="true">
-<label class="checkbox-label-custom"><input type="radio" id="gender0" name="CongregationalServiceForm[gender]" value="M" tabindex="3">
-<span class="checkbox-span" style="margin-left:12px; margin-top:-15px;">Laki-Laki</span></label>&nbsp;&nbsp;&nbsp;<label class="checkbox-label-custom">
-<input type="radio" id="gender1" name="CongregationalServiceForm[gender]" value="F" tabindex="3">
-<span class="checkbox-span" style="margin-left:12px; margin-top:-15px;">Perempuan</span></label></div>
-
-<div class="help-block"></div>
-</div>                                        
-</div>
-<div style="width:120px;">
-<div class="form-group field-ageField required">
-
-<!-- Umur -->
-<input type="tel" id="ageField" class="form-control" name="CongregationalServiceForm[age]" placeholder="Umur" aria-required="true">
-
-<div class="help-block"></div>
-</div>                                        
-</div>
-</div>
-
-<!-- Nomor Tlepon -->
-<div class="form-group field-phoneField">
-<input type="tel" id="phoneField" class="form-control" name="CongregationalServiceForm[phone_number]" maxlength="20" placeholder="Nomor Telepon">
-
-<div class="help-block"></div>
-</div>           
-<!-- Email -->
-<div class="form-group field-congregationalserviceform-email">
-<input type="text" id="congregationalserviceform-email" class="form-control" name="CongregationalServiceForm[email]" maxlength="150" placeholder="Email">
-<div class="help-block"></div>
-</div>      
-
-<!-- Kota -->
-<div class="form-group field-congregationalserviceform-city">
-    <input type="text" id="congregationalserviceform-city" class="form-control" name="CongregationalServiceForm[city]" maxlength="150" placeholder="Kota">
-    
-<div class="help-block"></div>
-</div>
-
-<!-- Alamat -->
-<div class="form-group field-congregationalserviceform-address">
-    <input type="text" id="congregationalserviceform-address" class="form-control" name="CongregationalServiceForm[address]" maxlength="250" placeholder="Alamat Domisili">
-    
-<div class="help-block">
-</div>
-</div> 
 
 <!-- Kategori Permohonan Doa -->
 <div class="form-group field-congregationalserviceform-cg_category">
@@ -611,12 +411,12 @@
 
 <br> 
 <div style="margin-top:-15px; margin-bottom:20px; text-align:right; font-size:12px; color: black;">
-<span id="inputPrayer"><b>0</span>/500 max characters</b>
+<span id="inputPrayer"><b>0</span>/500 maks karakter</b>
 </div>                           
 </div>
 
 <!-- Konfirmasi User -->
-<div id="terms1Wrapper" style="display: block;">
+<div id="pokokdoa" style="display: block;">
 <div style="font-size:12px; margin:0px 0px 0px 0px; color:black; text-align: justify;">
     <b>Dengan mengirimkan form ini, saya telah membaca dan memahami formulir di atas dengan saksama dan siap untuk melanjutkan ke langkah selanjutnya dibawah naungan Gereja.</b>
 </div>
@@ -633,7 +433,7 @@
 </div>
 
 <!-- Bikin Background Form -->
-<div id="baptism" class="container" style="margin-bottom: 20px;">
+<div id="kesaksian" class="container" style="margin-bottom: 20px;">
     <div style="background-image:url('https://www.jawaban.com/assets/uploads/lori_mora/images/main/160222161715.jpg'); background-repeat:no-repeat; background-position:center; background-size:cover; background-color:#1C1C1C; border-radius:10px; padding:20px;">
 <!-- FORM 5 : Kesaksian Pribadi  -->
 <div style="font-size:18px; margin-bottom:15px; color:white; text-align:center; background-color: black;"> <b> Kesaksian Pribadi</b>
@@ -646,63 +446,7 @@
                 <b>Silahkan isi form berikut ini</b>
             </div>
 
-<input type="hidden" id="congregationalserviceform-tag" name="CongregationalServiceForm[tag]">     
-<!-- Nama -->
-<div class="form-group field-congregationalserviceform-name required">
-<input type="text" id="congregationalserviceform-name" class="form-control" name="CongregationalServiceForm[name]" placeholder="Nama" aria-required="true">
-<div class="help-block"></div>
-</div>
-<div style="display:flex;">
-<div style="width:100%;">
-
-<!-- Jenis Kelamin/Gender -->
-<div class="form-group field-congregationalserviceform-gender required">
-<input type="hidden" name="CongregationalServiceForm[gender]" value=""><div id="congregationalserviceform-gender" labeloptions="{&quot;style&quot;:&quot;display:inline;&quot;}" role="radiogroup" aria-required="true">
-<label class="checkbox-label-custom"><input type="radio" id="gender0" name="CongregationalServiceForm[gender]" value="M" tabindex="3">
-<span class="checkbox-span" style="margin-left:12px; margin-top:-15px;">Laki-Laki</span></label>&nbsp;&nbsp;&nbsp;<label class="checkbox-label-custom">
-<input type="radio" id="gender1" name="CongregationalServiceForm[gender]" value="F" tabindex="3">
-<span class="checkbox-span" style="margin-left:12px; margin-top:-15px;">Perempuan</span></label></div>
-
-<div class="help-block"></div>
-</div>                                        
-</div>
-<div style="width:120px;">
-<div class="form-group field-ageField required">
-
-<!-- Umur -->
-<input type="tel" id="ageField" class="form-control" name="CongregationalServiceForm[age]" placeholder="Umur" aria-required="true">
-
-<div class="help-block"></div>
-</div>                                        
-</div>
-</div>
-
-<!-- Nomor Tlepon -->
-<div class="form-group field-phoneField">
-<input type="tel" id="phoneField" class="form-control" name="CongregationalServiceForm[phone_number]" maxlength="20" placeholder="Nomor Telepon">
-
-<div class="help-block"></div>
-</div>           
-<!-- Email -->
-<div class="form-group field-congregationalserviceform-email">
-<input type="text" id="congregationalserviceform-email" class="form-control" name="CongregationalServiceForm[email]" maxlength="150" placeholder="Email">
-<div class="help-block"></div>
-</div>      
-
-<!-- Kota -->
-<div class="form-group field-congregationalserviceform-city">
-    <input type="text" id="congregationalserviceform-city" class="form-control" name="CongregationalServiceForm[city]" maxlength="150" placeholder="Kota">
-    
-<div class="help-block"></div>
-</div>
-
-<!-- Alamat -->
-<div class="form-group field-congregationalserviceform-address">
-    <input type="text" id="congregationalserviceform-address" class="form-control" name="CongregationalServiceForm[address]" maxlength="250" placeholder="Alamat Domisili">
-    
-<div class="help-block">
-</div>
-</div> 
+<input type="hidden" id="congregationalserviceform-tag" name="CongregationalServiceForm[tag]">   
 
 <!-- Isi Kesaksian Singkat -->
 <div class="form-group field-congregationalserviceform-pokokdoa">
@@ -713,7 +457,7 @@
 </div> 
 
 <label class="checkbox-label-custom">
-    <input id="checkmarkCG2" type="checkbox" class="check-join-cg check-checkmark" value="1" tabindex="3">
+    <input id="kesaksian" type="checkbox" class="check-join-kesaksian check-checkmark" value="1" tabindex="3">
     <span class="checkbox-span" style="margin-left:12px; margin-top:-15px; background-color:transparent;"></span>
 </label>
 <span style="margin-left:20px; top:-2px; right:25px;position:relative; font-size: medium;">Saya bersedia untuk dihubungi lebih lanjut oleh tim Gereja</span>
@@ -724,12 +468,12 @@
 
 <br> 
 <div style="margin-top:-15px; margin-bottom:20px; text-align:right; font-size:12px; color: black;">
-<span id="inputPrayer"><b>0</span>/500 max characters</b>
+<span id="inputPrayer"><b>0</span>/500 maks karakter</b>
 </div>                           
 </div>
 
 <!-- Konfirmasi User -->
-<div id="terms1Wrapper" style="display: block;">
+<div id="kesaksian" style="display: block;">
 <div style="font-size:12px; margin:0px 0px 0px 0px; color:black; text-align: justify;">
     <b>Dengan mengirimkan form ini, saya telah membaca dan memahami formulir di atas dengan saksama dan siap untuk melanjutkan ke langkah selanjutnya dibawah naungan Gereja.</b>
 </div>
@@ -747,7 +491,7 @@
 </div>
 
 <!-- Bikin Background Form -->
-<div id="baptism" class="container" style="margin-bottom: 20px;">
+<div id="pernikahan" class="container" style="margin-bottom: 20px;">
     <div style="background-image:url('https://www.jawaban.com/assets/uploads/lori_mora/images/main/160222161715.jpg'); background-repeat:no-repeat; background-position:center; background-size:cover; background-color:#1C1C1C; border-radius:10px; padding:20px;">
 <!-- FORM 6 : Pemberkatan Pernikahan  -->
 <div style="font-size:18px; margin-bottom:15px; color:white; text-align:center; background-color: black;"> <b> Pemberkatan Pernikahan </b>
@@ -846,7 +590,7 @@
 </div>
 
 <!-- Konfirmasi User -->
-<div id="terms1Wrapper" style="display: block;">
+<div id="pernikahan" style="display: block;">
     <div style="font-size:12px; margin:0px 0px 0px 0px; color:grey; text-align: justify;">
         <b>Dengan mengirimkan form ini, saya telah bersungguh-sungguh dalam proses pengajuan dan saya tau bahwa ini bukan form pendaftaran.</b>
     </div>
