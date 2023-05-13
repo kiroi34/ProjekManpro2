@@ -6,7 +6,7 @@
 <style>
 body, html {
   height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins';font-size: 18px;
 }
 
 * {
