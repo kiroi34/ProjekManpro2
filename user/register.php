@@ -64,7 +64,7 @@
 
 /* Set a style for the submit button */
 .btn {
-  background-color: #f59d06;
+  background-color: blue;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -92,8 +92,13 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+footer {
+  padding: 3px;
+  background-color: white;
+  text-align : center;
+  color: white;
+}
 </style> 
-      
       </nav>
       <div id="mainContainer">
         <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
@@ -215,12 +220,20 @@
             
 <!-- Submit Button nanti masuk ke login juga harusnya-->
     <div class="form-group" style="margin-top:25px;margin-bottom:25px;">
-    <button type="submit" id="submitButton" class="btn btn-primary btn-block" style="font-size:18px; letter-spacing:4px; border:0; background-color:black;"><a href="keluar.php">Daftar</button> </a> </pan>                               
+    <button type="submit" id="submitButton" class="btn btn-primary btn-block" style="font-size:18px; letter-spacing:4px; border:0; background-color:blue; color:white;"><a href="keluar.php">Daftar</button> </a> </pan>                               
 </div>
     </div>
 </div>
-
-    </body>
-  </form>
+</form>
 </body>
+<footer>
+  <p style = "font-size : 105%"><span style = "color : black">Informasi Registrasi Gereja : <br>
+  <a href="registgereja.php"><span style = "color : blue">Kunjungi Pendaftaran Gereja</a></p> 
+  <br>
+  <br> 
+  <p style = "font-size : 105%"><span style = "color : black"><b>Kontak : 08123456789 , Bambang Adiwijaya </b><br>
+  <a style = "color : black"> Alamat : Jalan Cikareng 15 , Surabaya Timur, Indonesia </a> </p>
+  <a style = "color : red"> Jam Operasional : 10.00-15.00 WIB </a> </p>
+</footer>
 </head>
+</html>

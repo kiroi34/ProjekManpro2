@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Master Admin Home</title>
+    <title>List Gereja</title>
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <!-- Boxicons CDN Link -->
+    <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/kelolaKegiatan.css"> 
+     <link rel="stylesheet" href="fa_icons/css/all.css">
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap5.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-
+    <script>
+         $(document).ready(function() {
+            var table = $('#example').DataTable( {
+            dom: "B<'row'<'col-sm-6'l><'col-sm-6'f>>tipr",
+                buttons: [
+                'copy','csv','excel'
+                ],
+                buttons: {
+                dom: {
+                    button:{
+                    tag: "button",
+                    className: "btn btn-outline-dark mb-3 mx-1 rounded p-2"
+                    },
+                    buttonLiner: {
+                    tag: null
+                    }
+                }
+                },
+            } );
+            $('select').on('change', function() {
+                window.location.href = "historivotebim.php?karya="+this.value;
+            });
+        });
+    </script>
      <style>
         /* Googlefont Poppins CDN Link */
             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
@@ -270,13 +310,13 @@
     </div>
       <ul class="nav-links">
         <li>
-          <a href="homeMaster.php" class="active">
+          <a href="homeMaster.php">
             <i class='bx bx-home-alt' ></i>
             <span class="links_name">Home</span>
           </a>
         </li>
         <li>
-          <a href="listGereja.php">
+          <a href="listGereja.php" class="active">
             <i class='bx bx bx-list-ul' ></i>
             <span class="links_name">List Gereja</span>
           </a>
@@ -294,7 +334,7 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Home</span>
+        <span class="dashboard">List Gereja</span>
       </div>
 
       <div class="profile-details">
@@ -304,16 +344,35 @@
     </nav>
 
     <div class="home-content">
-      <div class="overview-boxes">
-        <div class="box">
-          <div class="right-side">
-            <!-- <div class="box-topic">Today's Birthday Information</div>
-                <p id="nama">Caca</p>
-                <p id="nama">Cici</p>
-          </div> -->
+    <div class="container">
+        <br>
+        <div class="table-responsive">
+        <div style="overflow-x: auto;">
+            <table id="example" class="table table-striped" style="width:100%; text-align: center;">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Gereja</th>
+                        <th>Waktu Daftar</th>
+                        <th>Status</th>
+                        <th>Waktu Konfirmasi</th>
+                        <th>Visi Misi Gereja</th>
+                        <th>List Admin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>1</td>
+                    <td>Gereja GMS</td>
+                    <td>19 Desember 2023</td>
+                    <td><i class="fas fa-check"style="color:green">Yes</i></td>
+                    <td>25 Desember 2023</td>
+                    <td><button type="button" class="btn btn-info">Lihat</button></td>
+                    <td><button type="button" class="btn btn-info">Lihat</button></td>
+                </tbody>
+            </table>
         </div>
-      </div>
-      </div>
+        </div>
+    </div>
     </div>
   </section>
 
