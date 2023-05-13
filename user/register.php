@@ -15,7 +15,6 @@
 
         body{
           font-family: 'Poppins';font-size: 18px;
-
         }
 
         @media (min-width : 768px) {
@@ -54,7 +53,7 @@
         padding: 15px;
         margin: 5px 0 22px 0;
         border: none;
-        background: #c1c1c1;
+        background: white;
         }
 
   input[type=text]:focus, input[type=password]:focus {
@@ -99,7 +98,52 @@ footer {
   color: white;
 }
 </style> 
+<body>
+<nav class="navbar navbar-expand-lg navbar-white bg-white">
+        <div class="container" style="position:relative;">
+            <a class="navbar-brand" href="/">        
+                <img src="assets/logogereja.png" class="logo_main" alt="Gereja" height="40">
+            </a>
+      
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto" style="padding-top:40px ;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Homeuser.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="News.php">Berita</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Pendeta.php">Pendeta</a>
+                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Form.php">Formulir</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="FAQ.php">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Persembahan.php">Penggalangan dana</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="ContactUs.php">Hubungi Kami</a>
+                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kalender.php">Kalender</a> 
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="Galeri.php">Galeri</a> 
+                  </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="keluar.php">Keluar</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
       </nav>
+</body>
+</nav>
       <div id="mainContainer">
         <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
     <div style="padding-left:0; padding-right:0">
@@ -121,10 +165,10 @@ footer {
             <div style="text-align:left;">
             <div class="form-group field-congregationalserviceform-checked_form">
               <div id="congregationalserviceform-checked_form" aria-invalid="false"><label id="checkmarklabel0" class="checkmark-custom">
-                
+  </style>       
 <body>
 <!-- Bikin Background Form -->
-<div id="pelayanan" class="container" style="margin-bottom: 20px;">
+<div id="pelayanan" class="container" style="margin-bottom: 20px; margin-left:30px;">
 <div style="background-image:url('https://tse2.mm.bing.net/th?id=OIP.BccjVtHxFhSRb3g37MEpdgHaFj&pid=Api&P=0'); background-repeat:no-repeat; background-position:center; background-size:cover; background-color:#1C1C1C; border-radius:10px; padding:20px;">
 <!-- FORM 2 : REGISTRASI JEMAAT -->
 <div style="font-size:18px; margin-bottom:15px; color:white; text-align:center; background-color: black;"> <b>Registrasi Jemaat </b>
@@ -140,7 +184,7 @@ footer {
 <input type="hidden" id="congregationalserviceform-tag" name="CongregationalServiceForm[tag]">     
 <!-- Nama -->
 <div class="form-group field-congregationalserviceform-name required">
-<input type="text" id="congregationalserviceform-name" class="form-control" name="CongregationalServiceForm[name]" placeholder="Nama" aria-required="true">
+<input type="tel" id="congregationalserviceform-name" class="form-control" name="CongregationalServiceForm[name]" placeholder="Nama" aria-required="true">
 <div class="help-block"></div>
 </div>
 <div style="display:flex;">
@@ -150,9 +194,9 @@ footer {
 <div class="form-group field-congregationalserviceform-gender required">
 <input type="hidden" name="CongregationalServiceForm[gender]" value=""><div id="congregationalserviceform-gender" labeloptions="{&quot;style&quot;:&quot;display:inline;&quot;}" role="radiogroup" aria-required="true">
 <label class="checkbox-label-custom"><input type="radio" id="gender0" name="CongregationalServiceForm[gender]" value="M" tabindex="3">
-<span class="checkbox-span" style="margin-left:12px; margin-top:-15px;">Laki-Laki</span></label>&nbsp;&nbsp;&nbsp;<label class="checkbox-label-custom">
+<span class="checkbox-span" style="margin-left:12px; margin-top:-15px; font-size:16px">Laki-Laki</span></label>&nbsp;&nbsp;&nbsp;<label class="checkbox-label-custom">
 <input type="radio" id="gender1" name="CongregationalServiceForm[gender]" value="F" tabindex="3">
-<span class="checkbox-span" style="margin-left:12px; margin-top:-15px;">Perempuan</span></label></div>
+<span class="checkbox-span" style="margin-left:12px; margin-top:-15px; font-size:16px">Perempuan</span></label></div>
 
 <div class="help-block"></div>
 </div>                                        
@@ -168,6 +212,12 @@ footer {
 </div>
 </div>
 
+<!-- Tempat, TanggalLahir -->
+<div class="form-group field-congregationalserviceform-tempatlahir">
+<input type="tel" id="congregationalserviceform-tempatlahir" class="form-control" name="CongregationalServiceForm[tempatlahir]" maxlength="150" placeholder="Tempat, Tanggal lahir (DD/MM/YYYY)">
+<div class="help-block"></div>
+</div>   
+   
 <!-- Nomor Tlepon -->
 <div class="form-group field-phoneField">
 <input type="tel" id="phoneField" class="form-control" name="CongregationalServiceForm[phone_number]" maxlength="20" placeholder="Nomor Telepon">
@@ -176,20 +226,31 @@ footer {
 </div>           
 <!-- Email -->
 <div class="form-group field-congregationalserviceform-email">
-<input type="text" id="congregationalserviceform-email" class="form-control" name="CongregationalServiceForm[email]" maxlength="150" placeholder="Email">
+<input type="tel" id="congregationalserviceform-email" class="form-control" name="CongregationalServiceForm[email]" maxlength="150" placeholder="Email">
 <div class="help-block"></div>
-</div>      
+</div>   
 
+<!--Password -->
+<div class="form-group field-congregationalserviceform-password">
+<input type="tel" id="congregationalserviceform-password" class="form-control" name="CongregationalServiceForm[password]" maxlength="150" placeholder="Password">
+<div class="help-block"></div>
+</div>  
+
+<!-- KonfirmasiPassword -->
+<div class="form-group field-congregationalserviceform-Confirmpassword">
+<input type="tel" id="congregationalserviceform-Confirmpassword" class="form-control" name="CongregationalServiceForm[Confirmpassword]" maxlength="150" placeholder="Konfirmasi Password">
+<div class="help-block"></div>
+</div> 
 <!-- Kota -->
 <div class="form-group field-congregationalserviceform-city">
-    <input type="text" id="congregationalserviceform-city" class="form-control" name="CongregationalServiceForm[city]" maxlength="150" placeholder="Kota">
+    <input type="tel" id="congregationalserviceform-city" class="form-control" name="CongregationalServiceForm[city]" maxlength="150" placeholder="Kota">
     
 <div class="help-block"></div>
 </div>
 
 <!-- Alamat -->
 <div class="form-group field-congregationalserviceform-address">
-    <input type="text" id="congregationalserviceform-address" class="form-control" name="CongregationalServiceForm[address]" maxlength="250" placeholder="Alamat Domisili">
+    <input type="tel" id="congregationalserviceform-address" class="form-control" name="CongregationalServiceForm[address]" maxlength="250" placeholder="Alamat Domisili">
     
 <div class="help-block">
 </div>
@@ -220,7 +281,7 @@ footer {
             
 <!-- Submit Button nanti masuk ke login juga harusnya-->
     <div class="form-group" style="margin-top:25px;margin-bottom:25px;">
-    <button type="submit" id="submitButton" class="btn btn-primary btn-block" style="font-size:18px; letter-spacing:4px; border:0; background-color:blue; color:white;"><a href="keluar.php">Daftar</button> </a> </pan>                               
+    <button type="submit" id="submitButton" class="btn btn-primary btn-block" style="font-size:18px; letter-spacing:4px; border:0; background-color: grey; color:white;"><a href="keluar.php">Daftar</button> </a> </pan>                               
 </div>
     </div>
 </div>
