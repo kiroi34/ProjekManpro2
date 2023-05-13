@@ -5,7 +5,7 @@
 <style>
 body, html {
   height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins';font-size: 18px;
 }
 
 * {
@@ -55,7 +55,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 .bg-image {
   /* The image used */
-  background-image: url("bgbaru.jpg");
+  background-image: url("assets/homegereja.jpg");
   
   /* Add the blur effect */
   filter: blur(2px);
@@ -74,7 +74,7 @@ input[type=text]:focus, input[type=password]:focus {
 <body>
 <div class="bg-image"> </div>
   <form action="changepass.php" method = "post" class="container">
-    <h1 style = "color : #f4f2ff">Lupa Password</h1>
+    <h1 style = "color : #f4f2ff; font-size:30px;">Lupa Password</h1>
 
     <label for="password"><b style = "color : #f4f2ff">Password</b></label>
     <input type="password" placeholder="Password" name="password" required>
