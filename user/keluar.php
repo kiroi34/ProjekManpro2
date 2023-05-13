@@ -91,6 +91,51 @@
   color: white;
 }
 </style>
+<body>
+<nav class="navbar navbar-expand-lg navbar-white bg-white">
+        <div class="container" style="position:relative;">
+            <a class="navbar-brand" href="/">        
+                <img src="assets/logogereja.png" class="logo_main" alt="Gereja" height="40">
+            </a>
+      
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto" style="padding-top:40px ;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Homeuser.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="News.php">Berita</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Pendeta.php">Pendeta</a>
+                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Form.php">Formulir</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="FAQ.php">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Persembahan.php">Penggalangan dana</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="ContactUs.php">Hubungi Kami</a>
+                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kalender.php">Kalender</a> 
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="Galeri.php">Galeri</a> 
+                  </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="keluar.php">Keluar</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+      </nav>
+</body>
 </nav>
       <div id="mainContainer">
         <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
@@ -148,7 +193,7 @@
     <label for="password"><b style = "color : #f4f2ff"></b></label>
     <input type="password" placeholder="Password" name="password" id="myInput" required> 
     <input type="checkbox" onclick="myFunction() "> <span style = "color : white">Lihat Password </span>
-    <div class="link forget-pass text-left"><p style = "font-size: 80%"><a href="lupapass.php"><span style = "color : red">Lupa password?</span></a></div>
+    <div class="link forget-pass text-left"><p style = "font-size: 80%"><a href="verifikasipassword.php"><span style = "color : red">Lupa password?</span></a></div>
                     <div class="form-group">
         <p style = "font-size : 75%"> <span style = "color : white">Belum punya akun? </span><a href="register.php"><span style = "color :red"> Buat akun baru </span> </a> </p>
         <button type="submit" class="btn"><a href ="Homeuser.php"><span style= "color : white"><b>Masuk<b></button>
