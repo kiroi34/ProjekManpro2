@@ -64,7 +64,7 @@
 
 /* Set a style for the submit button */
 .btn {
-  background-color: #f59d06;
+  background-color: white;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -123,7 +123,7 @@ footer {
               <div id="congregationalserviceform-checked_form" aria-invalid="false"><label id="checkmarklabel0" class="checkmark-custom">
                 
 <!-- Bikin Background Form -->
-<div id="acceptJesusInfo" class="container" style="margin-bottom: 20px;">
+<div id="acceptJesusInfo" class="container" style="margin-bottom: 20px; margin-left:30px;">
     <div style="background-image:url('https://userscontent2.emaze.com/images/f9d0caa4-73e5-4bb5-a4f0-772c237fe09b/c97065c5452e8d5aaacd9ce51d64ff8d.png'); background-repeat:no-repeat; background-position:center; background-size:cover; background-color:#1C1C1C; border-radius:10px; padding:20px;">
         
 <!-- FORM 1 : Registrasi Gereja -->
@@ -288,16 +288,14 @@ footer {
 <!-- Kalimat Tambahan  -->
 <div id="penutupInfoWrapper" style="display: block; font-size: medium;">
     <b>Terima Kasih Atas Pengisian Form Registrasi Gereja<br>
-    Silahkan Tekan <i>Submit All</i> untuk melanjutkan ke Home Page</b>
+    Silahkan Tekan <i>Submit </i>  untuk melanjutkan ke Home Page</b>
 </div>
 </div>  
 
 <br>
 </div>          
 <!-- Submit Button (TOLONG HREF KE HOMEUSER.HTML LUPA CARANYA) --> 
-    <div class="form-group" style="margin-top:25px;margin-bottom:25px;">
-    <button type="submit" id="submitButton" class="btn btn-primary btn-block" style="font-size:18px; letter-spacing:4px; border:0; background-color:white; color: black;">SUBMIT ALL</button>                               
-</div>
+<button type="submit" id="submitButton" class="btn btn-primary btn-block" style="font-size:18px; letter-spacing:4px; border:0; background-color:white; color:black;"><a href="Homeuser.php">Submit</button> </a> </pan>
     </div>
 </div>
 </div>
