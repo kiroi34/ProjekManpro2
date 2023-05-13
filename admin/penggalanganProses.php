@@ -16,10 +16,12 @@
     <body>
         <?php
             require_once 'koneksi.php';
+            // $id = $_POST['id'];
+            $kategori = $_POST['kategori'];
             $judul = $_POST['judul'];
             $deskripsi = $_POST['deskripsi'];
             $deadline = $_POST['deadline'];
-            $target = $_POST['target'];
+            $target = $_POST['target_penggalangan'];
 
             if ($_FILES != null) {
                 $poster = $_FILES['poster']['name']; //nampung nama
@@ -33,22 +35,18 @@
                 }
             }
             
-            if ($judul == '' || $deskripsi == '' || $deadline == 0000-00-00 || $target == '' || $_FILES == null) {
+            if ($kategori == '' || $judul == '' || $deskripsi == '' || $_FILES == null) {
                 echo '<h3>Post gagal</h3>';
+                if ($kategori == ''){
+                    echo 'Kategori invalid <br>';
+                }
+
                 if ($judul == ''){
                     echo 'Judul invalid <br>';
                 }
 
                 if ($deskripsi == '') {
                     echo 'Deskripsi invalid <br>';
-                }
-                
-                if ($deadline == 00-00-0000) {
-                    echo 'Deadline invalid<br>';
-                }
-
-                if ($target == '') {
-                    echo 'Target invalid <br>';
                 }
 
                 if($_FILES == null) {
@@ -60,33 +58,22 @@
 
             } else {
                 if ($extention == 'png' || $extention == 'jpg' || $extention == 'jpeg' || $extention == 'PNG' || $extention == 'JPG' || $extention == 'JPEG'){
-                    
-                    move_uploaded_file($tmp_file, $imgStorePath);
-                    $query = "INSERT INTO inputpenggalangandana (judul, deskripsi, deadline, target, poster)
-                        VALUES ('". $judul."', '". $deskripsi ."', '". $deadline ."', '". $target ."', '". $poster ."')";
-                    $sambung->query($query);
+                        move_uploaded_file($tmp_file, $imgStorePath);
 
-                    echo "<script>";
-                        echo "alert('Selamat, Data berhasil diupload!');";
-                        echo "window.location.href = document.referrer;";
-                        echo "function clearForm() {";
-                        echo "    var form = document.getElementById('formulir');";
-                        echo "    form.reset();";
-                        echo "}";
-                        echo "clearForm();";
-                    echo "</script>";
-                    
+                        $query = "INSERT INTO inputpenggalangandana (kategori, judul, deskripsi, deadline, target, poster)
+                            VALUES ('". $kategori."', '". $judul."', '". $deskripsi ."', '". $deadline ."', '". $target ."', '". $poster ."')";
+                        $sambung->query($query);                    
                 } else {
                     echo "extention tidak sesuai";
                 }
             }
         ?>
-        
+
         <script>
-            alert("Selamat, Data berhasil diupload!");
+            alert('Selamat, Data berhasil diupload!');
             window.location.href = document.referrer;
             function clearForm() {
-                var form = document.getElementById("formulir");
+                var form = document.getElementById('formulir');
                 form.reset();
             }
             clearForm();

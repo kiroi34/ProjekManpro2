@@ -92,7 +92,9 @@
                     <div class="container">
                       <div class="row">
                         <?php
-                          $kalimatquery = "SELECT * FROM inputpenggalangandana";
+                          $kalimatquery = "SELECT id, kategori.namaKategori, judul, deskripsi, deadline, terkumpul, target, poster
+                                            FROM inputpenggalangandana INNER JOIN kategori
+                                            ON kategori.idKategori=inputpenggalangandana.kategori";
                           $hasilquery = $sambung->query($kalimatquery);
 
                           if ($hasilquery->num_rows>0) {
@@ -105,23 +107,30 @@
                                   </a>";
                                 echo "</div>";
 
+                                echo "<h5>". $row['namaKategori']." </h4>";
                                 echo "<h4>". $row['judul']." </h4>";
                                 echo "<p>". $row['deskripsi']." </p>";
-                                echo "<p>Deadline: ". $row['deadline']." </p>";
+                                
+                                if ($row['target'] != 0){
+                                  echo "<p>Deadline: ". $row['deadline']." </p>";
 
-                                echo "<div class='progress'>";
-                                  $persentasiDonasi = $row["terkumpul"] / $row["target"] * 100;
-                                  echo '<div class="progress-bar progress-bar-success" role="progressbar" style="width: ' .$persentasiDonasi .'%" aria-valuenow="' .$persentasiDonasi.'" aria-valuemin="0" aria-valuemax="100"></div>';
-                                echo "</div>";
+                                  echo "<div class='progress'>";
+                                    $persentasiDonasi = $row["terkumpul"] / $row["target"] * 100;
+                                    echo '<div class="progress-bar progress-bar-success" role="progressbar" style="width: ' .$persentasiDonasi .'%" aria-valuenow="' .$persentasiDonasi.'" aria-valuemin="0" aria-valuemax="100"></div>';
+                                  echo "</div>";
 
-                                echo '<div class="row">';
-                                  echo '<div class="col">';
-                                    echo '<p class="text-left">Rp. ' . number_format($row["terkumpul"]) . '</p>';
+                                  echo '<div class="row">';
+                                    echo '<div class="col">';
+                                      echo '<p class="text-left">Rp. ' . number_format($row["terkumpul"]) . '</p>';
+                                    echo '</div>';
+                                    echo '<div class="col">';
+                                      echo '<p class="text-right">Rp. ' . number_format($row["target"]) . '</p>';
+                                    echo '</div>';
                                   echo '</div>';
-                                  echo '<div class="col">';
-                                    echo '<p class="text-right">Rp. ' . number_format($row["target"]) . '</p>';
-                                  echo '</div>';
-                                echo '</div>';
+
+                                } else {
+                                    echo '<p class="text-left">Terkumpul: Rp. ' . number_format($row["terkumpul"]) . '</p>';
+                                }
 
                               echo "</div>";
                             }

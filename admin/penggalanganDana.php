@@ -17,10 +17,9 @@
     <title>Penggalangan Dana</title>
 
     <!-- Required meta tags -->
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -48,6 +47,15 @@
       margin: auto;
       box-shadow: 0 5px 10px rgba(0,0,0,0.1);
       }
+
+      .col-md-4{
+          border-radius: 4px;
+          background: #fff;
+          box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+          transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+          padding: 14px 80px 18px 36px;
+          cursor: pointer;
+        }
     </style>
   </head>
 
@@ -145,99 +153,72 @@
             <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; float: right;"></i> 
             <h1>Input Penggalangan Dana Baru</h1>
             <br>
-            <label for="exampleFormControlInput1">Judul</label>
+
+            <label for="kategori">Kategori</label>
+                <select id="kategori" name="kategori" onchange="showTargetInput()">
+                  <option value="kategori">--Pilih Kategori--</option>
+                    <?php
+                      $sql = "SELECT * FROM kategori";
+                      $result = $sambung->query($sql);
+
+                      if ($result->num_rows > 0) {
+                        while($data = $result->fetch_assoc()) {
+                          echo "<option value='" . $data['idKategori'] . "'>" . $data['namaKategori'] . "</option>";
+                        }
+                      }
+                    ?>
+                </select>
+
+            <label for="judul">Judul</label>
             <input type="text" id="judul" class="form-control" name="judul" placeholder="Judul Penggalangan..">
         
-            <label for="exampleFormControlInput1">Deskripsi</label>
+            <label for="deskripsi">Deskripsi</label>
             <input type="textarea" id="deskripsi" class="form-control" name="deskripsi" placeholder="Deskripsi Penggalangan Dana..">
 
-            <label for="exampleFormControlInput1">Deadline Donasi</label>
-            <input type="date" id="deadline" class="form-control" name="deadline">
+            <div id="target_input" style="display: none;">
+              <label for="deadline">Deadline Donasi</label>
+              <input type="date" id="deadline" class="form-control" name="deadline">
 
-            <label for="exampleFormControlInput1">Target Donasi</label>
-            <input type="number" id="target" class="form-control" name="target" placeholder="Target Penggalangan Dana..">
+              <label for="target">Target</label>
+              <input type="number" id="target_penggalangan" class="form-control" name="target_penggalangan" placeholder="Target Penggalangan Dana..">
+            </div>
 
-            <br>
             <br>
 
             <div class="form-group">
-                <label for="exampleFormControlInput1">Upload Poster Kegiatan</label>
-                <input type="file" id ="poster" accept="image/png, image/jpg, image/jpeg, image/PNG, image/JPG, image/JPEG" name="poster" default = 0>
+              <label for="poster">Upload Poster Kegiatan</label>
+              <br>
+              <input type="file" id ="poster" accept="image/png, image/jpg, image/jpeg, image/PNG, image/JPG, image/JPEG" name="poster" default = 0>
             </div>
 
             <br>
             <br>
-            <input type="submit" value="Submit"></input>
+            <input type="submit" name="submit" value="Submit"></input>
           </form>
         </div>
       </div>
-      
-      <style>
-        /* .card {
-            background-color: #f2f2f2;
-            padding: 20px;
-            margin: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            border-radius: 5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            width: 300px;
-            height: 300px;
-            background-size: cover;
-            background-position: center;
-        }
 
-        .card img {
-            max-width: 100%;
-            max-height: 50%;
-            object-fit: cover;
-            border-radius: 5px;
-        }
+      <script>
+          function showTargetInput() {
+            var kategori = document.getElementById("kategori");
+            var target_input = document.getElementById("target_input");
 
-        .card h2 {
-            margin-top: 20px;
-        }
-
-        .card p {
-            margin-top: 10px;
-        } */
-
-        /* .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-            background-color: #A7F3CA !important;
-            border-color: #A7F3CA !important;
-        } */
-
-        .col-md-4{
-          border-radius: 4px;
-          background: #fff;
-          box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-          transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-          padding: 14px 80px 18px 36px;
-          cursor: pointer;
-        }
-
-        /* .col-md-4:hover{
-          transform: scale(1.05);
-          box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-        } */
-  /* 
-        .col-md-4 h3{
-          font-weight: 600;
-        } */
-
-        /* #lainnya:hover{
-          transform: scale(1.05);
-          box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-        } */
-      </style>
+            if (kategori.value == "1") {
+              target_input.style.display = "block";
+            } else if (kategori.value == "2" || kategori.value == "3") {
+              target_input.style.display = "none";
+            }
+          }
+      </script>
 
       <h3 style="padding-left: 10px;">Penggalangan yang sedang berjalan</h3>
       <div class="container">
         <div class="row">
           <?php
-            $kalimatquery = "SELECT * FROM inputpenggalangandana";
+            $kalimatquery = "SELECT id, kategori.namaKategori, judul, deskripsi, deadline, terkumpul, target, poster
+                              FROM inputpenggalangandana INNER JOIN kategori
+                              ON kategori.idKategori=inputpenggalangandana.kategori";
+            // $kalimatquery = "SELECT * FROM inputpenggalangandana";
             $hasilquery = $sambung->query($kalimatquery);
 
             if ($hasilquery->num_rows>0) {
@@ -250,6 +231,7 @@
                     </a>";
                   echo "</div>";
 
+                  echo "<h5>". $row['namaKategori']." </h5>";
                   echo "<h4>". $row['judul']." </h4>";
                   echo "<p>". $row['deskripsi']." </p>";
                   echo "<p>Deadline: ". $row['deadline']." </p>";
@@ -261,10 +243,10 @@
 
                   echo '<div class="row">';
                     echo '<div class="col">';
-                      echo '<p class="text-left">Rp. ' . $row["terkumpul"] . '</p>';
+                      echo '<p class="text-left">Rp. ' . number_format($row["terkumpul"]) . '</p>';
                     echo '</div>';
                     echo '<div class="col">';
-                      echo '<p class="text-right">Rp. ' . $row["target"] . '</p>';
+                      echo '<p class="text-right">Rp. ' . number_format($row["target"]) . '</p>';
                     echo '</div>';
                   echo '</div>';
 

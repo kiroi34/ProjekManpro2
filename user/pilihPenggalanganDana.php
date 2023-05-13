@@ -54,11 +54,19 @@
             $id = $_GET['id'];
             $kalimatQuery = "SELECT * FROM inputpenggalangandana WHERE id=" . $id;
             $hasilQuery = $sambung->query($kalimatQuery);
-
             $row = mysqli_fetch_array($hasilQuery);
-            $persentasiDonasi = $row["terkumpul"] / $row["target"] * 100;
 
-            
+            $query = "SELECT id, kategori.namaKategori, judul, deskripsi, deadline, terkumpul, target, poster
+                              FROM inputpenggalangandana INNER JOIN kategori
+                              ON kategori.idKategori=inputpenggalangandana.kategori";
+            $hasil = $sambung->query($query);
+            $data = mysqli_fetch_array($hasil);
+
+            if ($row['target'] != 0){
+                $persentasiDonasi = $row["terkumpul"] / $row["target"] * 100;
+            } else {
+                echo 'ok';
+            }
         ?>
 
         <div id="mainContainer">
@@ -79,11 +87,18 @@
                             <div style="text-align: center;">
                                 <svg width="1100" height="110">
                                     <?php
-                                    echo '<h3 class="text-center">' . $row["judul"] . '</h3>';
+                                        echo '<h3 class="text-center">' . $row["judul"] . '</h3>';
                                         echo '<img src="../admin/poster/'. $row["poster"] .'" style="width: 50%;">';
                                     ?>
                                 </svg>
                             </div>
+
+                            <br><br>
+
+                            <h4>Kategori</h4>
+                            <?php
+                                echo $data["namaKategori"];
+                            ?>
 
                             <br><br>
 
@@ -95,23 +110,25 @@
                             <br><br>
 
                             <h4>Donasi Terkumpul</h4>
-
-                            <div class="progress" style="height: 50px;">
-                                <?php
-                                echo '<div class="progress-bar progress-bar-success" role="progressbar" style="width: ' . $persentasiDonasi . '%" aria-valuenow="' . $persentasiDonasi . '" aria-valuemin="0" aria-valuemax="100"></div>';
-                                ?>
-                            </div>
-
                             <?php
-                                echo '<div class="row">';
-                                    echo '<div class="col">';
-                                        echo '<h4 class="text-left">Rp. ' . number_format($row["terkumpul"]) . '</h4>';
-                                    echo '</div>';
-                                
-                                    echo '<div class="col">';
-                                        echo '<h4 class="text-right">Rp. ' . number_format($row["target"]) . '</h4>';
-                                    echo '</div>';
-                                echo '</div>';
+                                if ($row['target'] != 0){
+                                    echo '<div class="progress" style="height: 50px;">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" style="width: ' . $persentasiDonasi . '%" aria-valuenow="' . $persentasiDonasi . '" aria-valuemin="0" aria-valuemax="100">
+                                            </div>
+                                        </div>';
+
+                                        echo '<div class="row">';
+                                            echo '<div class="col">';
+                                                echo '<h4 class="text-left">Rp. ' . number_format($row["terkumpul"]) . '</h4>';
+                                            echo '</div>';
+                                        
+                                            echo '<div class="col">';
+                                                echo '<h4 class="text-right">Rp. ' . number_format($row["target"]) . '</h4>';
+                                            echo '</div>';
+                                        echo '</div>';
+                                } else {
+                                    echo '<h4 class="text-left">Rp. ' . number_format($row["terkumpul"]) . '</h4>';
+                                }
                             ?>
 
                             <div class="text-center">

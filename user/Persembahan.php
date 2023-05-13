@@ -53,17 +53,13 @@
         border-color: #B30000;
       }
     </style>
+
+    <?php
+      include_once "navbar.html";
+    ?>
   </head>
 
   <body>
-    <?php
-      include_once "navbar.html";
-      require_once "koneksi.php";
-
-      $id = $_GET['id'];
-      $nominal = $_POST['inputNominal'];
-    ?>
-
     <div id="mainContainer">
       <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
         <div style="padding-left:0; padding-right:0">
@@ -117,10 +113,32 @@
                                 </div>
                                 <div class="mt-2" style="margin-top:50px; margin-left: 50px;">
                                   <img loading="lazy" src="https://gmschurch.azureedge.net/gmsbaratlandingpagedata/images/mobile-payment-apps-icon.png" alt="QR" height="30">
-                                  <br>
+                                  <br><br>
+
+                                  <?php
+                                    require_once "koneksi.php";
+                                    $id = $_GET['id'];
+                                  ?>
+                                            
+                                  <!-- Buat Input Nominal Pemberian buat masuk ke database -->
+                                  <form method="post" action="metodebayar.php" style="width: 30%;">
+                                    <div class="input-group mb-3">
+                                      <span class="input-group-text">Rp. </span>
+
+                                      <label for="nominal"></label>
+                                      <input type="text" id="nominal" name="inputNominal" class="form-control" placeholder="0" >
+                                      
+                                      <?php
+                                        echo '<input type="hidden" name="id" value="'. $id .'">';
+                                      ?>
+                                      <br>
+                                    </div>
+                                    <!-- <a href="berhasilBayar.php"> -->
+                                      <button type="submit" class="btn btn-primary btn-lg">Bayar</button>
+                                  </form>
                                 </div>
                               </div>
-                                      
+
                               <div class="col-4" style="padding-left:5px;">
                                 <div class="mt-2 give-qrcode-image active">
                                   <img loading="lazy" src="assets/QRcode.png" alt="QR" style="max-width:170px;width:100%;">
@@ -128,49 +146,19 @@
                               </div>
                               <div class="col-12 mt-4" style="padding-right:5px">
                                 <div class="form-group field-congregationalserviceform-news_category">
-
-                                <!-- Buat kategori penggalangan dana -->
-                                <select id="congregationalserviceform-give_category" class="form-control" name="CongregationalServiceForm[give_category]" style="max-width:220px;width:170%; margin-left: 55px;">
-                                  <option value="PenggalanganDana">Kategori Penggalangan Dana</option>
-                                  <option value="Persembahan">Persembahan Ibadah</option>
-                                  <option value="Perpuluhan">Perpuluhan</option>                    
-                                <div class="help-block">
-                                </div> 
-                              </div>                 
-                                        
-                              <!-- Buat Input Nominal Pemberian buat masuk ke database -->
-                              <form method="post" action="berhasilBayar.php">
-                                <div class="input-group mb-3">
-                                  <span class="input-group-text">Rp. </span>
-                                  <label for="nominal"></label>
-                                  <input type="text" id="nominal" name="inputNominal" class="form-control" placeholder="Nominal" style="max-width:220px; width:170%; margin-left: 55px;">
-                                  
-                                  <?php
-                                    echo '<input type="hidden" name="id" value="'. $id .'">';
-                                  ?>
-                                
-                                </div>
-                                <?php
-                                    echo '<input type="hidden" name="id" value="' . $id . '">';
-                                    echo '<input type="hidden" name="nominal" value="' . $nominal . '">';
-                                ?>
-                                <a href="berhasilBayar.php"><button type="submit" class="btn btn-primary btn-lg" style="margin-left: 55px">Bayar</button></a>
-                              </form>
-
+                              </div>      
+                              
                               <br>
 
                             </div>
                           </div>
-
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </div>
