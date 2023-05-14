@@ -167,7 +167,7 @@ footer {
 </div> 
 <!-- Alamat Lengkap Gereja -->
 <div class="form-group field-addressField">
-<input type="tel" id="addressField" class="form-control" name="CongregationalServiceForm[address]" maxlength="50" placeholder="Tentang Gereja">
+<input type="tel" id="addressField" class="form-control" name="CongregationalServiceForm[address]" maxlength="50" placeholder="Alamat Gereja">
 
 <div class="help-block"></div>
 </div> 
@@ -283,6 +283,26 @@ footer {
 </form>
 
 <br>
+
+<div style="font-size:12px; margin-top:-3px; margin-bottom:20px; color:grey; text-align:left; font-size: medium;">
+    <b>Informasi Kontak Penanggung Jawab gereja : </b>
+</div>
+<!-- Nama Penanggung Jawab -->
+<div class="form-group field-nameCP">
+    <input type="tel" id="nameCPField" class="form-control" name="CongregationalServiceForm[nameCP]" maxlength="50" placeholder="Nama Penanggung Jawab">
+    <div class="help-block"></div>
+    </div> 
+
+<div class="form-group field-notelpCP">
+    <input type="tel" id="notelpCPField" class="form-control" name="CongregationalServiceForm[notelpCP]" maxlength="50" placeholder="Email/Nomor Telepon CP">
+    <div class="help-block"></div>
+    </div> 
+
+<div class="form-group field-nikpCP">
+    <input type="tel" id="nikCPField" class="form-control" name="CongregationalServiceForm[nikCP]" maxlength="50" placeholder="NIK CP">
+    <div class="help-block"></div>
+    </div>
+
 <br>
 
 <!-- Kalimat Tambahan  -->
