@@ -49,6 +49,16 @@
                 window.location.href = "historivotebim.php?karya="+this.value;
             });
         });
+
+      function lihatCP() {
+        document.getElementById("judulModal").innerHTML = '<center><h4>Penanggungjawab Gereja</h4></center>';
+        document.getElementById("isiModal").innerHTML = 
+                  '<p>Nama : Sutrisno</p> <br> <p>NIK : 93249429482</p> <br> <p>Alamat: Jalan Siwalankerto</p> <br> <p>No HP: 0812345</p>';
+        $('#myModal').modal('show');
+      }
+      function tutup() {
+        $('#myModal').modal('hide');
+      };
     </script>
      <style>
         /* Googlefont Poppins CDN Link */
@@ -303,6 +313,26 @@
    </head>
 
 <body>
+  <!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Tittle -->
+      <div class="modal-header" id="judulModal">
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body" id="isiModal">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" onclick="tutup()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
   <div class="sidebar">
     <div class="logo-details">
       <i class='bx bx-user'></i>
@@ -316,8 +346,14 @@
           </a>
         </li>
         <li>
-          <a href="listGereja.php" class="active">
+          <a href="requestGereja.php">
             <i class='bx bx bx-list-ul' ></i>
+            <span class="links_name">Request Gereja</span>
+          </a>
+        </li>
+        <li>
+          <a href="listGereja.php"  class="active">
+            <i class='bx bx bx-church' ></i>
             <span class="links_name">List Gereja</span>
           </a>
         </li>
@@ -353,21 +389,19 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Gereja</th>
-                        <th>Waktu Daftar</th>
-                        <th>Status</th>
+                        <th>Link Website</th>
+                        <th>Penanggungjawab</th>
                         <th>Waktu Konfirmasi</th>
-                        <th>Visi Misi Gereja</th>
-                        <th>List Admin</th>
+                        <th>Kelola Admin</th>
                     </tr>
                 </thead>
                 <tbody>
                     <td>1</td>
                     <td>Gereja GMS</td>
-                    <td>19 Desember 2023</td>
-                    <td><i class="fas fa-check"style="color:green">Yes</i></td>
+                    <td>gms.church.id</td>
+                    <td><button type="button" class="btn btn-info" onclick="lihatCP()">Lihat</button></td>
                     <td>25 Desember 2023</td>
-                    <td><button type="button" class="btn btn-info">Lihat</button></td>
-                    <td><button type="button" class="btn btn-info">Lihat</button></td>
+                    <td><a href="#">Klik Disini</a><td>
                 </tbody>
             </table>
         </div>
