@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <!-- Boxicons CDN Link -->
-    <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="css/kelolaKegiatan.css"> 
@@ -50,6 +49,16 @@
             });
         });
 
+      function lihatvisi() {
+        document.getElementById("judulModal").innerHTML = '<center><h4>Visi dan Misi</h4></center>';
+        document.getElementById("isiModal").innerHTML = 
+                  '<p>Visi: Menjadi Gereja yang berkualitas dan takut akan Tuhan</p> <br> <p>Misi:</p>';
+        $('#myModal').modal('show');
+      }
+      function tutup() {
+        $('#myModal').modal('hide');
+      }
+
       function lihatCP() {
         document.getElementById("judulModal").innerHTML = '<center><h4>Penanggungjawab Gereja</h4></center>';
         document.getElementById("isiModal").innerHTML = 
@@ -58,7 +67,17 @@
       }
       function tutup() {
         $('#myModal').modal('hide');
-      };
+      }
+
+      function lihatAdmin() {
+        document.getElementById("judulModal").innerHTML = '<center><h4>List Admin</h4></center>';
+        document.getElementById("isiModal").innerHTML = 
+                  '<b>Admin Saat ini:</b><br><p>sutrisno.gms</p><br><a href="kelolaAdmin.php">Klik Disini untuk Kelola Admin</a>';
+        $('#myModal').modal('show');
+      }
+      function tutup() {
+        $('#myModal').modal('hide');
+      }
     </script>
      <style>
         /* Googlefont Poppins CDN Link */
@@ -352,7 +371,7 @@
           </a>
         </li>
         <li>
-          <a href="listGereja.php"  class="active">
+          <a href="listGereja.php" class="active">
             <i class='bx bx bx-church' ></i>
             <span class="links_name">List Gereja</span>
           </a>
@@ -396,12 +415,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <td>1</td>
+                <td>1</td>
                     <td>Gereja GMS</td>
                     <td>gms.church.id</td>
                     <td><button type="button" class="btn btn-info" onclick="lihatCP()">Lihat</button></td>
                     <td>25 Desember 2023</td>
-                    <td><a href="#">Klik Disini</a><td>
+                    <td><button type="button" class="btn btn-info" onclick="lihatAdmin()">Lihat</button></td>
                 </tbody>
             </table>
         </div>
