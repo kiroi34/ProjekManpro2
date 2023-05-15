@@ -70,3 +70,13 @@ ALTER TABLE keuangankegiatan
 ALTER TABLE keuangankegiatan ADD tanggal DATE NOT NULL DEFAULT CURRENT_DATE;
 ALTER TABLE keuangankegiatan ADD keterangan VARCHAR(1000);
 ALTER TABLE keuangankegiatan ADD jumlah INT(11) NOT NULL DEFAULT 0;
+
+CREATE TABLE jadwalpendeta (
+    idjadwal INT(11) PRIMARY KEY,
+    tema VARCHAR(100) NOT NULL,
+    tanggal DATE NOT NULL,
+    pendeta INT(11) NOT NULL,
+    deskripsi VARCHAR(500)
+);
+ALTER TABLE jadwalpendeta
+  	MODIFY idjadwal int(11) NOT NULL AUTO_INCREMENT;
