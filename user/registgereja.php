@@ -115,7 +115,7 @@
                             <div class="streaming-sydney-revival-service">
 
                                 <!-- FORMULIR -->
-                                <form id="w0" class="submit-form" action="/form/submit-iftn" method="post">
+                                <form id="formulir" action="registgereja_proses.php" enctype="multipart/form-data" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
                                     <input type="hidden" name="_csrf" value="jdwIbDQwYoscgf9_f2BT2xmBiioJIpPYQPnC3Gx8NyS_6FsmewkD727ElwVPMWK6Q8nGXGhAy5sfl6i5HDtmHQ==">       
                                     
                                     <div class="container" style="margin-bottom:20px;">    
@@ -125,7 +125,7 @@
                                                     <label id="checkmarklabel0" class="checkmark-custom">
 
                                                         <!-- Bikin Background Form -->
-                                                        <div id="acceptJesusInfo" class="container" style="margin-bottom: 20px; margin-left:30px;">
+                                                        <div id="acceptJesusInfo" class="container" style="margin-bottom: 20px; margin-left:52px;">
                                                             <div style="background-image:url('https://userscontent2.emaze.com/images/f9d0caa4-73e5-4bb5-a4f0-772c237fe09b/c97065c5452e8d5aaacd9ce51d64ff8d.png'); background-repeat:no-repeat; background-position:center; background-size:cover; background-color:#1C1C1C; border-radius:10px; padding:20px;">
 
                                                                 <!-- FORM 1 : Registrasi Gereja -->
@@ -219,13 +219,13 @@
                                                                                     <option value="kategoriberita">--Pilih Kategori Berita--</option>
                                                                                     <?php
                                                                                         require_once 'koneksi.php';
-                                                                                        
+
                                                                                         $sql = "SELECT * FROM kategoriberita";
                                                                                         $result = $sambung->query($sql);
 
                                                                                         if ($result->num_rows > 0) {
                                                                                             while($data = $result->fetch_assoc()) {
-                                                                                            echo "<option value='" . $data['idKategori'] . "'>" . $data['namaKategoriBerita'] . "</option>";
+                                                                                            echo "<option value='" . $data['id'] . "'>" . $data['namaKategoriBerita'] . "</option>";
                                                                                             }
                                                                                         }
                                                                                     ?>
@@ -245,11 +245,11 @@
                                                                             </div>
 
                                                                             <div class="form-group field-judulberitaField">
-                                                                                <input type="tel" id="judulberita" class="form-control" name="judulberita" maxlength="50" placeholder="Judul Berita">
+                                                                                <input type="tel" id="judulberita" class="form-control" name="judulberita" placeholder="Judul Berita">
                                                                             </div>
 
                                                                             <div class="form-group field-kontenberitaField">
-                                                                                <input type="tel" id="kontenberita" class="form-control" name="kontenberita" maxlength="50" placeholder="Konten Berita">
+                                                                                <input type="tel" id="kontenberita" class="form-control" name="kontenberita" placeholder="Konten Berita">
                                                                             </div>
 
                                                                             <form action="/action_page.php">
@@ -266,25 +266,38 @@
 
                                                                             <!-- Rekening persembahan -->
                                                                             <div class="form-group field-rekeningField">
-                                                                                <input type="tel" id="rekeningpersembahan" class="form-control" name="rekeningpersembahan" maxlength="50" placeholder="Rekening Kebutuhan Persembahan Jemaat">
+                                                                                <input type="tel" id="rekeningpersembahan" class="form-control" name="rekeningpersembahan" placeholder="Rekening Kebutuhan Persembahan Jemaat">
                                                                             </div>
 
                                                                             <!-- Checkbox ada Qris gereja atau tidak  -->
                                                                             <label class="checkbox-label-custom">
-                                                                                <input id="checkmarkCG2" type="checkbox" class="check-join-cg check-checkmark" value="1" tabindex="3">
+                                                                                <input id="upload_checkbox" type="checkbox" class="check-join-cg check-checkmark" value="1" tabindex="3">
                                                                                 <span class="checkbox-span" style="margin-left:12px; margin-top:-15px; background-color:transparent;"></span>
                                                                             </label>
                                                                             <span style="margin-left:20px; top:-2px; right:25px;position:relative; font-size: medium; color: white;">
                                                                                 Ada Qris untuk Persembahan
                                                                             </span>
-                                                                            <p style="font-size: medium;">
-                                                                                Klik tombol <i>"Choose File"</i> untuk upload sebuah file (jpg/jpeg/png):
-                                                                            </p>
 
-                                                                            <!-- Sudah Bisa Choose File -->
-                                                                            <form action="/action_page.php"> 
-                                                                                <input type="file" id="fotopersembahan" name="fotopersembahan">
-                                                                            </form>
+                                                                            <div id="upload_form" style="display: none;">
+                                                                                <div class="form-group">
+                                                                                    <label for="poster">Klik tombol <i>"Choose File"</i> untuk upload sebuah file (jpg/jpeg/png):</label>
+                                                                                    <br>
+                                                                                    <input type="file" id ="fotopersembahan" accept="image/png, image/jpg, image/jpeg, image/PNG, image/JPG, image/JPEG" name="fotopersembahan" default = 0>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <script>
+                                                                                const checkbox = document.querySelector('#upload_checkbox');
+                                                                                const uploadForm = document.querySelector('#upload_form');
+
+                                                                                checkbox.addEventListener('change', () => {
+                                                                                    if (checkbox.checked) {
+                                                                                        uploadForm.style.display = 'block';
+                                                                                    } else {
+                                                                                        uploadForm.style.display = 'none';
+                                                                                    }
+                                                                                });
+                                                                            </script>
 
                                                                             <br>
 
@@ -294,23 +307,22 @@
 
                                                                             <!-- Nama Penanggung Jawab -->
                                                                             <div class="form-group field-nameCP">
-                                                                                <input type="tel" id="namacp" class="form-control" name="namacp" maxlength="50" placeholder="Nama Penanggung Jawab">
+                                                                                <input type="tel" id="namacp" class="form-control" name="namacp" placeholder="Nama Penanggung Jawab">
                                                                             </div>
 
                                                                             <div class="form-group field-notelpCP">
-                                                                                <input type="tel" id="kontakcp" class="form-control" name="kontakcp" maxlength="50" placeholder="Email/Nomor Telepon CP">
+                                                                                <input type="tel" id="kontakcp" class="form-control" name="kontakcp" placeholder="Email/Nomor Telepon CP">
                                                                             </div>
 
                                                                             <div class="form-group field-nikpCP">
-                                                                                <input type="tel" id="nikcp" class="form-control" name="nikcp" maxlength="50" placeholder="NIK CP">
+                                                                                <input type="tel" id="nikcp" class="form-control" name="nikcp" placeholder="NIK CP">
                                                                             </div>
 
                                                                             <br>
 
                                                                             <!-- Kalimat Tambahan  -->
-                                                                            <div id="penutupInfoWrapper" style="display: block; font-size: medium;">
-                                                                                <b>Terima Kasih Atas Pengisian Form Registrasi Gereja<br>
-                                                                                Silahkan Tekan <i>Submit </i>  untuk melanjutkan ke Home Page</b>
+                                                                            <div id="penutupInfoWrapper" style="display: block; font-size: medium; text-align: center">
+                                                                                <b>Terima Kasih Atas Pengisian Form Registrasi Gereja</b>
                                                                             </div> 
 
                                                                             <br>
@@ -318,7 +330,7 @@
 
                                                                         <!-- Submit Button (TOLONG HREF KE HOMEUSER.HTML LUPA CARANYA) --> 
                                                                         <button type="submit" id="submitButton" class="btn btn-primary btn-block" style="font-size:18px; letter-spacing:4px; border:0; background-color:white; color:black;">
-                                                                            <a href="Homeuser.php">Submit</a>
+                                                                            <input type="submit" name="submit" value="Submit"></input>
                                                                         </button>
                                                                     </div>
                                                                 </div>
