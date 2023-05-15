@@ -10,7 +10,7 @@
         <?php
             require_once 'koneksi.php';
             
-            $id = $_POST['id'];
+            // $id = $_POST['id'];
             $nama = $_POST['nama'];
             $email = $_POST['email'];
             $jamoperasional = $_POST['jamoperasional'];
@@ -26,7 +26,7 @@
             $kontenberita = $_POST['kontenberita'];
             $tanggalkonten = $_POST['tanggalkonten'];
             $rekeningpersembahan = $_POST['rekeningpersembahan'];
-            $fotopersembahan = $_POST['fotopersembahan'];
+            // $fotopersembahan = $_POST['fotopersembahan'];
             $namacp = $_POST['namacp'];
             $kontakcp = $_POST['kontakcp'];
             $nikcp = $_POST['nikcp'];
@@ -49,7 +49,7 @@
             if ($extention == 'png' || $extention == 'jpg' || $extention == 'jpeg' || $extention == 'PNG' || $extention == 'JPG' || $extention == 'JPEG'){
                     move_uploaded_file($tmp_file, $imgStorePath);
 
-                    $query = "INSERT INTO daftargereja (nama, email, jamoeprasional, kota, alamat, tentang, visimisi, informasipendeta, pertanyaanfaq, jawabanfaq, kategoriberita, judulberita, kontenberita, tanggalkonten, rekeningpersembahan, fotopersembahan, namacp, kontakcp, nikcp)
+                    $query = "INSERT INTO daftargereja (nama, email, jamoperasional, kota, alamat, tentang, visimisi, informasipendeta, pertanyaanfaq, jawabanfaq, kategoriberita, judulberita, kontenberita, tanggalkonten, rekeningpersembahan, fotopersembahan, namacp, kontakcp, nikcp)
                         VALUES ('". $nama."', '". $email ."', '". $jamoperasional ."', '". $kota ."', '". $alamat ."', '". $tentang ."', '". $visimisi ."', '". $informasipendeta ."', '". $pertanyaanfaq ."', '". $jawabanfaq ."', '". $kategoriberita ."', '". $judulberita ."', '". $kontenberita ."', '". $tanggalkonten ."', '". $rekeningpersembahan ."', '". $fotopersembahan ."', '". $namacp ."', '". $kontakcp ."', '". $nikcp ."')";
                     $sambung->query($query);                    
             } else {
