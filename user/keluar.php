@@ -122,7 +122,7 @@
                         <a class="nav-link" href="FAQ.php">FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Persembahan.php">Penggalangan dana</a>
+                        <a class="nav-link" href="daftarPenggalanganDana.php">Penggalangan dana</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="ContactUs.php">Hubungi Kami</a>
