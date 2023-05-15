@@ -1,16 +1,3 @@
-<?php
-  require_once 'koneksi.php';
-
-  session_start();
-
-  if(!isset($_SESSION['username'])){
-    header("location: loginAdmin.php");
-    exit;
-  }
-
-  $username = $_SESSION['username'];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>

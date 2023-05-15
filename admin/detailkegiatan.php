@@ -7,8 +7,26 @@
   }
 
   $id = $_GET['id'];
+  $namakegiatan = '';
+  $kuotakegiatan = 0;
+  $jumlahkonfirmasi = 0;
+  $sql2 = 'SELECT * FROM inputkegiatan WHERE id = '.$id;
+  $stmt2 = $sambung->query($sql2);
+  foreach ($stmt2 as $isi) {
+    $namakegiatan = $isi['nama'];
+    $kuotakegiatan = $isi['kuota'];
+  }
+  if ($kuotakegiatan==0) {
+    $kuotakegiatan = '-';
+  }
+  $sql3 = 'SELECT COUNT(*) jumlah FROM pendaftarankegiatan WHERE idkegiatan = '.$id.' AND statuspembayaran = 1';
+  $stmt3 = $sambung->query($sql3);
+  foreach ($stmt3 as $isi) {
+    $jumlahkonfirmasi = $isi['jumlah'];
+  }
   $sql = 'SELECT * FROM pendaftarankegiatan p JOIN jemaat j ON p.idpeserta = j.iduser WHERE idkegiatan = '.$id;
   $stmt = $sambung->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -37,9 +55,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap5.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script>
+        var jumlah = <?php echo $jumlahkonfirmasi; ?>;
+        var kuota = '<?php echo $kuotakegiatan ?>';
         $(document).ready(function() {
             var table = $('#example').DataTable( {
             dom: "B<'row'<'col-sm-6'l><'col-sm-6'f>>tipr",
@@ -58,9 +78,6 @@
                 }
                 },
             } );
-            $('select').on('change', function() {
-                window.location.href = "historivotebim.php?karya="+this.value;
-            });
         });
         function konfirmasi(id) {
           Swal.fire({
@@ -71,6 +88,12 @@
             denyButtonText: `Tidak`,
           }).then((result) => {
             if (result.isConfirmed) {
+              if (kuota!='-') {
+                if (jumlah>=kuota) {
+                  alert('Jumlah konfirmasi sudah mencapai kuota!');
+                  return;
+                }
+              }
               $.ajax({
                 url: 'php/konfirmasipembayaran.php',
                 type: 'post',
@@ -80,6 +103,19 @@
                 success: function(result) {
                   document.getElementById('K'+id).innerHTML = '<i class="fas fa-check" onclick="batal('+id+')" style="color:green"> Yes</i>';
                   document.getElementById('P'+id).innerHTML = result;
+                  jumlah += 1;
+                  var isi = `(<span style="`;
+                  if (kuota!='-') { 
+                    if (jumlah>=kuota) { 
+                      isi += 'color:red'; 
+                    } else {
+                      isi += 'color:green';
+                    }
+                  } else { 
+                    isi += 'color:green'; 
+                  }
+                  isi += `">`+ jumlah + `</span>/`+ kuota + ")";
+                  document.getElementById('kuota').innerHTML = isi;
                 }  
               });
             }
@@ -104,6 +140,19 @@
                 success: function(result) {
                   document.getElementById('K'+id).innerHTML = '<i class="fas fa-times" style="color:red" onclick="konfirmasi('+id+')"> No</i>';
                   document.getElementById('P'+id).innerHTML = "-";
+                  jumlah -= 1;
+                  var isi = `(<span style=" `;
+                  if (kuota!='-') { 
+                    if (jumlah>=kuota) { 
+                      isi += 'color:red'; 
+                    } else {
+                      isi += 'color:green';
+                    }
+                  } else { 
+                    isi += 'color:green'; 
+                  }
+                  isi += `">`+ jumlah + `</span>/`+ kuota + ")";
+                  document.getElementById('kuota').innerHTML = isi;
                 }  
               });
             }
@@ -116,10 +165,44 @@
       function tutup() {
         $('#myModal').modal('hide');
       }
+      function klikName(iduser) {
+        $.ajax({
+            url: 'php/getuserinfo.php',
+            type: 'post',
+            data: {
+                id: iduser
+            },
+            success: function(result) {
+              document.getElementById("isiModal").innerHTML = result;
+              $('#myModal').modal('show');
+            }  
+        });
+      }
     </script>
      <style>
         .logo_name, .links_name {
             margin-top:3px;
+        }
+        #tdid {
+          color: #5100ff;
+        }
+        #tdid:hover {
+          color: #a593cc;
+          text-decoration: underline;
+        }
+        .buttonUang {
+          background-color: transparent; 
+          border: 1px solid black; 
+          border-radius: 10px;
+          padding: 5px 10px;
+        }
+        .buttonUang:hover {
+          background-color: black;
+          color: white;
+        }
+        #kuota {
+          font-size: 30px;
+          margin-left:30px;
         }
      </style>
    </head>
@@ -219,6 +302,10 @@
 <br><br><br>
     <div class="container">
         <br>
+        <h2><i class="fa fa-chevron-left" onclick="window.location.href='kelolaKegiatan.php'"></i> Peserta <?php echo $namakegiatan ?></h2>
+        <label id="kuota">(<span style="<?php if ($kuotakegiatan!='-') { if ($jumlahkonfirmasi>=$kuotakegiatan) { echo 'color:red'; } else { echo 'color:green'; } } else { echo 'color:green'; }?>"><?php echo $jumlahkonfirmasi?></span>/<?php echo $kuotakegiatan?>)</label>
+        <button style="float:right" class="buttonUang" onclick="window.location.href='kelolaKeuangan.php?id=<?php echo $id?>'">Kelola Keuangan</button>
+        <br><br>
         <div class="table-responsive">
         <div style="overflow-x: auto;">
             <table id="example" class="table table-striped" style="width:100%; text-align: center;">
@@ -238,7 +325,7 @@
                     ?>
                     <tr>
                         <td><?= $i++; ?></td>
-                        <td><?php echo $data['nama']; ?></td>
+                        <td onclick="klikName('<?php echo $data['idpeserta']; ?>')" id="tdid"><?php echo $data['nama']; ?></td>
                         <td><?php echo $data['waktudaftar']; ?></td>
                         <td id="K<?php echo $data['idpk'];?>"><?php if ($data['statuspembayaran']==1) { echo '<i class="fas fa-check" onclick="batal('.$data['idpk'].')"style="color:green"> Yes</i>'; } else { echo '<i class="fas fa-times" style="color:red" onclick="konfirmasi('.$data['idpk'].')"> No</i>'; }?></td>
                         <td id="P<?php echo $data['idpk'];?>"><?php if ($data['statuspembayaran']==1) { echo $data['waktukonfirmasi']; } else { echo "-";}?></td>

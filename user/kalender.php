@@ -62,13 +62,14 @@
             background-color: rgb(240,128,128, 0.5);
             border-radius: 4px;
             border: 1px solid red;
-            color: white;
+            color: black;
         }
         .klikDaftar:hover {
             border: 1px solid red;
             letter-spacing: 2px;
             background-color: rgb(240,128,128);
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            color:white;
         }
         .klikDaftar:active {
             border: 1px solid red;
