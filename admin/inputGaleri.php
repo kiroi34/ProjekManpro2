@@ -1,15 +1,12 @@
 <?php
-  require_once 'koneksi.php';
+require_once "connByAlan.php";
+  
+  $timesql = "SELECT * FROM galerikategori ";
+  $timestmt = $pdo->prepare($timesql);
+  $timestmt->execute();
 
-  session_start();
-
-  if(!isset($_SESSION['username'])){
-    header("location: loginAdmin.php");
-    exit;
-  }
-
-  $username = $_SESSION['username'];
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -229,9 +226,24 @@
             <form action="inputGaleriDataBase.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
                 <!-- testing -->
                 <br>
-                <label for="kategori">Nama Kategory Foto</label>
-                <input type="text" id="kategori" name="kategori" placeholder="Masukan Nama Kategori Foto..." required>
+                <label for="kategori">Input Baru Nama Kategory Foto</label>
+                <input type="text" id="kategori" name="kategori" placeholder="Masukan Nama Kategori Foto..." >
+
+                <label for="riwayatKategori">Riwayat Kategori</label>
+                <select id="riwayatKategori" name="riwayatKategori" >
+                  
+                  <option value="pilihan">--Pilih Kategori--</option>
+                  <?php
+                  while ($data = $timestmt->fetch()){
+                      echo "<option value='" . $data['idKategoriGaleri'] . "'>" . $data['namaKategori'] . "</option>";
+                      }
+                  ?>
+                </select>
+
+<br> <br>
                 <br>
+
+
                 <input type="file" id="inputFoto" name="files[]" accept="image/png, image/jpeg" onchange="preview()" multiple>
                 <label for="inputFoto">
                     <i class="fas fa-upload"></i> &nbsp; Choose A Photo

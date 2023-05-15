@@ -214,7 +214,12 @@ footer {
 
 <!-- Tempat, TanggalLahir -->
 <div class="form-group field-congregationalserviceform-tempatlahir">
-<input type="tel" id="congregationalserviceform-tempatlahir" class="form-control" name="CongregationalServiceForm[tempatlahir]" maxlength="150" placeholder="Tempat, Tanggal lahir (DD/MM/YYYY)">
+<input type="tel" id="congregationalserviceform-tempatlahir" class="form-control" name="CongregationalServiceForm[tempatlahir]" maxlength="150" placeholder="Tempat Lahir">
+<div class="help-block"></div>
+</div>   
+<!-- Tempat, TanggalLahir -->
+<div class="form-group field-congregationalserviceform-tempatlahir">
+<input type="tel" id="congregationalserviceform-tempatlahir" class="form-control" name="CongregationalServiceForm[tempatlahir]" maxlength="150" placeholder="Tanggal lahir (DD/MM/YYYY)">
 <div class="help-block"></div>
 </div>   
    

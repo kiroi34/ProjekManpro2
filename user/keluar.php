@@ -1,4 +1,9 @@
+<?php
+  if (isset($_SESSION['masuk'])){
+    header("location:Homeuser.php");
+  }
 
+?>
 <!DOCTYPE html>
 <html lang="en">
    <headd>
@@ -167,6 +172,8 @@
     x.type = "password";
   }
 }</script>
+
+
 <body>
 <!-- Bikin Background Form -->
 <div id="pelayanan" class="container" style="margin-bottom: 20px;">
@@ -184,23 +191,27 @@
 
 <input type="hidden" id="congregationalserviceform-tag" name="CongregationalServiceForm[tag]">     
 <div class="bg-image"> </div>
-  <form action="login.php" method = "post" class="container">
+  <form action="cocokAkunLogin.php" method = "post" class="container">
     
-
-    <label for="notelp"><b style = "color : black"></b></label>
-    <input type="text" placeholder="Email/Nomor Telepon" name="notelp" required>
-
+    <!-- email no telp -->
+    <label for="username"><b style = "color : black"></b></label>
+    <input type="text" placeholder="Email/Nomor Telepon" name="username" required>
+    <!-- pass -->
     <label for="password"><b style = "color : #f4f2ff"></b></label>
     <input type="password" placeholder="Password" name="password" id="myInput" required> 
+
     <input type="checkbox" onclick="myFunction() "> <span style = "color : white">Lihat Password </span>
     <div class="link forget-pass text-left"><p style = "font-size: 80%"><a href="verifikasipassword.php"><span style = "color : red">Lupa password?</span></a></div>
-                    <div class="form-group">
-        <p style = "font-size : 75%"> <span style = "color : white">Belum punya akun? </span><a href="register.php"><span style = "color :red"> Buat akun baru </span> </a> </p>
-        <button type="submit" class="btn"><a href ="Homeuser.php"><span style= "color : white"><b>Masuk<b></button>
+                <div class="form-group">
+    <p style = "font-size : 75%"> <span style = "color : white">Belum punya akun? </span><a href="register.php"><span style = "color :red"> Buat akun baru </span> </a> </p>
+    <button type="submit" class="btn" value="login"><span style= "color : white"><b>Masuk<b></button>
   </form>
+
+ 
 </div>
 </div>
 </div>
+
 </body>
 <footer>
   <p style = "font-size : 105%"><span style = "color : black">Informasi Registrasi Gereja : <br>
