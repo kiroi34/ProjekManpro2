@@ -110,7 +110,14 @@
                             Terima kasih telah mengisi form tersebut. Tuhan Yesus Memberkati.              
                         </div>
                     </div>
-
+                    <div class="container" style="text-align: center; margin-top: 3%;">
+                            <i class="fas fa-check-circle fa-7x" style="color: green;"></i>
+                            <br><br>
+                            <h3 style="margin-top: 1%;">Permintaan Anda sudah terkirim.</h3>
+                            <h3 style="margin-top: 1%;">Silakan tunggu 3-7 hari dan cek email Anda secara berkala</h3>
+                            <br>
+                            <a href="Homeuser.php"><h5><u>Back to Home</u></h5></a>
+                        </div>
                 </div>
             </div>
         </div>

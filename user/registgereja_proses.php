@@ -41,16 +41,28 @@
                 } else {
                     echo "extention tidak sesuai";
                 }
+            } else {
+                echo '<br><br><h3>Silahkan mengulangi input</h3>';
+                echo '<a href="registgereja.php"><h3>Back</h3></a>';
             }
             
             if ($extention == 'png' || $extention == 'jpg' || $extention == 'jpeg' || $extention == 'PNG' || $extention == 'JPG' || $extention == 'JPEG'){
                     move_uploaded_file($tmp_file, $imgStorePath);
 
-                    $query = "INSERT INTO daftargereja (id, nama, email, jamoeprasional, kota, alamat, tentang, visimisi, informasipendeta, pertanyaanfaq, jawabanfaq, kategoriberita, judulberita, kontenberita, tanggalkonten, rekeningpersembahan, fotopersembahan, namacp, kontakcp, nikcp)
-                        VALUES ('". $id."', '". $nama."', '". $email ."', '". $jamoperasional ."', '". $kota ."', '". $alamat ."', '". $tentang ."', '". $visimisi ."', '". $informasipendeta ."', '". $pertanyaanfaq ."', '". $jawabanfaq ."', '". $kategoriberita ."', '". $judulberita ."', '". $kontenberita ."', '". $tanggalkonten ."', '". $rekeningpersembahan ."', '". $fotopersembahan ."', '". $namacp ."', '". $kontakcp ."', '". $nikcp ."')";
+                    $query = "INSERT INTO daftargereja (nama, email, jamoeprasional, kota, alamat, tentang, visimisi, informasipendeta, pertanyaanfaq, jawabanfaq, kategoriberita, judulberita, kontenberita, tanggalkonten, rekeningpersembahan, fotopersembahan, namacp, kontakcp, nikcp)
+                        VALUES ('". $nama."', '". $email ."', '". $jamoperasional ."', '". $kota ."', '". $alamat ."', '". $tentang ."', '". $visimisi ."', '". $informasipendeta ."', '". $pertanyaanfaq ."', '". $jawabanfaq ."', '". $kategoriberita ."', '". $judulberita ."', '". $kontenberita ."', '". $tanggalkonten ."', '". $rekeningpersembahan ."', '". $fotopersembahan ."', '". $namacp ."', '". $kontakcp ."', '". $nikcp ."')";
                     $sambung->query($query);                    
             } else {
                 echo "extention tidak sesuai";
+            }
+
+            // Proses form
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Lakukan proses form disini
+                
+                // Arahkan ke halaman lain setelah form berhasil di-submit
+                header('Location: konfirmasigereja.php');
+                exit; // Pastikan script berhenti setelah mengarahkan ke halaman baru
             }
         ?>
 
