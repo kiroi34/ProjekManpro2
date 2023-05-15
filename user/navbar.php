@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +47,18 @@
                       <a class="nav-link" href="Galeri.php">Galeri</a> 
                   </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="keluar.php">Keluar</a>
+                      <a class="nav-link" href="keluar.php">
+                        <?php
+
+                      if(isset($_SESSION['user'])){
+                        echo 'Keluar';
+                        } else {
+                        echo 'Masuk';
+                        }
+                      
+                                            
+                      ?>
+                      </a>
                   </li>
                 </ul>
             </div>

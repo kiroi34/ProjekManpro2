@@ -202,7 +202,7 @@
       </style>
       </head>
 
-      <?php include_once "navbar.html" ?>
+      <?php include_once "navbar.php" ?>
 
         <div id="mainContainer">
           <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    

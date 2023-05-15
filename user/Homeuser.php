@@ -49,7 +49,7 @@
       </style>
       </head>
       <body>
-      <?php include_once "navbar.html" ?>
+      <?php include_once "navbar.php" ?>
 
       <div id="bannerOuterWrapper">
         <picture>
