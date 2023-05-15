@@ -276,8 +276,14 @@
           </a>
         </li>
         <li>
-          <a href="listGereja.php">
+          <a href="requestGereja.php">
             <i class='bx bx bx-list-ul' ></i>
+            <span class="links_name">Request Gereja</span>
+          </a>
+        </li>
+        <li>
+          <a href="listGereja.php">
+            <i class='bx bx bx-church' ></i>
             <span class="links_name">List Gereja</span>
           </a>
         </li>

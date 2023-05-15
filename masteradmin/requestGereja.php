@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>List Gereja</title>
+    <title>Request Gereja</title>
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+    <!-- Boxicons CDN Link -->
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +50,53 @@
             });
         });
 
+        function konfirmasi(id) {
+          Swal.fire({
+            title: 'Apakah Anda yakin ingin menkonfirmasi pembayaran ini?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Ya',
+            denyButtonText: `Tidak`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+                url: 'php/konfirmasipembayaran.php',
+                type: 'post',
+                data: {
+                    id: id
+                },
+                success: function(result) {
+                  document.getElementById('K'+id).innerHTML = '<i class="fas fa-check" onclick="batal('+id+')" style="color:green"> Yes</i>';
+                  document.getElementById('P'+id).innerHTML = result;
+                }  
+              });
+            }
+          })
+
+        }
+      function batal(id) {
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin membatalkan konfirmasi pembayaran ini?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Ya',
+            denyButtonText: `Tidak`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+                url: 'php/batalkonfirmasi.php',
+                type: 'post',
+                data: {
+                    id: id
+                },
+                success: function(result) {
+                  document.getElementById('K'+id).innerHTML = '<i class="fas fa-times" style="color:red" onclick="konfirmasi('+id+')"> No</i>';
+                  document.getElementById('P'+id).innerHTML = "-";
+                }  
+              });
+            }
+          })
+      }
       function lihatvisi() {
         document.getElementById("judulModal").innerHTML = '<center><h4>Visi dan Misi</h4></center>';
         document.getElementById("isiModal").innerHTML = 
@@ -63,16 +111,6 @@
         document.getElementById("judulModal").innerHTML = '<center><h4>Penanggungjawab Gereja</h4></center>';
         document.getElementById("isiModal").innerHTML = 
                   '<p>Nama : Sutrisno</p> <br> <p>NIK : 93249429482</p> <br> <p>Alamat: Jalan Siwalankerto</p> <br> <p>No HP: 0812345</p>';
-        $('#myModal').modal('show');
-      }
-      function tutup() {
-        $('#myModal').modal('hide');
-      }
-
-      function lihatAdmin() {
-        document.getElementById("judulModal").innerHTML = '<center><h4>List Admin</h4></center>';
-        document.getElementById("isiModal").innerHTML = 
-                  '<b>Admin Saat ini:</b><br><p>sutrisno.gms</p><br><a href="kelolaAdmin.php">Klik Disini untuk Kelola Admin</a>';
         $('#myModal').modal('show');
       }
       function tutup() {
@@ -329,7 +367,6 @@
                 left: 60px;
                 width: calc(100% - 60px);
             }
-
             }
      </style>
    </head>
@@ -368,13 +405,13 @@
           </a>
         </li>
         <li>
-          <a href="requestGereja.php">
+          <a href="requestGereja.php" class="active">
             <i class='bx bx bx-list-ul' ></i>
             <span class="links_name">Request Gereja</span>
           </a>
         </li>
         <li>
-          <a href="listGereja.php" class="active">
+          <a href="listGereja.php">
             <i class='bx bx bx-church' ></i>
             <span class="links_name">List Gereja</span>
           </a>
@@ -392,7 +429,7 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">List Gereja</span>
+        <span class="dashboard">Request Gereja</span>
       </div>
 
       <div class="profile-details">
@@ -411,19 +448,21 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Gereja</th>
-                        <th>Link Website</th>
-                        <th>Penanggungjawab</th>
+                        <th>Waktu Daftar</th>
+                        <th>Status</th>
                         <th>Waktu Konfirmasi</th>
-                        <th>Kelola Admin</th>
+                        <th>Visi Misi Gereja</th>
+                        <th>PenanggungJawab</th>
                     </tr>
                 </thead>
                 <tbody>
-                <td>1</td>
+                    <td>1</td>
                     <td>Gereja GMS</td>
-                    <td>gms.church.id</td>
-                    <td><button type="button" class="btn btn-info" onclick="lihatCP()">Lihat</button></td>
+                    <td>19 Desember 2023</td>
+                    <td><i class="fas fa-check"style="color:green">Yes</i></td>
                     <td>25 Desember 2023</td>
-                    <td><button type="button" class="btn btn-info" onclick="lihatAdmin()">Lihat</button></td>
+                    <td><button type="button" class="btn btn-info" onclick="lihatvisi()">Lihat</button></td>
+                    <td><button type="button" class="btn btn-info" onclick="lihatCP()">Lihat</button></td>
                 </tbody>
             </table>
         </div>
