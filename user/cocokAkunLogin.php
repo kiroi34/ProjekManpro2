@@ -12,9 +12,13 @@ if(isset($_POST['username'])){
  
     
     if(mysqli_num_rows($records)==1){
+        session_start();
+        $data = $records->fetch_assoc();
+        $_SESSION['user']=$data['idAkun'];
         $_SESSION['masuk'] = 1;
         header("location: Homeuser.php");
         exit();
+        
     }
     else{
         echo "<script>alert('Password Atau Username Salah!!'); window.location.href = 'keluar.php';</script>";
