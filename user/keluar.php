@@ -157,7 +157,7 @@
 
             <div class="mt-4" style="max-width:800px; margin:auto;">
                 <div class="streaming-sydney-revival-service">
-                <form id="w0" class="submit-form" action="/form/submit-iftn" method="post">
+                
     <input type="hidden" name="_csrf" value="jdwIbDQwYoscgf9_f2BT2xmBiioJIpPYQPnC3Gx8NyS_6FsmewkD727ElwVPMWK6Q8nGXGhAy5sfl6i5HDtmHQ==">       
             <div class="container" style="margin-bottom:20px;">    
             <div style="text-align:left;">

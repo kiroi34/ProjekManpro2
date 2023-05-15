@@ -159,7 +159,7 @@ footer {
 
             <div class="mt-4" style="max-width:800px; margin:auto;">
                 <div class="streaming-sydney-revival-service">
-                <form id="w0" class="submit-form" action="/form/submit-iftn" method="post">
+              
     <input type="hidden" name="_csrf" value="jdwIbDQwYoscgf9_f2BT2xmBiioJIpPYQPnC3Gx8NyS_6FsmewkD727ElwVPMWK6Q8nGXGhAy5sfl6i5HDtmHQ==">       
             <div class="container" style="margin-bottom:20px;">    
             <div style="text-align:left;">
@@ -173,6 +173,10 @@ footer {
 <!-- FORM 2 : REGISTRASI JEMAAT -->
 <div style="font-size:18px; margin-bottom:15px; color:white; text-align:center; background-color: black;"> <b>Registrasi Jemaat </b>
 </div>
+
+
+
+
 <div id="form" >
     <div class="container" style="margin-bottom:20px;">
         <div style="background-color:white; border-radius:10px; padding:20px;">
@@ -181,10 +185,11 @@ footer {
                 <b>Silahkan isi form berikut ini dengan benar dan sesuai : </b>
             </div>
 
-<input type="hidden" id="congregationalserviceform-tag" name="CongregationalServiceForm[tag]">     
+<!-- <input type="hidden" id="congregationalserviceform-tag" name="CongregationalServiceForm[tag]">      -->
+<form action="registerAkunDatabase.php" method = "post" class="container">
 <!-- Nama -->
 <div class="form-group field-congregationalserviceform-name required">
-<input type="tel" id="congregationalserviceform-name" class="form-control" name="CongregationalServiceForm[name]" placeholder="Nama" aria-required="true">
+<input type="tel" id="congregationalserviceform-name" class="form-control" name="fname" placeholder="Nama" aria-required="true">
 <div class="help-block"></div>
 </div>
 <div style="display:flex;">
@@ -192,70 +197,69 @@ footer {
 
 <!-- Jenis Kelamin/Gender -->
 <div class="form-group field-congregationalserviceform-gender required">
-<input type="hidden" name="CongregationalServiceForm[gender]" value=""><div id="congregationalserviceform-gender" labeloptions="{&quot;style&quot;:&quot;display:inline;&quot;}" role="radiogroup" aria-required="true">
-<label class="checkbox-label-custom"><input type="radio" id="gender0" name="CongregationalServiceForm[gender]" value="M" tabindex="3">
+<input type="hidden" name="jenisKelamin" value=""><div id="congregationalserviceform-gender" labeloptions="{&quot;style&quot;:&quot;display:inline;&quot;}" role="radiogroup" aria-required="true">
+<label class="checkbox-label-custom"><input type="radio" id="gender0" name="jenisKelamin" value="M" tabindex="3">
 <span class="checkbox-span" style="margin-left:12px; margin-top:-15px; font-size:16px">Laki-Laki</span></label>&nbsp;&nbsp;&nbsp;<label class="checkbox-label-custom">
-<input type="radio" id="gender1" name="CongregationalServiceForm[gender]" value="F" tabindex="3">
+<input type="radio" id="gender1" name="jenisKelamin" value="F" tabindex="3">
 <span class="checkbox-span" style="margin-left:12px; margin-top:-15px; font-size:16px">Perempuan</span></label></div>
 
+<!-- Umur -->
 <div class="help-block"></div>
 </div>                                        
 </div>
 <div style="width:120px;">
 <div class="form-group field-ageField required">
-
-<!-- Umur -->
-<input type="tel" id="ageField" class="form-control" name="CongregationalServiceForm[age]" placeholder="Umur" aria-required="true">
+<input type="tel" id="ageField" class="form-control" name="umur" placeholder="Umur" aria-required="true">
 
 <div class="help-block"></div>
 </div>                                        
 </div>
 </div>
 
-<!-- Tempat, TanggalLahir -->
+<!-- Tempat Lahir -->
 <div class="form-group field-congregationalserviceform-tempatlahir">
-<input type="tel" id="congregationalserviceform-tempatlahir" class="form-control" name="CongregationalServiceForm[tempatlahir]" maxlength="150" placeholder="Tempat Lahir">
+<input type="tel" id="congregationalserviceform-tempatlahir" class="form-control" name="tempatLahir" maxlength="150" placeholder="Tempat Lahir" required>
 <div class="help-block"></div>
 </div>   
-<!-- Tempat, TanggalLahir -->
+<!-- TanggalLahir -->
 <div class="form-group field-congregationalserviceform-tempatlahir">
-<input type="tel" id="congregationalserviceform-tempatlahir" class="form-control" name="CongregationalServiceForm[tempatlahir]" maxlength="150" placeholder="Tanggal lahir (DD/MM/YYYY)">
+<input type="tel" id="congregationalserviceform-tempatlahir" class="form-control" name="tanggalLahir" maxlength="150" placeholder="Tanggal lahir (DD/MM/YYYY)" required>
 <div class="help-block"></div>
 </div>   
    
 <!-- Nomor Tlepon -->
 <div class="form-group field-phoneField">
-<input type="tel" id="phoneField" class="form-control" name="CongregationalServiceForm[phone_number]" maxlength="20" placeholder="Nomor Telepon">
+<input type="tel" id="phoneField" class="form-control" name="nomorTelpon" maxlength="20" placeholder="Nomor Telepon" required>
 
 <div class="help-block"></div>
 </div>           
 <!-- Email -->
 <div class="form-group field-congregationalserviceform-email">
-<input type="tel" id="congregationalserviceform-email" class="form-control" name="CongregationalServiceForm[email]" maxlength="150" placeholder="Email">
+<input type="tel" id="congregationalserviceform-email" class="form-control" name="email" maxlength="150" placeholder="Email" required>
 <div class="help-block"></div>
 </div>   
 
 <!--Password -->
-<div class="form-group field-congregationalserviceform-password">
-<input type="tel" id="congregationalserviceform-password" class="form-control" name="CongregationalServiceForm[password]" maxlength="150" placeholder="Password">
+<div class="form-group field-congregationalserviceform-password" >
+<input type="password"  style="border: 1px solid; border-color: rgba(0, 0, 0, 0.2);" id="congregationalserviceform-password" class="form-control" name="password" maxlength="150" placeholder="Password" required>
 <div class="help-block"></div>
 </div>  
 
 <!-- KonfirmasiPassword -->
 <div class="form-group field-congregationalserviceform-Confirmpassword">
-<input type="tel" id="congregationalserviceform-Confirmpassword" class="form-control" name="CongregationalServiceForm[Confirmpassword]" maxlength="150" placeholder="Konfirmasi Password">
+<input type="password"  style="border: 1px solid; border-color: rgba(0, 0, 0, 0.2);" id="congregationalserviceform-Confirmpassword" class="form-control" name="cpassword" maxlength="150" placeholder="Konfirmasi Password" required>
 <div class="help-block"></div>
 </div> 
 <!-- Kota -->
 <div class="form-group field-congregationalserviceform-city">
-    <input type="tel" id="congregationalserviceform-city" class="form-control" name="CongregationalServiceForm[city]" maxlength="150" placeholder="Kota">
+    <input type="tel" id="congregationalserviceform-city" class="form-control" name="kota" maxlength="150" placeholder="Kota" required>
     
 <div class="help-block"></div>
 </div>
 
 <!-- Alamat -->
 <div class="form-group field-congregationalserviceform-address">
-    <input type="tel" id="congregationalserviceform-address" class="form-control" name="CongregationalServiceForm[address]" maxlength="250" placeholder="Alamat Domisili">
+    <input type="tel" id="congregationalserviceform-address" class="form-control" name="alamat" maxlength="250" placeholder="Alamat Domisili" required>
     
 <div class="help-block">
 </div>
@@ -263,7 +267,7 @@ footer {
 
 <!-- Checkbox mau tergabung sebagai jemaat gereja  -->
 <label class="checkbox-label-custom">
-    <input id="checkgabungjemaat" type="checkbox" class="check-join-cg check-checkmark" value="1" tabindex="3">
+    <input id="checkgabungjemaat" type="checkbox" class="check-join-cg check-checkmark" value="1" tabindex="3" required >
     <span class="checkbox-span" style="margin-left:12px; margin-top:-15px; background-color:transparent;"></span>
     </label>
     <span style="margin-left:20px; top:-2px; right:25px;position:relative; font-size: medium; color: black;">Saya punya kerinduan untuk menjadi Jemaat di Gereja</span>
@@ -286,11 +290,14 @@ footer {
             
 <!-- Submit Button nanti masuk ke login juga harusnya-->
     <div class="form-group" style="margin-top:25px;margin-bottom:25px;">
-    <button type="submit" id="submitButton" class="btn btn-primary btn-block" style="font-size:18px; letter-spacing:4px; border:0; background-color: grey; color:white;"><a href="keluar.php">Daftar</button> </a> </pan>                               
+    <button type="submit" name="daftar" id="submitButton" class="btn btn-primary btn-block" style="font-size:18px; letter-spacing:4px; border:0; background-color: green; color:white;">Daftar</button> </a> </pan>                               
 </div>
     </div>
+    
 </div>
 </form>
+
+
 </body>
 <footer>
   <p style = "font-size : 105%"><span style = "color : black">Informasi Registrasi Gereja : <br>
