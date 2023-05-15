@@ -14,7 +14,7 @@
       }
       $result .= '"><img src="../admin/foto/'.$row['poster'].'" alt="Image"><h3 style="padding-top: 10px">'.$row['nama'].'</h3>'.$row['deskripsi'];
       if ($row['pendaftaran']==1) {
-        $result .= '<br><button class="klikDaftar" onclick="klikDaftar()">Daftar sekarang</button>';
+        $result .= '<br><button class="klikDaftar" onclick="klikDaftar('.$row['id'].')">Daftar sekarang</button>';
       }
       $result .= '</div>';
       $count += 1;

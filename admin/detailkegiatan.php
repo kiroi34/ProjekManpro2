@@ -178,6 +178,28 @@
             }  
         });
       }
+      function mintaBukti(id) {
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin mengirim email pada user ini?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Ya',
+            denyButtonText: `Tidak`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+                url: 'kirimemail.php',
+                type: 'post',
+                data: {
+                    id: id
+                },
+                success: function(result) {
+                  document.getElementById('B'+id).innerHTML = "<button class='btn btn-warning' onclick='mintaBukti("+id+")'>Email terkirim..</button>";
+                }  
+              });
+            }
+          })
+      }
     </script>
      <style>
         .logo_name, .links_name {
@@ -329,7 +351,7 @@
                         <td><?php echo $data['waktudaftar']; ?></td>
                         <td id="K<?php echo $data['idpk'];?>"><?php if ($data['statuspembayaran']==1) { echo '<i class="fas fa-check" onclick="batal('.$data['idpk'].')"style="color:green"> Yes</i>'; } else { echo '<i class="fas fa-times" style="color:red" onclick="konfirmasi('.$data['idpk'].')"> No</i>'; }?></td>
                         <td id="P<?php echo $data['idpk'];?>"><?php if ($data['statuspembayaran']==1) { echo $data['waktukonfirmasi']; } else { echo "-";}?></td>
-                        <td><?php if (!empty($data['buktipembayaran'])) { echo '<button type="button" class="btn btn-info" onclick="lihatbukti(`'.$data['buktipembayaran'].'`)">Lihat</button>'; } else { echo "-";}?></td>
+                        <td id="B<?php echo $data['idpk'];?>"><?php if ($data['buktipembayaran']!='-') { echo '<button type="button" class="btn btn-info" onclick="lihatbukti(`'.$data['buktipembayaran'].'`)">Lihat</button>'; } else { if ($data['statuspembayaran']==0) { echo "<button class='btn btn-warning' onclick='mintaBukti(".$data['idpk'].")'>Minta bukti</button?";} else { echo "<button class='btn btn-warning' onclick='mintaBukti(".$data['idpk'].")'>Email terkirim..</button>"; }}?></td>
                     </tr>
                     <?php } ?>
                 </tbody>
