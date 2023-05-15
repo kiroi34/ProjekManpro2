@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2023 at 11:57 AM
+-- Generation Time: Apr 16, 2023 at 09:04 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dbgereja`
+-- Database: `test`
 --
 
 -- --------------------------------------------------------
@@ -38,8 +38,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3'),
-(2, 'alan', '91e38e63b890fbb214c8914809fde03c73e7f24d');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 -- --------------------------------------------------------
 
@@ -56,21 +55,6 @@ CREATE TABLE `berita` (
   `gambar` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `berita`
---
-
-INSERT INTO `berita` (`id`, `kategori`, `judul`, `konten`, `tanggal`, `gambar`) VALUES
-(1, '1', 'Gereja', 'Gereja Bagus', '2023-04-24', 'gambar_gereja.jpg'),
-(2, '2', 'Paskah', 'Selamat Paskah', '2023-04-09', 'paskah.jpg'),
-(4, '3', 'Natal', 'Selamat Natal', '2023-12-25', 'natal.jpg'),
-(5, '1', 'Gereja', 'Gereja Bagus Lagi', '2023-04-17', 'gerejaLagi.jpg'),
-(7, '1', 'Gereja Lagi dan Lagi', 'Gereja Bagusssss', '2023-04-10', 'gambar_gereja.jpg'),
-(8, '2', 'Paskahhhhh', 'Selamat Paskah', '2023-04-09', 'paskah.jpg'),
-(9, '1', 'Natallll', 'Selamat Natal', '2023-12-25', 'natal.jpg'),
-(10, '2', 'tes', 'Selamat Paskah', '2023-04-24', 'gerejaLagi.jpg'),
-(11, '1', 'Gereja', 'Selamat Paskah', '2023-04-24', 'paskah.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -79,47 +63,10 @@ INSERT INTO `berita` (`id`, `kategori`, `judul`, `konten`, `tanggal`, `gambar`) 
 
 CREATE TABLE `galeri` (
   `id` int(11) NOT NULL,
-  `kategori` varchar(255) NOT NULL,
-  `file_name` varchar(100) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `link` varchar(150) NOT NULL,
   `gambar` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `galeri`
---
-
-INSERT INTO `galeri` (`id`, `kategori`, `file_name`, `gambar`) VALUES
-(130, '2', 'messageImage_1627966438871.jpg', '2023-05-09 00:57:41'),
-(131, '2', 'messageImage_1634361735129.jpg', '2023-05-09 00:57:41'),
-(132, '10', 'messageImage_1634361735129.jpg', '2023-05-09 01:36:49'),
-(133, '10', 'messageImage_1634370346060.jpg', '2023-05-09 01:36:49'),
-(134, '11', 'messageImage_1627879147302.jpg', '2023-05-09 14:50:49'),
-(135, '11', 'messageImage_1627879222188.jpg', '2023-05-09 14:50:49'),
-(136, '1', 'messageImage_1634361735129.jpg', '2023-05-09 14:51:33'),
-(137, '1', 'messageImage_1634370346060.jpg', '2023-05-09 14:51:33');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `galerikategori`
---
-
-CREATE TABLE `galerikategori` (
-  `idKategoriGaleri` int(11) NOT NULL,
-  `namaKategori` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `galerikategori`
---
-
-INSERT INTO `galerikategori` (`idKategoriGaleri`, `namaKategori`) VALUES
-(1, 'Retreat Teen'),
-(2, 'Retreat Dewasa'),
-(7, 'Retreat Nikah'),
-(8, 'Retreat Keluarga'),
-(10, 'Retreat Karyawan'),
-(11, 'Retreat Dosen');
 
 -- --------------------------------------------------------
 
@@ -142,8 +89,7 @@ CREATE TABLE `inputkegiatan` (
 INSERT INTO `inputkegiatan` (`id`, `nama`, `tanggal`, `deskripsi`, `poster`) VALUES
 (1, 'Ibadah Mingguan', '2023-06-17', 'Ibadah yang diadakan setiap minggu. Minggu ini akan mengangkat tema \"Praise the Lord\" dengan dipimpin oleh Pdt. ABC.', 'ibadahmingguan.jpg'),
 (2, 'Perjamuan Kudus', '2023-07-02', 'Acara perjamuan kudus yang bisa diterima oleh semua jemaat. Diadakan pada setiap awal bulan termasuk awal bulan Juli.', 'perjamuankudus.jpg'),
-(3, 'Penyerahan Anak', '2023-06-24', 'Upacara penyerahan anak yang akan diadakan di minggu ketiga bulan Juni. Jemaat yang ingin menyerahkan anaknya bisa mendaftar di form yang tersedia.', 'penyerahananak.jpg'),
-(4, 'ibadah ', '2023-06-17', 'ewewr', 'VBG(1).png');
+(3, 'Penyerahan Anak', '2023-06-24', 'Upacara penyerahan anak yang akan diadakan di minggu ketiga bulan Juni. Jemaat yang ingin menyerahkan anaknya bisa mendaftar di form yang tersedia.', 'penyerahananak.jpg');
 
 -- --------------------------------------------------------
 
@@ -167,7 +113,7 @@ CREATE TABLE `inputpenggalangandana` (
 --
 
 CREATE TABLE `jabatan` (
-  `idJabatan` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `namaJabatan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -175,7 +121,7 @@ CREATE TABLE `jabatan` (
 -- Dumping data for table `jabatan`
 --
 
-INSERT INTO `jabatan` (`idJabatan`, `namaJabatan`) VALUES
+INSERT INTO `jabatan` (`id`, `namaJabatan`) VALUES
 (1, 'Penasihat'),
 (2, 'Ketua'),
 (3, 'Gembala Sidang'),
@@ -204,16 +150,6 @@ CREATE TABLE `pendeta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pendeta`
---
-
-INSERT INTO `pendeta` (`id`, `jabatan`, `nama`, `biodata`, `foto`) VALUES
-(5, '7', 'Pdt. Agus Supriono', 'Lahir pada tanggal 31 juli 1961, Pernah melakukan perjalanan Misionari ke kedalaman desa di kalimantan barat', '644769127739e7.43077663.png'),
-(7, '2', 'Pdt. Budi Setiawan ', 'Lahir pada tanggal 12 Desember 1965. Melakukan perjalanan misionaris di pedalaman sumatra untuk mewartakan injil Yesus.', '6447761c1bc670.99199739.png'),
-(10, '5', 'Ibu Tuti Handayati M.Acc.', 'Lahir pada tanggal 19 mei 1971. Menempuh pendidikan sebagai margister akutansi di Univesitas Indonesia', '6447757e50d2b2.09087060.png'),
-(11, '5', 'Alan Satria Julius Putra Hermawan', 'ini setelah di update', '64477ccd0013b5.20211656.png');
-
---
 -- Indexes for dumped tables
 --
 
@@ -236,12 +172,6 @@ ALTER TABLE `galeri`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `galerikategori`
---
-ALTER TABLE `galerikategori`
-  ADD PRIMARY KEY (`idKategoriGaleri`);
-
---
 -- Indexes for table `inputkegiatan`
 --
 ALTER TABLE `inputkegiatan`
@@ -257,7 +187,7 @@ ALTER TABLE `inputpenggalangandana`
 -- Indexes for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  ADD PRIMARY KEY (`idJabatan`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pendeta`
@@ -273,25 +203,19 @@ ALTER TABLE `pendeta`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `galeri`
 --
 ALTER TABLE `galeri`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
-
---
--- AUTO_INCREMENT for table `galerikategori`
---
-ALTER TABLE `galerikategori`
-  MODIFY `idKategoriGaleri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `inputkegiatan`
 --
 ALTER TABLE `inputkegiatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `inputpenggalangandana`
@@ -303,14 +227,71 @@ ALTER TABLE `inputpenggalangandana`
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `idJabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `pendeta`
 --
 ALTER TABLE `pendeta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
+
+ALTER TABLE inputkegiatan
+ADD pendaftaran BIT;
+ALTER TABLE inputkegiatan
+ADD biayapendaftaran INT;
+UPDATE inputkegiatan
+SET pendaftaran = 0,
+biayapendaftaran = 0
+WHERE id < 100;
+CREATE TABLE pendaftarankegiatan (
+    idpk int(11) NOT NULL PRIMARY KEY,
+    idkegiatan int(11) NOT NULL,
+    idpeserta int(11) NOT NULL,
+    statuspembayaran BIT NOT NULL
+);
+ALTER TABLE pendaftarankegiatan
+  	MODIFY idpk int(11) NOT NULL AUTO_INCREMENT;
+CREATE TABLE jemaat (
+    iduser INT(11) NOT NULL PRIMARY KEY,
+    nama VARCHAR(50) NOT NULL,
+    jeniskelamin VARCHAR (10) NOT NULL, 
+    nomortelepon VARCHAR(13) NOT NULL,
+    email VARCHAR (50) NOT NULL,
+    kota VARCHAR (50) NOT NULL,
+    tanggallahir date NOT NULL,
+    alamat VARCHAR (100) NOT NULL
+);
+ALTER TABLE jemaat
+  	MODIFY iduser int(11) NOT NULL AUTO_INCREMENT;
+INSERT INTO `jemaat`(`iduser`, `nama`, `jeniskelamin`, `nomortelepon`, `email`, `kota`, `tanggallahir`, `alamat`) VALUES (1,'Jemaat 1','Perempuan','089518068400','blabla@gmail.com','Surabaya','2001-08-08','Jl. Mawar no. 5'),
+(2, 'Jemaat 2', 'Laki-laki', '089567890109', 'lalalala@yahoo.co.id', 'Makassar', '1999-07-02', 'Jl. Siwalankerto no. 5'),
+(3, 'Jemaat 3', 'Laki-laki', '081657987666', 'tes123@yahoo.com', 'Jakarta', '2000-05-09', 'Jl. Bebek no. 8')
+
+ALTER TABLE inputkegiatan
+ADD kuota INT(6) NOT NULL;
+ALTER TABLE inputkegiatan
+ADD gender BIT(2) NOT NULL;
+ALTER TABLE inputkegiatan
+ADD usiamin int(3) NOT NULL;
+ALTER TABLE inputkegiatan
+ADD usiamax INT(3) NOT NULL;
+UPDATE inputkegiatan
+SET kuota = 0,
+gender = 0,
+usiamin = 0,
+usiamax = 0
+WHERE id < 100;
+
+ALTER TABLE pendaftarankegiatan
+ADD waktudaftar TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE pendaftarankegiatan
+ADD waktukonfirmasi TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE pendaftarankegiatan
+ADD buktipembayaran VARCHAR(100);
+
+INSERT INTO `pendaftarankegiatan`(`idkegiatan`, `idpeserta`, `statuspembayaran`, `buktipembayaran`) VALUES (36,1,0,'retreat gereja.png'), (36,2,0,'retreat gereja.png'), (36,3,0,'retreat gereja.png')
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

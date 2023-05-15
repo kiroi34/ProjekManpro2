@@ -2,6 +2,7 @@
 // Include the database configuration file 
 include_once 'koneksi.php'; 
 $kategori = $_POST['kategori'];
+$riwayatKategori = $_POST['riwayatKategori'];
 
      
 if(isset($_POST['submit'])){ 
