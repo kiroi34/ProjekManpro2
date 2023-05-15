@@ -128,13 +128,23 @@
             </div>
 
             <div class="mt-4" style="max-width:800px; margin:auto;">
-              <div class="streaming-sydney-revival-service">
-                <form id="w0" class="submit-form" action="/form/submit-iftn" method="post">
+                <div class="streaming-sydney-revival-service">
                   <input type="hidden" name="_csrf" value="jdwIbDQwYoscgf9_f2BT2xmBiioJIpPYQPnC3Gx8NyS_6FsmewkD727ElwVPMWK6Q8nGXGhAy5sfl6i5HDtmHQ==">       
-                  <div class="container" style="margin-bottom:20px;">    
+                    <div class="container" style="margin-bottom:20px;">    
                     <div style="text-align:left;">
-                      <div class="form-group field-congregationalserviceform-checked_form">
-                        <div id="congregationalserviceform-checked_form" aria-invalid="false"><label id="checkmarklabel0" class="checkmark-custom">
+                    <div class="form-group field-congregationalserviceform-checked_form">
+                      <div id="congregationalserviceform-checked_form" aria-invalid="false"><label id="checkmarklabel0" class="checkmark-custom">
+              
+                  <script>
+                    function myFunction() { 
+                      var x = document.getElementById("myInput");
+                      if (x.type === "password") {
+                        x.type = "text";
+                      } else {
+                        x.type = "password";
+                      }
+                    }
+                  </script>
 
                           <!-- Bikin Background Form -->
                           <div id="pelayanan" class="container" style="margin-bottom: 20px;">
