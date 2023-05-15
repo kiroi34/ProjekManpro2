@@ -114,6 +114,7 @@
             color: #fff;
             font-size: 24px;
             font-weight: 500;
+            margin-top:2px;
             }
             .sidebar .nav-links{
             margin-top: 10px;
@@ -148,6 +149,7 @@
             font-size: 15px;
             font-weight: 400;
             white-space: nowrap;
+            margin-top:3px;
             }
             .sidebar .nav-links .log_out{
             position: absolute;
@@ -327,6 +329,7 @@
                 left: 60px;
                 width: calc(100% - 60px);
             }
+
             }
      </style>
    </head>
@@ -357,7 +360,7 @@
       <i class='bx bx-user'></i>
       <span class="logo_name">Master Admin</span>
     </div>
-      <ul class="nav-links">
+      <ul class="nav-links" style="margin-left:-32px">
         <li>
           <a href="homeMaster.php">
             <i class='bx bx-home-alt' ></i>
