@@ -226,10 +226,10 @@ require_once "connByAlan.php";
             <form action="inputGaleriDataBase.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
                 <!-- testing -->
                 <br>
-                <label for="kategori">Input Baru Nama Kategory Foto</label>
+                <h4>Input Baru Nama Kategori Foto</h4>
                 <input type="text" id="kategori" name="kategori" placeholder="Masukan Nama Kategori Foto..." >
 
-                <label for="riwayatKategori">Riwayat Kategori</label>
+                <h4>Riwayat Kategori</h4>
                 <select id="riwayatKategori" name="riwayatKategori" >
                   
                   <option value="pilihan">--Pilih Kategori--</option>
