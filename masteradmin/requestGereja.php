@@ -101,7 +101,7 @@
       function lihatvisi() {
         document.getElementById("judulModal").innerHTML = '<center><h4>Visi dan Misi</h4></center>';
         document.getElementById("isiModal").innerHTML = 
-                  '<p>Visi: Menjadi Gereja yang berkualitas dan takut akan Tuhan</p> <br> <p>Misi:</p>';
+                  '<p>Visi: Menjadi Gereja yang berkualitas dan takut akan Tuhan</p> <br> <p>Misi: Mempertahankan INTEGRITAS,CIVILITAS dan KREDIBILITAS</p>';
         $('#myModal').modal('show');
       }
       function tutup() {
