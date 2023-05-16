@@ -63,7 +63,7 @@
       function lihatCP() {
         document.getElementById("judulModal").innerHTML = '<center><h4>Penanggungjawab Gereja</h4></center>';
         document.getElementById("isiModal").innerHTML = 
-                  '<p>Nama : Sutrisno</p> <br> <p>NIK : 93249429482</p> <br> <p>Alamat: Jalan Siwalankerto</p> <br> <p>No HP: 0812345</p>';
+                  '<p>Nama : Sutrisno</p> <br> <p>NIK : 93249429482</p> <br> <p>Alamat: Jalan Siwalankerto</p> <br> <p>No HP: 0812345</p><br><button type="button" class="btn btn-info" onclick="lihatKTP()">Lihat</button>';
         $('#myModal').modal('show');
       }
       function tutup() {
@@ -74,6 +74,15 @@
         document.getElementById("judulModal").innerHTML = '<center><h4>List Admin</h4></center>';
         document.getElementById("isiModal").innerHTML = 
                   '<b>Admin Saat ini:</b><br><p>sutrisno.gms</p><br><a href="kelolaAdmin.php">Klik Disini untuk Kelola Admin</a>';
+        $('#myModal').modal('show');
+      }
+      function tutup() {
+        $('#myModal').modal('hide');
+      }
+
+      function lihatKTP() {
+        document.getElementById("judulModal").innerHTML = '<center><h4>Lihat KTP</h4></center>';
+        document.getElementById("isiModal").innerHTML = '<center><img src="foto/ktp.png" alt="" style="width:100%" /></center>';
         $('#myModal').modal('show');
       }
       function tutup() {
