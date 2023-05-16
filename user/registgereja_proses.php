@@ -47,7 +47,7 @@
         <script>
             alert('Selamat, Data berhasil diupload!');
             <?php
-                header('Location: Homeuser.php');
+                header('Location: konfirmasigereja.php');
                 exit;
             ?>
         </script>
