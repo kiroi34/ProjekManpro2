@@ -268,7 +268,7 @@
 
                                                                             <div id="upload_form" style="display: none;">
                                                                                 <div class="form-group">
-                                                                                    <label for="poster">Klik tombol <i>"Choose File"</i> untuk upload sebuah file (jpg/jpeg/png):</label>
+                                                                                    <label for="poster">Klik tombol <i>"Choose File"</i> untuk upload<br> sebuah file (jpg/jpeg/png):</label>
                                                                                     <br>
                                                                                     <input type="file" id ="fotopersembahan" accept="image/png, image/jpg, image/jpeg, image/PNG, image/JPG, image/JPEG" name="fotopersembahan" default = 0>
                                                                                 </div>
