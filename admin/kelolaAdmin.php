@@ -177,7 +177,7 @@
                     <td>Lisa</td>
                     <td>lisa.gms</td>
                     <td><i class="fas fa-check"style="color:red">Menunggu Konfirmasi</i></td>
-                    <td><span><button type="button" class="btn btn-success" onclick="action()">Terima</button> <button type="button" class="btn btn-danger" onclick="action()">Hapus</button></span></td>
+                    <td><button type="button" class="btn btn-danger" onclick="action()">Hapus</button></td>
                 </tbody>
             </table>
         </div>
