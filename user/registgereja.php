@@ -125,7 +125,7 @@
                                                     <label id="checkmarklabel0" class="checkmark-custom">
 
                                                         <!-- Bikin Background Form -->
-                                                        <div id="acceptJesusInfo" class="container" style="margin-bottom: 20px; margin-left:30px;">
+                                                        <div id="acceptJesusInfo" class="container" style="margin-bottom: 20px; margin-left:52px;">
                                                             <div style="background-image:url('https://userscontent2.emaze.com/images/f9d0caa4-73e5-4bb5-a4f0-772c237fe09b/c97065c5452e8d5aaacd9ce51d64ff8d.png'); background-repeat:no-repeat; background-position:center; background-size:cover; background-color:#1C1C1C; border-radius:10px; padding:20px;">
 
                                                                 <!-- FORM 1 : Registrasi Gereja -->
@@ -215,7 +215,7 @@
                                                                             <!-- NEWS Gereja -->
                                                                             <!-- Kategori Berita -->
                                                                             <div class="form-group field-congregationalserviceform-news_category">
-                                                                                <select id="kategoriberita" class="form-control" name="kategoriberita" onchange="showTargetInput()">
+                                                                                <select id="kategoriberita" class="form-control" name="kategoriberita" onchange="upload_checkbox()">
                                                                                     <option value="kategoriberita">--Pilih Kategori Berita--</option>
                                                                                     <?php
                                                                                         require_once 'koneksi.php';
@@ -230,18 +230,6 @@
                                                                                         }
                                                                                     ?>
                                                                                 </select>
-                                                                                <script>
-                                                                                    function showTargetInput() {
-                                                                                        var kategori = document.getElementById("kategori");
-                                                                                        var target_input = document.getElementById("target_input");
-
-                                                                                        if (kategori.value == "1") {
-                                                                                        target_input.style.display = "block";
-                                                                                        } else if (kategori.value == "2" || kategori.value == "3") {
-                                                                                        target_input.style.display = "none";
-                                                                                        }
-                                                                                    }
-                                                                                </script> 
                                                                             </div>
 
                                                                             <div class="form-group field-judulberitaField">
@@ -328,7 +316,6 @@
                                                                             <br>
                                                                         </div>          
 
-                                                                        <!-- Submit Button (TOLONG HREF KE HOMEUSER.HTML LUPA CARANYA) --> 
                                                                         <button type="submit" id="submitButton" class="btn btn-primary btn-block" style="font-size:18px; letter-spacing:4px; border:0; background-color:white; color:black;">
                                                                             <input type="submit" name="submit" value="Submit"></input>
                                                                         </button>

@@ -78,7 +78,7 @@ input[type=text]:focus, input[type=password]:focus {
 
     <label for="notelp"><b style = "color : #f4f2ff">Nomor Telepon</b></label>
     <input type="text" placeholder="Nomor Telepon" name="notelp" required>
-        <button type="submit" class="btn"><a href="verifikasinomorhp.php">Oke</button> 
+        <button type="submit" class="btn" name="oke">Oke</button> 
     </div>
   </form>
 </body>
