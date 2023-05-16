@@ -265,10 +265,9 @@
                                                                             <span style="margin-left:20px; top:-2px; right:25px;position:relative; font-size: medium; color: white;">
                                                                                 Ada Qris untuk Persembahan
                                                                             </span>
-
                                                                             <div id="upload_form" style="display: none;">
                                                                                 <div class="form-group">
-                                                                                    <label for="poster">Klik tombol <i>"Choose File"</i> untuk upload sebuah file (jpg/jpeg/png):</label>
+                                                                                    <label for="poster">Klik tombol <i>"Choose File"</i> untuk upload sebuah file<br>(jpg/jpeg/png):</label>
                                                                                     <br>
                                                                                     <input type="file" id ="fotopersembahan" accept="image/png, image/jpg, image/jpeg, image/PNG, image/JPG, image/JPEG" name="fotopersembahan" default = 0>
                                                                                 </div>
