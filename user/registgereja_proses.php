@@ -34,7 +34,6 @@
             $tmp_file = $_FILES['fotopersembahan']['tmp_name']; //nampung directory laptop
             $imgStorePath = "../admin/poster/".$fotopersembahan;
             
-            
             move_uploaded_file($tmp_file, $imgStorePath);
 
             $query = "INSERT INTO daftargereja (nama, email, jamoperasional, kota, alamat, tentang, visimisi, informasipendeta, pertanyaanfaq, jawabanfaq, kategoriberita, judulberita, kontenberita, tanggalkonten, rekeningpersembahan, fotopersembahan, namacp, kontakcp, nikcp)
