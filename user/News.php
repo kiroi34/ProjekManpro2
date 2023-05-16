@@ -135,7 +135,9 @@
                     </div>
 
                     <?php
-                        $query = "SELECT * FROM berita";
+                        $query = "SELECT id, kategori.namaKategori, judul, konten, tanggal, gambar
+                        FROM berita INNER JOIN kategori
+                        ON kategori.idKategori=berita.kategori";
                         $result = $sambung->query($query);
                         
                         if ($result->num_rows>0) {
@@ -143,7 +145,7 @@
                                 $id=$row['id'];
                                 echo "<section class='faq-container'>";
                                     echo "<div class='faq-one'>";
-                                        echo "<h1 class='faq-page'style='font-size:larger;'><b>" . $row['kategori'] . ": </b>" . $row['judul'] . "</h1>";
+                                        echo "<h1 class='faq-page'style='font-size:larger;'><b>" . $row['namaKategori'] . ": </b>" . $row['judul'] . "</h1>";
                                         echo "<div class='faq-body'>";
                                             echo "<p style='font-size: medium;'>" . $row['konten'] . "<br>" . $row['tanggal'] . "</p>";
                                             echo "<img src='../admin/img/" . $row["gambar"] . "' height='400'>";
