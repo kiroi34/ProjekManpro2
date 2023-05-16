@@ -272,13 +272,13 @@ while($data = mysqli_fetch_array($records))
     
       <article>
         <div class="article-wrapper">
-        <h2><?php echo $data["namaKategori"]; ?></h2>
+        <h2 style="margin-left: 25px;"><?php echo $data["namaKategori"]; ?></h2>
           <?php echo "<img src='../admin/gambarGaleri/" . $data["file_name"] . "'>"; ?>
 
           <div class="btn-group" style="width:50%">
             <form action="deleteGaleri.php" method="post">
               <input type = "hidden" name ="dapetinNama" value="<?php echo $data['file_name']?>">
-              <button class="edit" value="delete" name="delete" style="width: 45%; background-color: #FF4136;">Delete</button>
+              <button id="btnDelete" class="edit" value="delete" name="delete" style="width: 45%; margin-left: 25px;">Delete</button>
             </form>
           </div>
 </div>

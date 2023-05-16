@@ -267,6 +267,21 @@ input[type=submit]:hover {
 background-color: #9c8c8c;
 }
 
+#btnDelete {
+  width: 100%;
+  background-color: #FF4136;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  }
+  
+ #btnDelete {
+  background-color: #FF4136;
+  }
+
 .isi {
 background-color: #f2f2f2;
 padding: 20px;
