@@ -215,7 +215,7 @@
                                                                             <!-- NEWS Gereja -->
                                                                             <!-- Kategori Berita -->
                                                                             <div class="form-group field-congregationalserviceform-news_category">
-                                                                                <select id="kategoriberita" class="form-control" name="kategoriberita" onchange="showTargetInput()">
+                                                                                <select id="kategoriberita" class="form-control" name="kategoriberita" onchange="upload_checkbox()">
                                                                                     <option value="kategoriberita">--Pilih Kategori Berita--</option>
                                                                                     <?php
                                                                                         require_once 'koneksi.php';
@@ -230,18 +230,6 @@
                                                                                         }
                                                                                     ?>
                                                                                 </select>
-                                                                                <script>
-                                                                                    function showTargetInput() {
-                                                                                        var kategori = document.getElementById("kategori");
-                                                                                        var target_input = document.getElementById("target_input");
-
-                                                                                        if (kategori.value == "1") {
-                                                                                        target_input.style.display = "block";
-                                                                                        } else if (kategori.value == "2" || kategori.value == "3") {
-                                                                                        target_input.style.display = "none";
-                                                                                        }
-                                                                                    }
-                                                                                </script> 
                                                                             </div>
 
                                                                             <div class="form-group field-judulberitaField">
@@ -328,7 +316,6 @@
                                                                             <br>
                                                                         </div>          
 
-                                                                        <!-- Submit Button (TOLONG HREF KE HOMEUSER.HTML LUPA CARANYA) --> 
                                                                         <button type="submit" id="submitButton" class="btn btn-primary btn-block" style="font-size:18px; letter-spacing:4px; border:0; background-color:white; color:black;">
                                                                             <input type="submit" name="submit" value="Submit"></input>
                                                                         </button>

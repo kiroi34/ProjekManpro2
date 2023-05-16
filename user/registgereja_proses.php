@@ -29,10 +29,10 @@
             $kontakcp = $_POST['kontakcp'];
             $nikcp = $_POST['nikcp'];
 
-           $poster = $_FILES['fotopersembahan']['name']; //nampung nama
-            $extention = pathinfo($poster, PATHINFO_EXTENSION);
+            $fotopersembahan = $_FILES['fotopersembahan']['name']; //nampung nama
+            $extention = pathinfo($fotopersembahan, PATHINFO_EXTENSION);
             $tmp_file = $_FILES['fotopersembahan']['tmp_name']; //nampung directory laptop
-            $imgStorePath = "poster/".$poster;
+            $imgStorePath = "../admin/poster/".$fotopersembahan;
             
             
             move_uploaded_file($tmp_file, $imgStorePath);
@@ -46,14 +46,10 @@
 
         <script>
             alert('Selamat, Data berhasil diupload!');
-            // window.location.href = document.referrer;
-            // function clearForm() {
-            //     var form = document.getElementById('formulir');
-            //     form.reset();
-            // }
-            // clearForm();
-            header('Location: Homeuser.php');
-            exit;
+            <?php
+                header('Location: Homeuser.php');
+                exit;
+            ?>
         </script>
     </body>
 </html>
