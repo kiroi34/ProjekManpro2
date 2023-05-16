@@ -96,7 +96,7 @@
       </style>
       </head>
       <body>
-        <?php include_once "navbar.html" ?>
+        <?php include_once "navbar.php" ?>
         <div id="mainContainer">
           <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
       <div style="padding-left:0; padding-right:0">
