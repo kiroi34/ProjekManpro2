@@ -108,11 +108,19 @@
     <div class="home-content">
             <div class="isi">
                 <form id="formulir" action="postingproses.php" enctype="multipart/form-data" method="post">
-                    <label for="exampleFormControlInput1">Kategori Berita</label>
+                    <label for="kategori">Kategori Berita</label>
                     <select id="kategori" class="form-control" name="kategori">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
+                      <option value="kategori">--Pilih Kategori--</option>
+                      <?php
+                        $sql = "SELECT * FROM kategoriberita";
+                        $result = $sambung->query($sql);
+
+                        if ($result->num_rows > 0) {
+                          while($data = $result->fetch_assoc()) {
+                            echo "<option value='" . $data['id'] . "'>" . $data['namaKategoriBerita'] . "</option>";
+                          }
+                        }
+                      ?>
                     </select>
 
                     <label for="exampleFormControlInput1">Judul Berita</label>
@@ -141,6 +149,7 @@
   </section>
 
   <script>
+
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");
         sidebarBtn.onclick = function() {
