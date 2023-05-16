@@ -1,8 +1,8 @@
 <?php
     require_once "connect.php";
 
-    $tanggal = $_POST['tanggal'];
-    $sql = ("SELECT * FROM inputkegiatan WHERE tanggal = '".$tanggal."'");
+    $id = $_POST['id'];
+    $sql = ("SELECT * FROM jadwalpendeta WHERE pendeta = ".$id);
     $stmt = $conn->query($sql);
     $data = $stmt->fetchAll();
     $result = '<div id="demo" class="carousel slide" data-ride="carousel"><div class="carousel-inner">';
@@ -12,11 +12,9 @@
       if ($count==0) {
         $result .= ' active';
       }
-      $result .= '"><img src="../admin/foto/'.$row['poster'].'" alt="Image"><h3 style="padding-top: 10px">'.$row['nama'].'</h3>'.$row['deskripsi'];
-      if ($row['pendaftaran']==1) {
-        $result .= '<br><button class="klikDaftar" onclick="klikDaftar('.$row['id'].')">Daftar sekarang</button>';
-      }
-      $result .= '</div>';
+      $result .= '"><center><h1><i class="fas fa-calendar-alt"></i> '.$row['tanggal'].'</h1>
+      <h2>'.$row['tema'].'</h2>
+      <p>'.$row['deskripsi'].'</p></div></center>';
       $count += 1;
     }
     if ($count > 1) {
@@ -30,9 +28,8 @@
       </div>';
     }
     if ($count==0) {
-      $result="";
+      $result="Belum ada jadwal";
     }
 
-    header('Content-type: application/json');
-    echo json_encode($result);
+    echo $result;
 ?>

@@ -24,11 +24,37 @@ require_once "../admin/connByAlan.php";
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css" rel="stylesheet">
      <link rel="stylesheet" href="css/coba.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+     <script>
+     function lihatJadwal(id) {
+        $.ajax({
+            url: 'php/getJadwal.php',
+            type: 'post',
+            data: {
+                id: id
+            },
+            success: function(result) {
+              document.getElementById('isi').innerHTML = result;
+            }  
+        });
+        $('#myModal').modal('show');
+
+      }
+      </script>
      <style>
 
     body{
           font-family: 'Poppins';font-size: 18px;
         }
+    .carousel-control-prev-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+    }
+    .carousel-control-next-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+
+    }
 
         /* @media (min-width : 768px) {
           #countdownWrapper {
@@ -252,6 +278,26 @@ a {
       ?>
     </head>
 <body>
+                <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title" id="modtit">Jadwal Kotbah</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                <div id="isi"></div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            
+            </div>
+        </div>
       <!-- <div id="mainContainer">
       <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">     -->
       <div style="padding-left:0; padding-right:0">
@@ -284,9 +330,9 @@ while($data = mysqli_fetch_array($records))
 ?>
 <!-- pembatas -->
 
-  <div class="box">
+  <div class="box" onclick="lihatJadwal(<?php echo $data['id']?>)">
     <div class="box-top"> 
-      <img class="box-image" <?php echo "<img src='../admin/foto/" . $data["foto"] . "'>"; ?> 
+      <img class="box-image" <?php echo "<img src='../admin/foto/" . $data["foto"] . "'>"; ?> >
       <div class="title-flex">
         <h3 class="box-title"><?php echo $data['nama']; ?></h3>
         <p class="user-follow-info"><?php echo $data['namaJabatan']; ?></p>

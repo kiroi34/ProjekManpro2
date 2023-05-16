@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">    
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap5.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <script>
@@ -60,6 +61,9 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
             }
+            .logo_name, .links_name{
+            margin-top: 3px;
+            }
             .sidebar{
             position: fixed;
             height: 100%;
@@ -86,6 +90,7 @@
             color: #fff;
             font-size: 24px;
             font-weight: 500;
+            margin-top:2px;
             }
             .sidebar .nav-links{
             margin-top: 10px;
@@ -120,6 +125,7 @@
             font-size: 15px;
             font-weight: 400;
             white-space: nowrap;
+            margin-top:3px;
             }
             .sidebar .nav-links .log_out{
             position: absolute;
@@ -299,6 +305,7 @@
                 left: 60px;
                 width: calc(100% - 60px);
             }
+
             }
      </style>
    </head>
@@ -329,7 +336,7 @@
       <i class='bx bx-user'></i>
       <span class="logo_name">Master Admin</span>
     </div>
-      <ul class="nav-links">
+      <ul class="nav-links"  style="margin-left: -32px;">
         <li>
           <a href="homeMaster.php">
             <i class='bx bx-home-alt' ></i>

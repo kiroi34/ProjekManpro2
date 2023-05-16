@@ -1,9 +1,16 @@
 <?php
     require_once "php/connect.php";
-
+    if (isset($_GET['daftar'])) {
+        if ($_GET['daftar']==1) {
+            echo '<script>alert("Pendaftaran berhasil!");
+            window.location = "kalender.php";
+            </script>';
+        }
+    }
     $sql = ("SELECT DATE_FORMAT(tanggal, '%Y-%c-%e') as 'tanggal' FROM inputkegiatan");
     $stmt = $conn->query($sql);
     $data = $stmt->fetchAll();
+    $_SESSION['user'] = 4;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +25,8 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     <style>
         body{
           font-family: 'Poppins';font-size: 18px;
@@ -73,6 +82,16 @@
         }
         .klikDaftar:active {
             border: 1px solid red;
+        }
+        .buttonKlik {
+            background-color: transparent; 
+            border: 1px solid black; 
+            border-radius: 10px;
+            padding: 5px 10px;
+        }
+        .buttonKlik:hover{
+            background-color: black;
+            color: white;
         }
       </style>
       </head>
@@ -250,8 +269,45 @@
                 tbl.appendChild(row); // appending each row into calendar body.
             }
         }
-        function klikDaftar() {
-            
+        function klikDaftar(id) {
+            Swal.fire({
+            title: 'Apakah Anda yakin ingin mendaftar pada kegiatan ini?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Ya',
+            denyButtonText: `Tidak`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                    url: 'php/getpembayaran.php',
+                    type: 'post',
+                    data: {
+                        id: id
+                    },
+                    success: function(result) {
+                        if (result==1) {
+                            alert("Anda sudah mendaftar!");
+                        } else if (result == 2) {
+                            alert("Pendaftaran berhasil!");
+                        } else if (result == 3) {
+                            alert("Kegiatan hanya khusus untuk laki-laki!");
+                        } else if (result == 4) {
+                            alert("Kegiatan hanya khusus untuk perempuan!");
+                        } else if (result == 5) {
+                            alert("Anda tidak memenuhi minimal umur untuk kegiatan ini!");
+                        } else if (result == 6) {
+                            alert("Anda tidak memenuhi maksimal umur untuk kegiatan ini!");
+                        } else if (result == 7) {
+                            alert("Saat ini kuota pendaftar sudah penuh. Nama Anda akan tetap tercatat dan kami akan menghubungi Anda jika ada slot kosong. Periksa email Anda secara berkala.");
+                        } else {
+                            document.getElementById('modtit').innerHTML = 'Silakan membayar disini';
+                            document.getElementById('isi').innerHTML = result;
+                        }
+                    }  
+                });
+                $('#myModal').modal('show');
+                }
+            })
         }
       </script>
             <!-- Modal -->

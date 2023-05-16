@@ -81,7 +81,7 @@
         }
         function klikhapus(id) {
           Swal.fire({
-            title: 'Apakah Anda yakin ingin menghapus data keuangan ini?',
+            title: 'Apakah Anda yakin ingin menghapus jadwal ini?',
             showDenyButton: true,
             showCancelButton: false,
             confirmButtonText: 'Ya',
