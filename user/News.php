@@ -118,7 +118,7 @@
 
         session_start();
 
-        include_once "navbar.html";
+        include_once "navbar.php";
     ?>
 
     <div id="mainContainer">

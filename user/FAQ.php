@@ -114,7 +114,7 @@
 
         <?php
             require_once 'koneksi.php';
-            include_once "navbar.html";
+            include_once "navbar.php";
         ?>
 
         <div id="mainContainer">

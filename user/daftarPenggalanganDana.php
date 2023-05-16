@@ -57,7 +57,7 @@
 
     <body>
         <?php
-            include_once "navbar.html";
+            include_once "navbar.php";
             require_once "koneksi.php";
         ?>
 

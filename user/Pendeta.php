@@ -246,7 +246,7 @@ a {
   }
 }
       </style>
-      <?php include_once "navbar.html" ?>
+      <?php include_once "navbar.php" ?>
       <?
       include 'conn.php'
       ?>
