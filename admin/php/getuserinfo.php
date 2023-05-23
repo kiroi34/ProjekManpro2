@@ -1,18 +1,25 @@
 <?php
     require_once "../koneksi.php";
     $id = $_POST['id'];
-    $sql = 'SELECT * FROM jemaat WHERE iduser = '.$id;
+    $sql = 'SELECT * FROM akunjemaat WHERE idAkun = '.$id;
     $stmt = $sambung->query($sql);
     foreach ($stmt as $data) {
         $isi = '<h3> Informasi Jemaat</h3>'
-            .'Nama: '.$data['nama']
-            .'<br>Jenis kelamin: '.$data['jeniskelamin']
-            .'<br>Nomor telepon: '.$data['nomortelepon']
+            .'Nama Lengkap: '.$data['namaLengkap']
+            .'<br>Jenis Kelamin: ';
+        if ($data['jenisKelamin']=='F') {
+            $isi .= 'Perempuan';
+        } else {
+            $isi .= 'Laki-laki'; 
+        }
+        $isi .= '<br>Nomor Telepon: '.$data['nomorTelepon']
             .'<br>Email: '.$data['email']
             .'<br>Kota: '.$data['kota']
-            .'<br>Tanggal lahir: '.$data['tanggallahir']
-            .'<br>Alamat: '.$data['alamat']
-            .'<br>Waktu Daftar: '.$data['waktudaftar'];
+            .'<br>Tanggal Lahir: '.$data['tanggalLahir']
+            .'<br>Tempat Lahir: '.$data['tempatLahir']
+            .'<br>Usia: '.$data['umur']
+            .'<br>Alamat: '.$data['alamatDomisili']
+            .'<br>Waktu Daftar: '.$data['waktuDaftar'];
     }
     echo $isi;
 ?>

@@ -24,7 +24,7 @@
   foreach ($stmt3 as $isi) {
     $jumlahkonfirmasi = $isi['jumlah'];
   }
-  $sql = 'SELECT * FROM pendaftarankegiatan p JOIN jemaat j ON p.idpeserta = j.iduser WHERE idkegiatan = '.$id;
+  $sql = 'SELECT * FROM pendaftarankegiatan p JOIN akunjemaat j ON p.idpeserta = j.idAkun WHERE idkegiatan = '.$id;
   $stmt = $sambung->query($sql);
 
 ?>
@@ -347,7 +347,7 @@
                     ?>
                     <tr>
                         <td><?= $i++; ?></td>
-                        <td onclick="klikName('<?php echo $data['idpeserta']; ?>')" id="tdid"><?php echo $data['nama']; ?></td>
+                        <td onclick="klikName('<?php echo $data['idpeserta']; ?>')" id="tdid"><?php echo $data['namaLengkap']; ?></td>
                         <td><?php echo $data['waktudaftar']; ?></td>
                         <td id="K<?php echo $data['idpk'];?>"><?php if ($data['statuspembayaran']==1) { echo '<i class="fas fa-check" onclick="batal('.$data['idpk'].')"style="color:green"> Yes</i>'; } else { echo '<i class="fas fa-times" style="color:red" onclick="konfirmasi('.$data['idpk'].')"> No</i>'; }?></td>
                         <td id="P<?php echo $data['idpk'];?>"><?php if ($data['statuspembayaran']==1) { echo $data['waktukonfirmasi']; } else { echo "-";}?></td>

@@ -4,7 +4,7 @@
     $sql = ("SELECT * FROM inputkegiatan WHERE id = ".$id);
     $stmt = $conn->query($sql);
     $data = $stmt->fetch();
-    $sql = ("SELECT * FROM jemaat WHERE iduser = ".$_SESSION['user']);
+    $sql = ("SELECT * FROM akunjemaat WHERE idAkun = ".$_SESSION['user']);
     $stmt = $conn->query($sql);
     $bio = $stmt->fetch();
     $sql = ("SELECT * FROM pendaftarankegiatan WHERE idkegiatan = ".$id." AND idpeserta=".$_SESSION['user']);
@@ -32,18 +32,18 @@
     $result = '';
     if ($data['gender']!=0) {
         if ($data['gender']==1) {
-            if ($bio['jeniskelamin']=='Perempuan') {
+            if ($bio['jenisKelamin']=='P') {
                 echo 3;
                 return;
             }
         } else {
-            if ($bio['jeniskelamin']=='Laki-laki') {
+            if ($bio['jenisKelamin']=='L') {
                 echo 4;
                 return;
             }
         }
     }
-    $age = intval(date('Y', time() - strtotime($bio['tanggallahir']))) - 1970;
+    $age = intval(date('Y', time() - strtotime($bio['tanggalLahir']))) - 1970;
     if ($data['usiamin']!=0) {
         if ($age<$data['usiamin']) {
             echo 5;
