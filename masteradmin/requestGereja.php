@@ -1,3 +1,7 @@
+<?php
+  require_once 'koneksi.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -53,7 +57,7 @@
 
         function konfirmasi(id) {
           Swal.fire({
-            title: 'Apakah Anda yakin ingin menkonfirmasi pembayaran ini?',
+            title: 'Apakah Anda yakin ingin menkonfirmasi pendaftaran gereja ini?',
             showDenyButton: true,
             showCancelButton: false,
             confirmButtonText: 'Ya',
@@ -61,11 +65,11 @@
           }).then((result) => {
             if (result.isConfirmed) {
               $.ajax({
-                url: 'php/konfirmasipembayaran.php',
-                type: 'post',
-                data: {
-                    id: id
-                },
+                // url: 'php/konfirmasipembayaran.php',
+                // type: 'post',
+                // data: {
+                //     id: id
+                // },
                 success: function(result) {
                   document.getElementById('K'+id).innerHTML = '<i class="fas fa-check" onclick="batal('+id+')" style="color:green"> Yes</i>';
                   document.getElementById('P'+id).innerHTML = result;
@@ -98,6 +102,7 @@
             }
           })
       }
+      
       function lihatvisi() {
         document.getElementById("judulModal").innerHTML = '<center><h4>Visi dan Misi</h4></center>';
         document.getElementById("isiModal").innerHTML = 
@@ -107,6 +112,7 @@
       function tutup() {
         $('#myModal').modal('hide');
       }
+
 
       function lihatCP() {
         document.getElementById("judulModal").innerHTML = '<center><h4>Penanggungjawab Gereja</h4></center>';
@@ -459,6 +465,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Gereja</th>
+                        <th>Alamat</th>
                         <th>Waktu Daftar</th>
                         <th>Status</th>
                         <th>Waktu Konfirmasi</th>
@@ -466,15 +473,26 @@
                         <th>PenanggungJawab</th>
                     </tr>
                 </thead>
+                <?php
+                      include 'koneksi.php'; // Using database connection file here
+                        $sql = 'SELECT * FROM gereja';
+                        $stmt = $sambung->query($sql);
+                      while($data = mysqli_fetch_array($stmt))
+                      {
+                ?>
                 <tbody>
-                    <td>1</td>
-                    <td>Gereja GMS</td>
-                    <td>19 Desember 2023</td>
-                    <td><i class="fas fa-check"style="color:green">Yes</i></td>
-                    <td>25 Desember 2023</td>
-                    <td><button type="button" class="btn btn-info" onclick="lihatvisi()">Lihat</button></td>
+                    <td><?php echo $data['idgereja']; ?></td>
+                    <td><?php echo $data['nama']; ?></td>
+                    <td><?php echo $data['alamat']; ?></td>
+                    <td><?php echo $data['waktudaftar']; ?></td>
+                    <td><?php if ($data['konfirmasi']==0) { echo '<i class="fas fa-check" onclick="batal('.$data['idgereja'].')"style="color:green"> Yes</i>'; } else { echo '<i class="fas fa-times" style="color:red" onclick="konfirmasi('.$data['idgereja'].')"> No</i>'; }?></td>
+                    <td><?php echo $data['waktukonfirmasi']; ?></td>
+                    <td><button type="button" class="btn btn-info" onclick="lihatVisi('<?php echo $data['idgereja']; ?>')" id="tdid">Lihat</button></td>
                     <td><button type="button" class="btn btn-info" onclick="lihatCP()">Lihat</button></td>
                 </tbody>
+                <?php
+                  }
+                ?>
             </table>
         </div>
         </div>

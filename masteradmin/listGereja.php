@@ -421,20 +421,32 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Gereja</th>
+                        <th>Alamat</th>
                         <th>Link Website</th>
                         <th>Penanggungjawab</th>
                         <th>Waktu Konfirmasi</th>
                         <th>Kelola Admin</th>
                     </tr>
                 </thead>
+                <?php
+                      include 'koneksi.php'; // Using database connection file here
+                        $sql = 'SELECT * FROM gereja WHERE konfirmasi = 0';
+                        $stmt = $sambung->query($sql);
+                      while($data = mysqli_fetch_array($stmt))
+                      {
+                ?>
                 <tbody>
-                <td>1</td>
-                    <td>Gereja GMS</td>
-                    <td>gms.church.id</td>
+                <td><?php echo $data['idgereja']; ?></td>
+                    <td><?php echo $data['nama']; ?></td>
+                    <td><?php echo $data['alamat']; ?></td>
+                    <td><?php echo $data['link']; ?>.church.id</td>
                     <td><button type="button" class="btn btn-info" onclick="lihatCP()">Lihat</button></td>
-                    <td>25 Desember 2023</td>
+                    <td><?php echo $data['waktukonfirmasi']; ?></td>
                     <td><button type="button" class="btn btn-info" onclick="lihatAdmin()">Lihat</button></td>
                 </tbody>
+              <?php
+                      }
+              ?>
             </table>
         </div>
         </div>
