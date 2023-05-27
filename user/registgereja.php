@@ -166,6 +166,12 @@
                                                                                 <input type="tel" id="alamat" class="form-control" name="alamat" maxlength="50" placeholder="Alamat Gereja">
                                                                             </div>
 
+                                                                            <form action="/action_page.php">
+                                                                            <label for="UploadFotoGereja" style="color: white; font-family: Poppins; font-size: medium;">Upload Foto Gereja :</label>
+                                                                            <input type="file" id="myFile" name="filename" style="font-size:medium;">
+                                                                            </form>
+
+                                                                            <br>
                                                                             <br>
 
                                                                             <div style="font-size:12px; margin-top:-3px; margin-bottom:20px; color:white; text-align:left; font-size: medium;">
@@ -181,15 +187,30 @@
                                                                                 <input type="tel" id="tentang" class="form-control" name="tentang" maxlength="50" placeholder="Tentang Gereja">
                                                                             </div>
 
-                                                                            <!-- Visi Misi Gereja -->
-                                                                            <div class="form-group field-visimisiField">
-                                                                                <input type="tel" id="visimisi" class="form-control" name="visimisi" maxlength="50" placeholder="Visi & Misi Gereja">
+                                                                            <!-- Visi Gereja -->
+                                                                            <div class="form-group field-visiField">
+                                                                                <input type="tel" id="visi" class="form-control" name="visi" maxlength="50" placeholder="Visi Gereja">
+                                                                            </div>
+
+                                                                            <!-- Misi Gereja -->
+                                                                            <div class="form-group field-misiField">
+                                                                                <input type="tel" id="misi" class="form-control" name="misi" maxlength="50" placeholder="Misi Gereja">
+                                                                            </div>
+
+                                                                            <!-- Link Gereja -->
+                                                                            <div class="form-group field-linkgerejaField">
+                                                                                <input type="tel" id="linkgereja" class="form-control" name="linkgereja" maxlength="50" placeholder="Nama Gereja untuk Link">
                                                                             </div>
 
                                                                             <!-- Mengenai Pendeta Gereja -->
                                                                             <div class="form-group field-pendetaField">
                                                                                 <input type="tel" id="informasipendeta" class="form-control" name="informasipendeta" maxlength="50" placeholder="Informasi Pendeta">
                                                                             </div>
+
+                                                                            <form action="/action_page.php">
+                                                                            <label for="UploadFotoPendeta" style="color: white; font-family: Poppins; font-size: medium;">Upload Foto Pendeta :</label>
+                                                                            <input type="file" id="myFile" name="filename" style="font-size:medium;">
+                                                                            </form>
                                                                             
                                                                             <br>
 
@@ -246,7 +267,6 @@
                                                                             </form>
 
                                                                             <br>
-                                                                            <br>
 
                                                                             <div style="font-size:12px; margin-top:-3px; margin-bottom:20px; color:grey; text-align:left; font-size: medium;">
                                                                                 <b>Informasi Kebutuhan Persembahan : </b>
@@ -298,12 +318,20 @@
                                                                             </div>
 
                                                                             <div class="form-group field-notelpCP">
-                                                                                <input type="tel" id="kontakcp" class="form-control" name="kontakcp" placeholder="Email/Nomor Telepon CP">
+                                                                                <input type="tel" id="kontakcp" class="form-control" name="kontakcp" placeholder="Nomor Telepon CP">
                                                                             </div>
 
                                                                             <div class="form-group field-nikpCP">
                                                                                 <input type="tel" id="nikcp" class="form-control" name="nikcp" placeholder="NIK CP">
                                                                             </div>
+
+                                                                            
+                                                                            <form action="/action_page.php">
+                                                                            <label for="UploadFotoKTP" style="color: white; font-family: Poppins; font-size:medium;">Upload Foto KTP :</label>
+                                                                            <input type="file" id="myFile" name="filename"style="font-size:medium;">
+                                                                            </form>
+                                
+                                                                        
 
                                                                             <br>
 
