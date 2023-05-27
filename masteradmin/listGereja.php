@@ -50,41 +50,62 @@
             });
         });
 
-      function lihatvisi() {
+        function lihatVisi(idgereja) {
         document.getElementById("judulModal").innerHTML = '<center><h4>Visi dan Misi</h4></center>';
-        document.getElementById("isiModal").innerHTML = 
-                  '<p>Visi: Menjadi Gereja yang berkualitas dan takut akan Tuhan</p> <br> <p>Misi:</p>';
-        $('#myModal').modal('show');
-      }
-      function tutup() {
-        $('#myModal').modal('hide');
+        $.ajax({
+            url: 'php/getvisimisi.php',
+            type: 'post',
+            data: {
+                id: idgereja
+            },
+            success: function(result) {
+              document.getElementById("isiModal").innerHTML = result;
+              $('#myModal').modal('show');
+            }  
+        });
       }
 
-      function lihatCP() {
+      function lihatCP(idgereja) {
         document.getElementById("judulModal").innerHTML = '<center><h4>Penanggungjawab Gereja</h4></center>';
-        document.getElementById("isiModal").innerHTML = 
-                  '<p>Nama : Sutrisno</p> <br> <p>NIK : 93249429482</p> <br> <p>Alamat: Jalan Siwalankerto</p> <br> <p>No HP: 0812345</p><br><button type="button" class="btn btn-info" onclick="lihatKTP()">Lihat KTP</button>';
-        $('#myModal').modal('show');
-      }
-      function tutup() {
-        $('#myModal').modal('hide');
+           $.ajax({
+            url: 'php/getinfopenanggungjawab.php',
+            type: 'post',
+            data: {
+                id: idgereja
+            },
+            success: function(result) {
+              document.getElementById("isiModal").innerHTML = result;
+              $('#myModal').modal('show');
+            }  
+        });
       }
 
-      function lihatAdmin() {
+      function lihatAdmin(idgereja) {
         document.getElementById("judulModal").innerHTML = '<center><h4>List Admin</h4></center>';
-        document.getElementById("isiModal").innerHTML = 
-                  '<b>Admin Saat ini:</b><br><p>sutrisno.gms</p><br><a href="kelolaAdmin.php">Klik Disini untuk Kelola Admin</a>';
-        $('#myModal').modal('show');
-      }
-      function tutup() {
-        $('#myModal').modal('hide');
+        $.ajax({
+            url: 'php/lihatadmin.php',
+            type: 'post',
+            data: {
+                id: idgereja
+            },
+            success: function(result) {
+              document.getElementById("isiModal").innerHTML = result;
+              $('#myModal').modal('show');
+            }  
+        });
       }
 
-      function lihatKTP() {
-        document.getElementById("judulModal").innerHTML = '<center><h4>Lihat KTP</h4></center>';
-        document.getElementById("isiModal").innerHTML = '<center><img src="foto/ktp.png" alt="" style="width:100%" /></center>';
-        $('#myModal').modal('show');
+      function lihatKTP(ktppenanggung) {
+                document.getElementById("judulModal").innerHTML = '<center><h4>Lihat KTP</h4></center>';
+                document.getElementById("isiModal").innerHTML = '<center><img src="foto/'+ktppenanggung+'" alt="" style=" width:100%" /></center>';
+                $('#myModal').modal('show');
+
       }
+
+      function detailadminPage(idgereja) {
+        location.href = 'kelolaAdmin.php?id='+idgereja;
+      }
+
       function tutup() {
         $('#myModal').modal('hide');
       }
@@ -440,9 +461,9 @@
                     <td><?php echo $data['nama']; ?></td>
                     <td><?php echo $data['alamat']; ?></td>
                     <td><?php echo $data['link']; ?>.church.id</td>
-                    <td><button type="button" class="btn btn-info" onclick="lihatCP()">Lihat</button></td>
+                    <td><button type="button" class="btn btn-info" onclick="lihatCP('<?php echo $data['idgereja']; ?>')">Lihat</button></td>
                     <td><?php echo $data['waktukonfirmasi']; ?></td>
-                    <td><button type="button" class="btn btn-info" onclick="lihatAdmin()">Lihat</button></td>
+                    <td><button type="button" class="btn btn-info" onclick="lihatAdmin('<?php echo $data['idgereja']; ?>')">Lihat</button></td>
                 </tbody>
               <?php
                       }

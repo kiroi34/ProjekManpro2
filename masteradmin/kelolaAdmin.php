@@ -1,3 +1,8 @@
+<?php
+    require_once 'koneksi.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -368,7 +373,17 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Kelola Admin Gereja GMS</span>
+        <?php
+        include 'koneksi.php';
+          $namagereja = '';
+          $id = $_GET['id'];
+          $sql5 = 'SELECT nama FROM gereja WHERE idgereja = '.$id;
+          $stmt5 = $sambung->query($sql5);
+          foreach ($stmt5 as $isi) {
+              $namagereja = $isi['nama'];
+          }
+          echo '<span class="dashboard">Kelola Admin '.$namagereja.'</span>';
+        ?>
       </div>
 
       <div class="profile-details">
@@ -388,25 +403,28 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Admin</th>
-                        <th>ID Admin</th>
-                        <th>Status</th>
+                        <th>Username Admin</th>
+                        <!-- <th>Status</th> -->
                         <th>Action</th>
                     </tr>
                 </thead>
+                <?php
+                      include 'koneksi.php'; // Using database connection file here
+                        $sql = 'SELECT * FROM `admin`';
+                        $stmt = $sambung->query($sql);
+                      while($data = mysqli_fetch_array($stmt))
+                      {
+                ?>
                 <tbody>
-                    <td>1</td>
+                    <td><?php echo $data['id']; ?></td>
                     <td>Sutrisno</td>
-                    <td>sutrisno.gms</td>
-                    <td><i class="fas fa-check"style="color:green">Admin Aktif</i></td>
+                    <td><?php echo $data['username']; ?></td>
+                    <!-- <td><i class="fas fa-check"style="color:green">Admin Aktif</i></td> -->
                     <td><button type="button" class="btn btn-danger" onclick="action()">Hapus</button></td>
                 </tbody>
-                <tbody>
-                    <td>2</td>
-                    <td>Lisa</td>
-                    <td>lisa.gms</td>
-                    <td><i class="fas fa-check"style="color:red">Menunggu Konfirmasi</i></td>
-                    <td><span><button type="button" class="btn btn-success" onclick="action()">Terima</button> <button type="button" class="btn btn-danger" onclick="action()">Hapus</button></span></td>
-                </tbody>
+                <?php
+                      }
+                ?>
             </table>
         </div>
         </div>

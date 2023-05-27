@@ -103,33 +103,44 @@
           })
       }
       
-      function lihatvisi() {
+      function lihatVisi(idgereja) {
         document.getElementById("judulModal").innerHTML = '<center><h4>Visi dan Misi</h4></center>';
-        document.getElementById("isiModal").innerHTML = 
-                  '<p>Visi: Menjadi Gereja yang berkualitas dan takut akan Tuhan</p> <br> <p>Misi: Mempertahankan INTEGRITAS,CIVILITAS dan KREDIBILITAS</p>';
-        $('#myModal').modal('show');
-      }
-      function tutup() {
-        $('#myModal').modal('hide');
+        $.ajax({
+            url: 'php/getvisimisi.php',
+            type: 'post',
+            data: {
+                id: idgereja
+            },
+            success: function(result) {
+              document.getElementById("isiModal").innerHTML = result;
+              $('#myModal').modal('show');
+            }  
+        });
       }
 
 
-      function lihatCP() {
+      function lihatCP(idgereja) {
         document.getElementById("judulModal").innerHTML = '<center><h4>Penanggungjawab Gereja</h4></center>';
-        document.getElementById("isiModal").innerHTML = 
-                  '<p>Nama : Sutrisno</p> <br> <p>NIK : 93249429482</p> <br> <p>Alamat: Jalan Siwalankerto</p> <br> <p>No HP: 0812345</p><br><button type="button" class="btn btn-info" onclick="lihatKTP()">Lihat KTP</button>';
-        $('#myModal').modal('show');
-      }
-      function tutup() {
-        $('#myModal').modal('hide');
+           $.ajax({
+            url: 'php/getinfopenanggungjawab.php',
+            type: 'post',
+            data: {
+                id: idgereja
+            },
+            success: function(result) {
+              document.getElementById("isiModal").innerHTML = result;
+              $('#myModal').modal('show');
+            }  
+        });
       }
 
+      function lihatKTP(ktppenanggung) {
+                document.getElementById("judulModal").innerHTML = '<center><h4>Lihat KTP</h4></center>';
+                document.getElementById("isiModal").innerHTML = '<center><img src="foto/'+ktppenanggung+'" alt="" style=" width:100%" /></center>';
+                $('#myModal').modal('show');
 
-      function lihatKTP() {
-        document.getElementById("judulModal").innerHTML = '<center><h4>Lihat KTP</h4></center>';
-        document.getElementById("isiModal").innerHTML = '<center><img src="foto/ktp.png" alt="" style="width:100%" /></center>';
-        $('#myModal').modal('show');
       }
+      
       function tutup() {
         $('#myModal').modal('hide');
       }
@@ -487,8 +498,8 @@
                     <td><?php echo $data['waktudaftar']; ?></td>
                     <td><?php if ($data['konfirmasi']==0) { echo '<i class="fas fa-check" onclick="batal('.$data['idgereja'].')"style="color:green"> Yes</i>'; } else { echo '<i class="fas fa-times" style="color:red" onclick="konfirmasi('.$data['idgereja'].')"> No</i>'; }?></td>
                     <td><?php echo $data['waktukonfirmasi']; ?></td>
-                    <td><button type="button" class="btn btn-info" onclick="lihatVisi('<?php echo $data['idgereja']; ?>')" id="tdid">Lihat</button></td>
-                    <td><button type="button" class="btn btn-info" onclick="lihatCP()">Lihat</button></td>
+                    <td><button type="button" class="btn btn-info" onclick="lihatVisi('<?php echo $data['idgereja']; ?>')">Lihat</button></td>
+                    <td><button type="button" class="btn btn-info" onclick="lihatCP('<?php echo $data['idgereja']; ?>')">Lihat</button></td>
                 </tbody>
                 <?php
                   }
