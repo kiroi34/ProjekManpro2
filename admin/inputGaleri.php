@@ -5,6 +5,8 @@ require_once "connByAlan.php";
   $timestmt = $pdo->prepare($timesql);
   $timestmt->execute();
 
+  
+
 ?>
 
 
@@ -222,28 +224,44 @@ require_once "connByAlan.php";
     </nav>
 
     <div class="home-content">
+      <div class="isi">
+          <form action="" method="POST">
+      <h4>Tambahkan Kategori Foto</h4>
+                <input type="text" id="kategori" name="kategori" placeholder="Masukan Nama Kategori Foto..." >
+                <input type="submit" value="add" name="add">
+
+                <?php
+                include("koneksi.php");
+                if (isset($_POST['add'])){
+                $name = $_POST['kategori'];
+                $sqli = "INSERT INTO `galerikategori` (`namaKategori`) VALUES ('$name')";
+                if (mysqli_query($sambung, $sqli)){
+                  echo "<script>alert('Input Kategori Baru Berhasil, Silahkan Pilih Kategori Melalui Drop Down Dibawah '); window.location.href = 'inputGaleri.php';</script>";
+                }else{
+                  echo "<script>alert('Input Kategori Baru Gagal, Silahkan Coba Lagi'); window.location.href = 'inputGaleri.php';</script>";
+                }
+                }
+                ?>  
+
+                </form>
+          </div>
+          </div>
+
+
+    <div class="home-content">
         <div class="isi" >
             <form action="inputGaleriDataBase.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
-                <!-- testing -->
-                <br>
-                <h4>Input Baru Nama Kategori Foto</h4>
-                <input type="text" id="kategori" name="kategori" placeholder="Masukan Nama Kategori Foto..." >
-
-                <h4>Riwayat Kategori</h4>
+                <h4>Pilih Kategori</h4>
                 <select id="riwayatKategori" name="riwayatKategori" >
-                  
                   <option value="pilihan">--Pilih Kategori--</option>
                   <?php
                   while ($data = $timestmt->fetch()){
                       echo "<option value='" . $data['idKategoriGaleri'] . "'>" . $data['namaKategori'] . "</option>";
                       }
+                  
                   ?>
                 </select>
-
 <br> <br>
-                <br>
-
-
                 <input type="file" id="inputFoto" name="files[]" accept="image/png, image/jpeg" onchange="preview()" multiple>
                 <label for="inputFoto">
                     <i class="fas fa-upload"></i> &nbsp; Choose A Photo

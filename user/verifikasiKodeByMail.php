@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@ body, html {
   margin: 20px;
   max-width: 300px;
   padding: 16px;
-  background-color: #07012d;
+  background-color:  #07012d;
 }
 
 /* Full-width input fields */
@@ -71,14 +72,18 @@ input[type=text]:focus, input[type=password]:focus {
 }
 </style>
 </head>
+
+
+
+
 <body>
 <div class="bg-image"> </div>
-  <form action="checknotelp.php" method = "post" class="container">
+  <form action="" method = "post" class="container">
     <h1 style = "color : #f4f2ff">Verifikasi</h1>
 
-    <label for="notelp"><b style = "color : #f4f2ff">Nomor Telepon</b></label>
-    <input type="text" placeholder="Nomor Telepon" name="notelp" required>
-        <button type="submit" class="btn" name="oke">Oke</button> 
+    <label for="verifno"><b style = "color : #f4f2ff">Kode Verifikasi</b></label>
+    <input type="text" placeholder="Masukkan Kode Verifikasi" name="verifno" required>
+        <button type="submit" class="btn">Oke</button> 
     </div>
   </form>
 </body>

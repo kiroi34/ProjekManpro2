@@ -1,7 +1,8 @@
 <?php 
 // Include the database configuration file 
 include_once 'koneksi.php'; 
-$kategori = $_POST['kategori'];
+// $kategori = $_POST['kategori'];
+// $id = $_POST['riwayatKategori'];
 $riwayatKategori = $_POST['riwayatKategori'];
 
      
@@ -18,23 +19,7 @@ if(isset($_POST['submit'])){
         $errorUpload = !empty($errorUpload)?'Upload Error: '.trim($errorUpload, ' | '):''; 
         $errorUploadType = !empty($errorUploadType)?'File Type Error: '.trim($errorUploadType, ' | '):''; 
         $errorMsg = !empty($errorUpload)?'<br/>'.$errorUpload.'<br/>'.$errorUploadType:'<br/>'.$errorUploadType; 
-         
-        // if(!empty($insertValuesSQL)){ 
            
-            // Insert image file name into database 
-            // mysqli_query($sambung, "INSERT INTO galeriKategori VALUES ('','$kategori')");
-            $records = mysqli_query($sambung, "SELECT idKategoriGaleri FROM galeriKategori WHERE namaKategori = '$kategori'");
-            $row = $records->fetch_assoc();
-            $id = 0;
-            if(isset($row['idKategoriGaleri'])){
-                $id = $row['idKategoriGaleri'];
-            }else{
-                mysqli_query($sambung, "INSERT INTO galeriKategori VALUES ('','$kategori')");
-                $records = mysqli_query($sambung, "SELECT idKategoriGaleri FROM galeriKategori WHERE namaKategori = '$kategori'");
-                $row2 = $records->fetch_assoc();
-                $id = $row2['idKategoriGaleri'];
-                
-        }
         foreach($_FILES['files']['name'] as $key=>$val){ 
             // File upload path 
             $fileName = basename($_FILES['files']['name'][$key]); 
@@ -47,7 +32,7 @@ if(isset($_POST['submit'])){
                 if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
                     // Image db insert sql 
                     
-                    $insertValuesSQL .= "(".$id.",'".$fileName."', NOW()),"; 
+                    $insertValuesSQL .= "(".$riwayatKategori.",'".$fileName."', NOW()),"; 
                 }else{ 
                     $errorUpload .= $_FILES['files']['name'][$key].' | '; 
                 } 

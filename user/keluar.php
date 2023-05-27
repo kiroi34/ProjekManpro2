@@ -182,7 +182,7 @@
                                           </span>
                                         <div class="link forget-pass text-left">
                                           <p style = "font-size: 80%">
-                                          <a href="verifikasipassword.php">
+                                          <a href="verifikasiemail.php">
                                             <span style = "color : red">
                                               Lupa password?
                                             </span>

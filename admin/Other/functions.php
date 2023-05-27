@@ -30,11 +30,11 @@
 
             if($mail->send())
             {
-                return true;
+                echo "<script>alert('Email Telah Terkirim!!');</script>";
             }
             else
             {
-                return false;
+                echo "<script>alert('Email Gagal Terkirim!!');</script>";
             }
     }
 ?>

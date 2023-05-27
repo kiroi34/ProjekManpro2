@@ -220,49 +220,43 @@
               <br>
               <br>
 
-              <!-- testing -->
-
-              <!-- <main>
-                  <h1>Event AOG </h1>
-                  <span>&#139;</span>
-                  <span>&#155;</span>
-                  <section>
-                    <div class ="carousel"> 01 </div>
-                    <div class ="carousel"> 02 </div>
-                    <div class ="carousel"> 03 </div>
-                    <div class ="carousel"> 04 </div>
-                    <div class ="carousel"> 05 </div>
-                    <div class ="carousel"> 06 </div>
-                  </section>
-                </main> -->
-
-              <!-- batas testing -->
-
 <section class="articles">
+
 <?php
 include '../admin/koneksi.php'; // Using database connection file here
+$records = mysqli_query($sambung,"SELECT * FROM galerikategori");
+while($data = mysqli_fetch_array($records)){
+$id = $data['idKategoriGaleri'];
+$coba = mysqli_query($sambung,"SELECT COUNT(*) jumlah from galeri join galerikategori on kategori=idKategoriGaleri 
+where idKategoriGaleri=$id");
+$row = $coba->fetch_assoc();
+if($row['jumlah'] > 0){
+  echo"<h2> ".$data["namaKategori"]." </h2>";
+}
+ 
+  $records2= mysqli_query($sambung,"select id, galeriKategori.namaKategori, file_name from 
+  galeri inner join galeriKategori on galeriKategori.idKategoriGaleri=galeri.kategori where galeri.kategori = $id
+   order by id desc  ");
 
-$records = mysqli_query($sambung,"select id, galeriKategori.namaKategori, file_name from galeri inner join galeriKategori on galeriKategori.idKategoriGaleri=galeri.kategori order by id desc ");
-
-
-
-while($data = mysqli_fetch_array($records))
-{
+   while($data2= mysqli_fetch_array($records2)){
+    ?>
+    <article>
   
-?>
-    
-      <article>
-      <h2><?php echo $data["namaKategori"]; ?></h2>
-        <div class="article-wrapper">
-          <?php echo "<img src='../admin/gambarGaleri/" . $data["file_name"] . "'>"; ?>
+      <div class="">
+        <?php echo "<br> <img src='../admin/gambarGaleri/" . $data2["file_name"] . "'>"; ?>
 
 </div>
-  
+
 </article>
 
 <?php
+   }
+
 }
 ?>
+
+
+
 </section>
 
 

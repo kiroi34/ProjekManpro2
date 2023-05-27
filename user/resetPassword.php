@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,12 +73,18 @@ input[type=text]:focus, input[type=password]:focus {
 </head>
 <body>
 <div class="bg-image"> </div>
-  <form action="forgetpass.php" method = "post" class="container">
-    <h1 style = "color : #f4f2ff">Verifikasi</h1>
+  <form action="validasiResetPassword.php" method = "post" class="container">
+  
+    <h1 style = "color : #f4f2ff; font-size:30px;">Reset Password </h1>
+    <input type="hidden" value="<?php echo base64_decode($_GET['secret']); ?>" name="email"> 
 
-    <label for="verifno"><b style = "color : #f4f2ff">Kode Verifikasi</b></label>
-    <input type="text" placeholder="Masukkan Kode Verifikasi" name="verifno" required>
-        <button type="submit" class="btn"><a href="lupapass.php">Oke</button> 
+    <label for="password"><b style = "color : #f4f2ff">Password Baru</b></label>
+    <input type="password" placeholder="Password" name="password" required>
+    <label for="newpassword"><b style = "color : #f4f2ff">Konfirmasi Password</b></label>
+    <input type="password" placeholder="Konfirmasi Password" name="cpassword" required>
+    <div style="size: 20px;">
+    
+        <button type="submit" class="btn" name="submit">Oke</button> 
     </div>
   </form>
 </body>
