@@ -5,17 +5,17 @@
 
     $usernameinput = $_POST['username'];
     $passwordinput = $_POST['password'];
-    $hashed_passwordinput = hash("md5", $password);
+    $hashed_passwordinput = hash("md5", $passwordinput);
     
     $username = "master";
     $password = "master";
     $hashed_password = hash("md5", $password);
 
-    if($usernameinput == $username && $passwordinput == $password){
+    if($usernameinput == $username && $hashed_passwordinput == $hashed_password){
         $_SESSION['username'] = $username;
         header("location: homeMaster.php");
     } else {
-        echo "Username atau password salah";
+        echo "<script>alert('Username atau password salah'); window.location.href = 'homeMaster.php';</script>";
     }
 
     $sambung->close();
