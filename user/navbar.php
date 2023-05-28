@@ -1,3 +1,9 @@
+<?php
+  if (isset($_SESSION['gereja'])) {
+    $add = "?gereja=".$_GET['gereja'];
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -12,7 +12,9 @@ if (isset($_GET['gereja'])) {
 } else {
   header("Location: registgereja.php");
 }
-
+if (!isset($_SESSION['gereja'])) {
+  header("Location: registgereja.php");
+}
 ?>
 
 
