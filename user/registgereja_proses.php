@@ -60,7 +60,7 @@
                 move_uploaded_file($tmp_file3, $imgStorePath3);
                 move_uploaded_file($tmp_file4, $imgStorePath4);
 
-                $query = "INSERT INTO daftargereja (nama, link, namapenanggung, nikpenanggung, alamat, nohp, 
+                $query = "INSERT INTO gereja (nama, link, namapenanggung, nikpenanggung, alamat, nohp, 
                 ktppenanggung, visi, misi, email, jamoperasional, kota, 
                 tentang, informasipendeta, rekeningpersembahan, fotopersembahan, fotogereja, fotopendeta)
                     VALUES ('". $nama."', '". $link."''". $namapenanggung."', '". $nikpenanggung ."', '". $alamat ."', '". $nohp ."', 

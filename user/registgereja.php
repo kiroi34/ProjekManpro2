@@ -166,10 +166,8 @@
                                                                                 <input type="tel" id="alamat" class="form-control" name="alamat" maxlength="50" placeholder="Alamat Gereja"required>
                                                                             </div>
 
-                                                                            <form action="/action_page.php">
                                                                             <label for="UploadFotoGereja" style="color: white; font-family: Poppins; font-size: medium;">Upload Foto Gereja :</label>
-                                                                            <input type="file" id="myFile" name="fotogereja" style="font-size:medium;">
-                                                                            </form>
+                                                                            <input type="file" id="fotogereja" name="filename" style="font-size:medium;">
 
                                                                             <br>
                                                                             <br>
@@ -199,7 +197,7 @@
 
                                                                             <!-- Link Gereja -->
                                                                             <div class="form-group field-linkgerejaField">
-                                                                                <input type="tel" id="linkgereja" class="form-control" name="linkgereja" maxlength="50" placeholder="Nama Gereja untuk Link"required>
+                                                                                <input type="tel" id="link" class="form-control" name="linkgereja" maxlength="50" placeholder="Nama Gereja untuk Link"required>
                                                                             </div>
 
                                                                             <!-- Mengenai Pendeta Gereja -->
@@ -208,7 +206,7 @@
                                                                             </div>
 
                                                                             <label for="UploadFotoPendeta" style="color: white; font-family: Poppins; font-size: medium;">Upload Foto Pendeta :</label>
-                                                                            <input type="file" id="myFile" name="fotopendeta" style="font-size:medium;">
+                                                                            <input type="file" id="fotopendeta" name="filename" style="font-size:medium;">
                                                                             
                                                                             <br>
 
