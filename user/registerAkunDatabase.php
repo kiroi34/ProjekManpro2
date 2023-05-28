@@ -1,5 +1,6 @@
 <?php
 include 'koneksi.php';
+session_start();
 
 $nama = $_POST['fname'];
 $jk = $_POST['jenisKelamin'];

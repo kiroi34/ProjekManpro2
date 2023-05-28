@@ -1,6 +1,7 @@
 <?php 
 // Include the database configuration file 
 include_once 'koneksi.php'; 
+session_start();
 // $kategori = $_POST['kategori'];
 // $id = $_POST['riwayatKategori'];
 $riwayatKategori = $_POST['riwayatKategori'];
@@ -33,7 +34,7 @@ if(isset($_POST['submit'])){
                 if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
                     // Image db insert sql 
                     
-                    $insertValuesSQL .= "(".$riwayatKategori.",'".$fileName."', NOW()),"; 
+                    $insertValuesSQL .= "(".$riwayatKategori.",'".$fileName."', NOW(), ".$_SESSION['gereja']."),"; 
                 }else{ 
                     $errorUpload .= $_FILES['files']['name'][$key].' | '; 
                 } 
