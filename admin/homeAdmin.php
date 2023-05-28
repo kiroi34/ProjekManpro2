@@ -21,11 +21,74 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="css/homeAdmin.css"> 
-
-
+     <link rel="stylesheet" href="css/homeAdmin.css">
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
      <style>
+      .block {
+        margin-top:10px;
+        display: block;
+        width: 100%;
+        border: none;
+        background-color: #EA618E;
+        color: white;
+        padding: 5px 28px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 10px;
+      }
+
+      .block:hover {
+        background-color: #ddd;
+        color: black;
+      }
      </style>
+     <script>
+      function editWish() {
+        <?php 
+          $sql = "SELECT * FROM ultahjemaat WHERE idgereja = ".$_SESSION['gereja'];
+          $stmt = $sambung->query($sql);
+          foreach ($stmt as $data) { 
+            $isi =  $data['wish']; 
+          }
+          $isi = str_replace(array("\n"), array("\\n"), $isi);
+        ?>
+        (async () => {
+          const { value: text } = await Swal.fire({
+            input: 'textarea',
+            inputLabel: 'Message',
+            inputValue: '<?php echo $isi; ?>',
+            inputAttributes: {
+              'aria-label': 'Type your message here',
+              'onkeypress': 'onTestChange()'
+            },
+            showCancelButton: true
+          })
+
+          if (text) {
+            $.ajax({
+                url: 'php/updatewish.php',
+                type: 'post',
+                data: {
+                    wish: text
+                },
+                success: function(result) {
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    showConfirmButton: true,
+                    timer: 3000
+                  }).then((result) => {
+                    window.location = 'homeAdmin.php';
+                  })
+                }  
+              });
+          }
+        })()
+      }
+     </script>
    </head>
 
 <body>
@@ -109,11 +172,48 @@
       <div class="overview-boxes">
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Today's Birthday Information</div>
-                <p id="nama">Caca</p>
-                <p id="nama">Cici</p>
+            <div class="box-topic" style="margin-bottom:10px">Today's Birthday Information</div>
+              <?php
+                $sql = "SELECT * FROM `akunjemaat` WHERE date_format(tanggalLahir, '%m-%d')=date_format(CURRENT_DATE, '%m-%d') AND idgereja = ".$_SESSION['gereja'];
+                $stmt = $sambung->query($sql);
+                foreach ($stmt as $nama) {
+                  echo '<div id="nama">'.$nama['namaLengkap'].'</div>';
+                }
+                $sql2 = "SELECT * FROM ultahjemaat u JOIN gereja g ON u.idgereja = g.idgereja WHERE u.idgereja = ".$_SESSION['gereja'];
+                $stmt2 = $sambung->query($sql2);
+                foreach ($stmt2 as $data) {
+                  if ($data['tanggal']<date("Y-m-d")) {
+                    foreach ($stmt as $nama) {
+                      require_once "Other/functions.php";
+                      $subject = "HAPPY BIRTHDAY TO YOU!!";
+                      $isi = $data['wish'];
+                      $isi = str_replace(array("\n"), array("\\n"), $isi);
+                      $body= '<!DOCTYPE html>
+                              <html lang="en">
+                              <head>
+                                  <meta charset="UTF-8">
+                                  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                  <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+                                  <title>Email Ulang Tahun</title>
+                              </head>
+                              <body style="color:black">
+                                  <strong>HAPPY BIRTHDAY DEAR '.$nama['namaLengkap'].',</strong><br>
+                                  <p style="margin-top:15px">'.$isi.'</p>
+                              <p style="margin-top:20px; font-family: `Brush Script MT`, cursive; font-size: 24px;">'.$data['nama'].'</p>
+                              </body>
+                              </html>';
+                      sendEmail($subject,$body,$nama['email']);
+                      $sql3 = "UPDATE ultahjemaat SET tanggal='".date("Y-m-d")."' WHERE idgereja = ".$_SESSION['gereja'];
+                      $stmt3 = $sambung->query($sql3);
+                    }
+                  }
+                }
+              ?>
+              <button class="block" onclick="editWish()">Edit Wish</button>
           </div>
         </div>
+        
       </div>
 
       <h3 style="margin-left: 1%;">Informasi Permohonan Jemaat</h3>
