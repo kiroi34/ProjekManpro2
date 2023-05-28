@@ -168,7 +168,7 @@
 
                                                                             <form action="/action_page.php">
                                                                             <label for="UploadFotoGereja" style="color: white; font-family: Poppins; font-size: medium;">Upload Foto Gereja :</label>
-                                                                            <input type="file" id="myFile" name="filename" style="font-size:medium;">
+                                                                            <input type="file" id="myFile" name="fotogereja" style="font-size:medium;">
                                                                             </form>
 
                                                                             <br>
