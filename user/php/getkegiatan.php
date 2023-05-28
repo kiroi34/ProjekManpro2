@@ -2,7 +2,7 @@
     require_once "connect.php";
 
     $tanggal = $_POST['tanggal'];
-    $sql = ("SELECT * FROM inputkegiatan WHERE tanggal = '".$tanggal."'");
+    $sql = ("SELECT * FROM inputkegiatan WHERE tanggal = '".$tanggal."' AND idgereja = ".$_SESSION['gereja']);
     $stmt = $conn->query($sql);
     $data = $stmt->fetchAll();
     $result = '<div id="demo" class="carousel slide" data-ride="carousel"><div class="carousel-inner">';

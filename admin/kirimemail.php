@@ -1,11 +1,14 @@
 <?php
     require_once "Other/functions.php";
     require_once "koneksi.php";
+    session_start();
     $id = $_POST['id'];
     $sql = ("UPDATE pendaftarankegiatan SET statuspembayaran=2 WHERE idpk = ".$id);
     $stmt = $sambung->query($sql);
-    $sql = ("SELECT i.nama namakegiatan, j.nama namajemaat, biayapendaftaran, email, idkegiatan FROM pendaftarankegiatan p JOIN jemaat j ON p.idpeserta = j.iduser JOIN inputkegiatan i ON p.idkegiatan = i.id WHERE idpk =".$id);
+    $sql = ("SELECT i.nama namakegiatan, j.namaLengkap namajemaat, biayapendaftaran, email, idkegiatan FROM pendaftarankegiatan p JOIN akunjemaat j ON p.idpeserta = j.idAkun JOIN inputkegiatan i ON p.idkegiatan = i.id WHERE idpk =".$id);
     $stmt = $sambung->query($sql);
+    $sql = "SELECT * FROM gereja WHERE idgereja=".$_SESSION['gereja'];
+    $nama = $sambung->query($sql);
     foreach ($stmt as $data) {
         $subject = "Kegiatan ".$data['namakegiatan'];
         $body= '<!DOCTYPE html>
@@ -21,10 +24,14 @@
                     <strong>Syalom '.$data['namajemaat'].',</strong><br>
                     <p style="margin-top:15px">Selamat karena kamu terpilih untuk ikut dalam kegiatan '.$data['namakegiatan'].".";
         if ($data['biayapendaftaran']!=0) {
-            $body .= '<br>Segera unggah bukti transfer kamu sebesar '.$data['biayapendaftaran'].' di website resmi kami.';
+            $body .= '<br>Segera unggah bukti transfer kamu sebesar '.$data['biayapendaftaran'].' di <a href="http://localhost/Projekmanpro2/user/kalender.php">website resmi kami</a>.';
         }
         $body .= '<br>Terus ikuti update dari kegiatan di website resmi kami. Terima kasih atas keikutsertaannya. Tuhan Yesus memberkati.</p>
-                <p style="margin-top:50px; size:100px">Gereja ABC</p>
+                <p style="margin-top:20px; font-family: `Brush Script MT`, cursive; font-size: 24px;">';
+        foreach ($nama as $n) {
+            $body .= $n['nama'];
+        }
+        $body .= '</p>
                 </body>
                 </html>';
         sendEmail($subject,$body,$data['email']);

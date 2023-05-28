@@ -7,10 +7,9 @@
             </script>';
         }
     }
-    $sql = ("SELECT DATE_FORMAT(tanggal, '%Y-%c-%e') as 'tanggal' FROM inputkegiatan");
+    $sql = ("SELECT DATE_FORMAT(tanggal, '%Y-%c-%e') as 'tanggal' FROM inputkegiatan WHERE idgereja=".$_SESSION['gereja']);
     $stmt = $conn->query($sql);
     $data = $stmt->fetchAll();
-    $_SESSION['user'] = 4;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -299,6 +298,9 @@
                             alert("Anda tidak memenuhi maksimal umur untuk kegiatan ini!");
                         } else if (result == 7) {
                             alert("Saat ini kuota pendaftar sudah penuh. Nama Anda akan tetap tercatat dan kami akan menghubungi Anda jika ada slot kosong. Periksa email Anda secara berkala.");
+                        } else if (result == 8) {
+                            alert("Silakan log in terlebih dahulu..");
+                            window.location = 'keluar.php';
                         } else {
                             document.getElementById('modtit').innerHTML = 'Silakan membayar disini';
                             document.getElementById('isi').innerHTML = result;

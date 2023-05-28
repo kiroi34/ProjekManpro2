@@ -13,6 +13,9 @@
 
     if($result->num_rows>0){
         $_SESSION['username'] = $username;
+        foreach ($result as $data) {
+            $_SESSION['gereja'] = $data['idgereja'];
+        }
         header("location: homeAdmin.php");
     } else {
         echo "Username atau password salah";

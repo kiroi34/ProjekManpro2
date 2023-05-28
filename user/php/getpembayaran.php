@@ -1,5 +1,9 @@
 <?php
     require_once "connect.php";
+    if (!isset($_SESSION['user'])) {
+        echo 8;
+        return;
+    }
     $id = $_POST['id'];
     $sql = ("SELECT * FROM inputkegiatan WHERE id = ".$id);
     $stmt = $conn->query($sql);

@@ -61,16 +61,16 @@
         if ($fileError === 0) {
             if ($fileSize < 10000000) {
                 $upload = move_uploaded_file($fileTempName, $targetDir);
-                $sql = "INSERT INTO inputkegiatan (nama, tanggal, deskripsi, poster, pendaftaran, biayapendaftaran, kuota, gender, usiamin, usiamax) 
-                VALUES('".$nama."', '".$tanggal."', '".$deskripsi."', '".$fileBasename."', ".$daftar.", ".$biaya.", ".$kuota.", ".$gender.", ".$usiamin.", ".$usiamax.")";
+                $sql = "INSERT INTO inputkegiatan (nama, tanggal, deskripsi, poster, pendaftaran, biayapendaftaran, kuota, gender, usiamin, usiamax, idgereja) 
+                VALUES('".$nama."', '".$tanggal."', '".$deskripsi."', '".$fileBasename."', ".$daftar.", ".$biaya.", ".$kuota.", ".$gender.", ".$usiamin.", ".$usiamax.", ".$_SESSION['gereja'].")";
                 $stmt = $sambung->query($sql);
                 $cek = False;
             }
         } 
     }
     if ($cek) {
-        $sql = "INSERT INTO inputkegiatan (nama, tanggal, deskripsi, poster, pendaftaran, biayapendaftaran, kuota, gender, usiamin, usiamax) 
-        VALUES('".$nama."', '".$tanggal."', '".$deskripsi."', 'defaultKegiatan.png', ".$daftar.", ".$biaya.", ".$kuota.", ".$gender.", ".$usiamin.", ".$usiamax.")";
+        $sql = "INSERT INTO inputkegiatan (nama, tanggal, deskripsi, poster, pendaftaran, biayapendaftaran, kuota, gender, usiamin, usiamax, idgereja) 
+        VALUES('".$nama."', '".$tanggal."', '".$deskripsi."', 'defaultKegiatan.png', ".$daftar.", ".$biaya.", ".$kuota.", ".$gender.", ".$usiamin.", ".$usiamax.", ".$_SESSION['gereja'].")";
         $stmt = $sambung->query($sql);
     }
     $sambung->close(); 

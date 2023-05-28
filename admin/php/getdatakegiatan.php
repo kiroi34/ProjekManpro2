@@ -1,14 +1,15 @@
 <?php
     require_once "../koneksi.php";
+    session_start();
     $filter = $_POST['filter'];
     if ($filter == "all") {
-        $query = "";
+        $query = "WHERE";
     } elseif ($filter == "active") {
-        $query = "WHERE tanggal >= CURRENT_DATE()";
+        $query = "WHERE tanggal >= CURRENT_DATE() AND";
     } else {
-        $query = "WHERE pendaftaran = 1";
+        $query = "WHERE pendaftaran = 1 AND";
     }
-    $sql = 'SELECT * FROM inputkegiatan '.$query;
+    $sql = 'SELECT * FROM inputkegiatan '.$query.' idgereja = '.$_SESSION['gereja'];
     $stmt = $sambung->query($sql);
     $isi = "";
     foreach($stmt as $data) {

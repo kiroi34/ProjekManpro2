@@ -72,7 +72,8 @@
                 kuota=".$kuota.", 
                 gender=".$gender.", 
                 usiamin=".$usiamin.", 
-                usiamax=".$usiamax."  
+                usiamax=".$usiamax.", 
+                idgereja=".$_SESSION['gereja']."   
                 WHERE id=".$id;
                 $stmt = $sambung->query($sql);
                 $cek = False;
@@ -89,7 +90,8 @@
         kuota=".$kuota.", 
         gender=".$gender.", 
         usiamin=".$usiamin.", 
-        usiamax=".$usiamax."  
+        usiamax=".$usiamax.", 
+        idgereja=".$_SESSION['gereja']."  
         WHERE id=".$id;
         $stmt = $sambung->query($sql);
     }

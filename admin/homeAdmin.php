@@ -121,44 +121,44 @@
       <div class="overview-boxes">
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Menerima Yesus</div>
-            <a href="#"style="color: #080710;">Informasi Detail</a>
+            <div class="box-topic">Pelayanan</div>
+            <a href="listpelayanan.php"style="color: #080710;">Informasi Detail</a>
             <i class='bx bx-right-arrow-alt' href="#"></i>
           </div>
         </div>
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Baptisme</div>
-            <a href="#"style="color: #080710;">Informasi Detail</a>
+            <a href="listbaptis.php"style="color: #080710;">Informasi Detail</a>
             <i class='bx bx-right-arrow-alt' href="#"></i>
           </div>
         </div>
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Komunitas Sel</div>
-            <a href="#"style="color: #080710;">Informasi Detail</a>
+            <a href="listcg.php"style="color: #080710;">Informasi Detail</a>
             <i class='bx bx-right-arrow-alt' href="#"></i>
           </div>
         </div>
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Permohonan Doa</div>
-            <a href="#"style="color: #080710;">Informasi Detail</a>
+            <a href="listpokokdoa.php"style="color: #080710;">Informasi Detail</a>
             <i class='bx bx-right-arrow-alt' href="#"></i>
           </div>
         </div>
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Kesaksian Pribadi</div>
-            <a href="#"style="color: #080710;">Informasi Detail</a>
+            <a href="listkesaksian.php"style="color: #080710;">Informasi Detail</a>
             <i class='bx bx-right-arrow-alt' href="#"></i>
           </div>
         </div>
         
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Pemberkatan Pernikahan</div>
-            <a href="#"style="color: #080710;">Informasi Detail</a>
+            <div class="box-topic">Pemberkatan Nikah</div>
+            <a href="listpernikahan.php"style="color: #080710;">Informasi Detail</a>
             <i class='bx bx-right-arrow-alt' href="#"></i>
           </div>
         </div>

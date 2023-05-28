@@ -6,33 +6,14 @@
     exit;
   }
 
-  $id = $_GET['id'];
-  $namakegiatan = '';
-  $kuotakegiatan = 0;
-  $jumlahkonfirmasi = 0;
-  $sql2 = 'SELECT * FROM inputkegiatan WHERE id = '.$id;
-  $stmt2 = $sambung->query($sql2);
-  foreach ($stmt2 as $isi) {
-    $namakegiatan = $isi['nama'];
-    $kuotakegiatan = $isi['kuota'];
-  }
-  if ($kuotakegiatan==0) {
-    $kuotakegiatan = '-';
-  }
-  $sql3 = 'SELECT COUNT(*) jumlah FROM pendaftarankegiatan WHERE idkegiatan = '.$id.' AND statuspembayaran = 1';
-  $stmt3 = $sambung->query($sql3);
-  foreach ($stmt3 as $isi) {
-    $jumlahkonfirmasi = $isi['jumlah'];
-  }
-  $sql = 'SELECT * FROM pendaftarankegiatan p LEFT JOIN akunjemaat j ON p.idpeserta = j.idAkun WHERE idkegiatan = '.$id;
+  $sql = 'SELECT * FROM daftarpokokdoa d JOIN akunjemaat j ON d.iduser=j.idAkun WHERE idgereja='.$_SESSION['gereja'];
   $stmt = $sambung->query($sql);
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Kelola Kegiatan</title>
+    <title>Daftar Jemaat yang Mendaftar Permohonan Doa</title>
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
@@ -58,8 +39,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script>
-        var jumlah = <?php echo $jumlahkonfirmasi; ?>;
-        var kuota = '<?php echo $kuotakegiatan ?>';
         $(document).ready(function() {
             var table = $('#example').DataTable( {
             dom: "B<'row'<'col-sm-6'l><'col-sm-6'f>>tipr",
@@ -88,34 +67,15 @@
             denyButtonText: `Tidak`,
           }).then((result) => {
             if (result.isConfirmed) {
-              if (kuota!='-') {
-                if (jumlah>=kuota) {
-                  alert('Jumlah konfirmasi sudah mencapai kuota!');
-                  return;
-                }
-              }
               $.ajax({
-                url: 'php/konfirmasipembayaran.php',
+                url: 'php/konfirmasistatus.php',
                 type: 'post',
                 data: {
-                    id: id
+                    id: id,
+                    table: 'daftarpokokdoa'
                 },
                 success: function(result) {
-                  document.getElementById('K'+id).innerHTML = '<i class="fas fa-check" onclick="batal('+id+')" style="color:green"> Yes</i>';
-                  document.getElementById('P'+id).innerHTML = result;
-                  jumlah += 1;
-                  var isi = `(<span style="`;
-                  if (kuota!='-') { 
-                    if (jumlah>=kuota) { 
-                      isi += 'color:red'; 
-                    } else {
-                      isi += 'color:green';
-                    }
-                  } else { 
-                    isi += 'color:green'; 
-                  }
-                  isi += `">`+ jumlah + `</span>/`+ kuota + ")";
-                  document.getElementById('kuota').innerHTML = isi;
+                  document.getElementById('K'+id).innerHTML = '<button class="btn btn-primary" onclick="batal('+id+')">Terkonfirmasi</button>';
                 }  
               });
             }
@@ -132,38 +92,18 @@
           }).then((result) => {
             if (result.isConfirmed) {
               $.ajax({
-                url: 'php/batalkonfirmasi.php',
+                url: 'php/batalkanstatus.php',
                 type: 'post',
                 data: {
-                    id: id
+                    id: id,
+                    table: 'daftarpokokdoa'
                 },
                 success: function(result) {
-                  document.getElementById('K'+id).innerHTML = '<i class="fas fa-times" style="color:red" onclick="konfirmasi('+id+')"> No</i>';
-                  document.getElementById('P'+id).innerHTML = "-";
-                  jumlah -= 1;
-                  var isi = `(<span style=" `;
-                  if (kuota!='-') { 
-                    if (jumlah>=kuota) { 
-                      isi += 'color:red'; 
-                    } else {
-                      isi += 'color:green';
-                    }
-                  } else { 
-                    isi += 'color:green'; 
-                  }
-                  isi += `">`+ jumlah + `</span>/`+ kuota + ")";
-                  document.getElementById('kuota').innerHTML = isi;
+                  document.getElementById('K'+id).innerHTML = '<button class="btn btn-warning" onclick="konfirmasi('+id+')">Pending...</button>';
                 }  
               });
             }
           })
-      }
-      function lihatbukti(bukti) {
-        document.getElementById("isiModal").innerHTML = '<center><img src="foto/'+bukti+'" alt="" style=" width:100%" /></center>';
-        $('#myModal').modal('show');
-      }
-      function tutup() {
-        $('#myModal').modal('hide');
       }
       function klikName(iduser) {
         $.ajax({
@@ -178,32 +118,13 @@
             }  
         });
       }
-      function mintaBukti(id) {
-        Swal.fire({
-            title: 'Apakah Anda yakin ingin mengirim email pada user ini?',
-            showDenyButton: true,
-            showCancelButton: false,
-            confirmButtonText: 'Ya',
-            denyButtonText: `Tidak`,
-          }).then((result) => {
-            if (result.isConfirmed) {
-              $.ajax({
-                url: 'kirimemail.php',
-                type: 'post',
-                data: {
-                    id: id
-                },
-                success: function(result) {
-                  document.getElementById('B'+id).innerHTML = "<button class='btn btn-warning' onclick='mintaBukti("+id+")'>Email terkirim..</button>";
-                }  
-              });
-            }
-          })
+      function tutup() {
+        $('#myModal').modal('hide');
       }
     </script>
      <style>
         .logo_name, .links_name {
-            margin-top:3px;
+            margin-top:4px;
         }
         #tdid {
           color: #5100ff;
@@ -254,7 +175,7 @@
     </div>
       <ul class="nav-links" style="margin-left:-32px">
         <li>
-          <a href="homeAdmin.php">
+          <a href="homeAdmin.php" class="active">
             <i class='bx bx-home-alt' ></i>
             <span class="links_name">Home</span>
           </a>
@@ -272,7 +193,7 @@
           </a>
         </li>
         <li>
-          <a href="kelolaKegiatan.php" class="active">
+          <a href="kelolaKegiatan.php">
             <i class='bx bx-pie-chart-alt-2' ></i>
             <span class="links_name">Kelola Kegiatan</span>
           </a>
@@ -314,7 +235,7 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Kelola Kegiatan</span>
+        <span class="dashboard">Home</span>
       </div>
       <div class="profile-details">
         <span class="admin_name"><?php echo $_SESSION['username'];?></span>
@@ -324,9 +245,7 @@
 <br><br><br>
     <div class="container">
         <br>
-        <h2><i class="fa fa-chevron-left" onclick="window.location.href='kelolaKegiatan.php'"></i> Peserta <?php echo $namakegiatan ?></h2>
-        <label id="kuota">(<span style="<?php if ($kuotakegiatan!='-') { if ($jumlahkonfirmasi>=$kuotakegiatan) { echo 'color:red'; } else { echo 'color:green'; } } else { echo 'color:green'; }?>"><?php echo $jumlahkonfirmasi?></span>/<?php echo $kuotakegiatan?>)</label>
-        <button style="float:right" class="buttonUang" onclick="window.location.href='kelolaKeuangan.php?id=<?php echo $id?>'">Kelola Keuangan</button>
+        <h2><i class="fa fa-chevron-left" onclick="window.location.href='homeAdmin.php'"></i> Pendaftaran Permohonan Doa </h2>
         <br><br>
         <div class="table-responsive">
         <div style="overflow-x: auto;">
@@ -334,11 +253,12 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Peserta</th>
-                        <th>Waktu Daftar</th>
-                        <th>Konfirmasi</th>
-                        <th>Waktu Konfirmasi</th>
-                        <th>Bukti Pembayaran</th>
+                        <th>Nama</th>
+                        <th>Kategori Doa</th>
+                        <th>Detail Doa</th>
+                        <th>Bersedia Dihubungi?</th>
+                        <th>Tanggal Daftar</th>
+                        <th>Status Pendaftaran</th>
                     </tr>
                 </thead>
                 <tbody >
@@ -347,11 +267,22 @@
                     ?>
                     <tr>
                         <td><?= $i++; ?></td>
-                        <td onclick="klikName('<?php echo $data['idpeserta']; ?>')" id="tdid"><?php echo $data['namaLengkap']; ?></td>
-                        <td><?php echo $data['waktudaftar']; ?></td>
-                        <td id="K<?php echo $data['idpk'];?>"><?php if ($data['statuspembayaran']==1) { echo '<i class="fas fa-check" onclick="batal('.$data['idpk'].')"style="color:green"> Yes</i>'; } else { echo '<i class="fas fa-times" style="color:red" onclick="konfirmasi('.$data['idpk'].')"> No</i>'; }?></td>
-                        <td id="P<?php echo $data['idpk'];?>"><?php if ($data['statuspembayaran']==1) { echo $data['waktukonfirmasi']; } else { echo "-";}?></td>
-                        <td id="B<?php echo $data['idpk'];?>"><?php if ($data['buktipembayaran']!='-') { echo '<button type="button" class="btn btn-info" onclick="lihatbukti(`'.$data['buktipembayaran'].'`)">Lihat</button>'; } else { if ($data['statuspembayaran']==0) { echo "<button class='btn btn-warning' onclick='mintaBukti(".$data['idpk'].")'>Minta bukti</button?";} else { echo "<button class='btn btn-warning' onclick='mintaBukti(".$data['idpk'].")'>Email terkirim..</button>"; }}?></td>
+                        <td onclick="klikName('<?php echo $data['iduser']; ?>')" id="tdid"><?php echo $data['namaLengkap']; ?></td>
+                        <td><?php if($data['kategoridoa']==1) {
+                            echo "Kesehatan/Kesembuhan"; 
+                        } elseif ($data['kategoridoa']==2) {
+                            echo "Keluarga/Pasangan";
+                        } elseif ($data['kategoridoa']==3) {
+                            echo "Usaha dan Pekerjaan";
+                        } elseif ($data['kategoridoa']==4) {
+                            echo "Pendidikan";
+                        } elseif ($data['kategoridoa']==5) {
+                            echo "Lainnya";
+                        } ?></td>
+                        <td><?php echo $data['detaildoa']?></td>
+                        <td><?php if ($data['bersediadihubungi']==0) { echo '<i class="fas fa-times" style="color:red"> Tidak</i>'; } else { echo '<i class="fas fa-check" style="color:green"> Ya</i>'; } ?></td>
+                        <td><?php echo $data['tanggaldaftar']?></td>
+                        <td id="K<?php echo $data['iddaftar'];?>"><?php if ($data['statuspendaftaran']==1) { echo '<button class="btn btn-primary" onclick="batal('.$data['iddaftar'].')">Terkonfirmasi</button>'; } else { echo '<button class="btn btn-warning" onclick="konfirmasi('.$data['iddaftar'].')">Pending...</button>'; }?></td>
                     </tr>
                     <?php } ?>
                 </tbody>
