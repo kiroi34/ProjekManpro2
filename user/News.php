@@ -118,6 +118,30 @@
             /* Unicode character for "minus" sign (-) */
         }
 
+        /* Style for the modal */
+       .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        text-align: center;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgba(0, 0, 0, 0.4);
+       }
+
+       .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%; 
+       }
+
+       
+
 </style>
 </style>
 </head>
@@ -141,10 +165,24 @@
       <img src="assets/gambar-berita1.jpg" alt="Gambar Berita 1" style =" width: 100%; height: auto;">
       <div class="content">
         <h2 style=" margin-top: 10px; font-size:large"><b>Youth Camp Pemuda Pemudi 2023</b></h2>
-        <p style="margin-bottom: 10px; font-size: medium">Kegiatan diadakan dengan total kurang lebih 80 jemaat dan berlangsung selama 3 hari 2 malam di kampung Wonosari, Jawa Barat</p>
-        <a href="berita1.html" style=" display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
-        text-decoration: none; transition: background-color 0.3s ease;">Baca selengkapnya</a>
-      </div>
+        <p style="margin-bottom: 10px; font-size: medium">Kegiatan diadakan dengan total kurang lebih 80 jemaat dan berlangsung selama 3 hari 2 malam di kampung Wonosari, Jawa Barat<br></p>
+        <!-- <a href="berita1.html" style=" display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
+        text-decoration: none; transition: background-color 0.3s ease;">Baca selengkapnya</a> -->
+        <!-- Button to open the modal -->
+     <button style="display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
+        text-decoration: none; transition: background-color 0.3s ease;" onclick="openModal()">Baca Selengkapnya</button>
+
+        <!-- The modal -->
+        <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+        <h2><b>Youth Camp Pemuda Pemudi 2023</b></h2>
+        <p style="text-align:justify;">✨Kegiatan ini diadakan dengan total kurang lebih 80 jemaat dan berlangsung selama 3 hari 2 malam di kampung Wonosari, Jawa Barat.</p>
+        <p style ="text-align:justify;">✨Kegiatan ini bertujuan untuk mengumpulkan dan melibatkan pemuda-pemudi dalam berbagai kegiatan yang bermanfaat. Peserta mengikuti serangkaian kegiatan asik dan menyenangkan seperti:<br> - diskusi <br> - lokakarya <br> - permainan <br> - kegiatan sosial.</p>
+        <button onclick="closeModal()">Close</button>
+        </div>
+        </div>
+    </div>
       
     </article>
     
@@ -152,9 +190,25 @@
       <img src="assets/gambar-berita2.jpeg" alt="Gambar Berita 2" style =" width: 100%; height: auto;">
       <div class="content">
         <h2 style=" margin-top: 10px; font-size:large"><b>Senam Rutin Jemaat Gereja</b></h2>
-        <p style="margin-bottom: 10px; font-size: medium">Kegiatan rutin dalam rangka mempererat tali persaudaraan dalam Tuhan, berlangsung setiap : <br> Hari : Jumat <br> Pukul : 09.00 WIB <br> Lokasi: Aula Gereja<br>Terbuka untuk seluruh jemaat gereja , SALAM SEHAT.😍 </p>
-        <a href="berita2.html" style=" display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
-        text-decoration: none; transition: background-color 0.3s ease; :hover">Baca selengkapnya</a>
+        <p style="margin-bottom: 10px; font-size: medium">Kegiatan rutin dalam rangka mempererat tali persaudaraan dalam Tuhan, berlangsung setiap : <br> Hari : Jumat <br> Pukul : 09.00 WIB <br> Lokasi: Aula Gereja<br><br>Terbuka untuk seluruh jemaat gereja , SALAM SEHAT.😍 </p>
+        <!-- <a href="berita2.html" style=" display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
+        text-decoration: none; transition: background-color 0.3s ease; :hover">Baca selengkapnya</a> -->
+
+        <!-- Button to open the modal -->
+     <button style="display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
+        text-decoration: none; transition: background-color 0.3s ease;" onclick="openModal2()">Baca Selengkapnya</button>
+
+        <!-- The modal -->
+        <div id="myModal2" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+        <h2><b>Senam Rutin Jemaat Gereja</b></h2>
+        <p style="text-align:justify;">Kegiatan rutin ini seru banget loh dipimpin oleh Bapak/Ibu Pendeta kita dalam rangka mempererat tali persaudaraan dalam Tuhan. </p>
+        <p style="text-align:justify;">Informasi : <br> 📣Kegiatan ini berlangsung setiap Jumat pukul 09.00 WIB di Aula Gereja.</p>
+        <p style="text-align:justify;">📣Kegiatan ini terbuka untuk seluruh jemaat gereja. Ayo bergabung <br>bersama kita, SEHAT SEHAT SEHAT👍</p>
+        <button onclick="closeModal2()">Close</button>
+        </div>
+        </div>
       </div>
     </article>
     
@@ -163,40 +217,33 @@
       <div class="content">
         <h2 style=" margin-top: 10px; font-size:large"><b>Latihan Musik dan PAW untuk Ibadah Youth</b></h2>
         <p style="margin-bottom: 10px; font-size: medium">Latihan dilakukan untuk yang bertugas dalam ibadah pemuda pemudi yaitu WL, pemusik, singer, kolektan, operator.<br> Info Latihan : Hari Kamis 19.00-selesai <br> Lokasi : Gereja</p>
-        <a href="keluar.php" style=" display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
-        text-decoration: none; transition: background-color 0.3s ease;">Baca selengkapnya</a>
+        <!-- <a href="keluar.php" style=" display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
+        text-decoration: none; transition: background-color 0.3s ease;">Baca selengkapnya</a> -->
+
+        <!-- Button to open the modal -->
+     <button style="display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
+        text-decoration: none; transition: background-color 0.3s ease;" onclick="openModal3()">Baca Selengkapnya</button>
+
+        <!-- The modal -->
+        <div id="myModal3" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+        <h2><b>Latihan Musik dan PAW untuk Ibadah Youth</b></h2>
+        <p style="text-align:justify;">Latihan ini dilakukan untuk para anggota yang bertugas dalam ibadah pemuda pemudi, seperti WL (<i>Worship Leader</i>), pemusik, <i>singer</i>, kolektan, dan operator.</p>
+        <p style="text-align:justify;">Info Latihan: </p>
+        <ul>
+        <li style="text-align:left">Hari: Kamis</li>
+        <li style="text-align:left">Waktu: 19.00 - Selesai</li>
+        <li style="text-align:left">Lokasi: Gereja</li>
+       </ul>
+        <p style="text-align:justify;">Para anggota yang terlibat dalam ibadah youth diharapkan untuk mengikuti latihan ini. Ayo bergabung dan tingkatkan kemampuan musik dan pelayanan Anda! Tuhan Yesus Memberkati🙏</p>
+        <button onclick="closeModal3()">Close</button>
+        </div>
+        </div>
+    </div>
       </div>
     </article>
 
-    <!-- <article style="  border: 1px solid #ccc; padding: 10px;">
-      <img src="gambar-berita4.jpg" alt="Gambar Berita 4" style =" width: 100%; height: auto;">
-      <div class="content">
-        <h2 style=" margin-top: 10px;">Judul Berita 4</h2>
-        <p style="margin-bottom: 10px;">Deskripsi singkat berita 4...</p>
-        <a href="berita2.html" style=" display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
-        text-decoration: none; transition: background-color 0.3s ease; :hover">Baca selengkapnya</a>
-      </div>
-    </article>
-    
-    <article style="  border: 1px solid #ccc; padding: 10px;">
-      <img src="gambar-berita5.jpg" alt="Gambar Berita 5" style =" width: 100%; height: auto;">
-      <div class="content">
-        <h2 style=" margin-top: 10px;">Judul Berita 5</h2>
-        <p style="margin-bottom: 10px;">Deskripsi singkat berita 5...</p>
-        <a href="keluar.php" style=" display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
-        text-decoration: none; transition: background-color 0.3s ease;">Baca selengkapnya</a>
-      </div>
-    </article>
-
-    <article style="  border: 1px solid #ccc; padding: 10px;">
-      <img src="gambar-berita6.jpg" alt="Gambar Berita 6" style =" width: 100%; height: auto;">
-      <div class="content">
-        <h2 style=" margin-top: 10px;">Judul Berita 6</h2>
-        <p style="margin-bottom: 10px;">Deskripsi singkat berita 6...</p>
-        <a href="berita2.html" style=" display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
-        text-decoration: none; transition: background-color 0.3s ease; :hover">Baca selengkapnya</a>
-      </div>
-    </article> -->
   </section>
 
                     <?php
@@ -228,20 +275,46 @@
 
     <script src="main.js"></script>
     <script>
-        var faq = document.getElementsByClassName("faq-page");
-        var i;
+        // var faq = document.getElementsByClassName("faq-page");
+        // var i;
 
-        for (i = 0; i < faq.length; i++) {
-            faq[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var body = this.nextElementSibling;
-                if (body.style.display === "block") {
-                    body.style.display = "none";
-                } else {
-                    body.style.display = "block";
-                }
-            });
-        }
+        // for (i = 0; i < faq.length; i++) {
+        //     faq[i].addEventListener("click", function () {
+        //         this.classList.toggle("active");
+        //         var body = this.nextElementSibling;
+        //         if (body.style.display === "block") {
+        //             body.style.display = "none";
+        //         } else {
+        //             body.style.display = "block";
+        //         }
+        //     });
+        // }
+        
+    // Function to open the modal
+    function openModal() {
+      document.getElementById("myModal").style.display = "block";
+    }
+
+    function openModal2() {
+      document.getElementById("myModal2").style.display = "block";
+    }
+
+    function openModal3() {
+      document.getElementById("myModal3").style.display = "block";
+    }
+
+    // Function to close the modal
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+
+    function closeModal2() {
+      document.getElementById("myModal2").style.display = "none";
+    }
+
+    function closeModal3() {
+      document.getElementById("myModal3").style.display = "none";
+    }
     </script>
 </body>
 </html>
