@@ -39,8 +39,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-     <link rel="stylesheet" href="css/homeAdmin.css"> 
-
      <script>
          $(document).ready(function() {
             var table = $('#example').DataTable( {
@@ -65,9 +63,114 @@
             });
         });
 
+        function showInput() {
+            document.getElementById("divInput").style.display = '';
+            }
+
+        function closeInput() {
+            document.getElementById("divInput").style.display = 'none';
+            }
+        
+        function validateForm() {
+              let a = document.forms["myForm"]["nama"].value;
+              let b = document.forms["myForm"]["username"].value;
+              let c = document.forms["myForm"]["password"].value;
+          
+              if (b == "" ) {
+                alert("Nama Harus Diisi");
+                return false;
+              }else if(b == "") {
+                alert("Username Harus Diisi");
+                return false;
+              }else if(c == "") {
+                alert("Password Harus Diidi");
+                return false;
+              }
+          }
+
+          function hapus(id) {
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin menghapus admin ini?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Ya',
+                denyButtonText: `Tidak`,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  $.ajax({
+                    url: 'php/hapusadmin.php',
+                    type: 'post',
+                    data: {
+                        id: id
+                    },
+                    success: function(result) {
+                      location.reload();
+                    }  
+                  });
+                }
+              })
+          }
+
     </script>
 
      <style>
+        input[type=submit] {
+            width: 100%;
+            background-color: #847d7d;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            }
+
+            input[type=submit]:hover {
+            background-color: #9c8c8c;
+            }
+
+            .isi {
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin: auto;
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 85%;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
+
+            input[type=textarea], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
+
+            input[type=password], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
      </style>
    </head>
 
@@ -149,10 +252,42 @@
     </nav>
 
     <div class="home-content">
+      <br>
+      <a href="homeAdmin.php" style="margin-left: 50px;">Kembali</a>
+      <br>
+
+      <div class="overview-boxes">
+        <div class="box">
+            <div class="box-topic">
+              <a href="#" onclick="showInput()" style="color: #080710;">Input Admin Baru</a>
+              <br><p><i>Catatan: Jumlah admin maksimal 5</i></p>
+            </div>
+            <i class='bx bx-right-arrow-alt' href="#"></i>
+        </div>
+        
+        <div class="isi" id="divInput" style="display:none">
+          <form action="addadmin.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
+            <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; float: right;"></i> 
+            <h2 style="padding-left:2px">Input Admin Baru</h2>
+            <br>
+              <label for="nama">Nama</label>
+              <input type="text" id="nama" name="nama" placeholder="Masukan Nama..." required>
+              <br>
+              <label for="biodata">Username</label>
+              <input type="textarea" id="username" name="username" placeholder="Masukkan Username..." required>
+              <br>
+              <label for="pwd">Password:</label>
+              <input type="password" id="password" name="password" placeholder="Masukkan Password..." required>
+              <br>
+              <label for="pwd">Masukkan Ulang Password:</label>
+              <input type="password" id="passwordconf" name="passwordconf" placeholder="Masukkan Ulang Password..." required>
+              <br>
+              <input type="submit" value="Submit" name="submit">
+            </form>
+          </div>
       
     <div class="container">
         <br>
-        <a href="homeAdmin.php">Kembali</a>
         <div class="table-responsive">
         <div style="overflow-x: auto;">
             <table id="example" class="table table-striped" style="width:100%; text-align: center;">
@@ -160,25 +295,29 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Admin</th>
-                        <th>ID Admin</th>
-                        <th>Status</th>
+                        <th>Username Admin</th>
                         <th>Action</th>
                     </tr>
                 </thead>
+                <?php
+                      include 'koneksi.php'; // Using database connection file here
+                        $idgereja = $_SESSION['gereja'];
+                        $sql =  'SELECT * FROM admin WHERE idgereja = '.$idgereja;
+                        $stmt = $sambung->query($sql);
+                        $count = 0;
+                      while($data = mysqli_fetch_array($stmt))
+                      { $count = $count + 1;
+                ?>
                 <tbody>
-                    <td>1</td>
-                    <td>Sutrisno</td>
-                    <td>sutrisno.gms</td>
-                    <td><i class="fas fa-check"style="color:green">Admin Aktif</i></td>
-                    <td><button type="button" class="btn btn-danger" onclick="action()">Hapus</button></td>
+                    <td><?php echo $count; ?></td>
+                    <td><?php echo $data['namaadmin']; ?></td>
+                    <td><?php echo $data['username']; ?></td>
+                    <td id="btnn<?php echo $data['id'];?>"><button type="button" class="btn btn-danger" onclick="hapus('<?php echo $data['id']; ?>')">Hapus</button></td>
                 </tbody>
-                <tbody>
-                    <td>2</td>
-                    <td>Lisa</td>
-                    <td>lisa.gms</td>
-                    <td><i class="fas fa-check"style="color:red">Menunggu Konfirmasi</i></td>
-                    <td><button type="button" class="btn btn-danger" onclick="action()">Hapus</button></td>
                 </tbody>
+                <?php
+                      }
+                ?>
             </table>
         </div>
         </div>
