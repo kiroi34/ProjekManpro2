@@ -127,7 +127,7 @@
           }).then((result) => {
             if (result.isConfirmed) {
               $.ajax({
-                url: 'php/hapusadmin.php',
+                url: 'php/hapus.php',
                 type: 'post',
                 data: {
                     id: id
