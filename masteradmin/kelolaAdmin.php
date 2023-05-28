@@ -1,5 +1,10 @@
 <?php
     require_once 'koneksi.php';
+    session_start();
+    if(!isset($_SESSION['username'])){
+      header("location: loginMaster.php");
+      exit;
+    }
 ?>
 
 
@@ -55,6 +60,29 @@
                 window.location.href = "historivotebim.php?karya="+this.value;
             });
         });
+
+        function hapus(id) {
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin menghapus admin ini?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Ya',
+            denyButtonText: `Tidak`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+                url: 'php/hapus.php',
+                type: 'post',
+                data: {
+                    id: id
+                },
+                success: function(result) {
+                  location.reload();
+                }  
+              });
+            }
+          })
+      }
 
     </script>
      <style>
@@ -362,7 +390,7 @@
         </li>
         <br>
         <li class="log_out">
-          <a href="#">
+          <a href="logout.php">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
           </a>
@@ -387,7 +415,7 @@
       </div>
 
       <div class="profile-details">
-        <span class="admin_name">Nama Admin</span>
+        <span class="admin_name"><?php echo $_SESSION['username'];?></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>
@@ -417,10 +445,10 @@
                 ?>
                 <tbody>
                     <td><?php echo $data['id']; ?></td>
-                    <td>Sutrisno</td>
+                    <td><?php echo $data['namaadmin']; ?></td>
                     <td><?php echo $data['username']; ?></td>
                     <!-- <td><i class="fas fa-check"style="color:green">Admin Aktif</i></td> -->
-                    <td><button type="button" class="btn btn-danger" onclick="action()">Hapus</button></td>
+                    <td id="btnn<?php echo $data['id'];?>"><button type="button" class="btn btn-danger" onclick="hapus('<?php echo $data['id']; ?>')">Hapus</button></td>
                 </tbody>
                 <?php
                       }

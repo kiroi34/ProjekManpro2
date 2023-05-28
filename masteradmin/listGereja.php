@@ -1,3 +1,13 @@
+<?php
+    require_once 'koneksi.php';
+    session_start();
+    if(!isset($_SESSION['username'])){
+      header("location: loginMaster.php");
+      exit;
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -104,6 +114,30 @@
 
       function detailadminPage(idgereja) {
         location.href = 'kelolaAdmin.php?id='+idgereja;
+      }
+
+      
+      function hapus(id) {
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin menghapus pendaftaran gereja ini?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Ya',
+            denyButtonText: `Tidak`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+                url: 'php/hapus.php',
+                type: 'post',
+                data: {
+                    id: id
+                },
+                success: function(result) {
+                  location.reload();
+                }  
+              });
+            }
+          })
       }
 
       function tutup() {
@@ -412,7 +446,7 @@
         </li>
         <br>
         <li class="log_out">
-          <a href="#">
+          <a href="logout.php">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
           </a>
@@ -427,7 +461,7 @@
       </div>
 
       <div class="profile-details">
-        <span class="admin_name">Nama Admin</span>
+        <span class="admin_name"><?php echo $_SESSION['username'];?></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>
@@ -447,6 +481,7 @@
                         <th>Penanggungjawab</th>
                         <th>Waktu Konfirmasi</th>
                         <th>Kelola Admin</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <?php
@@ -464,7 +499,8 @@
                     <td><button type="button" class="btn btn-info" onclick="lihatCP('<?php echo $data['idgereja']; ?>')">Lihat</button></td>
                     <td><?php echo $data['waktukonfirmasi']; ?></td>
                     <td><button type="button" class="btn btn-info" onclick="lihatAdmin('<?php echo $data['idgereja']; ?>')">Lihat</button></td>
-                </tbody>
+                    <td id="btnn<?php echo $data['idgereja'];?>"><button type="button" class="btn btn-danger" onclick="hapus('<?php echo $data['idgereja']; ?>')">Hapus</button></td>
+                  </tbody>
               <?php
                       }
               ?>

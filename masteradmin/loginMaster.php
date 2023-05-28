@@ -117,11 +117,11 @@ button{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form action="homeMaster.php" method="post">
+    <form action="loginproses.php" method="post">
         <h3>Login Here</h3>
 
         <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username" name="username">
+        <input type="text" placeholder="Username" id="username" name="username">
 
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password" name="password">

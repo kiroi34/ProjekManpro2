@@ -1,3 +1,13 @@
+<?php
+    require_once 'koneksi.php';
+    session_start();
+    if(!isset($_SESSION['username'])){
+      header("location: loginMaster.php");
+      exit;
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -289,7 +299,7 @@
         </li>
         <br>
         <li class="log_out">
-          <a href="#">
+          <a href="logout.php">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
           </a>
@@ -304,7 +314,7 @@
       </div>
 
       <div class="profile-details">
-        <span class="admin_name">Nama Admin</span>
+        <span class="admin_name"><?php echo $_SESSION['username'];?></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>

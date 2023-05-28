@@ -1,5 +1,10 @@
 <?php
-  require_once 'koneksi.php';
+    require_once 'koneksi.php';
+    session_start();
+    if(!isset($_SESSION['username'])){
+      header("location: loginMaster.php");
+      exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -55,9 +60,9 @@
             });
         });
 
-        function konfirmasi(id) {
+        function terima(id) {
           Swal.fire({
-            title: 'Apakah Anda yakin ingin menkonfirmasi pendaftaran gereja ini?',
+            title: 'Apakah Anda yakin ingin menerima pendaftaran gereja ini?',
             showDenyButton: true,
             showCancelButton: false,
             confirmButtonText: 'Ya',
@@ -65,38 +70,65 @@
           }).then((result) => {
             if (result.isConfirmed) {
               $.ajax({
-                // url: 'php/konfirmasipembayaran.php',
-                // type: 'post',
-                // data: {
-                //     id: id
-                // },
-                success: function(result) {
-                  document.getElementById('K'+id).innerHTML = '<i class="fas fa-check" onclick="batal('+id+')" style="color:green"> Yes</i>';
-                  document.getElementById('P'+id).innerHTML = result;
-                }  
-              });
-            }
-          })
-
-        }
-      function batal(id) {
-        Swal.fire({
-            title: 'Apakah Anda yakin ingin membatalkan konfirmasi pembayaran ini?',
-            showDenyButton: true,
-            showCancelButton: false,
-            confirmButtonText: 'Ya',
-            denyButtonText: `Tidak`,
-          }).then((result) => {
-            if (result.isConfirmed) {
-              $.ajax({
-                url: 'php/batalkonfirmasi.php',
+                url: 'php/konfirmasi.php',
                 type: 'post',
                 data: {
                     id: id
                 },
                 success: function(result) {
-                  document.getElementById('K'+id).innerHTML = '<i class="fas fa-times" style="color:red" onclick="konfirmasi('+id+')"> No</i>';
-                  document.getElementById('P'+id).innerHTML = "-";
+                  document.getElementById('status'+id).innerHTML = '<i style="color:green"> Pendaftaran Diterima</i>';
+                  document.getElementById('waktu'+id).innerHTML = result;
+                  document.getElementById('btnn'+id).innerHTML = '<button type="button" class="btn btn-danger" onclick="batal('+id+')">Batal</button>';
+                }  
+              });
+            }
+          })
+        }
+
+      function tolak(id) {
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin menolak pendaftaran gereja ini?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Ya',
+            denyButtonText: `Tidak`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+                url: 'php/tolak.php',
+                type: 'post',
+                data: {
+                    id: id
+                },
+                success: function(result) {
+                  document.getElementById('status'+id).innerHTML = '<i style="color:red">Pendaftaran Ditolak</i>';
+                  document.getElementById('waktu'+id).innerHTML = "-";
+                  document.getElementById('btnn'+id).innerHTML = '<button type="button" class="btn btn-danger" onclick="batal('+id+')">Batal</button>';
+                }  
+              });
+            }
+          })
+      }
+
+      function batal(id) {
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin membatalkan konfirmasi pendaftaran gereja ini?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Ya',
+            denyButtonText: `Tidak`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+                url: 'php/batal.php',
+                type: 'post',
+                data: {
+                    id: id
+                },
+                success: function(result) {
+                  document.getElementById('status'+id).innerHTML = '<i style="color:blue"> Menunggu Terkonfirmasi</i>';
+                  document.getElementById('waktu'+id).innerHTML = "-";
+                  document.getElementById('btnn'+id).innerHTML = '<span><button type="button" class="btn btn-success" onclick="terima('+id+')">Terima</button>  <button type="button" class="btn btn-danger" onclick="tolak('+id+')">Tolak</button></span>';
                 }  
               });
             }
@@ -140,7 +172,7 @@
                 $('#myModal').modal('show');
 
       }
-      
+
       function tutup() {
         $('#myModal').modal('hide');
       }
@@ -446,7 +478,7 @@
         </li>
         <br>
         <li class="log_out">
-          <a href="#">
+          <a href="logout.php">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
           </a>
@@ -461,7 +493,7 @@
       </div>
 
       <div class="profile-details">
-        <span class="admin_name">Nama Admin</span>
+        <span class="admin_name"><?php echo $_SESSION['username'];?></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>
@@ -481,7 +513,8 @@
                         <th>Status</th>
                         <th>Waktu Konfirmasi</th>
                         <th>Visi Misi Gereja</th>
-                        <th>PenanggungJawab</th>
+                        <th>Penanggungjawab</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <?php
@@ -496,11 +529,12 @@
                     <td><?php echo $data['nama']; ?></td>
                     <td><?php echo $data['alamat']; ?></td>
                     <td><?php echo $data['waktudaftar']; ?></td>
-                    <td><?php if ($data['konfirmasi']==0) { echo '<i class="fas fa-check" onclick="batal('.$data['idgereja'].')"style="color:green"> Yes</i>'; } else { echo '<i class="fas fa-times" style="color:red" onclick="konfirmasi('.$data['idgereja'].')"> No</i>'; }?></td>
-                    <td><?php echo $data['waktukonfirmasi']; ?></td>
+                    <td id="status<?php echo $data['idgereja'];?>"><?php if ($data['konfirmasi']==0) { echo '<i onclick="batal('.$data['idgereja'].')"style="color:green">Sudah Terkonfirmasi</i>'; } if ($data['konfirmasi']==1) { echo '<i onclick="batal('.$data['idgereja'].')"style="color:blue">Menunggu Terkonfirmasi</i>'; } if ($data['konfirmasi']==2) { echo '<i style="color:red" onclick="konfirmasi('.$data['idgereja'].')">Konfirmasi Ditolak</i>'; }?></td>
+                    <td id="waktu<?php echo $data['idgereja'];?>"><?php echo $data['waktukonfirmasi']; ?></td>
                     <td><button type="button" class="btn btn-info" onclick="lihatVisi('<?php echo $data['idgereja']; ?>')">Lihat</button></td>
                     <td><button type="button" class="btn btn-info" onclick="lihatCP('<?php echo $data['idgereja']; ?>')">Lihat</button></td>
-                </tbody>
+                    <td id="btnn<?php echo $data['idgereja'];?>"><?php if ($data['konfirmasi']==0 || $data['konfirmasi']==2) {echo '<button type="button" class="btn btn-danger" onclick="batal(`'.$data['idgereja'].'`)">Batal</button>' ;} if ($data['konfirmasi']==1) {echo '<span><button type="button" class="btn btn-success" onclick="terima(`'.$data['idgereja'].'`)">Terima</button>  <button type="button" class="btn btn-danger" onclick="tolak(`'.$data['idgereja'].'`)">Tolak</button></span>' ;} ?></td>
+                  </tbody>
                 <?php
                   }
                 ?>
