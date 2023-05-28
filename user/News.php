@@ -1,9 +1,18 @@
 <?php
         require_once 'koneksi.php';
-
         session_start();
-
-        include_once "navbar.php";
+        if (!isset($_SESSION['gereja'])) {
+            if (isset($_GET['gereja'])) {
+              $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+              $records = mysqli_query($sambung,$sql);
+              while($data = mysqli_fetch_array($records)){
+                $_SESSION['gereja'] = $data['idgereja'];
+              }
+              
+            } else {
+              header("Location: registgereja.php");
+            }
+          } 
     ?>
 
 

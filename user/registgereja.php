@@ -207,10 +207,8 @@
                                                                                 <input type="tel" id="informasipendeta" class="form-control" name="informasipendeta" maxlength="50" placeholder="Informasi Pendeta"required>
                                                                             </div>
 
-                                                                            <form action="/action_page.php">
                                                                             <label for="UploadFotoPendeta" style="color: white; font-family: Poppins; font-size: medium;">Upload Foto Pendeta :</label>
-                                                                            <input type="file" id="myFile" name="filename" style="font-size:medium;">
-                                                                            </form>
+                                                                            <input type="file" id="myFile" name="fotopendeta" style="font-size:medium;">
                                                                             
                                                                             <br>
 
@@ -276,7 +274,7 @@
                                                                             
                                                                             <form action="/action_page.php">
                                                                             <label for="UploadFotoKTP" style="color: white; font-family: Poppins; font-size:medium;">Upload Foto KTP :</label>
-                                                                            <input type="file" id="myFile" name="filename"style="font-size:medium;">
+                                                                            <input type="file" id="myFile" name="fotoktp"style="font-size:medium;">
                                                                             </form>
                                 
                                                                         

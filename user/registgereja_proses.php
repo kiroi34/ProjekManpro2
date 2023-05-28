@@ -16,115 +16,39 @@
             $kota = $_POST['kota'];
             $alamat = $_POST['alamat'];
             $tentang = $_POST['tentang'];
-            $visimisi = $_POST['visimisi'];
+            $visi = $_POST['visi'];
+            $misi = $_POST['misi'];
+            $linkgereja = $_POST['linkgereja'];
             $informasipendeta = $_POST['informasipendeta'];
-            $pertanyaanfaq = $_POST['pertanyaanfaq'];
-            $jawabanfaq = $_POST['jawabanfaq'];
-            $kategoriberita = $_POST['kategoriberita'];
-            $judulberita = $_POST['judulberita'];
-            $kontenberita = $_POST['kontenberita'];
-            $tanggalkonten = $_POST['tanggalkonten'];
             $rekeningpersembahan = $_POST['rekeningpersembahan'];
             $namacp = $_POST['namacp'];
             $kontakcp = $_POST['kontakcp'];
             $nikcp = $_POST['nikcp'];
 
             if ($_FILES != null){
+                $fotopendeta = $_FILES['fotopendeta']['name']; //nampung nama
+                $extention = pathinfo($fotopendeta, PATHINFO_EXTENSION);
+                $tmp_file1 = $_FILES['fotopendeta']['tmp_name']; //nampung directory laptop
+                $imgStorePath1 = "assets/".$fotopendeta;
+                $fotoktp = $_FILES['fotoktp']['name']; //nampung nama
+                $extention = pathinfo($fotoktp, PATHINFO_EXTENSION);
+                $tmp_file2 = $_FILES['fotoktp']['tmp_name']; //nampung directory laptop
+                $imgStorePath2 = "assets/".$fotoktp;
                 $fotopersembahan = $_FILES['fotopersembahan']['name']; //nampung nama
                 $extention = pathinfo($fotopersembahan, PATHINFO_EXTENSION);
-                $tmp_file = $_FILES['fotopersembahan']['tmp_name']; //nampung directory laptop
-                $imgStorePath = "../admin/poster/".$fotopersembahan;
+                $tmp_file3 = $_FILES['fotopersembahan']['tmp_name']; //nampung directory laptop
+                $imgStorePath3= "assets/".$fotopersembahan;
             }
         ?>
 
         <div class="container" style="text-align: center; margin-top: 3%;">
             <?php
-                if ($nama == '' || $email == '' || $jamoperasional == '' || $kota == '' || $alamat == '' || $tentang == '' ||
-                $visimisi == '' || $informasipendeta == '' || $pertanyaanfaq == '' || $pertanyaanfaq == '' || $jawabanfaq == '' || $kategoriberita == '' ||
-                $judulberita == '' || $kontenberita == '' || $tanggalkonten == '' || $rekeningpersembahan == '' || $namacp == '' || $kontakcp == '' || $nikcp == ''){
-                    echo '<i class="fas fa-times-circle fa-7x" style="color: red"></i>';
-                    echo '<h3 style="margin-top: 1%;">Post gagal direquest!</h3>';
+            move_uploaded_file($tmp_file1, $imgStorePath1);
+            move_uploaded_file($tmp_file2, $imgStorePath2);
+            move_uploaded_file($tmp_file3, $imgStorePath3);
 
-                    if ($nama == '') {
-                        echo 'Nama invalid <br>';
-                    }
 
-                    if ($email == '') {
-                        echo 'Email invalid <br>';
-                    }
-
-                    if ($jamoperasional == '') {
-                        echo 'Jam Operasional invalid <br>';
-                    }
-
-                    if ($kota == '') {
-                        echo 'Kota invalid <br>';
-                    }
-
-                    if ($alamat == '') {
-                        echo 'Alamat invalid <br>';
-                    }
-
-                    if ($tentang == '') {
-                        echo 'Tentang invalid <br>';
-                    }
-
-                    if ($visimisi == '') {
-                        echo 'Visi Misi invalid <br>';
-                    }
-
-                    if ($informasipendeta == '') {
-                        echo 'Informasi Pendeta invalid <br>';
-                    }
-
-                    if ($pertanyaanfaq == '') {
-                        echo 'Pertanyaan FAQ invalid <br>';
-                    }
-
-                    if ($jawabanfaq == '') {
-                        echo 'Jawaban FAQ invalid <br>';
-                    }
-
-                    if ($kategoriberita == '') {
-                        echo 'Kategori Berita invalid <br>';
-                    }
-
-                    if ($judulberita == '') {
-                        echo 'Judul Berita invalid <br>';
-                    }
-
-                    if ($kontenberita == '') {
-                        echo 'Konten Berita invalid <br>';
-                    }
-
-                    if ($tanggalkonten == '') {
-                        echo 'Tanggal Konten invalid <br>';
-                    }
-
-                    if ($rekeningpersembahan == '') {
-                        echo 'Rekening Persembahan invalid <br>';
-                    }
-
-                    if ($namacp == '') {
-                        echo 'Nama CP invalid <br>';
-                    }
-
-                    if ($kontakcp == '') {
-                        echo 'Kontak CP invalid <br>';
-                    }
-
-                    if ($nikcp == '') {
-                        echo 'NIK CP invalid <br>';
-                    }
-
-                    echo '<br><br><h6>Silahkan mengulangi input</h6>';
-                    echo '<a href="registgereja.php"><h5>Back</h5></a>';
-                }
-            move_uploaded_file($tmp_file, $imgStorePath);
-
-            $query = "INSERT INTO daftargereja (nama, email, jamoperasional, kota, alamat, tentang, visimisi, informasipendeta, pertanyaanfaq, jawabanfaq, kategoriberita, judulberita, kontenberita, tanggalkonten, rekeningpersembahan, fotopersembahan, namacp, kontakcp, nikcp)
-                VALUES ('". $nama."', '". $email."', '". $jamoperasional ."', '". $kota ."', '". $alamat ."', '". $tentang ."', '". $visimisi ."', '". $informasipendeta ."', '". $pertanyaanfaq ."', 
-                '". $jawabanfaq ."', '". $kategoriberita ."', '". $judulberita ."', '". $kontenberita ."', '". $tanggalkonten ."', '". $rekeningpersembahan ."', '". $fotopersembahan ."', '". $namacp ."', '". $kontakcp ."', '". $nikcp ."')";
+            $query = "INSERT INTO `gereja`(`nama`, `link`, `namapenanggung`, `nikpenanggung`, `alamat`, `nohp`, `ktppenanggung`, `visi`, `misi`, `waktudaftar`, `waktukonfirmasi`, `konfirmasi`, `email`, `jamoperasional`, `kota`, `tentang`, `informasipendeta`, `rekeningpersembahan`, `fotopersembahan`, `fotogereja`, `fotopendeta`) VALUES ('[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]','[value-10]','[value-11]','[value-12]','[value-13]','[value-14]','[value-15]','[value-16]','[value-17]','[value-18]','[value-19]','[value-20]','[value-21]','[value-22]')";
             $sambung->query($query);
         ?>
 
