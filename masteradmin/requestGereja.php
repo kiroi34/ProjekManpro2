@@ -127,7 +127,7 @@
                 },
                 success: function(result) {
                   document.getElementById('status'+id).innerHTML = '<i style="color:blue"> Menunggu Terkonfirmasi</i>';
-                  document.getElementById('waktu'+id).innerHTML = "-";
+                  document.getElementById('waktu'+id).innerHTML = "0000-00-00 00:00:00";
                   document.getElementById('btnn'+id).innerHTML = '<span><button type="button" class="btn btn-success" onclick="terima('+id+')">Terima</button>  <button type="button" class="btn btn-danger" onclick="tolak('+id+')">Tolak</button></span>';
                 }  
               });

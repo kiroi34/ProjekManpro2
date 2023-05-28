@@ -167,7 +167,7 @@
                                                                             </div>
 
                                                                             <label for="UploadFotoGereja" style="color: white; font-family: Poppins; font-size: medium;">Upload Foto Gereja :</label>
-                                                                            <input type="file" id="fotogereja" name="filename" style="font-size:medium;">
+                                                                            <input type="file" id="fotogereja" name="fotogereja" style="font-size:medium;">
 
                                                                             <br>
                                                                             <br>
@@ -197,7 +197,7 @@
 
                                                                             <!-- Link Gereja -->
                                                                             <div class="form-group field-linkgerejaField">
-                                                                                <input type="tel" id="link" class="form-control" name="linkgereja" maxlength="50" placeholder="Nama Gereja untuk Link"required>
+                                                                                <input type="tel" id="link" class="form-control" name="link" maxlength="50" placeholder="Nama Gereja untuk Link"required>
                                                                             </div>
 
                                                                             <!-- Mengenai Pendeta Gereja -->
@@ -206,11 +206,9 @@
                                                                             </div>
 
                                                                             <label for="UploadFotoPendeta" style="color: white; font-family: Poppins; font-size: medium;">Upload Foto Pendeta :</label>
-                                                                            <input type="file" id="fotopendeta" name="filename" style="font-size:medium;">
+                                                                            <input type="file" id="fotopendeta" name="fotopendeta" style="font-size:medium;">
                                                                             
                                                                             <br>
-
-                                                    
 
                                                                             <div style="font-size:12px; margin-top:-3px; margin-bottom:20px; color:grey; text-align:left; font-size: medium;">
                                                                                 <b>Informasi Kebutuhan Persembahan : </b>
@@ -258,24 +256,19 @@
 
                                                                             <!-- Nama Penanggung Jawab -->
                                                                             <div class="form-group field-nameCP">
-                                                                                <input type="tel" id="namacp" class="form-control" name="namacp" placeholder="Nama Penanggung Jawab"required>
+                                                                                <input type="tel" id="namapenanggung" class="form-control" name="namapenanggung" placeholder="Nama Penanggung Jawab"required>
                                                                             </div>
 
                                                                             <div class="form-group field-notelpCP">
-                                                                                <input type="tel" id="kontakcp" class="form-control" name="kontakcp" placeholder="Nomor Telepon CP"required>
+                                                                                <input type="tel" id="nohp" class="form-control" name="nohp" placeholder="Nomor Telepon CP"required>
                                                                             </div>
 
                                                                             <div class="form-group field-nikpCP">
-                                                                                <input type="tel" id="nikcp" class="form-control" name="nikcp" placeholder="NIK CP"required>
+                                                                                <input type="tel" id="nikpenanggung" class="form-control" name="nikpenanggung" placeholder="NIK CP"required>
                                                                             </div>
 
-                                                                            
-                                                                            <form action="/action_page.php">
                                                                             <label for="UploadFotoKTP" style="color: white; font-family: Poppins; font-size:medium;">Upload Foto KTP :</label>
-                                                                            <input type="file" id="myFile" name="fotoktp"style="font-size:medium;">
-                                                                            </form>
-                                
-                                                                        
+                                                                            <input type="file" id="ktppenanggung" name="ktppenanggung"style="font-size:medium;">
 
                                                                             <br>
 

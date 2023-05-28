@@ -55,9 +55,6 @@
                 }
                 },
             } );
-            $('select').on('change', function() {
-                window.location.href = "historivotebim.php?karya="+this.value;
-            });
         });
 
         function lihatVisi(idgereja) {
