@@ -60,18 +60,16 @@
           <div style="width:100%;" class="mr-auto ml-auto">
               <div style="background-image:url('/images/form.jpg'); background-repeat:no-repeat; background-position:inherit; background-size:cover; background-color:#1C1C1C; padding:20px;">
                   <div class="cginfo-custom mr-auto ml-auto" style="font-size:30px; margin-bottom:3px; color:white; max-width:770px;">
-                      Contact Us             
+                      Hubungi Kami            
                   </div>
                   <div class="mr-auto ml-auto" style="font-size:14px; margin:auto; color:#a5a5a5; max-width:770px;">
-                      Hubungi kami disini.            
+                      Silahkan hubungi kami disini.            
                   </div>
               </div>
        <div>
+        <br>
         <div class="pt-4 pb-5">
             <div class="container">
-              <div class="mb-3">
-                <h1 id="contactus" class="text-center">Hubungi Kami</h1>
-              </div>
               <div class="row">
                 <div class="col-md-7">
                   <form id="w0" action="/" method="post">
@@ -80,22 +78,21 @@
           <div class="col-6">
           <div class="form-group field-contactform-name required">
           
-          <input type="text" id="contactform-name" class="form-control" name="ContactForm[name]" placeholder="Nama" aria-required="true">
+          <input type="text" id="contactform-name" class="form-control" name="ContactForm[name]" placeholder="Nama" aria-required="true" required>
           
           <p class="help-block help-block-error"></p>
           </div>          </div>
           <div class="col-6">
           <div class="form-group field-contactform-email required error">
           
-          <input type="text" id="contactform-email" class="form-control" name="ContactForm[email]" placeholder="E-mail" aria-required="true" aria-invalid="true">
+          <input type="text" id="contactform-email" class="form-control" name="ContactForm[email]" placeholder="E-mail" aria-required="true" aria-invalid="true"required>
           
-          <p class="help-block help-block-error" style="font-size: medium;">* Email tidak boleh kosong.</p>
           </div>          
         </div>
           <div class="col-12">
           <div class="form-group field-contactform-subject required">
           
-          <input type="text" id="contactform-subject" class="form-control" name="ContactForm[subject]" placeholder="Subject" aria-required="true">
+          <input type="text" id="contactform-subject" class="form-control" name="ContactForm[subject]" placeholder="Subject" aria-required="true"required>
           
           <p class="help-block help-block-error"></p>
           </div>          
@@ -103,7 +100,9 @@
           <div class="col-12">
           <div class="form-group field-contactform-body required">
           
-          <textarea id="contactform-body" class="form-control" name="ContactForm[body]" rows="10" placeholder="Pesan" aria-required="true"></textarea>
+          <textarea id="contactform-body" class="form-control" name="ContactForm[body]" rows="10" placeholder="Pesan" aria-required="true"required>
+
+          </textarea>
           
           <p class="help-block help-block-error"></p>
           </div>          </div>
@@ -114,27 +113,44 @@
                   </form>      </div>
                 <div class="col-md-5">
                   <div class="d-md-none mt-5"></div>
-                  <h5 class="mb-3">Detail Gereja</h5>
+                  <h5 class="mb-3"><b>Detail Gereja : </b></h5>
                   <p>
                     <strong>Alamat</strong>
                     <br>
-                    <a href="#map">Jalan Siwalankerto VIII Blok F no 40, Surabaya.</a>
+                    <a>Four Point Tunjungan Plaza 4 Lantai 6, Jl. Embong Malang No.32-36, Kedungdoro, Kec. Tegalsari, Surabaya, Jawa Timur 60261</a>
                     <br><br>
                     <strong>Jam Operasional</strong>
                     <br>
                     Senin-Sabtu<br>
-                    Open hours: 10.00-18.00 <br><br>
+                    Jam Operasional: 10.00-18.00 <br><br>
                     <strong>E-mail</strong>
                     <br>
                     <a href="gerejakita@gmail.com">gerejakita@gmail.com</a>
                     <br><br>
-                    <a class="btn btn-danger" style="background-color: blue;" href="/locations">Lihat Lokasi Gereja</a>
+                    <button class="btn btn-danger" id="btn-maps"style="background-color: blue;">Lihat Lokasi Gereja</button>
                   </p>
                 </div>
               </div>
             </div>
           </div>
        </div>
-        
+      
+      <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+      <script>
+      // Fungsi untuk menangani klik tombol
+      function openGoogleMaps() {
+      // Ubah alamat sesuai lokasi gereja
+      var address = "Gereja Satu Jam Saja";
+      var encodedAddress = encodeURIComponent(address);
+      var url = "https://www.google.com/maps/place/Gereja+Satu+Jam+Saja+(GSJS)+Tunjungan+Plaza/@-7.2621657,112.7341334,17z/data=!3m1!4b1!4m6!3m5!1s0x2dd7f90c0a1230bb:0x3c8970a5591c6aa0!8m2!3d-7.2621657!4d112.7390043!16s%2Fg%2F11jzsc5b1r?entry=ttu" + encodedAddress;
+
+      // Buka Google Maps dalam tab baru
+      window.open(url, "_blank");
+      }
+
+    // Tambahkan event listener untuk tombol
+      var btnMaps = document.getElementById("btn-maps");
+      btnMaps.addEventListener("click", openGoogleMaps);
+</script>
     </body>
 </html>
