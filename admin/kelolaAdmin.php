@@ -259,10 +259,9 @@
       <div class="overview-boxes">
         <div class="box">
             <div class="box-topic">
-              <a href="#" onclick="showInput()" style="color: #080710;">Input Admin Baru</a>
+              <a href="#" onclick="showInput()" style="color: #080710;">Klik disini untuk Input Admin Baru</a>
               <br><p><i>Catatan: Jumlah admin maksimal 5</i></p>
             </div>
-            <i class='bx bx-right-arrow-alt' href="#"></i>
         </div>
         
         <div class="isi" id="divInput" style="display:none">
