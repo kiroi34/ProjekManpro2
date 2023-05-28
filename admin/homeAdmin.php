@@ -278,6 +278,18 @@
 
 </div>
 
+<h3 style="margin-left: 1%;">Pengelolaan Jemaat</h3>
+<div class="overview-boxes">
+  <div class="box">
+    <div class="right-side">
+      <div class="box-topic">List Jemaat</div>
+      <a href="kelolaJemaat.php"style="color: #080710;">Klik disini</a>
+      <i class='bx bx-right-arrow-alt' href="#"></i>
+    </div>
+  </div>
+
+</div>
+
       <!-- <div class="overview-boxes">
         <div class="box">
           <div class="right-side">

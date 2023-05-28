@@ -62,115 +62,9 @@
                 window.location.href = "historivotebim.php?karya="+this.value;
             });
         });
-
-        function showInput() {
-            document.getElementById("divInput").style.display = '';
-            }
-
-        function closeInput() {
-            document.getElementById("divInput").style.display = 'none';
-            }
-        
-        function validateForm() {
-              let a = document.forms["myForm"]["nama"].value;
-              let b = document.forms["myForm"]["username"].value;
-              let c = document.forms["myForm"]["password"].value;
-          
-              if (b == "" ) {
-                alert("Nama Harus Diisi");
-                return false;
-              }else if(b == "") {
-                alert("Username Harus Diisi");
-                return false;
-              }else if(c == "") {
-                alert("Password Harus Diidi");
-                return false;
-              }
-          }
-
-          function hapus(id) {
-            Swal.fire({
-                title: 'Apakah Anda yakin ingin menghapus admin ini?',
-                showDenyButton: true,
-                showCancelButton: false,
-                confirmButtonText: 'Ya',
-                denyButtonText: `Tidak`,
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  $.ajax({
-                    url: 'php/hapusadmin.php',
-                    type: 'post',
-                    data: {
-                        id: id
-                    },
-                    success: function(result) {
-                      location.reload();
-                    }  
-                  });
-                }
-              })
-          }
-
     </script>
 
      <style>
-        input[type=submit] {
-            width: 100%;
-            background-color: #847d7d;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            }
-
-            input[type=submit]:hover {
-            background-color: #9c8c8c;
-            }
-
-            .isi {
-            background-color: #f2f2f2;
-            padding: 20px;
-            margin: auto;
-            margin-top: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 85%;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            }
-            input[type=text], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            }
-
-            input[type=textarea], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            }
-
-            input[type=password], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            }
      </style>
    </head>
 
@@ -242,7 +136,7 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Kelola Admin</span>
+        <span class="dashboard">Kelola Jemaat</span>
       </div>
 
       <div class="profile-details">
@@ -255,36 +149,6 @@
       <br>
       <a href="homeAdmin.php" style="margin-left: 50px;">Kembali</a>
       <br>
-
-      <div class="overview-boxes">
-        <div class="box">
-            <div class="box-topic">
-              <a href="#" onclick="showInput()" style="color: #080710;">Input Admin Baru</a>
-              <br><p><i>Catatan: Jumlah admin maksimal 5</i></p>
-            </div>
-            <i class='bx bx-right-arrow-alt' href="#"></i>
-        </div>
-        
-        <div class="isi" id="divInput" style="display:none">
-          <form action="addadmin.php" method="post" onsubmit="return validateForm()" name="myForm" enctype="multipart/form-data">
-            <i class="fas fa-times" onclick="closeInput()" style="font-size:20px;color:red; float: right;"></i> 
-            <h2 style="padding-left:2px">Input Admin Baru</h2>
-            <br>
-              <label for="nama">Nama</label>
-              <input type="text" id="nama" name="nama" placeholder="Masukan Nama..." required>
-              <br>
-              <label for="biodata">Username</label>
-              <input type="textarea" id="username" name="username" placeholder="Masukkan Username..." required>
-              <br>
-              <label for="pwd">Password:</label>
-              <input type="password" id="password" name="password" placeholder="Masukkan Password..." required>
-              <br>
-              <label for="pwd">Masukkan Ulang Password:</label>
-              <input type="password" id="passwordconf" name="passwordconf" placeholder="Masukkan Ulang Password..." required>
-              <br>
-              <input type="submit" value="Submit" name="submit">
-            </form>
-          </div>
       
     <div class="container">
         <br>
@@ -294,15 +158,20 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Admin</th>
-                        <th>Username Admin</th>
-                        <th>Action</th>
+                        <th>Nama Jemaat</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Tempat Lahir</th>
+                        <th>No Hp</th>
+                        <th>Email</th>
+                        <th>Kota</th>
+                        <th>Alamat Domisili</th>
                     </tr>
                 </thead>
                 <?php
                       include 'koneksi.php'; // Using database connection file here
                         $idgereja = $_SESSION['gereja'];
-                        $sql =  'SELECT * FROM admin WHERE idgereja = '.$idgereja;
+                        $sql =  'SELECT * FROM akunjemaat WHERE idgereja = '.$idgereja;
                         $stmt = $sambung->query($sql);
                         $count = 0;
                       while($data = mysqli_fetch_array($stmt))
@@ -310,9 +179,14 @@
                 ?>
                 <tbody>
                     <td><?php echo $count; ?></td>
-                    <td><?php echo $data['namaadmin']; ?></td>
-                    <td><?php echo $data['username']; ?></td>
-                    <td id="btnn<?php echo $data['id'];?>"><button type="button" class="btn btn-danger" onclick="hapus('<?php echo $data['id']; ?>')">Hapus</button></td>
+                    <td><?php echo $data['namaLengkap']; ?></td>
+                    <td><?php if ($data['jenisKelamin']=='F') { echo'Perempuan';} else {echo 'Laki-laki';} ?></td>
+                    <td><?php echo $data['tanggalLahir']; ?></td>
+                    <td><?php echo $data['tempatLahir']; ?></td>
+                    <td><?php echo $data['nomorTelepon']; ?></td>
+                    <td><?php echo $data['email']; ?></td>
+                    <td><?php echo $data['kota']; ?></td>
+                    <td><?php echo $data['alamatDomisili']; ?></td>
                 </tbody>
                 <?php
                       }
