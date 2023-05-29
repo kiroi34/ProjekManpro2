@@ -182,7 +182,7 @@
                 $sql2 = "SELECT * FROM ultahjemaat u JOIN gereja g ON u.idgereja = g.idgereja WHERE u.idgereja = ".$_SESSION['gereja'];
                 $stmt2 = $sambung->query($sql2);
                 foreach ($stmt2 as $data) {
-                  if ($data['tanggal']<date("Y-m-d")) {
+                  if (strtotime($data['tanggal'])<strtotime(date("Y-m-d"))) {
                     foreach ($stmt as $nama) {
                       require_once "Other/functions.php";
                       $subject = "HAPPY BIRTHDAY TO YOU!!";
