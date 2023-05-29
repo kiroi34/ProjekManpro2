@@ -108,7 +108,7 @@
     <div class="home-content">
             <div class="isi">
                 <form id="formulir" action="postingproses.php" enctype="multipart/form-data" method="post">
-                    <label for="kategori">Kategori Berita</label>
+                    <!-- <label for="kategori">Kategori Berita</label>
                     <select id="kategori" class="form-control" name="kategori">
                       <option value="kategori">--Pilih Kategori--</option>
                       <?php
@@ -120,17 +120,20 @@
                             echo "<option value='" . $data['id'] . "'>" . $data['namaKategoriBerita'] . "</option>";
                           }
                         }
-                      ?>
+                      ?> -->
                     </select>
 
                     <label for="exampleFormControlInput1">Judul Berita</label>
                     <input type="text" id="judul" class="form-control" name="judul" placeholder="Judul Berita..">
+
+                    <label for="exampleFormControlInput1">Rangkuman Berita</label>
+                    <input type="text" id="rangkuman" class="form-control" name="judul" placeholder="Rangkuman Berita..">
                 
                     <label for="exampleFormControlInput1">Konten</label>
                     <input type="textarea" id="konten" class="form-control" name="konten" placeholder="Konten Berita..">
 
-                    <label for="exampleFormControlInput1">Tanggal</label>
-                    <input type="date" id="tanggal" class="form-control" name="tanggal">
+                    <!-- <label for="exampleFormControlInput1">Tanggal</label>
+                    <input type="date" id="tanggal" class="form-control" name="tanggal"> -->
 
                     <br>
                     <br>
