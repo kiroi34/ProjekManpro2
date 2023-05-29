@@ -122,13 +122,13 @@
               }
               
               /* using the has() relational pseudo selector to update our custom properties */
-              article:has(:hover, :focus) {
+              /* article:has(:hover, :focus) {
                 --img-scale: 1.1;
                 --title-color: #28666e;
                 --link-icon-translate: 0;
                 --link-icon-opacity: 1;
                 box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-              }
+              } */
               
               *,
               *::before,
@@ -137,68 +137,13 @@
               }
               
               .articles {
-                display: grid;
-                max-width: 1200px;
-                margin-inline: auto;
+                display:  grid;
+                max-width: 500px;
+                margin-inline:  180px;
                 padding-inline: 24px;
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                grid-template-columns: auto;
                 gap: 24px;
               }
-              /* main{
-			width: 100%;
-			height: 400px;
-			margin: 200px auto;
-			overflow: hidden;
-			position: relative;
-		}
-		h1{
-			width: 98%;
-			margin: 10px auto;
-			background: #1976D2;
-			font-weight: bold;
-			color: white;
-		}
-    span{
-			position: absolute;
-		    top: 40%;
-		    font-size: 60px;
-		    font-weight: bold;
-		    color: rgb(249, 0, 0);
-		    cursor: pointer;
-		    left: .5%;
-		    z-index: 1;
-		}
-		span:nth-of-type(2){
-			left: 98%;
-			text-align: right;
-		}
-		section{
-			width: 98%;
-			height: 300px;
-			background: #f4f4f4;
-			margin: 10px auto;
-			display: flex;
-			justify-content: left;
-			overflow-x: auto;
-		}
-		section::-webkit-scrollbar{
-			visibility: hidden;
-		}
-		div.carousel{
-			min-width: 330px;
-			height: 200px;
-			position: relative;
-			left: 0px;
-			text-align: center;
-			padding-top: 60px;
-			font-size: 100px;
-			font-weight: bold;
-			color: white;
-			margin: 10px 20px;
-			transition: 0.5s all;
-			background: rgb(65, 65, 65);
-
-		} */
       </style>
       </head>
 
@@ -230,6 +175,7 @@ $id = $data['idKategoriGaleri'];
 $coba = mysqli_query($sambung,"SELECT COUNT(*) jumlah from galeri join galerikategori on kategori=idKategoriGaleri 
 where idKategoriGaleri=$id");
 $row = $coba->fetch_assoc();
+
 if($row['jumlah'] > 0){
   echo"<h2> ".$data["namaKategori"]." </h2>";
 }
@@ -241,7 +187,6 @@ if($row['jumlah'] > 0){
    while($data2= mysqli_fetch_array($records2)){
     ?>
     <article>
-  
       <div class="">
         <?php echo "<br> <img src='../admin/gambarGaleri/" . $data2["file_name"] . "'>"; ?>
 
@@ -255,8 +200,6 @@ if($row['jumlah'] > 0){
 }
 ?>
 
-
-
 </section>
 
 
@@ -264,9 +207,6 @@ if($row['jumlah'] > 0){
 <br>
 <br>
 <br>
-
-
-
 
               
     </body>
@@ -283,36 +223,3 @@ function myFunction(imgs) {
 }
 </script>
 
-
-
-
-<!-- <script type="text/javascript">
-	var span = document.getElementsByTagName('span');
-	var div = document.getElementsByClassName('carousel')
-	var l = 0;
-	span[1].onclick = ()=>{
-		l++;
-		for(var i of div)
-		{
-			if (l==0) {i.style.left = "0px";}
-			if (l==1) {i.style.left = "-740px";}
-			if (l==2) {i.style.left = "-1480px";}
-			if (l==3) {i.style.left = "-2220px";}
-			if (l==4) {i.style.left = "-2960px";}
-			if (l>4) {l=4;}
-		}
-	}
-	span[0].onclick = ()=>{
-		l--; 
-		for(var i of div)
-		{	
-			if (l==0) {i.style.left = "0px";}
-			if (l==1) {i.style.left = "-740px";}
-			if (l==2) {i.style.left = "-1480px";}
-			if (l==3) {i.style.left = "-2220px";}
-			if (l < 0) {l=0;}
-		}
-	}
-	
-
-</script> -->

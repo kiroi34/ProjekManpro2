@@ -1,9 +1,11 @@
 <?php 
 // Include the database configuration file 
 include_once 'koneksi.php'; 
+session_start();
 // $kategori = $_POST['kategori'];
 // $id = $_POST['riwayatKategori'];
 $riwayatKategori = $_POST['riwayatKategori'];
+$idgereja = $_SESSION['gereja'];
 
      
 if(isset($_POST['submit'])){ 
@@ -32,7 +34,7 @@ if(isset($_POST['submit'])){
                 if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
                     // Image db insert sql 
                     
-                    $insertValuesSQL .= "(".$riwayatKategori.",'".$fileName."', NOW()),"; 
+                    $insertValuesSQL .= "(".$riwayatKategori.",'".$fileName."', NOW(), ".$_SESSION['gereja']."),"; 
                 }else{ 
                     $errorUpload .= $_FILES['files']['name'][$key].' | '; 
                 } 
@@ -42,7 +44,7 @@ if(isset($_POST['submit'])){
             }
         } 
         $insertValuesSQL = trim($insertValuesSQL, ',');
-        $insert = $sambung->query("INSERT INTO galeri (kategori, file_name, gambar) VALUES $insertValuesSQL"); 
+        $insert = $sambung->query("INSERT INTO galeri (kategori, file_name, gambar, idgereja) VALUES $insertValuesSQL"); 
          
             // $insert = $sambung->query("INSERT INTO galeri (file_name, gambar) VALUES $insertValuesSQL"); 
             echo "<script>alert('Input Galeri Baru berhasil'); window.location.href = 'inputGaleri.php';</script>";

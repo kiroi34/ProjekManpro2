@@ -77,25 +77,32 @@ input[type=text]:focus, input[type=password]:focus {
  require_once "koneksi.php";
  if(isset($_POST['submit'])){
  $email = $_POST['email'];
- $sql = ("select * from akunjemaat where email='".$email."'  limit 1");
- $stmt = $sambung->query($sql);
-   foreach ($stmt as $data) {
+ //$sql = ("select * from akunjemaat where email='".$email."'  limit 1");
+ //$stmt = $sambung->query($sql);
+ $sql= mysqli_query($sambung,"select * from akunjemaat where email='".$email."'  limit 1");
+ if(mysqli_num_rows($sql)==1){
+   foreach ($sql as $data) {
      $subject = "Reset Password";
      $body= 
      "<html>
      <body>
      
-      <p><b> Hello! </b></p>
-      <p> Berikut adalah link untuk mereset password anda</p>
-      <button class='btn btn-primary'><a href='http://localhost/ProjekManpro2/user/resetPassword.php?secret=".base64_encode($email)."'>Reset Password</a></button></p>
+      <p><b> Halo!!</b></p>
+      <p>  Kami dengan senang hati memberikan Anda tautan untuk mereset password Anda. Silakan gunakan tombol di bawah ini untuk memulihkan akses ke akun Anda. </p>
+      <button class='btn btn-primary'><a href='http://localhost/ProjekManpro2/user/resetPassword.php?secret=".base64_encode($email)."'>Reset Password</a></button>
       <br>
-      <p> Terimakasih  </p>
-     
+      <p> Terima kasih atas kerjasama Anda!  </p>
+      
      </body>
      </html>";
      sendEmail($subject,$body,$email);
+     echo "<script>alert('Email Telah Terkirim!!'); window.location.href = 'verifikasiemail.php';</script>";
  }
+} else{
+  echo "<script>alert('Email Tidak Terdaftar!!'); window.location.href = 'verifikasiemail.php';</script>";
 }
+ }
+
 ?>
 <body>
 <div class="bg-image"> </div>
