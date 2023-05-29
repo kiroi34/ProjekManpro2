@@ -35,7 +35,7 @@
                 echo '<a href="inputFAQ.php"><h3>Back</h3></a>';
 
             } else {
-                $query = "INSERT INTO faq (pertanyaan, jawaban) VALUES ('". $pertanyaan."', '". $jawaban ."')";
+                $query = "INSERT INTO faq (pertanyaan, jawaban, idgereja) VALUES ('". $pertanyaan."', '". $jawaban ."', ".$_SESSION['gereja'].")";
                 $sambung->query($query);
 
                 echo "<script>";

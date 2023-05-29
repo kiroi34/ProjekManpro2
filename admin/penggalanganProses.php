@@ -60,8 +60,8 @@
                 if ($extention == 'png' || $extention == 'jpg' || $extention == 'jpeg' || $extention == 'PNG' || $extention == 'JPG' || $extention == 'JPEG'){
                         move_uploaded_file($tmp_file, $imgStorePath);
 
-                        $query = "INSERT INTO inputpenggalangandana (kategori, judul, deskripsi, deadline, target, poster)
-                            VALUES ('". $kategori."', '". $judul."', '". $deskripsi ."', '". $deadline ."', '". $target ."', '". $poster ."')";
+                        $query = "INSERT INTO inputpenggalangandana (kategori, judul, deskripsi, deadline, target, poster, idgereja)
+                            VALUES ('". $kategori."', '". $judul."', '". $deskripsi ."', '". $deadline ."', '". $target ."', '". $poster ."', ".$_SESSION['gereja'].")";
                         $sambung->query($query);                    
                 } else {
                     echo "extention tidak sesuai";

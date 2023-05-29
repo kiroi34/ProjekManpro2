@@ -65,8 +65,8 @@
                 if ($extention == 'png' || $extention == 'jpg' || $extention == 'jpeg' || $extention == 'PNG' || $extention == 'JPG' || $extention == 'JPEG'){
                     
                     move_uploaded_file($tmp_file, $imgStorePath);
-                    $query = "INSERT INTO berita (kategori, judul, konten, tanggal, gambar)
-                        VALUES ('". $kategori."', '". $judul ."', '". $konten ."', '". $tanggal ."', '". $gambar ."')";
+                    $query = "INSERT INTO berita (kategori, judul, konten, tanggal, gambar, idgereja)
+                        VALUES ('". $kategori."', '". $judul ."', '". $konten ."', '". $tanggal ."', '". $gambar ."', ".$_SESSION['gereja'].")";
                     $sambung->query($query);
 
                     echo "<script>";
