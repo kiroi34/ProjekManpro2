@@ -168,7 +168,7 @@
 
                                                                             <form action="/action_page.php">
                                                                             <label for="UploadFotoGereja" style="color: white; font-family: Poppins; font-size: medium;">Upload Foto Gereja :</label>
-                                                                            <input type="file" id="myFile" name="filename" style="font-size:medium;">
+                                                                            <input type="file" id="fotogereja" name="filename" style="font-size:medium;">
                                                                             </form>
 
                                                                             <br>
@@ -199,7 +199,7 @@
 
                                                                             <!-- Link Gereja -->
                                                                             <div class="form-group field-linkgerejaField">
-                                                                                <input type="tel" id="linkgereja" class="form-control" name="linkgereja" maxlength="50" placeholder="Nama Gereja untuk Link"required>
+                                                                                <input type="tel" id="link" class="form-control" name="linkgereja" maxlength="50" placeholder="Nama Gereja untuk Link"required>
                                                                             </div>
 
                                                                             <!-- Mengenai Pendeta Gereja -->
@@ -209,7 +209,7 @@
 
                                                                             <form action="/action_page.php">
                                                                             <label for="UploadFotoPendeta" style="color: white; font-family: Poppins; font-size: medium;">Upload Foto Pendeta :</label>
-                                                                            <input type="file" id="myFile" name="filename" style="font-size:medium;">
+                                                                            <input type="file" id="fotopendeta" name="filename" style="font-size:medium;">
                                                                             </form>
                                                                             
                                                                             <br>
