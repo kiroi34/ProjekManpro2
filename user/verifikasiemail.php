@@ -1,3 +1,18 @@
+<?php
+  require_once 'koneksi.php';
+  session_start();
+  if (isset($_GET['gereja'])) {
+      $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+      $records = mysqli_query($sambung,$sql);
+      while($data = mysqli_fetch_array($records)){
+      $_SESSION['gereja'] = $data['idgereja'];
+      $_SESSION['namagereja'] = $_GET['gereja'];
+      }
+  } else {
+      header("Location: registgereja.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,17 +104,17 @@ input[type=text]:focus, input[type=password]:focus {
      
       <p><b> Halo!!</b></p>
       <p>  Kami dengan senang hati memberikan Anda tautan untuk mereset password Anda. Silakan gunakan tombol di bawah ini untuk memulihkan akses ke akun Anda. </p>
-      <button class='btn btn-primary'><a href='http://localhost/ProjekManpro2/user/resetPassword.php?secret=".base64_encode($email)."'>Reset Password</a></button>
+      <button class='btn btn-primary'><a href='http://localhost/ProjekManpro2/user/resetPassword.php?secret=".base64_encode($email)."&gereja=".$_SESSION['namagereja']."'>Reset Password</a></button>
       <br>
       <p> Terima kasih atas kerjasama Anda!  </p>
       
      </body>
      </html>";
      sendEmail($subject,$body,$email);
-     echo "<script>alert('Email Telah Terkirim!!'); window.location.href = 'verifikasiemail.php';</script>";
+     echo "<script>alert('Email Telah Terkirim!!'); window.location.href = 'verifikasiemail.php?gereja=".$_SESSION['namagereja']."';</script>";
  }
 } else{
-  echo "<script>alert('Email Tidak Terdaftar!!'); window.location.href = 'verifikasiemail.php';</script>";
+  echo "<script>alert('Email Tidak Terdaftar!!'); window.location.href = 'verifikasiemail.php?gereja=".$_SESSION['namagereja']."';</script>";
 }
  }
 

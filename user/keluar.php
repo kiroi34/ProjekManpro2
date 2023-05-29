@@ -198,7 +198,7 @@ session_start();
                                           </span>
                                         <div class="link forget-pass text-left">
                                           <p style = "font-size: 80%">
-                                          <a href="verifikasiemail.php">
+                                          <a href="verifikasiemail.php?gereja=<?php echo $_SESSION['namagereja'];?>">
                                             <span style = "color : red">
                                               Lupa password?
                                             </span>
@@ -209,7 +209,7 @@ session_start();
                                             <span style = "color : white">
                                               Belum punya akun? 
                                             </span>
-                                            <a href="register.php">
+                                            <a href="register.php?gereja=<?php echo $_SESSION['namagereja'];?>">
                                               <span style = "color :red">
                                                 Buat akun baru
                                               </span>

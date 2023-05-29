@@ -143,7 +143,7 @@
                                                                             
                                                                             <!-- Nama Gereja -->
                                                                             <div class="form-group field-nameField">
-                                                                                <input type="tel" id="nama" class="form-control" name="nama" maxlength="50" placeholder="Nama Gereja"required>
+                                                                                <input type="tel" id="nama" class="form-control" name="nama" maxlength="100" placeholder="Nama Gereja"required>
                                                                             </div> 
 
                                                                             <!-- Email -->
@@ -153,17 +153,17 @@
 
                                                                             <!-- Jam Operasional Gereja -->
                                                                             <div class="form-group field-jamField">
-                                                                                <input type="tel" id="jamoperasional" class="form-control" name="jamoperasional" maxlength="50" placeholder="Jam Operasional Gereja"required>
+                                                                                <input type="tel" id="jamoperasional" class="form-control" name="jamoperasional" maxlength="500" placeholder="Jam Operasional Gereja"required>
                                                                             </div>
 
                                                                             <!-- Kota -->
                                                                             <div class="form-group field-kotaField">
-                                                                                <input type="tel" id="kota" class="form-control" name="kota" maxlength="50" placeholder="Kota"required>
+                                                                                <input type="tel" id="kota" class="form-control" name="kota" maxlength="30" placeholder="Kota"required>
                                                                             </div>
 
                                                                             <!-- Alamat Lengkap Gereja -->
                                                                             <div class="form-group field-addressField">
-                                                                                <input type="tel" id="alamat" class="form-control" name="alamat" maxlength="50" placeholder="Alamat Gereja"required>
+                                                                                <input type="tel" id="alamat" class="form-control" name="alamat" maxlength="500" placeholder="Alamat Gereja"required>
                                                                             </div>
 
                                                                             <label for="UploadFotoGereja" style="color: white; font-family: Poppins; font-size: medium;">Upload Foto Gereja :</label>
@@ -182,27 +182,27 @@
 
                                                                             <!-- Tentang Gereja -->
                                                                             <div class="form-group field-aboutusField">
-                                                                                <input type="tel" id="tentang" class="form-control" name="tentang" maxlength="50" placeholder="Tentang Gereja"required>
+                                                                                <input type="tel" id="tentang" class="form-control" name="tentang" maxlength="5000" placeholder="Tentang Gereja"required>
                                                                             </div>
 
                                                                             <!-- Visi Gereja -->
                                                                             <div class="form-group field-visiField">
-                                                                                <input type="tel" id="visi" class="form-control" name="visi" maxlength="50" placeholder="Visi Gereja"required>
+                                                                                <input type="tel" id="visi" class="form-control" name="visi" maxlength="500" placeholder="Visi Gereja"required>
                                                                             </div>
 
                                                                             <!-- Misi Gereja -->
                                                                             <div class="form-group field-misiField">
-                                                                                <input type="tel" id="misi" class="form-control" name="misi" maxlength="50" placeholder="Misi Gereja"required>
+                                                                                <input type="tel" id="misi" class="form-control" name="misi" maxlength="500" placeholder="Misi Gereja"required>
                                                                             </div>
 
                                                                             <!-- Link Gereja -->
                                                                             <div class="form-group field-linkgerejaField">
-                                                                                <input type="tel" id="link" class="form-control" name="link" maxlength="50" placeholder="Nama Gereja untuk Link"required>
+                                                                                <input type="tel" id="link" class="form-control" name="link" maxlength="100" placeholder="Nama Gereja untuk Link"required>
                                                                             </div>
 
                                                                             <!-- Mengenai Pendeta Gereja -->
                                                                             <div class="form-group field-pendetaField">
-                                                                                <input type="tel" id="informasipendeta" class="form-control" name="informasipendeta" maxlength="50" placeholder="Informasi Pendeta"required>
+                                                                                <input type="tel" id="informasipendeta" class="form-control" name="informasipendeta" maxlength="5000" placeholder="Informasi Pendeta"required>
                                                                             </div>
 
                                                                             <label for="UploadFotoPendeta" style="color: white; font-family: Poppins; font-size: medium;">Upload Foto Pendeta :</label>

@@ -1,6 +1,7 @@
 <?php 
 
 include 'koneksi.php';
+session_start();
 
 mysqli_select_db($sambung, "akunjemaat");
 
@@ -8,7 +9,7 @@ if(isset($_POST['username'])){
     
     $uname=$_POST['username'];
     $password= MD5($_POST['password']);
-    $records = mysqli_query($sambung,"select * from akunjemaat where (email='".$uname."'OR nomorTelepon='".$uname."')  AND Password='".$password."'  limit 1");
+    $records = mysqli_query($sambung,"select * from akunjemaat where (email='".$uname."'OR nomorTelepon='".$uname."')  AND Password='".$password."' AND idgereja=".$_SESSION['gereja']);
  
     
     if(mysqli_num_rows($records)==1){

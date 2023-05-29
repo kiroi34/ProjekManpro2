@@ -1,6 +1,7 @@
 <?php 
 
 include 'koneksi.php';
+session_start();
 
 mysqli_select_db($sambung, "akunjemaat");
 
@@ -11,12 +12,12 @@ if(isset($_POST['oke'])){
  
     
     if(mysqli_num_rows($records)==1){
-        header("location: verifikasiemail.php");
+        header("location: verifikasiemail.php?gereja=".$_SESSION['namagereja']);
         exit();
         
     }
     else{
-        echo "<script>alert('Email Tidak Terdaftar!!'); window.location.href = 'verifikasiemail.php';</script>";
+        echo "<script>alert('Email Tidak Terdaftar!!'); window.location.href = 'verifikasiemail.php?gereja=".$_SESSION['namagereja']."';</script>";
         exit();
     }
 

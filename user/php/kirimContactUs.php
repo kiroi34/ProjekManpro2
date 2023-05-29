@@ -2,6 +2,11 @@
     require_once "../../admin/Other/functions.php";
     require_once "../koneksi.php";
     session_start();
+    $sql = "SELECT * FROM gereja WHERE idgereja = ".$_SESSION['gereja'];
+    $stmt = $sambung->query($sql);
+    foreach ($stmt as $data) {
+        $emailGereja = $data['email'];
+    }
     $nama = $_POST['nama'];
     $email = $_POST['email'];
     $subject = $_POST['judul'];
@@ -21,6 +26,6 @@
                 <p style="margin-top:15px">'.$isi.'</p>
             </body>
             </html>';
-    sendEmail($subject,$body,'studytale06@gmail.com');
+    sendEmail($subject,$body,$emailGereja);
     header("Location: ../ContactUs.php?gereja=".$_SESSION['namagereja']);
 ?>

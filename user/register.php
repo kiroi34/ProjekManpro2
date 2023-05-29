@@ -1,3 +1,17 @@
+<?php
+  require_once 'koneksi.php';
+  session_start();
+  if (isset($_GET['gereja'])) {
+      $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+      $records = mysqli_query($sambung,$sql);
+      while($data = mysqli_fetch_array($records)){
+      $_SESSION['gereja'] = $data['idgereja'];
+      $_SESSION['namagereja'] = $_GET['gereja'];
+      }
+  } else {
+      header("Location: registgereja.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
    <headd>
@@ -99,51 +113,7 @@ footer {
 }
 </style> 
 <body>
-<nav class="navbar navbar-expand-lg navbar-white bg-white">
-        <div class="container" style="position:relative;">
-            <a class="navbar-brand" href="/">        
-                <img src="assets/logogereja.png" class="logo_main" alt="Gereja" height="40">
-            </a>
-      
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto" style="padding-top:40px ;">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Homeuser.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="News.php">Berita</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="Pendeta.php">Pendeta</a>
-                  </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Form.php">Formulir</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="FAQ.php">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Persembahan.php">Penggalangan dana</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="ContactUs.php">Hubungi Kami</a>
-                  </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="kalender.php">Kalender</a> 
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="Galeri.php">Galeri</a> 
-                  </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="keluar.php">Keluar</a>
-                  </li>
-                </ul>
-            </div>
-          </div>
-      </nav>
-</body>
-</nav>
+<?php include_once "navbar.php"; ?>
       <div id="mainContainer">
         <div id="streamingContainer" class="container" style="max-width:100%; padding:0;">    
     <div style="padding-left:0; padding-right:0">
@@ -285,7 +255,7 @@ footer {
 </div>
 <br>
 <div style="size: 20px;">
-    <p style= "font-size: 70%;"><span style = "color : black">Sudah punya akun?<a href="keluar.php"> <span style = "color : red"><b>Login<b> </pan> </a> </p>
+    <p style= "font-size: 70%;"><span style = "color : black">Sudah punya akun?<a href="keluar.php?gereja=<?php echo $_SESSION['namagereja'];?>"> <span style = "color : red"><b>Login<b> </pan> </a> </p>
     </div>
             
 <!-- Submit Button nanti masuk ke login juga harusnya-->

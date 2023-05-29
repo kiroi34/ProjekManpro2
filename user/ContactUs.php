@@ -3,6 +3,7 @@
   session_start();
   if (isset($_GET['gereja'])) {
     $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+    $stmt = $sambung->query($sql);
     $records = mysqli_query($sambung,$sql);
     while($data = mysqli_fetch_array($records)){
     $_SESSION['gereja'] = $data['idgereja'];
@@ -131,15 +132,13 @@
                   <p>
                     <strong>Alamat</strong>
                     <br>
-                    <a>Four Point Tunjungan Plaza 4 Lantai 6, Jl. Embong Malang No.32-36, Kedungdoro, Kec. Tegalsari, Surabaya, Jawa Timur 60261</a>
+                    <a><?php foreach ($stmt as $data) { echo $data['alamat']; } ?></a>
                     <br><br>
                     <strong>Jam Operasional</strong>
-                    <br>
-                    Senin-Sabtu<br>
-                    Jam Operasional: 10.00-18.00 <br><br>
+                    <br><?php foreach ($stmt as $data) { echo $data['jamoperasional']; } ?><br><br>
                     <strong>E-mail</strong>
                     <br>
-                    <a href="gerejakita@gmail.com">gerejakita@gmail.com</a>
+                    <a href="<?php foreach ($stmt as $data) { echo $data['email']; } ?>"><?php foreach ($stmt as $data) { echo $data['email']; } ?></a>
                     <br><br>
                     <button class="btn btn-danger" id="btn-maps"style="background-color: blue;">Lihat Lokasi Gereja</button>
                   </p>

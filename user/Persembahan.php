@@ -3,6 +3,7 @@ require_once "koneksi.php";
 session_start();
 if (isset($_GET['gereja'])) {
   $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+  $stmt = $sambung->query($sql);
   $records = mysqli_query($sambung, $sql);
   while($data = mysqli_fetch_array($records)){
   $_SESSION['gereja'] = $data['idgereja'];
@@ -119,7 +120,7 @@ if (isset($_GET['gereja'])) {
 
                                 <div class="copy-to-clipboard" data-placement="bottom" title="Copied" data-clipboard-text="0882977771">
                                   <b style="font-size:1.3em;line-height:1.3em; margin-left: 50px; background-color: lightgray;">
-                                    <a href="javascript:void(0)">BCA 081.2.3456.0</a>
+                                    <a href="javascript:void(0)"><?php foreach ($stmt as $data) { echo $data['rekeningpersembahan']; }?></a>
                                   </b>
                                   <span data-placement="bottom" style="background-color:red" data-clipboard-text="0882977771" class="badge badge-secondary copy-to-clipboard" title="Copied">COPY</span>
                                 </div>
@@ -155,7 +156,7 @@ if (isset($_GET['gereja'])) {
 
                               <div class="col-4" style="padding-left:5px;">
                                 <div class="mt-2 give-qrcode-image active">
-                                  <img loading="lazy" src="assets/<?php while($data = mysqli_fetch_array($records)){ echo $data['fotopersembahan']; }?>" alt="QR" style="max-width:170px;width:100%;">
+                                  <img loading="lazy" src="assets/<?php foreach ($stmt as $data) { echo $data['fotopersembahan']; }?>" alt="QR" style="max-width:170px;width:100%;">
                                 </div>
                               </div>
                               <div class="col-12 mt-4" style="padding-right:5px">
