@@ -197,7 +197,7 @@
                     <?php
                         $query = "SELECT id, kategori.namaKategori, judul, rangkuman, konten, tanggal, gambar
                         FROM berita INNER JOIN kategori
-                        ON kategori.idKategori=berita.kategori";
+                        ON kategori.idKategori=berita.kategori WHERE idgereja=".$_SESSION['gereja'];
                         $result = $sambung->query($query);
                         
                         if ($result->num_rows>0) {

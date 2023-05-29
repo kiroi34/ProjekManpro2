@@ -161,8 +161,8 @@ require_once "connByAlan.php";
 <section class="articles">
 <?php
 include 'koneksi.php'; // Using database connection file here
-
-$records = mysqli_query($sambung,"select id, jabatan.namaJabatan, nama, biodata, foto from pendeta inner join jabatan on jabatan.idJabatan=pendeta.jabatan"); // fetch data from database harus pakai join buat jabatan
+$records = mysqli_query($sambung,"select id, jabatan.namaJabatan, nama, biodata, foto from pendeta 
+inner join jabatan on jabatan.idJabatan=pendeta.jabatan where idgereja=".$_SESSION['gereja']); // fetch data from database harus pakai join buat jabatan
 while($data = mysqli_fetch_array($records))
 {
 ?>

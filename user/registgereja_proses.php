@@ -13,16 +13,31 @@
             $nikpenanggung = $_POST['nikpenanggung'];
             $alamat = $_POST['alamat'];
             $nohp = $_POST['nohp'];
+            $waktudaftar = $_POST['waktudaftar'];
+            $waktukonfirmasi = $_POST['waktukonfirmasi'];
+            $konfirmasi = $_POST['konfirmasi'];
+
             $email = $_POST['email'];
             $jamoperasional = $_POST['jamoperasional'];
             $kota = $_POST['kota'];
             $alamat = $_POST['alamat'];
+
             $tentang = $_POST['tentang'];
             $visi = $_POST['visi'];
             $misi = $_POST['misi'];
-            $link = $_POST['link'];
+            $linkgereja = $_POST['linkgereja'];
+
             $informasipendeta = $_POST['informasipendeta'];
+
             $rekeningpersembahan = $_POST['rekeningpersembahan'];
+
+            $namapenanggung = $_POST['namapenanggung'];
+            $nohp = $_POST['nohp'];
+            $nikpenanggung = $_POST['nikpenanggung'];
+
+            // $waktudaftar = $_POST['waktudaftar'];
+            // $waktukonfirmasi = $_POST['waktukonfirmasi'];
+            // $konfirmasi = $_POST['konfirmasi'];
 
             $fotopersembahan = $_FILES['fotopersembahan']['name']; //nampung nama
             $extention = pathinfo($fotopersembahan, PATHINFO_EXTENSION);
@@ -130,17 +145,11 @@
 
                 $query = "INSERT INTO gereja (nama, link, namapenanggung, nikpenanggung, alamat, nohp, 
                 ktppenanggung, visi, misi, email, jamoperasional, kota, 
-                tentang, informasipendeta, rekeningpersembahan, fotopersembahan, fotogereja, fotopendeta, waktukonfirmasi)
-                    VALUES ('". $nama."', '". $link."','". $namapenanggung."', '". $nikpenanggung ."', '". $alamat ."', '". $nohp ."', 
+                tentang, informasipendeta, rekeningpersembahan, fotopersembahan, fotogereja, fotopendeta)
+                    VALUES ('". $nama."', '". $link."''". $namapenanggung."', '". $nikpenanggung ."', '". $alamat ."', '". $nohp ."', 
                     '". $ktppenanggung ."', '". $visi ."', '". $misi ."', '". $email ."', '". $jamoperasional ."', '". $kota ."', 
-                    '". $tentang ."', '". $informasipendeta ."', '". $rekeningpersembahan ."', '". $fotopersembahan ."', '". $fotogereja ."', '". $fotopendeta ."', '0000-00-00 00:00:00')";
+                    '". $tentang ."', '". $informasipendeta ."', '". $rekeningpersembahan ."', '". $fotopersembahan ."', '". $fotogereja ."', '". $fotopendeta ."')";
                 $sambung->query($query);
-                $query = "SELECT * FROM gereja WHERE link = '".$link."'";
-                $stmt = $sambung->query($query);
-                foreach ($stmt as $data) {
-                    $query = "INSERT INTO ultahjemaat (idgereja, wish, tanggal) VALUES (".$data['idgereja'].", 'Kiranya diberikan-Nya kepadamu apa yang kaukehendaki dan dijadikan-Nya berhasil apa yang kaurancangakan. (Mazmur 20:4)', current_date)";
-                    $sambung->query($query);
-                }
             ?>
 
         <script>

@@ -232,6 +232,7 @@ require_once "connByAlan.php";
 
                 <?php
                 include("koneksi.php");
+                
                 if (isset($_POST['add'])){
                 $name = $_POST['kategori'];
                 $sqli = "INSERT INTO `galerikategori` (`namaKategori`) VALUES ('$name')";
@@ -281,10 +282,10 @@ require_once "connByAlan.php";
 <section class="articles">
 <?php
 include 'koneksi.php'; // Using database connection file here
-
-$records = mysqli_query($sambung,"select id, galeriKategori.namaKategori, file_name from galeri inner join galeriKategori on galeriKategori.idKategoriGaleri=galeri.kategori order by id desc ");
+$idgereja = $_SESSION['gereja'];
+$records = mysqli_query($sambung,"select id, galeriKategori.namaKategori, file_name from galeri
+ inner join galeriKategori on galeriKategori.idKategoriGaleri=galeri.kategori where galeri.idgereja = '$idgereja' order by id desc ");
 while($data = mysqli_fetch_array($records))
-
 {
 ?>
     
