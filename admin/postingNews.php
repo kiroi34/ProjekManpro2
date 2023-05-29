@@ -136,10 +136,10 @@
                     <input type="date" id="tanggal" class="form-control" name="tanggal"> -->
 
                     <br>
-                    <br>
                     
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Upload Gambar</label>
+                        <br>
                         <input type="file" id ="gambar" accept="image/png, image/jpg, image/jpeg, image/PNG, image/JPG, image/JPEG" name="gambar" default = 0>
                     </div>
 
