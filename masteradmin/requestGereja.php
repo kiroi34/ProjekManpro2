@@ -56,7 +56,6 @@
                 },
             } );
             $('select').on('change', function() {
-                window.location.href = "historivotebim.php?karya="+this.value;
             });
         });
 
@@ -458,12 +457,12 @@
       <span class="logo_name">Master Admin</span>
     </div>
       <ul class="nav-links" style="margin-left:-32px">
-        <li>
+        <!-- <li>
           <a href="homeMaster.php">
             <i class='bx bx-home-alt' ></i>
             <span class="links_name">Home</span>
           </a>
-        </li>
+        </li> -->
         <li>
           <a href="requestGereja.php" class="active">
             <i class='bx bx bx-list-ul' ></i>
@@ -517,15 +516,17 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <?php
-                      include 'koneksi.php'; // Using database connection file here
-                        $sql = 'SELECT * FROM gereja';
-                        $stmt = $sambung->query($sql);
-                      while($data = mysqli_fetch_array($stmt))
-                      {
-                ?>
                 <tbody>
-                    <td><?php echo $data['idgereja']; ?></td>
+                  <?php
+                        include 'koneksi.php'; // Using database connection file here
+                        $count = 0;
+                          $sql = 'SELECT * FROM gereja';
+                          $stmt = $sambung->query($sql);
+                        while($data = mysqli_fetch_array($stmt))
+                        { $count = $count + 1;
+                  ?>
+                    <tr>
+                    <td><?php echo $count; ?></td>
                     <td><?php echo $data['nama']; ?></td>
                     <td><?php echo $data['alamat']; ?></td>
                     <td><?php echo $data['waktudaftar']; ?></td>
@@ -534,10 +535,11 @@
                     <td><button type="button" class="btn btn-info" onclick="lihatVisi('<?php echo $data['idgereja']; ?>')">Lihat</button></td>
                     <td><button type="button" class="btn btn-info" onclick="lihatCP('<?php echo $data['idgereja']; ?>')">Lihat</button></td>
                     <td id="btnn<?php echo $data['idgereja'];?>"><?php if ($data['konfirmasi']==0 || $data['konfirmasi']==2) {echo '<button type="button" class="btn btn-danger" onclick="batal(`'.$data['idgereja'].'`)">Batal</button>' ;} if ($data['konfirmasi']==1) {echo '<span><button type="button" class="btn btn-success" onclick="terima(`'.$data['idgereja'].'`)">Terima</button>  <button type="button" class="btn btn-danger" onclick="tolak(`'.$data['idgereja'].'`)">Tolak</button></span>' ;} ?></td>
+                    </tr>
+                  <?php
+                      }
+                  ?>
                   </tbody>
-                <?php
-                  }
-                ?>
             </table>
         </div>
         </div>

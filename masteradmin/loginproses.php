@@ -13,9 +13,9 @@
 
     if($usernameinput == $username && $hashed_passwordinput == $hashed_password){
         $_SESSION['username'] = $username;
-        header("location: homeMaster.php");
+        header("location: requestGereja.php");
     } else {
-        echo "<script>alert('Username atau password salah'); window.location.href = 'homeMaster.php';</script>";
+        echo "<script>alert('Username atau password salah'); window.location.href = 'loginMaster.php';</script>";
     }
 
     $sambung->close();

@@ -168,6 +168,7 @@
                         <th>Alamat Domisili</th>
                     </tr>
                 </thead>
+                <tbody>
                 <?php
                       include 'koneksi.php'; // Using database connection file here
                         $idgereja = $_SESSION['gereja'];
@@ -177,7 +178,7 @@
                       while($data = mysqli_fetch_array($stmt))
                       { $count = $count + 1;
                 ?>
-                <tbody>
+                    <tr>
                     <td><?php echo $count; ?></td>
                     <td><?php echo $data['namaLengkap']; ?></td>
                     <td><?php if ($data['jenisKelamin']=='F') { echo'Perempuan';} else {echo 'Laki-laki';} ?></td>
@@ -187,10 +188,11 @@
                     <td><?php echo $data['email']; ?></td>
                     <td><?php echo $data['kota']; ?></td>
                     <td><?php echo $data['alamatDomisili']; ?></td>
-                </tbody>
-                <?php
+                    </tr>
+                    <?php
                       }
                 ?>
+                </tbody>
             </table>
         </div>
         </div>

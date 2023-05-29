@@ -423,12 +423,12 @@
       <span class="logo_name">Master Admin</span>
     </div>
       <ul class="nav-links" style="margin-left:-32px">
-        <li>
+        <!-- <li>
           <a href="homeMaster.php">
             <i class='bx bx-home-alt' ></i>
             <span class="links_name">Home</span>
           </a>
-        </li>
+        </li> -->
         <li>
           <a href="requestGereja.php">
             <i class='bx bx bx-list-ul' ></i>
@@ -481,15 +481,17 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+                <tbody>
                 <?php
                       include 'koneksi.php'; // Using database connection file here
+                      $count = 0;
                         $sql = 'SELECT * FROM gereja WHERE konfirmasi = 0';
                         $stmt = $sambung->query($sql);
                       while($data = mysqli_fetch_array($stmt))
-                      {
+                      { $count = $count + 1;
                 ?>
-                <tbody>
-                <td><?php echo $data['idgereja']; ?></td>
+                    <tr>
+                    <td><?php echo $count; ?></td>
                     <td><?php echo $data['nama']; ?></td>
                     <td><?php echo $data['alamat']; ?></td>
                     <td><?php echo $data['link']; ?>.church.id</td>
@@ -497,10 +499,11 @@
                     <td><?php echo $data['waktukonfirmasi']; ?></td>
                     <td><button type="button" class="btn btn-info" onclick="lihatAdmin('<?php echo $data['idgereja']; ?>')">Lihat</button></td>
                     <td id="btnn<?php echo $data['idgereja'];?>"><button type="button" class="btn btn-danger" onclick="hapus('<?php echo $data['idgereja']; ?>')">Hapus</button></td>
-                  </tbody>
-              <?php
+                    </tr>
+                <?php
                       }
-              ?>
+                ?>
+                  </tbody>
             </table>
         </div>
         </div>
