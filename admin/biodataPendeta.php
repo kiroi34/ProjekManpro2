@@ -146,9 +146,6 @@ require_once "connByAlan.php";
                 <br>
                 <input type="file" id="foto" name="foto">
 
-
-
-                
                 <br>
                 <br>
                 <input type="submit" value="Submit" name="submit">
@@ -176,6 +173,7 @@ while($data = mysqli_fetch_array($records))
           <?php echo "<img src='../admin/foto/" . $data["foto"] . "'>"; ?>
           
           <div class="details">
+            <br> 
               <h2><?php echo $data['nama']; ?></h2>
               <h3><?php echo $data['namaJabatan']; ?></h3 >
           </div>

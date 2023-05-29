@@ -4,6 +4,7 @@ include_once 'koneksi.php';
 // $kategori = $_POST['kategori'];
 // $id = $_POST['riwayatKategori'];
 $riwayatKategori = $_POST['riwayatKategori'];
+$idgereja = $_SESSION['gereja'];
 
      
 if(isset($_POST['submit'])){ 
@@ -42,7 +43,7 @@ if(isset($_POST['submit'])){
             }
         } 
         $insertValuesSQL = trim($insertValuesSQL, ',');
-        $insert = $sambung->query("INSERT INTO galeri (kategori, file_name, gambar) VALUES $insertValuesSQL"); 
+        $insert = $sambung->query("INSERT INTO galeri (kategori, file_name, gambar, idgereja) VALUES $insertValuesSQL"); 
          
             // $insert = $sambung->query("INSERT INTO galeri (file_name, gambar) VALUES $insertValuesSQL"); 
             echo "<script>alert('Input Galeri Baru berhasil'); window.location.href = 'inputGaleri.php';</script>";

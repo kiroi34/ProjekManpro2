@@ -5,6 +5,7 @@ $jabatan = $_POST['jabatan'];
 $nama = $_POST['nama'];
 $biodata = $_POST['biodata'];
 $foto = '';
+$idgereja = $_SESSION['gereja'];
 
 
 
@@ -28,7 +29,7 @@ if (isset($_POST['update'])) {
                 $fileNameNew = uniqid('', true).".". $fileExtension;
                 $fileDestination = 'foto/'. $fileNameNew;
                 move_uploaded_file($fileTempName, $fileDestination);
-                mysqli_query($sambung, "UPDATE pendeta SET jabatan='$jabatan', nama='$nama', biodata='$biodata', foto='$fileNameNew' WHERE id='$id'");
+                mysqli_query($sambung, "UPDATE pendeta SET jabatan='$jabatan', nama='$nama', biodata='$biodata', foto='$fileNameNew', idgereja='$idgereja' WHERE id='$id'");
                 echo "<script>alert('Update data berhasil'); window.location.href = 'biodataPendeta.php';</script>";
             }else {
                 echo "<script>alert('Pendaftaran Gagal Karena File Gambar Terlalu Besar '); window.location.href = 'biodataPendeta.php';</script>";

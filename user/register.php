@@ -223,7 +223,7 @@ footer {
 </div>   
 <!-- TanggalLahir -->
 <div class="form-group field-congregationalserviceform-tempatlahir">
-<input type="tel" id="congregationalserviceform-tempatlahir" class="form-control" name="tanggalLahir" maxlength="150" placeholder="Tanggal lahir (DD/MM/YYYY)" required>
+<input type="date" id="congregationalserviceform-tempatlahir" class="form-control" name="tanggalLahir" pattern="\d{4}-\d{2}-\d{2}" maxlength="150" placeholder="Tanggal lahir (YYYY/MM/DD)" required>
 <div class="help-block"></div>
 </div>   
    

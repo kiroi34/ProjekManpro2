@@ -4,6 +4,7 @@ $jabatan = $_POST['jabatan'];
 $nama = $_POST['nama'];
 $biodata = $_POST['biodata'];
 $foto = '';
+$idgereja = $_SESSION['gereja'];
 
 
 
@@ -27,7 +28,7 @@ if (isset($_POST['submit'])) {
                 $fileNameNew = uniqid('', true).".". $fileExtension;
                 $fileDestination = 'foto/'. $fileNameNew;
                 move_uploaded_file($fileTempName, $fileDestination);
-                mysqli_query($sambung, "INSERT INTO pendeta VALUES ('','$jabatan','$nama','$biodata','$fileNameNew')");
+                mysqli_query($sambung, "INSERT INTO pendeta VALUES ('','$jabatan','$nama','$biodata','$fileNameNew','$idgereja')");
                 echo "<script>alert('Input User Baru berhasil'); window.location.href = 'biodataPendeta.php';</script>";
             }else {
                 echo "<script>alert('Pendaftaran Gagal Karena File Gambar Terlalu Besar '); window.location.href = 'biodataPendeta.php';</script>";
