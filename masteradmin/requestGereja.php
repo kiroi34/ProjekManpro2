@@ -101,7 +101,7 @@
                 },
                 success: function(result) {
                   document.getElementById('status'+id).innerHTML = '<i style="color:red">Pendaftaran Ditolak</i>';
-                  document.getElementById('waktu'+id).innerHTML = "-";
+                  document.getElementById('waktu'+id).innerHTML = "0000-00-00 00:00:00";
                   document.getElementById('btnn'+id).innerHTML = '<button type="button" class="btn btn-danger" onclick="batal('+id+')">Batal</button>';
                 }  
               });
