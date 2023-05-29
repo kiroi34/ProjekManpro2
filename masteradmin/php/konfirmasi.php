@@ -40,7 +40,7 @@
             </head>
             <body style="color:black">
                 <strong>Selamat, pendaftaran Gereja telah diterima! Anda bisa langsung mengelola website Gereja anda!</strong><br>
-                <p style="margin-top:15px">Silahkan login dengan akun dengan: </p>
+                <p style="margin-top:15px">Silahkan login dengan akun: </p>
                 <br><p style="margin-top:15px">Username: '.$username.'</p>
                 <p style="margin-top:15px">Password: '.$pwdd.'</p>
             </body>
