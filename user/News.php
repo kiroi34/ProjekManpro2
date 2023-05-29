@@ -203,38 +203,29 @@
                         if ($result->num_rows>0) {
                             while($row = $result->fetch_assoc()){
                                 $id=$row['id'];
-                        //         echo "<section class='faq-container'>";
-                        //             echo "<div class='faq-one'>";
-                        //                 echo "<h1 class='faq-page'style='font-size:larger;'><b>" . $row['namaKategori'] . ": </b>" . $row['judul'] . "</h1>";
-                        //                 echo "<div class='faq-body'>";
-                        //                     echo "<p style='font-size: medium;'>" . $row['konten'] . "<br>" . $row['tanggal'] . "</p>";
-                        //                     echo "<img src='../admin/img/" . $row["gambar"] . "' height='400'>";
-                        //                 echo "</div>"; 
-                        //             echo "</div>";                
-                        //         echo "</section>";
-                        //     }
-                        // }
+                                $rangkum = str_replace(array("\n"), array("<br>"), $row['rangkuman']);
+                                $isi = str_replace(array("\n"), array("<br>"), $row['konten']);
 
-                        echo '
-                                <article style="  border: 1px solid #ccc; padding: 10px;"> 
-                                    <img src="../admin/img/' . $row["gambar"] . '" alt="Gambar Berita 1" style =" width: 100%; height: auto;">
-                                    <div class="content">
-                                    <h2 style=" margin-top: 10px; font-size:large"><b>' . $row['judul'] . '</b></h2>
-                                    <p style="margin-bottom: 10px; font-size: medium">' . $row['rangkuman'] .'<br></p>
-                                    <button style="display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
-                                    text-decoration: none; transition: background-color 0.3s ease;" onclick="openModal()">Baca Selengkapnya</button>
+                            echo '
+                                    <article style="  border: 1px solid #ccc; padding: 10px;"> 
+                                        <img src="../admin/img/' . $row["gambar"] . '" alt="Gambar Berita 1" style =" width: 100%; height: auto;">
+                                        <div class="content">
+                                        <h2 style=" margin-top: 10px; font-size:large"><b>' . $row['judul'] . '</b></h2>
+                                        <p style="margin-bottom: 10px; font-size: medium">' . $rangkum .'<br></p>
+                                        <button style="display: block;text-align: center;padding: 10px;background-color: #333;color: #fff;
+                                        text-decoration: none; transition: background-color 0.3s ease;" onclick="openModal('.$id.')">Baca Selengkapnya</button>
 
-                                    <!-- The modal -->
-                                    <div id="myModal" class="modal">
-                                        <!-- Modal content -->
-                                        <div class="modal-content">
-                                            <h2><b>' . $row['judul'] . '</b></h2>
-                                            <p style="text-align:justify;">' . $row['konten'] . '</p>
-                                            <button onclick="closeModal()">Close</button>
-                                        </div>
-                                    </div>                        
-                                </article>
-                            ';
+                                        <!-- The modal -->
+                                        <div id="'.$id.'" class="modal">
+                                            <!-- Modal content -->
+                                            <div class="modal-content">
+                                                <h2><b>' . $row['judul'] . '</b></h2>
+                                                <p style="text-align:justify;">' . $isi . '</p>
+                                                <button onclick="closeModal('.$id.')">Close</button>
+                                            </div>
+                                        </div>                        
+                                    </article>
+                                ';
                             }
                         }
                     ?>
@@ -247,46 +238,15 @@
 
     <script src="main.js"></script>
     <script>
-        // var faq = document.getElementsByClassName("faq-page");
-        // var i;
+        // Function to open the modal
+        function openModal(id) {
+        document.getElementById(id).style.display = "block";
+        }
 
-        // for (i = 0; i < faq.length; i++) {
-        //     faq[i].addEventListener("click", function () {
-        //         this.classList.toggle("active");
-        //         var body = this.nextElementSibling;
-        //         if (body.style.display === "block") {
-        //             body.style.display = "none";
-        //         } else {
-        //             body.style.display = "block";
-        //         }
-        //     });
-        // }
-        
-    // Function to open the modal
-    function openModal() {
-      document.getElementById("myModal").style.display = "block";
-    }
-
-    function openModal2() {
-      document.getElementById("myModal2").style.display = "block";
-    }
-
-    function openModal3() {
-      document.getElementById("myModal3").style.display = "block";
-    }
-
-    // Function to close the modal
-    function closeModal() {
-      document.getElementById("myModal").style.display = "none";
-    }
-
-    function closeModal2() {
-      document.getElementById("myModal2").style.display = "none";
-    }
-
-    function closeModal3() {
-      document.getElementById("myModal3").style.display = "none";
-    }
+        // Function to close the modal
+        function closeModal(id) {
+        document.getElementById(id).style.display = "none";
+        }
     </script>
 </body>
 </html>
