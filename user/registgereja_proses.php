@@ -29,12 +29,11 @@
             $kontakcp = $_POST['kontakcp'];
             $nikcp = $_POST['nikcp'];
 
-            if ($_FILES != null){
-                $fotopersembahan = $_FILES['fotopersembahan']['name']; //nampung nama
-                $extention = pathinfo($fotopersembahan, PATHINFO_EXTENSION);
-                $tmp_file = $_FILES['fotopersembahan']['tmp_name']; //nampung directory laptop
-                $imgStorePath = "../admin/poster/".$fotopersembahan;
-            }
+            $fotopersembahan = $_FILES['fotopersembahan']['name']; //nampung nama
+            $extention = pathinfo($fotopersembahan, PATHINFO_EXTENSION);
+            $tmp_file = $_FILES['fotopersembahan']['tmp_name']; //nampung directory laptop
+            $imgStorePath = "../admin/poster/".$fotopersembahan;
+
         ?>
 
         <div class="container" style="text-align: center; margin-top: 3%;">
