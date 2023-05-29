@@ -298,8 +298,10 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+                <tbody>
                 <?php
                       include 'koneksi.php'; // Using database connection file here
+                      $count = 0;
                         $idgereja = $_SESSION['gereja'];
                         $sql =  'SELECT * FROM admin WHERE idgereja = '.$idgereja;
                         $stmt = $sambung->query($sql);
@@ -307,15 +309,16 @@
                       while($data = mysqli_fetch_array($stmt))
                       { $count = $count + 1;
                 ?>
-                <tbody>
+                    <tr>
                     <td><?php echo $count; ?></td>
                     <td><?php echo $data['namaadmin']; ?></td>
                     <td><?php echo $data['username']; ?></td>
                     <td id="btnn<?php echo $data['id'];?>"><button type="button" class="btn btn-danger" onclick="hapus('<?php echo $data['id']; ?>')">Hapus</button></td>
-                </tbody>
+                    </tr>
                 <?php
                       }
                 ?>
+                </tbody>
             </table>
         </div>
         </div>
