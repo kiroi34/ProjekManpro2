@@ -1,3 +1,8 @@
+<?php
+    require_once "koneksi.php";
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,11 +53,10 @@
     <body>
         <!--Navigation / Nav-->
         <?php
-            require_once 'koneksi.php';
-            include_once 'navbar.html';
+            include_once 'navbar.php';
 
             $id = $_GET['id'];
-            $kalimatQuery = "SELECT * FROM inputpenggalangandana WHERE id=" . $id;
+            $kalimatQuery = "SELECT * FROM inputpenggalangandana WHERE id=" . $id . " AND idgereja = ".$_SESSION['gereja'];
             $hasilQuery = $sambung->query($kalimatQuery);
             $row = mysqli_fetch_array($hasilQuery);
 
@@ -64,9 +68,7 @@
 
             if ($row['target'] != 0){
                 $persentasiDonasi = $row["terkumpul"] / $row["target"] * 100;
-            } else {
-                echo 'ok';
-            }
+            } else {            }
         ?>
 
         <div id="mainContainer">
@@ -133,7 +135,7 @@
 
                             <div class="text-center">
                                 <?php
-                                    echo '<a href="Persembahan.php?id=' . $id . '"><button class="iniBtn" style="margin-top: 3%;">Donasi</button></a>';
+                                    echo '<a href="Persembahan.php?id=' . $id . '&gereja='.$_SESSION['namagereja'].'"><button class="iniBtn" style="margin-top: 3%;">Donasi</button></a>';
                                 ?>
                             </div>
                         </div>

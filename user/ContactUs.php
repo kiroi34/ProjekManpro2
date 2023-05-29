@@ -1,3 +1,17 @@
+<?php
+  require_once "koneksi.php";
+  session_start();
+  if (isset($_GET['gereja'])) {
+    $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+    $records = mysqli_query($sambung,$sql);
+    while($data = mysqli_fetch_array($records)){
+    $_SESSION['gereja'] = $data['idgereja'];
+    $_SESSION['namagereja'] = $_GET['gereja'];
+    }
+} else {
+    header("Location: registgereja.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -72,27 +86,27 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-7">
-                  <form id="w0" action="/" method="post">
+                  <form id="w0" action="php/kirimContactUs.php" method="post">
           <input type="hidden" name="_csrf" value="rb9rhytDW-QKWACfwSr2TPLkVCywbQOxtcYla3tPr-LD5QrvbwApvEAIMan3eL4Ina0-HMosRZznpwheMAf91g==">        
           <div class="row">
           <div class="col-6">
           <div class="form-group field-contactform-name required">
           
-          <input type="text" id="contactform-name" class="form-control" name="ContactForm[name]" placeholder="Nama" aria-required="true" required>
+          <input type="text" id="contactform-name" class="form-control" name="nama" placeholder="Nama" aria-required="true" required>
           
           <p class="help-block help-block-error"></p>
           </div>          </div>
           <div class="col-6">
           <div class="form-group field-contactform-email required error">
           
-          <input type="text" id="contactform-email" class="form-control" name="ContactForm[email]" placeholder="E-mail" aria-required="true" aria-invalid="true"required>
+          <input type="text" id="contactform-email" class="form-control" name="email" placeholder="E-mail" aria-required="true" aria-invalid="true"required>
           
           </div>          
         </div>
           <div class="col-12">
           <div class="form-group field-contactform-subject required">
           
-          <input type="text" id="contactform-subject" class="form-control" name="ContactForm[subject]" placeholder="Subject" aria-required="true"required>
+          <input type="text" id="contactform-subject" class="form-control" name="judul" placeholder="Subject" aria-required="true"required>
           
           <p class="help-block help-block-error"></p>
           </div>          
@@ -100,7 +114,7 @@
           <div class="col-12">
           <div class="form-group field-contactform-body required">
           
-          <textarea id="contactform-body" class="form-control" name="ContactForm[body]" rows="10" placeholder="Pesan" aria-required="true"required>
+          <textarea id="contactform-body" class="form-control" name="isi" rows="10" placeholder="Pesan" aria-required="true"required>
 
           </textarea>
           

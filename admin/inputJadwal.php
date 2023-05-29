@@ -264,7 +264,7 @@
                     echo '<td>'.$data['tanggal'].'</td>';
                     echo '<td>'.$data['nama'].'</td>';
                     echo '<td>'.$data['deskripsi'].'</td>';
-                    echo '<td><button class="buttonKlik" onclick="klikedit('.$data['idjadwal'].')">Edit</button><button class="buttonKlik" onclick="klikhapus('.$data['idjadwal'].')">Hapus</button></td>';
+                    echo '<td><button class="buttonKlik" onclick="klikedit('.$data['idjadwal'].')">Edit</button><button class="buttonKlik" onclick="klikhapus('.$data['idjadwal'].')">Hapus</button></td></tr>';
                   } ?>
                 </tbody>
             </table>

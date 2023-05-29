@@ -1,3 +1,17 @@
+<?php
+    require_once 'koneksi.php';
+    session_start();
+    if (isset($_GET['gereja'])) {
+        $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+        $records = mysqli_query($sambung,$sql);
+        while($data = mysqli_fetch_array($records)){
+        $_SESSION['gereja'] = $data['idgereja'];
+        $_SESSION['namagereja'] = $_GET['gereja'];
+        }
+    } else {
+        header("Location: registgereja.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -113,7 +127,7 @@
     <body>
 
         <?php
-            require_once 'koneksi.php';
+
             include_once "navbar.php";
         ?>
 
@@ -131,7 +145,7 @@
                         </div>
 
                         <?php
-                            $query = "SELECT * FROM faq";
+                            $query = "SELECT * FROM faq WHERE idgereja = ".$_SESSION['gereja'];
                             $result = $sambung->query($query);
 
                             if ($result->num_rows>0){

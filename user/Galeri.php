@@ -1,3 +1,17 @@
+<?php
+  require_once "koneksi.php";
+  session_start();
+  if (isset($_GET['gereja'])) {
+    $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+    $records = mysqli_query($sambung,$sql);
+    while($data = mysqli_fetch_array($records)){
+    $_SESSION['gereja'] = $data['idgereja'];
+    $_SESSION['namagereja'] = $_GET['gereja'];
+    }
+} else {
+    header("Location: registgereja.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -169,7 +183,7 @@
 
 <?php
 include '../admin/koneksi.php'; // Using database connection file here
-$records = mysqli_query($sambung,"SELECT * FROM galerikategori");
+$records = mysqli_query($sambung,"SELECT * FROM galerikategori WHERE idgereja=".$_SESSION['gereja']);
 while($data = mysqli_fetch_array($records)){
 $id = $data['idKategoriGaleri'];
 $coba = mysqli_query($sambung,"SELECT COUNT(*) jumlah from galeri join galerikategori on kategori=idKategoriGaleri 

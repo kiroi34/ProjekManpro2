@@ -3,13 +3,23 @@
     if (isset($_GET['daftar'])) {
         if ($_GET['daftar']==1) {
             echo '<script>alert("Pendaftaran berhasil!");
-            window.location = "kalender.php";
+            window.location = "kalender.php?gereja='.$_SESSION['namagereja'].'";
             </script>';
         }
     }
+    if (isset($_GET['gereja'])) {
+        $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+        $stmt = $conn->query($sql);
+        $data = $stmt->fetch();
+        $_SESSION['gereja'] = $data['idgereja'];
+        $_SESSION['namagereja'] = $_GET['gereja'];
+    } else {
+        header("Location: registgereja.php");
+    }
+
     $sql = ("SELECT DATE_FORMAT(tanggal, '%Y-%c-%e') as 'tanggal' FROM inputkegiatan WHERE idgereja=".$_SESSION['gereja']);
     $stmt = $conn->query($sql);
-    $data = $stmt->fetchAll();
+    $data = $stmt->fetchAll(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">

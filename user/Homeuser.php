@@ -7,6 +7,7 @@ if (isset($_GET['gereja'])) {
   if (!isset($_SESSION['gereja'])) {
     foreach ($stmt as $data) {
       $_SESSION['gereja'] = $data['idgereja'];
+      $_SESSION['namagereja'] = $_GET['gereja'];
     }
   } 
 } else {

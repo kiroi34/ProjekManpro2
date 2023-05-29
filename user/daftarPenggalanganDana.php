@@ -1,3 +1,17 @@
+<?php
+  require_once "koneksi.php";
+  session_start();
+  if (isset($_GET['gereja'])) {
+    $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+    $records = mysqli_query($sambung,$sql);
+    while($data = mysqli_fetch_array($records)){
+    $_SESSION['gereja'] = $data['idgereja'];
+    $_SESSION['namagereja'] = $_GET['gereja'];
+    }
+} else {
+    header("Location: registgereja.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -58,7 +72,6 @@
     <body>
         <?php
             include_once "navbar.php";
-            require_once "koneksi.php";
         ?>
 
         <div id="mainContainer">
@@ -81,7 +94,7 @@
                         <?php
                           $kalimatquery = "SELECT id, kategori.namaKategori, judul, deskripsi, deadline, terkumpul, target, poster
                                             FROM inputpenggalangandana INNER JOIN kategori
-                                            ON kategori.idKategori=inputpenggalangandana.kategori";
+                                            ON kategori.idKategori=inputpenggalangandana.kategori WHERE idgereja=".$_SESSION['gereja'];
                           $hasilquery = $sambung->query($kalimatquery);
 
                           if ($hasilquery->num_rows>0) {
@@ -89,7 +102,7 @@
                               $id=$row['id'];
                               echo "<div class='col-md-4 border'>";
                                 echo "<div class='text-center'>";
-                                  echo "<a href='pilihPenggalanganDana.php?id=". $row["id"] ."'>
+                                  echo "<a href='pilihPenggalanganDana.php?id=". $row["id"] ."&gereja=".$_SESSION['namagereja']."'>
                                     <img src='../admin/poster/". $row['poster'] ."' style='max-height: 100%; width: 300px;' class='img-fluid'>
                                   </a>";
                                 echo "</div>";

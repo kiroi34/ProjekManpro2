@@ -1,6 +1,22 @@
 <?php
+require_once 'koneksi.php';
+session_start();
+    if (isset($_GET['gereja'])) {
+        $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+        $records = mysqli_query($sambung,$sql);
+        while($data = mysqli_fetch_array($records)){
+        $_SESSION['gereja'] = $data['idgereja'];
+        $_SESSION['namagereja'] = $_GET['gereja'];
+        }
+    } else {
+        header("Location: registgereja.php");
+    }
   if (isset($_SESSION['masuk'])){
-    header("location:Homeuser.php");
+    header("location:Homeuser.php?gereja=".$_GET['gereja']);
+  }
+  if (isset($_SESSION['user'])) {
+    session_destroy();
+    header("location:Homeuser.php?gereja=".$_GET['gereja']);
   }
 ?>
 

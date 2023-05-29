@@ -16,12 +16,12 @@ if(isset($_POST['username'])){
         $data = $records->fetch_assoc();
         $_SESSION['user']=$data['idAkun'];
         $_SESSION['masuk'] = 1;
-        header("location: Homeuser.php");
+        header("location: Homeuser.php?gereja=".$_SESSION['namagereja']);
         exit();
         
     }
     else{
-        echo "<script>alert('Password Atau Username Salah!!'); window.location.href = 'keluar.php';</script>";
+        echo "<script>alert('Password Atau Username Salah!!'); window.location.href = 'keluar.php?gereja=".$_SESSION['namagereja']."';</script>";
         exit();
     }
 

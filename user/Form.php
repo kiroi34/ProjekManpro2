@@ -2,9 +2,18 @@
     require_once "php/connect.php";
     if (!isset($_SESSION['user'])) {
         echo "<script>alert('Silakan login terlebih dahulu sebelum mendaftar form..');
-        window.location = 'keluar.php';
+        window.location = 'keluar.php?gereja=".$_GET['gereja']."';
         </script>";
     } 
+    if (isset($_GET['gereja'])) {
+        $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+        $stmt = $conn->query($sql);
+        $data = $stmt->fetch();
+        $_SESSION['gereja'] = $data['idgereja'];
+        $_SESSION['namagereja'] = $_GET['gereja'];
+    } else {
+        // header("Location: registgereja.php");
+    }
 
 ?>
 <!DOCTYPE html>
@@ -83,7 +92,7 @@
                     showConfirmButton: true,
                     timer: 5000
                   }).then((result) => {
-                    window.location = 'Form.php';
+                    window.location = 'Form.php?gereja=".$_SESSION['namagereja']."';
                   })";
             }
             ?>

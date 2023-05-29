@@ -1,6 +1,16 @@
 <?php
 require_once "../admin/connByAlan.php";
-  
+require_once "koneksi.php";
+if (isset($_GET['gereja'])) {
+  $sql = "SELECT * FROM gereja WHERE link = '".$_GET['gereja']."'";
+  $records = mysqli_query($sambung, $sql);
+  while($data = mysqli_fetch_array($records)){
+  $_SESSION['gereja'] = $data['idgereja'];
+  $_SESSION['namagereja'] = $_GET['gereja'];
+  }
+} else {
+  header("Location: registgereja.php");
+}
   $timesql = "SELECT * FROM jabatan ";
   $timestmt = $pdo->prepare($timesql);
   $timestmt->execute();
@@ -320,8 +330,6 @@ a {
   <!-- coba tarik dari database ke admin page -->
   <div class="wrap">
 <?php
-
-include 'koneksi.php'; // Using database connection file here
 
 $records = mysqli_query($sambung,"select id, jabatan.namaJabatan, nama, biodata, foto from pendeta inner join jabatan on jabatan.idJabatan=pendeta.jabatan"); // fetch data from database harus pakai join buat jabatan
 
