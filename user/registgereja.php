@@ -214,59 +214,7 @@
                                                                             
                                                                             <br>
 
-                                                                            <div style="font-size:12px; margin-top:-3px; margin-bottom:20px; color:grey; text-align:left; font-size: medium;">
-                                                                                <b>Informasi pelengkap gereja : </b>
-                                                                            </div>
-
-                                                                            <!-- FAQ Gereja -->
-                                                                            <div class="form-group field-FAQField">
-                                                                                <input type="tel" id="pertanyaanfaq" class="form-control" name="pertanyaanfaq" maxlength="50" placeholder="FAQ Seputar Gereja"required>
-                                                                            </div>
-
-                                                                            <div class="form-group field-jawabanFAQField">
-                                                                                <input type="tel" id="jawabanfaq" class="form-control" name="jawabanfaq" maxlength="50" placeholder="Jawaban FAQ Gereja"required>
-                                                                            </div>
-
-                                                                            <br>
-
-                                                                            <div style="font-size:12px; margin-top:-3px; margin-bottom:20px; color:grey; text-align:left; font-size: medium;">
-                                                                                <b>Informasi/berita terbaru gereja : </b>
-                                                                            </div>
-
-                                                                            <!-- NEWS Gereja -->
-                                                                            <!-- Kategori Berita -->
-                                                                            <div class="form-group field-congregationalserviceform-news_category">
-                                                                                <select id="kategoriberita" class="form-control" name="kategoriberita" onchange="upload_checkbox()">
-                                                                                    <option value="kategoriberita">--Pilih Kategori Berita--</option>
-                                                                                    <?php
-                                                                                        require_once 'koneksi.php';
-
-                                                                                        $sql = "SELECT * FROM kategoriberita";
-                                                                                        $result = $sambung->query($sql);
-
-                                                                                        if ($result->num_rows > 0) {
-                                                                                            while($data = $result->fetch_assoc()) {
-                                                                                            echo "<option value='" . $data['id'] . "'>" . $data['namaKategoriBerita'] . "</option>";
-                                                                                            }
-                                                                                        }
-                                                                                    ?>
-                                                                                </select>
-                                                                            </div>
-
-                                                                            <div class="form-group field-judulberitaField">
-                                                                                <input type="tel" id="judulberita" class="form-control" name="judulberita" placeholder="Judul Berita"required>
-                                                                            </div>
-
-                                                                            <div class="form-group field-kontenberitaField">
-                                                                                <input type="tel" id="kontenberita" class="form-control" name="kontenberita" placeholder="Konten Berita"required>
-                                                                            </div>
-
-                                                                            <form action="/action_page.php">
-                                                                                <label for="tanggal" style="color: white; font-family: Poppins; font-size: medium;">Tanggal Berita:</label>
-                                                                                <input type="date" id="tanggalkonten" name="tanggalkonten" style="font-size: medium;">
-                                                                            </form>
-
-                                                                            <br>
+                                                    
 
                                                                             <div style="font-size:12px; margin-top:-3px; margin-bottom:20px; color:grey; text-align:left; font-size: medium;">
                                                                                 <b>Informasi Kebutuhan Persembahan : </b>
