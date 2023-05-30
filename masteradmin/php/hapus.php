@@ -3,10 +3,6 @@
     session_start();
     $id = $_POST['id'];
 
-    $sql = "DELETE FROM gereja
-    WHERE idgereja = ".$id;
-    $stmt = $sambung->query($sql);
-
     $sql2 = "SELECT * FROM gereja WHERE idgereja = ".$id;
     $stmt2 = $sambung->query($sql2);
     foreach ($stmt2 as $data) {
@@ -27,4 +23,7 @@
             </html>';
     sendEmail($subject,$body,$data['email']);
     }
+    $sql = "DELETE FROM gereja
+    WHERE idgereja = ".$id;
+    $stmt = $sambung->query($sql);
 ?>
