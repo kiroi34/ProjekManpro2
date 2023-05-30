@@ -440,7 +440,7 @@
                 <?php
                       include 'koneksi.php'; // Using database connection file here
                         $count = 0;
-                        $sql = 'SELECT * FROM `admin`';
+                        $sql = 'SELECT * FROM `admin` WHERE idgereja = '.$id;
                         $stmt = $sambung->query($sql);
                       while($data = mysqli_fetch_array($stmt))
                       { $count = $count + 1;
